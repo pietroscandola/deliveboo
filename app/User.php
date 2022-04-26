@@ -10,6 +10,11 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    public function restaurant()
+    {
+        return $this->hasOne('App\Models\Restaurant');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
