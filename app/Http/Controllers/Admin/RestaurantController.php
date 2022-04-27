@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -65,7 +66,9 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-        return view('admin.restaurant.edit', compact('restaurant'));
+        $categories = Category::all();
+        $selected_ids = $restaurant->categories->pluck('id')->toArray();
+        return view('admin.restaurant.edit', compact('restaurant', 'categories', 'selected_ids'));
     }
 
     /**
@@ -77,6 +80,17 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
+        $data = $request->all();
+
+        $restaurant->update($data);
+
+        // Prende l'array di id delle categories e le associa
+        if (!array_key_exists('categories', $data)) {
+            $restaurant->categories()->detach();
+        } else {
+            $restaurant->categories()->sync($data['categories']);
+        }
+
         return redirect()->route('admin.restaurant.home', $restaurant);
     }
 
