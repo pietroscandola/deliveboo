@@ -79,6 +79,7 @@ class ProductController extends Controller
     {
         $data = $request->all();
         $product->update($data);
+
         return redirect()->route('admin.products.show', $product->id);
     }
 
