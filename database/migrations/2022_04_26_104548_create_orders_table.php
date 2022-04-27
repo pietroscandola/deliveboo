@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->string('customer_name', 50);
             $table->string('customer_surname', 50);
-            $table->string('customer_mail');
+            $table->string('customer_email');
             $table->string('customer_address');
             $table->string('customer_phone', 20);
             $table->float('amount', 5, 2);
