@@ -38,7 +38,19 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $data = $request->all();
+
+        // $restaurant = new Restaurant();
+
+        // $restaurant->name = $data['name'];
+        // $restaurant->email = $data['email'];
+        // $restaurant->phone = $data['phone'];
+        // $restaurant->address = $data['address'];
+        // $restaurant->description = $data['description'];
+        // $restaurant->save();
+
+        
+        // return redirect()->route('admin.restaurants.home', $restaurant->id);
     }
 
     /**
@@ -77,7 +89,11 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
-        return redirect()->route('admin.restaurant.home', $restaurant);
+        $data = $request->all();
+
+        $restaurant->update($data);
+
+        return redirect()->route('admin.restaurant.home', $restaurant->id);
     }
 
     /**
@@ -86,8 +102,10 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Restaurant $restaurant)
     {
-        //
+        $restaurant->delete();
+
+        return redirect()->route('admin.restaurants.home', compact('restaurant'));
     }
 }
