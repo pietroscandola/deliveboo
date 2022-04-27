@@ -28,5 +28,7 @@ Route::middleware('auth')
     ->name('admin.')
     ->namespace('Admin')
     ->group(function () {
-        Route::get('/', 'RestaurantController@index')->name('home');
+        // Route::get('/', 'RestaurantController@index');
+        Route::get('/home', 'RestaurantController@show')->name('home');
     });
+
