@@ -10,26 +10,24 @@
    {{-- NAME --}}
    <div class="col-6 mb-3">
       <label for="name" class="form-label">Restaurant Name</label>
-      <input name="name" type="text" class="form-control" id="name" value={{ old('name', $restaurant->name) }}>
+      <input name="name" type="text" class="form-control" id="name" value="{{ old('name', $restaurant->name) }}">
    </div>
    {{-- EMAIL --}}
    <div class="col-6 mb-3">
       <label for="email" class="form-label">Email address</label>
-      <input name="email" type="email" class="form-control" id="email" value={{ old('email', $restaurant->email) }}>
+      <input name="email" type="email" class="form-control" id="email"
+         value="{{ old('email', $restaurant->email) }}">
    </div>
    {{-- PHONE --}}
    <div class="col-6 mb-3">
       <label for="phone" class="form-label">Phone number</label>
-      <input name="phone" type="tel" class="form-control" id="phone" value={{ old('phone', $restaurant->phone) }}>
+      <input name="phone" type="tel" class="form-control" id="phone" value="{{ old('phone', $restaurant->phone) }}">
    </div>
    {{-- ADDRESS --}}
    <div class="col-6 mb-3">
       <label for="address" class="form-label">Address</label>
       <input name="address" type="text" class="form-control" id="address"
-         value={{ old('address', $restaurant->address) }}>
-
-      {{ var_dump($restaurant->address) }}
-
+         value="{{ old('address', $restaurant->address) }}">
    </div>
    {{-- CHECKBOX CATEGORIES --}}
    <div class="col-12 mb-3">
