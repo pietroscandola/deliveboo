@@ -29,6 +29,10 @@ Route::middleware('auth')
     ->namespace('Admin')
     ->group(function () {
         // Route::get('/', 'RestaurantController@index');
-        Route::get('/home', 'RestaurantController@show')->name('home');
+        Route::get('/home', 'RestaurantController@show')->name('restaurant.home');
+        // Route::get('/edit/{id}', 'RestaurantController@edit')->name('restaurant.edit');
+        // Route::post('/update/{id}', 'RestaurantController@update')->name('restaurant.update');
+
+        Route::resource('restaurants', 'RestaurantController');
     });
 

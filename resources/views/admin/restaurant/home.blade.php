@@ -17,7 +17,7 @@
                 <p><strong>Email:</strong> {{ $restaurant->email }}</p>
                 <p><strong>Cellulare:</strong> {{ $restaurant->phone }}</p>
                 <p><strong>Indirizzo:</strong> {{ $restaurant->address }}</p>
-                <a href="#" class="btn btn-primary">AA</a>
+                <a href="{{ route('admin.restaurants.edit', $restaurant->id) }}" class="btn btn-primary">AA</a>
             </div>
         </div>
 

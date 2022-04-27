@@ -53,7 +53,7 @@ class RestaurantController extends Controller
         // dd($userId);
         $restaurant = $restaurant->where('user_id', $userId)->first();
         // dd($restaurant);
-        return view('admin.home', compact('restaurant', 'userId'));
+        return view('admin.restaurant.home', compact('restaurant', 'userId'));
     }
 
 
@@ -63,9 +63,9 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Restaurant $restaurant)
     {
-        //
+        return view('admin.restaurant.edit', compact('restaurant'));
     }
 
     /**
@@ -75,9 +75,9 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Restaurant $restaurant)
     {
-        //
+        return redirect()->route('admin.restaurant.home', $restaurant);
     }
 
     /**
