@@ -18,9 +18,10 @@
                             <p class="card-text"><strong>Prezzo:</strong> {{ $product->price }}</p>
                             <p class="card-text"><strong>Categoria:</strong> {{ $product->category }}</p>
                             <p class="card-text"><strong>Ingredienti:</strong> {{ $product->ingredients }}</p>
-                            <a href="#" class="btn btn-primary">Vedi</a>
-                            <a href="{{ route('admin.products.update', $product->id) }}"
-                                class="btn btn-warning">Modifica</a>
+                            <a href="{{ route('admin.products.show', $product->id) }}" class="btn btn-primary">Vedi</a>
+                            <a href="{{ route('admin.products.edit', $product->id) }}"
+                                class="btn btn-warning">Modifica
+                            </a>                            
                         </div>
                     </div>
                 </div>

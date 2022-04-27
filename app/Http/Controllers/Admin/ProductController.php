@@ -26,7 +26,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $product = new Product();
+
+        return view('admin.product.create', compact('product'));
     }
 
     /**
@@ -37,7 +39,11 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $product = Product::create($data);
+
+        return redirect()->route('admin.products.show', $product);
     }
 
     /**
@@ -46,9 +52,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        return view('admin.products.show', compact('product'));
     }
 
     /**
