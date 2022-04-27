@@ -28,7 +28,9 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        $restaurant = new Restaurant();
+        return view('admin.restaurant.create', compact('restaurant', 'categories'));
     }
 
     /**
@@ -39,7 +41,24 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $restaurant = new Restaurant();
+        // dd($data);
+
+        // Assegna id utente loggato al ristorante
+        $data['user_id'] = Auth::id();
+
+
+        $restaurant->fill($data);
+
+        $restaurant->save();
+
+        // Prende l'array di id delle categories e le associa
+        if (array_key_exists('categories', $data)) {
+            $restaurant->categories()->attach($data['categories']);
+        }
+
+        return redirect()->route('admin.restaurant.home'); // Riporta alla home
     }
 
     /**
