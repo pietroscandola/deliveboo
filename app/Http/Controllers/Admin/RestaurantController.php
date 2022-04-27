@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RestaurantController extends Controller
 {
@@ -46,10 +47,15 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Restaurant $restaurant)
     {
-        //
+        $userId = Auth::id();
+        // dd($userId);
+        $restaurant = $restaurant->where('user_id', $userId)->first();
+        // dd($restaurant);
+        return view('admin.restaurant.home', compact('restaurant', 'userId'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -57,9 +63,9 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Restaurant $restaurant)
     {
-        //
+        return view('admin.restaurant.edit', compact('restaurant'));
     }
 
     /**
@@ -69,9 +75,9 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Restaurant $restaurant)
     {
-        //
+        return redirect()->route('admin.restaurant.home', $restaurant);
     }
 
     /**
