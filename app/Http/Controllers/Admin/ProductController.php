@@ -26,7 +26,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $product = new Product();
+
+        return view('admin.product.create', compact('product'));
     }
 
     /**
@@ -37,7 +39,11 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $product = Product::create($data);
+
+        return redirect()->route('admin.products.show', $product);
     }
 
     /**
