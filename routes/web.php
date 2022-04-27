@@ -34,5 +34,5 @@ Route::middleware('auth')
         // Route::post('/update/{id}', 'RestaurantController@update')->name('restaurant.update');
 
         Route::resource('restaurants', 'RestaurantController');
+        Route::resource('products', 'ProductController');
     });
-
