@@ -21,17 +21,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-
-
 Route::middleware('auth')
     ->prefix('admin')
     ->name('admin.')
     ->namespace('Admin')
     ->group(function () {
-        // Route::get('/', 'RestaurantController@index');
         Route::get('/home', 'RestaurantController@show')->name('restaurant.home');
-        // Route::get('/edit/{id}', 'RestaurantController@edit')->name('restaurant.edit');
-        // Route::post('/update/{id}', 'RestaurantController@update')->name('restaurant.update');
 
         Route::resource('restaurants', 'RestaurantController');
         Route::resource('products', 'ProductController');
