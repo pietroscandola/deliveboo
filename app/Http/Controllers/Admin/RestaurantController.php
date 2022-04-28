@@ -53,7 +53,7 @@ class RestaurantController extends Controller
                 'email' => ['email', 'required'],
                 'phone' => ['required', 'string', 'min:10'],
                 'address' => ['required', 'string'],
-                'description' => ['nullable', 'string', 'min:10']
+                'description' => ['string', 'min:10']
             ],
             [
                 'name.required' => 'Il nome del ristorante è obbligatorio',
@@ -61,7 +61,7 @@ class RestaurantController extends Controller
                 'email.required' => 'Inserisci una E-Mail',
                 'phone.required' => 'Inserisci un numero di telefono',
                 'address.required' => 'Inserisci un indirizzo',
-                'description.numeric' => 'La descrizione deve contenere almeno 10 carattteri',
+                'description.min' => 'La descrizione deve contenere almeno 10 carattteri',
             ]
         );
 
@@ -135,7 +135,7 @@ class RestaurantController extends Controller
                 'email' => ['email', 'required'],
                 'phone' => ['required', 'string', 'min:10'],
                 'address' => ['required', 'string'],
-                'description' => ['nullable', 'string', 'min:5']
+                'description' => ['string', 'min:10']
             ],
             [
                 'name.required' => 'Il nome del ristorante è obbligatorio',
@@ -143,7 +143,7 @@ class RestaurantController extends Controller
                 'email.required' => 'Inserisci una E-Mail',
                 'phone.required' => 'Inserisci un numero di telefono',
                 'address.required' => 'Inserisci un indirizzo',
-                'description.numeric' => 'La descrizione deve contenere almeno 10 carattteri',
+                'description.min' => 'La descrizione deve contenere almeno 10 carattteri',
             ]
         );
 
