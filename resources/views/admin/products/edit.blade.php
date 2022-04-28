@@ -1,22 +1,43 @@
 @extends('layouts.app')
 
 @section('content')
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <form action="{{ route('admin.products.update', $product->id) }}" method="post">
         @csrf
         @method('PUT')
-        <div class="mb-3">
+        <div class="mb-3 form-group">
             <label for="name" class="form-label">Nome del Prodotto</label>
-            <input type="text" class="form-control" name="name" id="name" value={{ old('name', $product->name) }}>
+            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
+                value="{{ old('name', $product->name) }}">
+            @error('name')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Prezzo</label>
-            <input type="number" class="form-control" name="price" id="price" value={{ old('price', $product->price) }}
-                step="0.01">
+            <input type="number" class="form-control @error('price') is-invalid @enderror" name="price" id="price"
+                value="{{ old('price', $product->price) }}" step="0.01">
+            @error('price')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="ingredients" class="form-label">Ingredienti</label>
-            <textarea class="form-control" id="ingredients" name="ingredients"
-                rows="3">{{ old('ingredients', $product->ingredients) }}</textarea>
+            <textarea class="form-control @error('ingredients') is-invalid @enderror" id="ingredients" name="ingredients" rows="3">{{ old('ingredients', $product->ingredients) }}
+            </textarea>
+            @error('ingredients')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
         </div>
         <div class="mb-3">
             <label for="category">Categoria</label>
