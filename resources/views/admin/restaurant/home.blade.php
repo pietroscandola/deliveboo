@@ -25,10 +25,10 @@
                <div class="d-flex justify-content-end">
                   <a href="{{ route('admin.restaurants.edit', $restaurant->id) }}"
                      class="btn btn-primary mr-5">Modifica</a>
-                  <form action="{{ route('admin.restaurants.destroy', $restaurant->id) }}" method="post">
-                     @method('delete')
+                  <form action="{{ route('admin.restaurants.destroy', $restaurant->id) }}" method="POST">
+                     @method('DELETE')
                      @csrf
-                     <button type="submit" value="Delete" class="btn btn-danger">Elimina</button>
+                     <button type="submit" class="btn btn-danger">Elimina</button>
                   </form>
                </div>
             </div>
