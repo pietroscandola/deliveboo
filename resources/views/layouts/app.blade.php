@@ -61,7 +61,7 @@
                               Ristorante</a>
                         </li>
                         @else
-                           <li class="nav-item {{ Request::is('admin/home') ? 'active' : ''}}">
+                           <li class="nav-item {{ Request::is('admin/home') ? 'active' : ''}} {{ Request::is('admin/restaurants*') ? 'active' : ''}}">
                               <a class="nav-link" href="{{ route('admin.restaurant.home') }}">Il mio
                                  ristorante</a>
                            </li>
