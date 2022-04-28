@@ -12,24 +12,28 @@
          <div class="row justify-content-center">
             <div class="col-xs-12 col-lg-6 d-flex justify-content-center">
                @if ($restaurant->image)
-                  <img class="img-fluid rounded" src="{{ asset('storage/' . $restaurant->image) }}"
+                  <img class="img-fluid rounded border" src="{{ asset('storage/' . $restaurant->image) }}"
                      alt="{{ $restaurant->name }}">
                @else
-                  <img class="img-fluid rounded"
-                     src="https://www.zeusnews.it/img/4/8/1/6/2/0/026184-620-google-vedi-immagini.jpg" alt="img">
+                  <figure>
+                     <img class="img-fluid rounded mb-3 border"
+                        src="https://www.zeusnews.it/img/4/8/1/6/2/0/026184-620-google-vedi-immagini.jpg" alt="img">
+                  </figure>
                @endif
             </div>
             <div class="col-xs-12 col-lg-6 d-flex flex-column justify-content-between">
-               <div>
+               <div class="mb-3">
                   <h5><strong>Nome:</strong> {{ $restaurant->name }}</h5>
+                  <hr>
                   <p><strong>Email:</strong> {{ $restaurant->email }}</p>
                   <p><strong>Cellulare:</strong> {{ $restaurant->phone }}</p>
                   <p><strong>Indirizzo:</strong> {{ $restaurant->address }}</p>
                   <p><strong>Descrizione:</strong> {{ $restaurant->description }}</p>
                </div>
+               {{-- Buttons --}}
                <div class="d-flex justify-content-end">
                   <a href="{{ route('admin.restaurants.edit', $restaurant->id) }}"
-                     class="btn btn-primary mr-5">Modifica</a>
+                     class="btn btn-primary mr-3">Modifica</a>
                   <form action="{{ route('admin.restaurants.destroy', $restaurant->id) }}" method="POST">
                      @method('DELETE')
                      @csrf
