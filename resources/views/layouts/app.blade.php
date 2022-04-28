@@ -67,6 +67,9 @@
                            <li class="nav-item">
                               <a class="nav-link" href="{{ route('admin.products.index') }}">I miei piatti</a>
                            </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="{{ route('admin.orders.index') }}">I miei ordini</a>
+                           </li>
                      @endif
                      <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"

@@ -14,8 +14,8 @@
     <div class="row justify-content-center">
         {{-- <div class="d-flex flex-wrap"> --}}
         @foreach ($orders as $order)
-        <div class="col-3 xs-12 col-lg-6">
-            <div class="card" style="width: 18rem;">
+        <div class="col-xs-12 col-lg-6">
+            <div class="card">
                 <div class="card-body">
                     <h5 class="card-text text-center"><strong>ID Ordine: {{ $order->id }}</strong></h5>
                     <hr>
