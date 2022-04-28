@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -47,8 +48,20 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        $product = new Product();
 
-        $product = Product::create($data);
+        $userId = Auth::id();
+        $restaurant = Restaurant::where('user_id', $userId)->first();
+
+        // Adding current restaurant_id to product
+        $data['restaurant_id'] = $restaurant->id;
+
+
+        // Image file
+        if (array_key_exists('image', $data)) $data['image'] = Storage::put('product_images', $data['image']);
+
+        $product->fill($data);
+        $product->save();
 
         return redirect()->route('admin.products.show', $product);
     }
@@ -100,6 +113,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        // Image delete
+        if ($product->image) Storage::delete($product->image);
+
         $product->delete();
         return redirect()->route('admin.products.index');
     }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    protected $fillable = ['name', 'price', 'ingredients', 'category', 'image'];
+    protected $fillable = ['name', 'price', 'ingredients', 'category', 'image', 'restaurant_id'];
     public function restaurant()
     {
         return $this->belongsTo('App\Models\Restaurant');

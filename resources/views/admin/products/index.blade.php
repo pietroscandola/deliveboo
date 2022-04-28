@@ -19,7 +19,7 @@
         @foreach ($products as $product)
         <div class="col-3 m-3">
             <div class="card" style="width: 18rem;">
-                <div class="mr-5 d-flex justify-content-center">
+                <div class="mt-3 d-flex justify-content-center">
                     @if ($product->image)
                     <img src="{{ asset("storage/$product->image") }}" alt="{{ $product->title }}" width="200px" class="img-fluid">
                     @else
@@ -27,7 +27,7 @@
                     @endif
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ $product->name }}</h5>
+                    <h5 class="card-title">{{ $product->name }} ID: {{ $product->id }}</h5>
                     <p class="card-text"><strong>Prezzo:</strong> {{ $product->price }}</p>
                     <p class="card-text"><strong>Categoria:</strong> {{ $product->category }}</p>
                     <p class="card-text"><strong>Ingredienti:</strong> {{ $product->ingredients }}</p>
