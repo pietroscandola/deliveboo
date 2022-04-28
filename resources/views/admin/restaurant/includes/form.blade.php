@@ -10,7 +10,7 @@
    {{-- ERROR --}}
    @if ($errors->any())
       <div class="col-12 alert alert-danger">
-         <ul>
+         <ul class="m-0">
             @foreach ($errors->all() as $error)
                <li>{{ $error }}</li>
             @endforeach
@@ -21,32 +21,44 @@
    <div class="col-xs-12 col-md-6 mb-3">
       <div class="form-group">
          <label for="name" class="form-label">Nome della tua attività</label>
-         <input @error('name') is-invalid @enderror max-length="50" required name="name" type="text"
-            class="form-control" id="name" value="{{ old('name', $restaurant->name) }}">
+         <input max-length="50" required name="name" type="text" class="form-control @error('name') is-invalid @enderror"
+            id="name" value="{{ old('name', $restaurant->name) }}">
+         @error('name')
+            <div class="invalid-feedback">{{ $message }}</div>
+         @enderror
       </div>
    </div>
    {{-- EMAIL --}}
    <div class="col-xs-12 col-md-6 mb-3">
       <div class="form-group">
          <label for="email" class="form-label">Email dell'attività</label>
-         <input @error('email') is-invalid @enderror name="email" type="email" class="form-control" id="email"
+         <input name="email" type="email" class="form-control @error('email') is-invalid @enderror" id="email"
             value="{{ old('email', $restaurant->email) }}">
+         @error('email')
+            <div class="invalid-feedback">{{ $message }}</div>
+         @enderror
       </div>
    </div>
    {{-- PHONE --}}
    <div class="col-xs-12 col-md-6 mb-3">
       <div class="form-group">
          <label for="phone" class="form-label">Numero di telefono</label>
-         <input @error('phone') is-invalid @enderror required name="phone" type="tel" class="form-control" id="phone"
+         <input required name="phone" type="tel" class="form-control @error('phone') is-invalid @enderror" id="phone"
             value="{{ old('phone', $restaurant->phone) }}">
+         @error('phone')
+            <div class="invalid-feedback">{{ $message }}</div>
+         @enderror
       </div>
    </div>
    {{-- ADDRESS --}}
    <div class="col-xs-12 col-md-6 mb-3">
       <div class="form-group">
          <label for="address" class="form-label">Indirizzo attività</label>
-         <input @error('address') is-invalid @enderror name="address" type="text" class="form-control" id="address"
+         <input name="address" type="text" class="form-control @error('address') is-invalid @enderror" id="address"
             value="{{ old('address', $restaurant->address) }}">
+         @error('address')
+            <div class="invalid-feedback">{{ $message }}</div>
+         @enderror
       </div>
    </div>
    {{-- CHECKBOX CATEGORIES --}}
@@ -69,14 +81,20 @@
    <div class="col-xs-12 col-md-6">
       <div class="form-group">
          <label for="image">Immagine dell'attività</label>
-         <input class="d-block" type="file" name="image" id="image">
+         <input class="d-block @error('image') is-invalid @enderror" type="file" name="image" id="image">
+         @error('image')
+            <div class="invalid-feedback">{{ $message }}</div>
+         @enderror
       </div>
    </div>
    {{-- DESC --}}
    <div class="col-12 mb-3">
       <label for="description" class="form-label">Descrizione</label>
-      <textarea @error('description') is-invalid @enderror required name="description" class="form-control" id="description"
+      <textarea name="description" class="form-control @error('description') is-invalid @enderror" id="description"
          rows="3">{{ old('description', $restaurant->description) }}</textarea>
+      @error('description')
+         <div class="invalid-feedback">{{ $message }}</div>
+      @enderror
    </div>
    <div class="col-12">
       <input class="btn btn-primary" type="submit" value="Invia">
