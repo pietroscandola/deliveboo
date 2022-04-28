@@ -14,7 +14,7 @@ class AddRestaurantIdToProductsTable extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->foreignId('restaurant_id')->after('id')->nullable()->onDelete('set null')->constrained();
+            $table->foreignId('restaurant_id')->after('id')->nullable()->onDelete('cascade')->constrained();
         });
     }
 
