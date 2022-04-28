@@ -12,11 +12,19 @@
                 <p class="card-text mb-1"><strong>Prezzo:</strong> {{ $product->price }}€</p>
                 <p class="card-text mb-1"><strong>Ingredienti:</strong> {{ $product->ingredients }}</p>
                 <div class="d-flex justify-content-end">
-                    <a href="{{-- {{ route('admin.products.delete', $product->id) }} --}}" class="btn btn-danger ml-1">Delete</a>
-                    <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-warning ml-1">Edit</a>
-                    <a href="{{ route('admin.products.index') }}" class="btn btn-primary ml-1">Back</a>
+                    <form action="{{ route('admin.products.destroy', $product->id) }}" method="post" class='delete_form'>
+                        @csrf
+                        @method('DELETE')
+                        <input type="submit" class="btn btn-danger" value="Elimina">
+                    </form>
+                    <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-warning ml-1">Modifica</a>
+                    <a href="{{ route('admin.products.index') }}" class="btn btn-primary ml-1">Indietro</a>
                 </div>
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src={{ asset('js/delete-confirm.js') }} defer></script>
 @endsection
