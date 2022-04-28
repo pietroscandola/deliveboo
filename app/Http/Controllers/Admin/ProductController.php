@@ -28,7 +28,9 @@ class ProductController extends Controller
     {
         $product = new Product();
 
-        return view('admin.products.create', compact('product'));
+        $categories = ['Primi Piatti', 'Secondi Piatti', 'Bevande', 'Pizze', 'Sushi'];
+
+        return view('admin.products.create', compact('product', 'categories'));
     }
 
     /**
@@ -65,7 +67,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('admin.products.edit', compact('product'));
+        $categories = ['Primi Piatti', 'Secondi Piatti', 'Bevande', 'Pizze', 'Sushi'];
+
+        return view('admin.products.edit', compact('product', 'categories'));
     }
 
     /**

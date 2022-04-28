@@ -12,12 +12,17 @@
         <input type="number" class="form-control" name="price" id="price" value={{ old('price') }} step="0.01">
     </div>
     <div class="mb-3">
-        <label for="category" class="form-label">Categoria</label>
-        <input type="text" class="form-control" name="category" id="category" value={{ old('category') }}>
-    </div>
-    <div class="mb-3">
         <label for="ingredients" class="form-label">Ingredienti</label>
         <textarea class="form-control" id="ingredients" name="ingredients" rows="3">{{ old('ingredients') }}</textarea>
+    </div>
+    <div class="col-12 mb-3">
+        <label for="category">Categoria</label>
+        <select class="form-select" id="category" name="category" aria-label="Default select example">
+            <option value="" selected>--</option>
+            @foreach ($categories as $category)
+            <option value="{{ $category }}">{{ $category }}</option>
+            @endforeach
+        </select>
     </div>
     <div class="mb-3 d-flex">
         <div class="col-10">
