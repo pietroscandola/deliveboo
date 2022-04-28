@@ -26,7 +26,9 @@ class OrderController extends Controller
      */
     public function create()
     {
-        //
+        // $order = new Order();
+
+        // return view('admin.orders.create', compact('order'));
     }
 
     /**
@@ -46,9 +48,9 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Order $order)
     {
-        //
+        return view('admin.orders.show', compact('order'));
     }
 
     /**
@@ -80,8 +82,9 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Order $order)
     {
-        //
+        $order->delete();
+        return redirect()->route('admin.orders.index');
     }
 }
