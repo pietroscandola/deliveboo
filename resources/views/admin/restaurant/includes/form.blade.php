@@ -51,8 +51,9 @@
       <textarea name="description" class="form-control" id="description"
          rows="3">{{ old('description', $restaurant->description) }}</textarea>
    </div>
+   <div class="col-12">
+      <input class="btn btn-primary" type="submit" value="Invia">
+   </div>
 </div>
-
-<input class="btn btn-primary" type="submit" value="Invia">
 
 </form>
