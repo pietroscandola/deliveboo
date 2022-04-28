@@ -59,15 +59,15 @@
                            <a class="nav-link" href="{{ route('admin.restaurants.create') }}">Aggiungi
                               Ristorante</a>
                         </li>
-                     @else
-                        <li class="nav-item">
-                           <a class="nav-link" href="{{ route('admin.restaurant.home') }}">Il mio
-                              ristorante</a>
-                        </li>
+                        @else
+                           <li class="nav-item">
+                              <a class="nav-link" href="{{ route('admin.restaurant.home') }}">Il mio
+                                 ristorante</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="{{ route('admin.products.index') }}">I miei piatti</a>
+                           </li>
                      @endif
-                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.products.index') }}">I miei piatti</a>
-                     </li>
                      <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
