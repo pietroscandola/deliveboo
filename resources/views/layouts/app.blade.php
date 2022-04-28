@@ -60,15 +60,15 @@
                               Ristorante</a>
                         </li>
                         @else
-                           <li class="nav-item">
+                           <li class="nav-item {{ Request::is('admin/home') ? 'active' : ''}}">
                               <a class="nav-link" href="{{ route('admin.restaurant.home') }}">Il mio
                                  ristorante</a>
                            </li>
                            <li class="nav-item">
-                              <a class="nav-link" href="{{ route('admin.products.index') }}">I miei piatti</a>
+                              <a class="nav-link {{ Request::is('admin/products*') ? 'active' : ''}}" href="{{ route('admin.products.index') }}">I miei piatti</a>
                            </li>
                            <li class="nav-item">
-                              <a class="nav-link" href="{{ route('admin.orders.index') }}">I miei ordini</a>
+                              <a class="nav-link {{ Request::is('admin/orders*') ? 'active' : ''}}" href="{{ route('admin.orders.index') }}">I miei ordini</a>
                            </li>
                      @endif
                      <li class="nav-item dropdown">
