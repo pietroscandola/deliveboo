@@ -123,6 +123,6 @@ class RestaurantController extends Controller
     {
         $restaurant->delete();
 
-        return redirect()->route('admin.restaurants.home', compact('restaurant'));
+        return redirect()->route('admin.restaurant.home', compact('restaurant'));
     }
 }
