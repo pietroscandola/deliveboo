@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Restaurant;
 use App\Models\Category;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 
 class RestaurantController extends Controller
 {
@@ -48,6 +51,11 @@ class RestaurantController extends Controller
         // Assegna id utente loggato al ristorante
         $data['user_id'] = Auth::id();
 
+        // IMAGE input
+        if (array_key_exists('image', $data)) {
+            $img_path = Storage::put('restaurant_images', $data['image']);
+            $data['image'] = $img_path;
+        }
 
         $restaurant->fill($data);
 
@@ -101,6 +109,13 @@ class RestaurantController extends Controller
     {
         $data = $request->all();
 
+        // IMG input
+        if (array_key_exists('image', $data)) {
+            if ($restaurant->image) Storage::delete($restaurant->image);
+            $img_path = Storage::put('post_images', $data['image']);
+            $data['image'] = $img_path;
+        }
+
         $restaurant->update($data);
 
         // Prende l'array di id delle categories e le associa
@@ -121,8 +136,11 @@ class RestaurantController extends Controller
      */
     public function destroy(Restaurant $restaurant)
     {
+
         $restaurant->orders()->delete();
         $restaurant->products()->delete();
+
+        if ($restaurant->image) Storage::delete($restaurant->image);
         $restaurant->delete();
         return redirect()->route('admin.restaurant.home');
     }
