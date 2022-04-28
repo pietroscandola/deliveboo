@@ -1,26 +1,28 @@
-@if ($errors->any())
-<div class="alert alert-danger">
-   <ul>
-      @foreach ($errors->all() as $error)
-      <li>{{ $error }}</li>
-      @endforeach
-   </ul>
-</div>
-@endif
-
 @if ($restaurant->exists)
-<form action="{{ route('admin.restaurants.update', $restaurant->id) }}" method="post" enctype="multipart/form-data">
-   @method('PATCH')
+   <form action="{{ route('admin.restaurants.update', $restaurant->id) }}" method="post"
+      enctype="multipart/form-data">
+      @method('PATCH')
    @else
       <form action="{{ route('admin.restaurants.store') }}" method="post" enctype="multipart/form-data">
 @endif
 @csrf
 <div class="row">
+   {{-- ERROR --}}
+   @if ($errors->any())
+      <div class="col-12 alert alert-danger">
+         <ul>
+            @foreach ($errors->all() as $error)
+               <li>{{ $error }}</li>
+            @endforeach
+         </ul>
+      </div>
+   @endif
    {{-- NAME --}}
    <div class="col-xs-12 col-md-6 mb-3">
       <div class="form-group">
          <label for="name" class="form-label">Nome della tua attività</label>
-         <input @error('name') is-invalid @enderror max-length="50" required name="name" type="text" class="form-control" id="name" value="{{ old('name', $restaurant->name) }}">
+         <input @error('name') is-invalid @enderror max-length="50" required name="name" type="text"
+            class="form-control" id="name" value="{{ old('name', $restaurant->name) }}">
       </div>
    </div>
    {{-- EMAIL --}}
@@ -59,19 +61,9 @@
                <label class="form-check-label text-capitalize mr-2" for="category-{{ $loop->iteration }}">
                   {{ $category->name }}
                </label>
-
             </div>
-         </div>
-         {{-- DESC --}}
-         <div class="col-12 mb-3">
-            <label for="description" class="form-label">Descrizione</label>
-            <textarea @error('description') is-invalid @enderror required name="description" class="form-control" id="description" rows="3">{{ old('description', $restaurant->description) }}</textarea>
-         </div>
-         <div class="col-12">
-            <input class="btn btn-primary" type="submit" value="Invia">
-         </div>
+         @endforeach
       </div>
-
    </div>
    {{-- FORM IMAGE --}}
    <div class="col-xs-12 col-md-6">
@@ -80,7 +72,15 @@
          <input class="d-block" type="file" name="image" id="image">
       </div>
    </div>
-   
+   {{-- DESC --}}
+   <div class="col-12 mb-3">
+      <label for="description" class="form-label">Descrizione</label>
+      <textarea @error('description') is-invalid @enderror required name="description" class="form-control" id="description"
+         rows="3">{{ old('description', $restaurant->description) }}</textarea>
+   </div>
+   <div class="col-12">
+      <input class="btn btn-primary" type="submit" value="Invia">
+   </div>
 </div>
 
-   </form>
+</form>
