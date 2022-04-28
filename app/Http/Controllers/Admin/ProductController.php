@@ -46,7 +46,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Product $product)
+    public function store(Request $request)
     {
         $request->validate([
             'name' => ['required', 'string', 'unique:products', 'min:5'],
@@ -57,18 +57,19 @@ class ProductController extends Controller
             'restaurant_id' => 'nullable| exists:restaurant,id',
         ]);
         $data = $request->all();
-        //$product = new Product();
 
+        // Give the product the restaurant id
         $userId = Auth::id();
         $restaurantId = Restaurant::where('user_id', $userId)->value('id');
         $data['restaurant_id'] = $restaurantId;
-      
-        // Image file
-        if (array_key_exists('image', $data)) $data['image'] = Storage::put('product_images', $data['image']);
 
-        //$product = Product::create($data);
-        $product->fill($data);
-        $product->save();
+        // Image file
+        if (array_key_exists('image', $data)) {
+            $img_path = Storage::put('product_images', $data['image']);
+            $data['image'] = $img_path;
+        }
+
+        $product = Product::create($data);
 
         return redirect()->route('admin.products.show', $product);
     }

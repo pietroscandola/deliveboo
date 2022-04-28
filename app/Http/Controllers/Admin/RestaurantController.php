@@ -152,7 +152,7 @@ class RestaurantController extends Controller
         // IMG input
         if (array_key_exists('image', $data)) {
             if ($restaurant->image) Storage::delete($restaurant->image);
-            $img_path = Storage::put('post_images', $data['image']);
+            $img_path = Storage::put('restaurant_images', $data['image']);
             $data['image'] = $img_path;
         }
 
