@@ -58,6 +58,10 @@ class ProductController extends Controller
         ]);
         $data = $request->all();
 
+        $userId = Auth::id();
+        $restaurantId = Restaurant::where('user_id', $userId)->value('id');
+        $data['restaurant_id'] = $restaurantId;
+
         $product = Product::create($data);
 
         return redirect()->route('admin.products.show', $product);
