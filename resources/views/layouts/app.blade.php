@@ -26,7 +26,8 @@
       <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
          <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-               {{ config('app.name', 'Laravel') }}
+               {{-- {{ config('app.name', 'Laravel') }} --}}
+               Deliveboo
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -60,15 +61,15 @@
                               Ristorante</a>
                         </li>
                         @else
-                           <li class="nav-item">
+                           <li class="nav-item {{ Request::is('admin/home') ? 'active' : ''}}">
                               <a class="nav-link" href="{{ route('admin.restaurant.home') }}">Il mio
                                  ristorante</a>
                            </li>
                            <li class="nav-item">
-                              <a class="nav-link" href="{{ route('admin.products.index') }}">I miei piatti</a>
+                              <a class="nav-link {{ Request::is('admin/products*') ? 'active' : ''}}" href="{{ route('admin.products.index') }}">I miei piatti</a>
                            </li>
                            <li class="nav-item">
-                              <a class="nav-link" href="{{ route('admin.orders.index') }}">I miei ordini</a>
+                              <a class="nav-link {{ Request::is('admin/orders*') ? 'active' : ''}}" href="{{ route('admin.orders.index') }}">I miei ordini</a>
                            </li>
                      @endif
                      <li class="nav-item dropdown">
