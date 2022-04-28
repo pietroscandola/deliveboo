@@ -7,6 +7,8 @@ use App\Models\Product;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
+
 
 class ProductController extends Controller
 {
@@ -44,8 +46,16 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Product $product)
     {
+        $request->validate([
+            'name' => ['required', 'string', 'unique:products', 'min:5'],
+            'price' => 'string',
+            'category' => 'string',
+            'ingredients' => 'string | nullable',
+            'image' => 'nullable|image',
+            'restaurant_id' => 'nullable| exists:restaurant,id',
+        ]);
         $data = $request->all();
 
         $product = Product::create($data);
@@ -86,6 +96,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        $request->validate([
+            'name' => ['required', 'string', Rule::unique('products')->ignore($product->id), 'min:5'],
+            'price' => 'string',
+            'category' => 'string',
+            'ingredients' => 'string | nullable',
+            'image' => 'nullable|image',
+            'restaurant_id' => 'nullable| exists:restaurant,id',
+        ]);
         $data = $request->all();
         $product->update($data);
 
