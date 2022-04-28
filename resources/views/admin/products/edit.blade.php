@@ -33,7 +33,7 @@
             </div>
             <div class="col-12 mb-3">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-9">
                         <div class="form-group">
                             <label for="image">Immagine</label>
                             <input type="file" class="form-control-file @error('image') is-invalid @enderror" id="image"
@@ -43,7 +43,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-3">
                         @if ($product->image)
                             <img class="img-fluid rounded" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
                         @else

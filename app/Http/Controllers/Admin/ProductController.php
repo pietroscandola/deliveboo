@@ -100,6 +100,13 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $data = $request->all();
+
+        if (array_key_exists('image', $data)) {
+            if ($product->image) Storage::delete($product->image);
+            $data['image'] = Storage::put('product_images', $data['image']);
+        }
+
+
         $product->update($data);
 
         return redirect()->route('admin.products.show', $product->id);
