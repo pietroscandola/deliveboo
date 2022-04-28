@@ -11,8 +11,13 @@
 
          <div class="row justify-content-center">
             <div class="col-xs-12 col-lg-6 d-flex justify-content-center">
-               <img class="img-fluid rounded"
-                  src="https://www.zeusnews.it/img/4/8/1/6/2/0/026184-620-google-vedi-immagini.jpg" alt="img">
+               @if ($restaurant->image)
+                  <img class="img-fluid rounded" src="{{ asset('storage/' . $restaurant->image) }}"
+                     alt="{{ $restaurant->name }}">
+               @else
+                  <img class="img-fluid rounded"
+                     src="https://www.zeusnews.it/img/4/8/1/6/2/0/026184-620-google-vedi-immagini.jpg" alt="img">
+               @endif
             </div>
             <div class="col-xs-12 col-lg-6 d-flex flex-column justify-content-between">
                <div>

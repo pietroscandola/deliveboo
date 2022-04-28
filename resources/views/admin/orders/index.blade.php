@@ -5,7 +5,7 @@
     <div class="row align-items-center">
         <div class="col-12 col-sm-6 mb-3">
             <h1>Benvenuto</h1>
-            <h3>I tuoi prodotti</h3>
+            <h3>I tuoi ordini</h3>
         </div>
     </div>
 
