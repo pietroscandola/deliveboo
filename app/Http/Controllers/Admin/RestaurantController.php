@@ -7,6 +7,7 @@ use App\Models\Restaurant;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class RestaurantController extends Controller
 {
@@ -41,6 +42,25 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'name' => ['required', 'string', 'unique:restaurants', 'max:50'],
+                'image' => ['nullable', 'image'],
+                'email' => ['email', 'required'],
+                'phone' => ['required', 'string', 'min:10'],
+                'address' => ['required', 'string'],
+                'description' => ['nullable', 'string', 'min:10']
+            ],
+            [
+                'name.required' => 'Il nome del ristorante è obbligatorio',
+                'name.unique' => 'Nome ristorante già esistente',
+                'email.required' => 'Inserisci una E-Mail',
+                'phone.required' => 'Inserisci un numero di telefono',
+                'address.required' => 'Inserisci un indirizzo',
+                'description.numeric' => 'La descrizione deve contenere almeno 10 carattteri',
+            ]
+        );
+
         $data = $request->all();
         $restaurant = new Restaurant();
         // dd($data);
@@ -99,6 +119,25 @@ class RestaurantController extends Controller
      */
     public function update(Request $request, Restaurant $restaurant)
     {
+        $request->validate(
+            [
+                'name' => ['required', 'string', Rule::unique('restaurants')->ignore($restaurant->id), 'max:50'],
+                'image' => ['nullable', 'image'],
+                'email' => ['email', 'required'],
+                'phone' => ['required', 'string', 'min:10'],
+                'address' => ['required', 'string'],
+                'description' => ['nullable', 'string', 'min:5']
+            ],
+            [
+                'name.required' => 'Il nome del ristorante è obbligatorio',
+                'name.unique' => 'Nome ristorante già esistente',
+                'email.required' => 'Inserisci una E-Mail',
+                'phone.required' => 'Inserisci un numero di telefono',
+                'address.required' => 'Inserisci un indirizzo',
+                'description.numeric' => 'La descrizione deve contenere almeno 10 carattteri',
+            ]
+        );
+
         $data = $request->all();
 
         $restaurant->update($data);
