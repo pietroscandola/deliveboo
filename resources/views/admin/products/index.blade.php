@@ -21,7 +21,7 @@
             <div class="card" style="width: 18rem;">
                 <div class="mt-3 d-flex justify-content-center">
                     @if ($product->image)
-                    <img src="{{ asset("storage/$product->image") }}" alt="{{ $product->title }}" width="200px" class="img-fluid">
+                    <img src="{{ asset("storage/$product->image") }}" alt="{{ $product->title }}" width="200px" class="img-fluid rounded">
                     @else
                     <img src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640" alt="image-null" width="200px" class="img-fluid">
                     @endif
