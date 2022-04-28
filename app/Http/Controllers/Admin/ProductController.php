@@ -7,8 +7,8 @@ use App\Models\Product;
 use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
-
 
 class ProductController extends Controller
 {
@@ -57,12 +57,18 @@ class ProductController extends Controller
             'restaurant_id' => 'nullable| exists:restaurant,id',
         ]);
         $data = $request->all();
+        //$product = new Product();
 
         $userId = Auth::id();
         $restaurantId = Restaurant::where('user_id', $userId)->value('id');
         $data['restaurant_id'] = $restaurantId;
+      
+        // Image file
+        if (array_key_exists('image', $data)) $data['image'] = Storage::put('product_images', $data['image']);
 
-        $product = Product::create($data);
+        //$product = Product::create($data);
+        $product->fill($data);
+        $product->save();
 
         return redirect()->route('admin.products.show', $product);
     }
@@ -109,6 +115,13 @@ class ProductController extends Controller
             'restaurant_id' => 'nullable| exists:restaurant,id',
         ]);
         $data = $request->all();
+
+        if (array_key_exists('image', $data)) {
+            if ($product->image) Storage::delete($product->image);
+            $data['image'] = Storage::put('product_images', $data['image']);
+        }
+
+
         $product->update($data);
 
         return redirect()->route('admin.products.show', $product->id);
@@ -122,6 +135,9 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        // Image delete
+        if ($product->image) Storage::delete($product->image);
+
         $product->delete();
         return redirect()->route('admin.products.index');
     }

@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <h1 class="mb-3">Modifica il Prodotto</h1>
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -10,67 +11,73 @@
             </ul>
         </div>
     @endif
-
     <form action="{{ route('admin.products.update', $product->id) }}" method="post">
         @csrf
         @method('PUT')
-        <div class="mb-3 form-group">
-            <label for="name" class="form-label">Nome del Prodotto</label>
-            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name"
-                value="{{ old('name', $product->name) }}">
-            @error('name')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-
-        </div>
-        <div class="mb-3">
-            <label for="price" class="form-label">Prezzo</label>
-            <input type="number" class="form-control @error('price') is-invalid @enderror" name="price" id="price"
-                value="{{ old('price', $product->price) }}" step="0.01">
-            @error('price')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
-        <div class="mb-3">
-            <label for="ingredients" class="form-label">Ingredienti</label>
-            <textarea class="form-control @error('ingredients') is-invalid @enderror" id="ingredients" name="ingredients" rows="3">{{ old('ingredients', $product->ingredients) }}
-            </textarea>
-            @error('ingredients')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
-        <div class="mb-3">
-            <label for="category">Categoria</label>
-            <select class="form-select" id="category" name="category" aria-label="Default select example">
-                <option value="">--</option>
-                @foreach ($categories as $category)
-                    <option @if ($product->category === $category) selected @endif value="{{ old('category', $category) }}">
-                        {{ $category }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="mb-3 d-flex">
-            <div class="col-10">
-                <div class="form-group">
-                    <label for="image">Immagine</label>
-                    <input type="file" class="form-control-file @error('image') is-invalid @enderror" id="image"
-                        name="image">
-                    @error('image')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
+        <div class="row">
+            <div class="col-12 mb-3">
+                <label for="name" class="form-label">Nome del Prodotto</label>
+                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value={{ old('name', $product->name) }}>
+                 @error('name')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                 @enderror
+            </div>
+            <div class="col-12 mb-3">
+                <label for="price" class="form-label">Prezzo</label>
+                <input type="number" class="form-control @error('price') is-invalid @enderror" name="price" id="price" value={{ old('price', $product->price) }}
+                    step="0.01">
+                @error('price')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="col-12 mb-3">
+                <label for="ingredients" class="form-label">Ingredienti</label>
+                <textarea class="form-control @error('ingredients') is-invalid @enderror" id="ingredients" name="ingredients"
+                    rows="3">{{ old('ingredients', $product->ingredients) }}</textarea>
+                @error('ingredients')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            {{-- Categorie --}}
+            <div class="col-12 mt-3 mb-3">
+                <label for="category">Categoria</label>
+                <select class="form-select" id="category" name="category" aria-label="Default select example">
+                    <option value="">--</option>
+                    @foreach ($categories as $category)
+                        <option @if ($product->category === $category) selected @endif value="{{ old('category', $category) }}">
+                            {{ $category }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-12 mb-3">
+                <div class="row">
+                    <div class="col-9">
+                        <div class="form-group">
+                            <label for="image">Immagine</label>
+                            <input type="file" class="form-control-file @error('image') is-invalid @enderror" id="image"
+                                name="image">
+                            @error('image')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        @if ($product->image)
+                            <img class="img-fluid rounded" src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
+                        @else
+                            <img class="img-fluid rounded" src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
+                                class="img-fluid" id="preview">
+                        @endif
+                    </div>
                 </div>
             </div>
-            <div class="col-2">
-                @if ($product->image)
-                    <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}">
-                @else
-                    <img src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
-                        class="img-fluid" id="preview">
-                @endif
+            <div class="col-12">
+                <hr>
+            </div>
+            <div class="col-12 d-flex justify-content-end mt-3">
+                <input class="btn btn-primary" type="submit" value="Invia">
             </div>
         </div>
-
-        <input type="submit" value="Invia">
 
     </form>
 @endsection
