@@ -9,23 +9,23 @@
 <div class="row">
    {{-- NAME --}}
    <div class="col-xs-12 col-md-6 mb-3">
-      <label for="name" class="form-label">Restaurant Name</label>
+      <label for="name" class="form-label">Nome della tua attività</label>
       <input name="name" type="text" class="form-control" id="name" value="{{ old('name', $restaurant->name) }}">
    </div>
    {{-- EMAIL --}}
    <div class="col-xs-12 col-md-6 mb-3">
-      <label for="email" class="form-label">Email address</label>
+      <label for="email" class="form-label">Email dell'attività</label>
       <input name="email" type="email" class="form-control" id="email"
          value="{{ old('email', $restaurant->email) }}">
    </div>
    {{-- PHONE --}}
    <div class="col-xs-12 col-md-6 mb-3">
-      <label for="phone" class="form-label">Phone number</label>
+      <label for="phone" class="form-label">Numero di telefono</label>
       <input name="phone" type="tel" class="form-control" id="phone" value="{{ old('phone', $restaurant->phone) }}">
    </div>
    {{-- ADDRESS --}}
    <div class="col-xs-12 col-md-6 mb-3">
-      <label for="address" class="form-label">Address</label>
+      <label for="address" class="form-label">Indirizzo attività</label>
       <input name="address" type="text" class="form-control" id="address"
          value="{{ old('address', $restaurant->address) }}">
    </div>
@@ -47,7 +47,7 @@
    </div>
    {{-- DESC --}}
    <div class="col-12 mb-3">
-      <label for="description" class="form-label">Description</label>
+      <label for="description" class="form-label">Descrizione</label>
       <textarea name="description" class="form-control" id="description"
          rows="3">{{ old('description', $restaurant->description) }}</textarea>
    </div>
