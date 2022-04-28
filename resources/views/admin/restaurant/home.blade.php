@@ -5,7 +5,7 @@
       <h1>Benvenuto</h1>
 
       @if ($restaurant)
-         <h2>Il tuo ristorante</h2>
+         <h3 class="mb-3">Il tuo ristorante</h3>
 
          {{-- RISTORANTE INFO --}}
 
