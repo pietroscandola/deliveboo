@@ -9,41 +9,28 @@
 <div class="row">
    {{-- NAME --}}
    <div class="col-xs-12 col-md-6 mb-3">
-      <div class="form-group">
-
-         <label for="name" class="form-label">Nome della tua attività</label>
-         <input name="name" type="text" class="form-control" id="name" value="{{ old('name', $restaurant->name) }}">
-      </div>
+      <label for="name" class="form-label">Nome della tua attività</label>
+      <input name="name" type="text" class="form-control" id="name" value="{{ old('name', $restaurant->name) }}">
    </div>
    {{-- EMAIL --}}
    <div class="col-xs-12 col-md-6 mb-3">
-      <div class="form-group">
-
-         <label for="email" class="form-label">Email dell'attività</label>
-         <input name="email" type="email" class="form-control" id="email"
-            value="{{ old('email', $restaurant->email) }}">
-      </div>
+      <label for="email" class="form-label">Email dell'attività</label>
+      <input name="email" type="email" class="form-control" id="email"
+         value="{{ old('email', $restaurant->email) }}">
    </div>
    {{-- PHONE --}}
    <div class="col-xs-12 col-md-6 mb-3">
-      <div class="form-group">
-
-         <label for="phone" class="form-label">Numero di telefono</label>
-         <input name="phone" type="tel" class="form-control" id="phone"
-            value="{{ old('phone', $restaurant->phone) }}">
-      </div>
+      <label for="phone" class="form-label">Numero di telefono</label>
+      <input name="phone" type="tel" class="form-control" id="phone" value="{{ old('phone', $restaurant->phone) }}">
    </div>
    {{-- ADDRESS --}}
    <div class="col-xs-12 col-md-6 mb-3">
-      <div class="form-group">
-
-         <label for="address" class="form-label">Indirizzo attività</label>
-         <input name="address" type="text" class="form-control" id="address"
-            value="{{ old('address', $restaurant->address) }}">
-      </div>
+      <label for="address" class="form-label">Indirizzo attività</label>
+      <input name="address" type="text" class="form-control" id="address"
+         value="{{ old('address', $restaurant->address) }}">
    </div>
    {{-- CHECKBOX CATEGORIES --}}
-   <div class="col-xs-12 col-md-6 mb-3">
+   <div class="col-12 mb-3">
       <div class="form-check form-check-inline d-flex flex-wrap">
          @foreach ($categories as $category)
             {{-- name="categories[]" da alla request un array di valori --}}
@@ -56,13 +43,6 @@
                </label>
             </div>
          @endforeach
-      </div>
-   </div>
-   {{-- UPLOAD IMAGE --}}
-   <div class="col-xs-12 col-md-6">
-      <div class="form-group">
-         <label for="image">Image</label>
-         <input class="d-block" type="file" name="image" id="image">
       </div>
    </div>
    {{-- DESC --}}
