@@ -5,7 +5,7 @@
     <div class="row align-items-center">
         <div class="col-12 col-sm-6">
             <h1>Benvenuto</h1>
-            <h2>I tuoi prodotti</h2>
+            <h3>I tuoi prodotti</h3>
         </div>
         <div class="col-12 col-sm-6 d-flex justify-content-end">
             <a class="btn btn-secondary" href="{{ route('admin.products.create') }}">Crea</a>
@@ -21,13 +21,15 @@
             <div class="card" style="width: 18rem;">
                 <div class="mt-3 d-flex justify-content-center">
                     @if ($product->image)
-                    <img src="{{ asset("storage/$product->image") }}" alt="{{ $product->title }}" width="200px" class="img-fluid rounded">
+                    <img src="{{ asset("storage/$product->image") }}" alt="{{ $product->title }}" width="200px" class="img-fluid rounded border">
                     @else
-                    <img src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640" alt="image-null" width="200px" class="img-fluid">
+                    <img src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640" alt="image-null" width="200px" class="img-fluid rounded border">
                     @endif
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ $product->name }} ID: {{ $product->id }}</h5>
+                    <h5 class="card-title text-center"><strong>{{ $product->name }}</strong></h5>
+                    <hr>
+                    <p class="card-text"><strong>ID:</strong> {{ $product->id }}</p>
                     <p class="card-text"><strong>Prezzo:</strong> {{ $product->price }}</p>
                     <p class="card-text"><strong>Categoria:</strong> {{ $product->category }}</p>
                     <p class="card-text"><strong>Ingredienti:</strong> {{ $product->ingredients }}</p>
