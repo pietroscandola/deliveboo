@@ -117,15 +117,17 @@ class ProductController extends Controller
         ]);
         $data = $request->all();
 
+
+        // IMG input
         if (array_key_exists('image', $data)) {
             if ($product->image) Storage::delete($product->image);
-            $data['image'] = Storage::put('product_images', $data['image']);
+            $img_path = Storage::put('product_images', $data['image']);
+            $data['image'] = $img_path;
         }
-
 
         $product->update($data);
 
-        return redirect()->route('admin.products.show', $product->id);
+        return redirect()->route('admin.products.show', $product);
     }
 
     /**
