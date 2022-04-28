@@ -15,11 +15,19 @@
             </div>
             <div class="d-flex flex-column">
                <h5><strong>Nome:</strong> {{ $restaurant->name }}</h5>
-               <p><strong>Descrizione:</strong> {{ $restaurant->description }}</p>
                <p><strong>Email:</strong> {{ $restaurant->email }}</p>
                <p><strong>Cellulare:</strong> {{ $restaurant->phone }}</p>
                <p><strong>Indirizzo:</strong> {{ $restaurant->address }}</p>
-               <a href="{{ route('admin.restaurants.edit', $restaurant->id) }}" class="btn btn-primary">AA</a>
+               <p><strong>Descrizione:</strong> {{ $restaurant->description }}</p>
+               <div class="d-flex justify-content-end">
+                  <a href="{{ route('admin.restaurants.edit', $restaurant->id) }}"
+                     class="btn btn-primary mr-5">Modifica</a>
+                  <form action="{{ route('admin.restaurants.destroy', $restaurant->id) }}" method="post">
+                     @method('delete')
+                     @csrf
+                     <button type="submit" value="Delete" class="btn btn-danger">Elimina</button>
+                  </form>
+               </div>
             </div>
          </div>
       @else
