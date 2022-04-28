@@ -35,4 +35,5 @@ Route::middleware('auth')
 
         Route::resource('restaurants', 'RestaurantController');
         Route::resource('products', 'ProductController');
+        Route::resource('orders', 'OrderController');
     });
