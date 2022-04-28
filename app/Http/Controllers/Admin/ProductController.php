@@ -8,6 +8,7 @@ use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 
 class ProductController extends Controller
 {
@@ -45,21 +46,27 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Product $product)
     {
+        $request->validate([
+            'name' => ['required', 'string', 'unique:products', 'min:5'],
+            'price' => 'string',
+            'category' => 'string',
+            'ingredients' => 'string | nullable',
+            'image' => 'nullable|image',
+            'restaurant_id' => 'nullable| exists:restaurant,id',
+        ]);
         $data = $request->all();
-        $product = new Product();
+        //$product = new Product();
 
         $userId = Auth::id();
-        $restaurant = Restaurant::where('user_id', $userId)->first();
-
-        // Adding current restaurant_id to product
-        $data['restaurant_id'] = $restaurant->id;
-
-
+        $restaurantId = Restaurant::where('user_id', $userId)->value('id');
+        $data['restaurant_id'] = $restaurantId;
+      
         // Image file
         if (array_key_exists('image', $data)) $data['image'] = Storage::put('product_images', $data['image']);
 
+        //$product = Product::create($data);
         $product->fill($data);
         $product->save();
 
@@ -99,6 +106,14 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        $request->validate([
+            'name' => ['required', 'string', Rule::unique('products')->ignore($product->id), 'min:5'],
+            'price' => 'string',
+            'category' => 'string',
+            'ingredients' => 'string | nullable',
+            'image' => 'nullable|image',
+            'restaurant_id' => 'nullable| exists:restaurant,id',
+        ]);
         $data = $request->all();
 
         if (array_key_exists('image', $data)) {
