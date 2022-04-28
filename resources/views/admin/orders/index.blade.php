@@ -17,7 +17,9 @@
         <div class="col-3 m-3">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <p class="card-text"><strong>Nome:</strong> {{ $order->customer_name }}</p>
+                    <h5 class="card-text text-center"><strong>ID Ordine: {{ $order->id }}</strong></h5>
+                    <hr>
+                    <p class="card-text mt-5"><strong>Nome:</strong> {{ $order->customer_name }}</p>
                     <p class="card-text"><strong>Cognome:</strong> {{ $order->customer_surname }}</p>
                     <p class="card-text"><strong>E-Mail:</strong> {{ $order->customer_email }}</p>
                     <p class="card-text"><strong>Indirizzo:</strong> {{ $order->customer_address }}</p>
