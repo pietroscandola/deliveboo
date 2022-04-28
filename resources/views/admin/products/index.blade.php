@@ -3,11 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row align-items-center">
-        <div class="col-12 col-sm-6">
+        <div class="col-6 mb-3">
             <h1>Benvenuto</h1>
             <h3>I tuoi prodotti</h3>
         </div>
-        <div class="col-12 col-sm-6 d-flex justify-content-end">
+        <div class="col-6 d-flex justify-content-end">
             <a class="btn btn-secondary" href="{{ route('admin.products.create') }}">Crea</a>
         </div>
     </div>
@@ -17,8 +17,8 @@
     <div class="row justify-content-center">
         {{-- <div class="d-flex flex-wrap"> --}}
         @foreach ($products as $product)
-        <div class="col-3 m-3">
-            <div class="card" style="width: 18rem;">
+        <div class="col-xs-6 col-lg-4 col-md-6">
+            <div class="card mb-3">
                 <div class="mt-3 d-flex justify-content-center">
                     @if ($product->image)
                     <img src="{{ asset("storage/$product->image") }}" alt="{{ $product->title }}" width="200px" class="img-fluid rounded border">
@@ -33,9 +33,10 @@
                     <p class="card-text"><strong>Prezzo:</strong> {{ $product->price }}</p>
                     <p class="card-text"><strong>Categoria:</strong> {{ $product->category }}</p>
                     <p class="card-text"><strong>Ingredienti:</strong> {{ $product->ingredients }}</p>
-                    <div class="d-flex justify-content-between">
+                    <hr>
+                    <div class="d-flex justify-content-center">
                         <a href="{{ route('admin.products.show', $product->id) }}" class="btn btn-primary">Vedi</a>
-                        <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-warning">
+                        <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-warning ml-3 mr-3">
                             Modifica
                         </a>
                         <form action="{{ route('admin.products.destroy', $product->id) }}" method="post" class='delete_form'>
