@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -15,7 +17,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $userId = Auth::id();
+
+        $restaurant = Restaurant::where('user_id', $userId)->first();
+        $products = $restaurant->products;
         return view('admin.products.index', compact('products'));
     }
 
