@@ -48,8 +48,11 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        // Recupera l'id del ristorante in cui si stanno modificando i prodotti
+        $restaurantId = Restaurant::where('user_id', Auth::id())->value('id');
+
         $request->validate([
-            'name' => ['required', 'string', 'unique:products', 'min:5'],
+            'name' => ['required', 'string', Rule::unique('products')->where('restaurant_id', $restaurantId), 'min:5'],
             'price' => 'string',
             'category' => 'string',
             'ingredients' => 'string | nullable',
@@ -107,8 +110,11 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
+        // Recupera l'id del ristorante in cui si stanno modificando i prodotti
+        $restaurantId = Restaurant::where('user_id', Auth::id())->value('id');
+
         $request->validate([
-            'name' => ['required', 'string', Rule::unique('products')->ignore($product->id), 'min:5'],
+            'name' => ['required', 'string', Rule::unique('products')->where('restaurant_id', $restaurantId)->ignore($product->id), 'min:5'],
             'price' => 'string',
             'category' => 'string',
             'ingredients' => 'string | nullable',
