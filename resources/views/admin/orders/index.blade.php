@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row align-items-center">
-        <div class="col-12 col-sm-6">
+        <div class="col-12 col-sm-6 mb-3">
             <h1>Benvenuto</h1>
             <h3>I tuoi prodotti</h3>
         </div>
@@ -14,7 +14,7 @@
     <div class="row justify-content-center">
         {{-- <div class="d-flex flex-wrap"> --}}
         @foreach ($orders as $order)
-        <div class="col-3 m-3">
+        <div class="col-3 xs-12 col-lg-6">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <h5 class="card-text text-center"><strong>ID Ordine: {{ $order->id }}</strong></h5>
