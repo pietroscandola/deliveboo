@@ -1959,9 +1959,49 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Home",
-  components: {}
+  component: {},
+  data: function data() {
+    return {
+      restaurants: []
+    };
+  },
+  methods: {
+    getRestaurants: function getRestaurants() {
+      var _this = this;
+
+      axios.get("http://localhost:8000/api/restaurants").then(function (res) {
+        var restaurants = res.data;
+        _this.restaurants = restaurants;
+      })["catch"](function (err) {
+        console.error(err);
+      }).then(function () {
+        console.log("OK API");
+      });
+    }
+  },
+  mounted: function mounted() {
+    console.log("Component mounted.");
+    this.getRestaurants();
+  }
 });
 
 /***/ }),
@@ -37576,18 +37616,44 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("section", { attrs: { id: "home" } }, [
+    _c(
+      "div",
+      { staticClass: "row" },
+      _vm._l(_vm.restaurants, function (restaurant) {
+        return _c("div", { key: restaurant.id, staticClass: "col-4" }, [
+          _c(
+            "div",
+            { staticClass: "card my-3", staticStyle: { width: "18rem" } },
+            [
+              _c("div", { staticClass: "card-body" }, [
+                _c("h5", { staticClass: "card-title" }, [
+                  _vm._v(_vm._s(restaurant.name)),
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "card-text" }, [
+                  _vm._v(
+                    "\n                   " +
+                      _vm._s(restaurant.description) +
+                      "\n                "
+                  ),
+                ]),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  { staticClass: "btn btn-primary", attrs: { href: "#" } },
+                  [_vm._v("Vedi piatti")]
+                ),
+              ]),
+            ]
+          ),
+        ])
+      }),
+      0
+    ),
+  ])
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { attrs: { id: "home" } }, [
-      _c("p", [_vm._v("aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbccccccccccccccccccc")]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
