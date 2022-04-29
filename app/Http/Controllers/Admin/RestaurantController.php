@@ -177,11 +177,11 @@ class RestaurantController extends Controller
     public function destroy(Restaurant $restaurant)
     {
 
-        $restaurant->orders()->delete();
+        /*  $restaurant->orders()->delete();
         $restaurant->products()->delete();
 
         if ($restaurant->image) Storage::delete($restaurant->image);
         $restaurant->delete();
-        return redirect()->route('admin.restaurant.home');
+        return redirect()->route('admin.restaurant.home'); */
     }
 }
