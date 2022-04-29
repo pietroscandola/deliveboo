@@ -53,7 +53,7 @@ class ProductController extends Controller
 
         $request->validate([
             'name' => ['required', 'string', Rule::unique('products')->where('restaurant_id', $restaurantId), 'min:3'],
-            'price' => 'string',
+            'price' => 'numeric',
             'category' => 'string',
             'ingredients' => 'string | nullable',
             'image' => 'nullable|image',
@@ -115,7 +115,7 @@ class ProductController extends Controller
 
         $request->validate([
             'name' => ['required', 'string', Rule::unique('products')->where('restaurant_id', $restaurantId)->ignore($product->id), 'min:3'],
-            'price' => 'string',
+            'price' => 'numeric',
             'category' => 'string',
             'ingredients' => 'string | nullable',
             'image' => 'nullable|image',
