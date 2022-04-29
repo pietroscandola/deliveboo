@@ -13,14 +13,21 @@
                 <p class="card-text"><strong>Telefono:</strong> {{ $order->customer_phone }}</p>
                 <p class="card-text"><strong>Totale Ordine:</strong> {{ $order->amount }}€</p>
                 <p class="card-text"><strong>Data Creazione Ordine:</strong> {{ $order->created_at }}</p>
-                <p class="card-text"><strong>Stato Pagamento:</strong>@if($order->is_paid) Pagato @else Non Pagato @endif</p>
-                <p class="card-text"><strong>Stato Consegna:</strong>@if($order->is_delivered) Consegnato @else Non Cosegnato @endif</p>
+                <p class="card-text"><strong>Stato Pagamento:</strong>
+                    @if ($order->is_paid)
+                        Pagato
+                    @else
+                        Non Pagato
+                    @endif
+                </p>
+                <p class="card-text"><strong>Stato Consegna:</strong>
+                    @if ($order->is_delivered)
+                        Consegnato
+                    @else
+                        Non Cosegnato
+                    @endif
+                </p>
                 <div class="d-flex justify-content-end">
-                    <form action="{{ route('admin.orders.destroy', $order->id) }}" method="post">
-                        @method('delete')
-                        @csrf
-                        <button type="submit" value="Delete" class="btn btn-danger">Elimina</button>
-                    </form>
                     <a href="{{ route('admin.orders.index') }}" class="btn btn-primary ml-1">Indietro</a>
                 </div>
             </div>
