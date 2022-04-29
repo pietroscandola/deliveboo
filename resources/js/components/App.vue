@@ -9,29 +9,9 @@ export default {
    name: "App",
    component: {},
    data() {
-      return {
-         restaurants: [],
-      };
+      return {};
    },
-   methods: {
-      getRestaurants() {
-         axios
-            .get("http://localhost:8000/api/restaurants")
-            .then((res) => {
-               const restaurants = res.data;
-               this.restaurants = restaurants;
-            })
-            .catch((err) => {
-               console.error(err);
-            })
-            .then(() => {
-               console.log("OK API");
-            });
-      },
-   },
-   mounted() {
-      console.log("Component mounted.");
-      this.getRestaurants();
-   },
+   methods: {},
+   mounted() {},
 };
 </script>
