@@ -43,11 +43,12 @@
                                     class="btn btn-warning ml-3 mr-3">
                                     Modifica
                                 </a>
-                                {{-- <form action="{{ route('admin.products.destroy', $product->id) }}" method="post" class='delete_form'>
-                            @csrf
-                            @method('DELETE')
-                            <input type="submit" class="btn btn-danger" value="Elimina">
-                        </form> --}}
+                                <form action="{{ route('admin.products.destroy', $product->id) }}" method="post"
+                                    class='delete_form'>
+                                    @csrf
+                                    @method('DELETE')
+                                    <input type="submit" class="btn btn-danger" value="Elimina">
+                                </form>
                             </div>
                         </div>
                     </div>

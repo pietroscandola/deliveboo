@@ -29,6 +29,12 @@
                         <p><strong>Cellulare:</strong> {{ $restaurant->phone }}</p>
                         <p><strong>Indirizzo:</strong> {{ $restaurant->address }}</p>
                         <p><strong>Partita IVA:</strong> {{ $restaurant->user->vat_number }}</p>
+                        <p>
+                            <strong>Categorie:</strong>
+                            @foreach ($restaurant->categories as $category)
+                                {{ $category->name }},
+                            @endforeach
+                        </p>
                         <p><strong>Descrizione:</strong> {{ $restaurant->description }}</p>
                     </div>
                     {{-- Buttons --}}

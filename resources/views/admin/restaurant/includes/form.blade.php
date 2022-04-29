@@ -69,7 +69,7 @@
                 <div class="d-flex align-items-center">
                     <input type="checkbox" class="form-check-input" name="categories[]"
                         id="category-{{ $loop->iteration }}" value="{{ $category->id }}"
-                        @if (in_array($category->id, old('categories', $selected_ids ?? []))) checked @endif required>
+                        @if (in_array($category->id, old('categories', $selected_ids ?? []))) checked @endif>
                     <label class="form-check-label text-capitalize mr-2" for="category-{{ $loop->iteration }}">
                         {{ $category->name }}
                     </label>
