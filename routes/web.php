@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('welcome');
-});
+}); */
 
 Auth::routes();
 
@@ -32,3 +32,7 @@ Route::middleware('auth')
         Route::resource('products', 'ProductController');
         Route::resource('orders', 'OrderController');
     });
+
+Route::get('{any?}', function () {
+    return view('guest.home');
+})->where('any', '.*');
