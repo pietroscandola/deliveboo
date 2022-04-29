@@ -52,7 +52,7 @@ class ProductController extends Controller
         $restaurantId = Restaurant::where('user_id', Auth::id())->value('id');
 
         $request->validate([
-            'name' => ['required', 'string', Rule::unique('products')->where('restaurant_id', $restaurantId), 'min:5'],
+            'name' => ['required', 'string', Rule::unique('products')->where('restaurant_id', $restaurantId), 'min:3'],
             'price' => 'string',
             'category' => 'string',
             'ingredients' => 'string | nullable',
@@ -114,7 +114,7 @@ class ProductController extends Controller
         $restaurantId = Restaurant::where('user_id', Auth::id())->value('id');
 
         $request->validate([
-            'name' => ['required', 'string', Rule::unique('products')->where('restaurant_id', $restaurantId)->ignore($product->id), 'min:5'],
+            'name' => ['required', 'string', Rule::unique('products')->where('restaurant_id', $restaurantId)->ignore($product->id), 'min:3'],
             'price' => 'string',
             'category' => 'string',
             'ingredients' => 'string | nullable',
