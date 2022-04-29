@@ -2163,12 +2163,16 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         console.error(err);
       }).then(function () {
+<<<<<<< HEAD
         _this.isLoading = false;
+=======
         console.log("OK API");
-      });
-    }
   },
   mounted: function mounted() {
+<<<<<<< HEAD
+=======
+    console.log("Component mounted.");
+>>>>>>> b2fa98a116b3a351f63f6952788740ba6b2fd43c
     this.getRestaurants();
   }
 });
