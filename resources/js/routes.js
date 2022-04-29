@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 import Home from './components/pages/Home.vue'
+import RestaurantShow from './components/pages/RestaurantShow.vue'
 
 const router = new VueRouter({
     
@@ -12,6 +13,7 @@ const router = new VueRouter({
 
     routes: [
         {path: '/', component: Home, name: 'home'},
+        {path: '/restaurants/:id', component: RestaurantShow, name: 'restaurant-details'},
     ]
 });
 
