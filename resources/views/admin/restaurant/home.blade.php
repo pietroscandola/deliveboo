@@ -23,11 +23,12 @@
                 </div>
                 <div class="col-xs-12 col-lg-6 d-flex flex-column justify-content-between">
                     <div class="mb-3">
-                        <h5><strong>Nome:</strong> {{ $restaurant->name }}</h5>
+                        <h5><strong>Nome Ristorante:</strong> {{ $restaurant->name }}</h5>
                         <hr>
                         <p><strong>Email:</strong> {{ $restaurant->email }}</p>
                         <p><strong>Cellulare:</strong> {{ $restaurant->phone }}</p>
                         <p><strong>Indirizzo:</strong> {{ $restaurant->address }}</p>
+                        <p><strong>Partita IVA:</strong> {{ $restaurant->user->vat_number }}</p>
                         <p><strong>Descrizione:</strong> {{ $restaurant->description }}</p>
                     </div>
                     {{-- Buttons --}}
