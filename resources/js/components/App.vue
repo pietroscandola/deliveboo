@@ -1,23 +1,6 @@
 <template>
    <div class="container">
-      <div class="row">
-         <div
-            v-for="restaurant in restaurants"
-            :key="restaurant.id"
-            class="col-4"
-         >
-            <div class="card my-3" style="width: 18rem">
-               <!-- <img class="card-img-top" src="..." alt="Card image cap" /> -->
-               <div class="card-body">
-                  <h5 class="card-title">{{ restaurant.name }}</h5>
-                  <p class="card-text">
-                     {{ restaurant.description }}
-                  </p>
-                  <a href="#" class="btn btn-primary">Vedi piatti</a>
-               </div>
-            </div>
-         </div>
-      </div>
+      <router-view></router-view>
    </div>
 </template>
 
