@@ -2040,6 +2040,17 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantShow",
@@ -2089,6 +2100,21 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -6573,7 +6599,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".card[data-v-5ebd141e] {\n  position: relative;\n}\n.card .card-body[data-v-5ebd141e] {\n  position: absolute;\n}\n.card .card-body h5[data-v-5ebd141e] {\n  color: white;\n  background-color: rgba(0, 0, 0, 0.5);\n  padding: 5px 10px;\n  border-radius: 5px;\n}", ""]);
+exports.push([module.i, ".card[data-v-5ebd141e] {\n  position: relative;\n}\n.card .restaurant-content[data-v-5ebd141e] {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n}\n.card .restaurant-content h5[data-v-5ebd141e] {\n  color: white;\n  background-color: rgba(0, 0, 0, 0.75);\n  padding: 5px 10px;\n  border-radius: 5px;\n}", ""]);
 
 // exports
 
@@ -38550,9 +38576,44 @@ var render = function () {
             [
               _c("div", { staticClass: "col-12" }, [
                 _c("div", { staticClass: "card" }, [
-                  _c("h5", { staticClass: "card-header" }, [
-                    _vm._v(_vm._s(_vm.restaurant.name)),
-                  ]),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "card-header d-flex justify-content-between",
+                    },
+                    [
+                      _c("h5", { staticClass: "m-0" }, [
+                        _vm._v(_vm._s(_vm.restaurant.name)),
+                      ]),
+                      _vm._v(" "),
+                      _vm.restaurant.categories
+                        ? _c(
+                            "div",
+                            { staticClass: "categories-box" },
+                            _vm._l(
+                              _vm.restaurant.categories,
+                              function (category) {
+                                return _c(
+                                  "span",
+                                  {
+                                    key: category.id,
+                                    staticClass: "badge badge-primary mx-1",
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                     " +
+                                        _vm._s(category.name) +
+                                        "\n                  "
+                                    ),
+                                  ]
+                                )
+                              }
+                            ),
+                            0
+                          )
+                        : _vm._e(),
+                    ]
+                  ),
                   _vm._v(" "),
                   _c("div", { staticClass: "card-body d-flex" }, [
                     _c("img", {
@@ -38668,11 +38729,35 @@ var render = function () {
         },
       }),
       _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
-        _c("h5", { staticClass: "card-title" }, [
-          _vm._v(_vm._s(_vm.restaurant.name)),
-        ]),
-      ]),
+      _c(
+        "div",
+        { staticClass: "restaurant-content d-flex justify-content-between" },
+        [
+          _c("div", [
+            _c("h5", { staticClass: "card-title" }, [
+              _vm._v(_vm._s(_vm.restaurant.name)),
+            ]),
+          ]),
+          _vm._v(" "),
+          _vm.restaurant.categories
+            ? _c(
+                "div",
+                { staticClass: "categories-box d-flex flex-column m-1" },
+                _vm._l(_vm.restaurant.categories, function (category) {
+                  return _c(
+                    "span",
+                    {
+                      key: category.id,
+                      staticClass: "badge badge-primary my-1",
+                    },
+                    [_vm._v(_vm._s(category.name))]
+                  )
+                }),
+                0
+              )
+            : _vm._e(),
+        ]
+      ),
     ]
   )
 }

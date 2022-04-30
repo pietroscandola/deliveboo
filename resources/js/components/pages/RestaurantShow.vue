@@ -6,7 +6,18 @@
          <!-- RISTORANTE -->
          <div class="col-12">
             <div class="card">
-               <h5 class="card-header">{{ restaurant.name }}</h5>
+               <div class="card-header d-flex justify-content-between">
+                  <h5 class="m-0">{{ restaurant.name }}</h5>
+                  <div v-if="restaurant.categories" class="categories-box">
+                     <span
+                        v-for="category in restaurant.categories"
+                        :key="category.id"
+                        class="badge badge-primary mx-1"
+                     >
+                        {{ category.name }}
+                     </span>
+                  </div>
+               </div>
                <div class="card-body d-flex">
                   <img
                      class="w-25"

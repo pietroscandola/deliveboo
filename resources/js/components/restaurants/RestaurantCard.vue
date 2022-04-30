@@ -8,8 +8,23 @@
          src="https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg"
          alt="Card image cap"
       />
-      <div class="card-body">
-         <h5 class="card-title">{{ restaurant.name }}</h5>
+      <div class="restaurant-content d-flex justify-content-between">
+         <!-- Restaurant name -->
+         <div>
+            <h5 class="card-title">{{ restaurant.name }}</h5>
+         </div>
+         <!-- Categories -->
+         <div
+            v-if="restaurant.categories"
+            class="categories-box d-flex flex-column m-1"
+         >
+            <span
+               v-for="category in restaurant.categories"
+               :key="category.id"
+               class="badge badge-primary my-1"
+               >{{ category.name }}</span
+            >
+         </div>
       </div>
    </router-link>
 </template>
@@ -24,11 +39,14 @@ export default {
 <style scoped lang="scss">
 .card {
    position: relative;
-   .card-body {
+   .restaurant-content {
       position: absolute;
+      width: 100%;
+      height: 100%;
+
       h5 {
          color: white;
-         background-color: rgba(0, 0, 0, 0.5);
+         background-color: rgba(0, 0, 0, 0.75);
          padding: 5px 10px;
          border-radius: 5px;
       }
