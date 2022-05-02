@@ -2051,6 +2051,16 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantShow",
@@ -2061,7 +2071,8 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
     return {
       isLoading: false,
       restaurant: {},
-      products: []
+      products: [],
+      cart: []
     };
   },
   methods: {
@@ -2082,6 +2093,58 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
         _this.isLoading = false;
         console.log("OK API");
       });
+    },
+    addCart: function addCart(id) {
+      var _this2 = this;
+
+      // this.cart.push({ prod_id: id, unitprice: "helo", code: "helo" }); // what to push unto the rows array?
+      var can = {
+        prod_id: id,
+        quantity: 1
+      };
+      var already_in = false;
+
+      if (this.cart.length === 0) {
+        this.cart.push(can);
+        already_in = true;
+        console.log(this.cart, "NEW FROM EMPTY");
+      } else {
+        this.cart.forEach(function (product) {
+          if (product["prod_id"] === id) {
+            product.quantity++;
+            already_in = true;
+            console.log(_this2.cart, "QUANTITY");
+          }
+        });
+      }
+
+      if (!already_in) {
+        this.cart.push(can);
+        console.log(this.cart, "NEW");
+      } // console.log(id);
+
+    },
+    removeFromCart: function removeFromCart(id) {
+      var _this3 = this;
+
+      if (this.cart.length === 0) {
+        console.log("EMPTY CART");
+      } else {
+        this.cart.forEach(function (product) {
+          if (product["prod_id"] === id && product["quantity"] != 1) {
+            product.quantity--;
+            console.log(_this3.cart, "LESS QUANTITY");
+          } else if (product["prod_id"] === id) {
+            var i = _this3.cart.findIndex(function (object) {
+              return object.prod_id === id;
+            });
+
+            _this3.cart.splice(i, 1);
+
+            console.log(_this3.cart, "REMOVED");
+          }
+        });
+      }
     }
   },
   mounted: function mounted() {
@@ -38481,7 +38544,7 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [_c("router-view")], 1)
+  return _c("div", { attrs: { id: "app" } }, [_c("router-view")], 1)
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -38566,7 +38629,10 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "restaurant-show" } },
+    {
+      staticClass: "container-fluid container-md",
+      attrs: { id: "restaurant-show" },
+    },
     [
       _vm.isLoading
         ? _c("Loader")
@@ -38615,16 +38681,18 @@ var render = function () {
                     ]
                   ),
                   _vm._v(" "),
-                  _c("div", { staticClass: "card-body d-flex" }, [
-                    _c("img", {
-                      staticClass: "w-25",
-                      attrs: {
-                        src: "https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg",
-                        alt: "R",
-                      },
-                    }),
+                  _c("div", { staticClass: "card-body row" }, [
+                    _c("div", { staticClass: "col-sm-12 col-md-4" }, [
+                      _c("img", {
+                        staticClass: "img-fluid",
+                        attrs: {
+                          src: "https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg",
+                          alt: "R",
+                        },
+                      }),
+                    ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "ml-3" }, [
+                    _c("div", { staticClass: "col-sm-12 col-md-8" }, [
                       _c("h5", { staticClass: "card-title" }, [
                         _vm._v(_vm._s(_vm.restaurant.address)),
                       ]),
@@ -38663,25 +38731,57 @@ var render = function () {
               ]),
               _vm._v(" "),
               _vm._l(_vm.products, function (product) {
-                return _c("div", { key: product.id, staticClass: "col-3" }, [
-                  _c("div", { staticClass: "card my-3" }, [
-                    product.image
-                      ? _c("img", {
-                          staticClass: "card-img-top",
-                          attrs: {
-                            src: "/storage/" + product.image,
-                            alt: "Card image cap",
-                          },
-                        })
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "card-body" }, [
-                      _c("h5", [_vm._v(_vm._s(product.name))]),
+                return _c(
+                  "div",
+                  { key: product.id, staticClass: "col-sm-6 col-lg-3" },
+                  [
+                    _c("div", { staticClass: "card my-3" }, [
+                      product.image
+                        ? _c("img", {
+                            staticClass: "card-img-top",
+                            attrs: {
+                              src: "/storage/" + product.image,
+                              alt: "Card image cap",
+                            },
+                          })
+                        : _vm._e(),
                       _vm._v(" "),
-                      _c("p", { staticClass: "card-text" }, [_vm._v("REE")]),
+                      _c("div", { staticClass: "card-body" }, [
+                        _c("h5", [
+                          _vm._v(
+                            _vm._s(product.name) + ", " + _vm._s(product.id)
+                          ),
+                        ]),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "card-text" }, [_vm._v("REE")]),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            on: {
+                              click: function ($event) {
+                                return _vm.removeFromCart(product.id)
+                              },
+                            },
+                          },
+                          [_vm._v("Rimuovi")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            on: {
+                              click: function ($event) {
+                                return _vm.addCart(product.id)
+                              },
+                            },
+                          },
+                          [_vm._v("Aggiungi")]
+                        ),
+                      ]),
                     ]),
-                  ]),
-                ])
+                  ]
+                )
               }),
             ],
             2
@@ -38785,7 +38885,10 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container" },
+    {
+      staticClass: "container-fluid container-md",
+      attrs: { id: "restaurant-list" },
+    },
     [
       _vm.isLoading
         ? _c("Loader")
@@ -38795,7 +38898,7 @@ var render = function () {
             _vm._l(_vm.restaurants, function (restaurant) {
               return _c(
                 "div",
-                { key: restaurant.id, staticClass: "col-4" },
+                { key: restaurant.id, staticClass: "col-sm-6 col-md-4" },
                 [_c("RestaurantCard", { attrs: { restaurant: restaurant } })],
                 1
               )
