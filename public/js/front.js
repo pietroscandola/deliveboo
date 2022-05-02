@@ -2148,7 +2148,19 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
     }
   },
   mounted: function mounted() {
-    this.getRestaurant();
+    this.getRestaurant(); // SessionStorageCart
+
+    if (sessionStorage.cart) {
+      this.cart = JSON.parse(sessionStorage.cart);
+    }
+  },
+  watch: {
+    cart: {
+      handler: function handler(newCart) {
+        sessionStorage.cart = JSON.stringify(newCart);
+      },
+      deep: true
+    }
   }
 });
 
@@ -2163,23 +2175,6 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -6662,7 +6657,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".card[data-v-5ebd141e] {\n  position: relative;\n}\n.card .restaurant-content[data-v-5ebd141e] {\n  position: absolute;\n  width: 100%;\n  height: 100%;\n}\n.card .restaurant-content h5[data-v-5ebd141e] {\n  color: white;\n  background-color: rgba(0, 0, 0, 0.75);\n  padding: 5px 10px;\n  border-radius: 5px;\n}", ""]);
+exports.push([module.i, ".restaurant-card[data-v-5ebd141e] {\n  height: 300px;\n  margin-bottom: 15px;\n  border: 1px solid rgb(218, 218, 218);\n  border-radius: 10px;\n}\na[data-v-5ebd141e] {\n  color: black;\n}\na[data-v-5ebd141e]:hover {\n  text-decoration: none;\n  color: black;\n}\na .card-top[data-v-5ebd141e] {\n  height: 55%;\n  background-image: url(\"https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg\");\n  background-position: center;\n  background-size: cover;\n  overflow: hidden;\n  position: static;\n}\na .card-bottom[data-v-5ebd141e] {\n  height: 45%;\n}\na h5[data-v-5ebd141e] {\n  font-weight: bolder;\n}", ""]);
 
 // exports
 
@@ -38667,9 +38662,9 @@ var render = function () {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                     " +
+                                      "\n              " +
                                         _vm._s(category.name) +
-                                        "\n                  "
+                                        "\n            "
                                     ),
                                   ]
                                 )
@@ -38699,9 +38694,9 @@ var render = function () {
                       _vm._v(" "),
                       _c("p", { staticClass: "card-text" }, [
                         _vm._v(
-                          "\n                     " +
+                          "\n              " +
                             _vm._s(_vm.restaurant.description) +
-                            "\n                  "
+                            "\n            "
                         ),
                       ]),
                       _vm._v(" "),
@@ -38715,11 +38710,7 @@ var render = function () {
                             },
                           },
                         },
-                        [
-                          _vm._v(
-                            "\n                     Indietro\n                  "
-                          ),
-                        ]
+                        [_vm._v("\n              Indietro\n            ")]
                       ),
                     ]),
                   ]),
@@ -38815,49 +38806,24 @@ var render = function () {
   return _c(
     "router-link",
     {
-      staticClass: "card my-3",
       attrs: {
         to: { name: "restaurant-details", params: { id: _vm.restaurant.id } },
       },
     },
     [
-      _c("img", {
-        staticClass: "card-img-top",
-        attrs: {
-          src: "https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg",
-          alt: "Card image cap",
-        },
-      }),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "restaurant-content d-flex justify-content-between" },
-        [
-          _c("div", [
-            _c("h5", { staticClass: "card-title" }, [
-              _vm._v(_vm._s(_vm.restaurant.name)),
-            ]),
-          ]),
+      _c("div", { staticClass: "restaurant-card" }, [
+        _c("div", { staticClass: "card-top" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-bottom p-3" }, [
+          _c("h5", [_vm._v(_vm._s(_vm.restaurant.name))]),
           _vm._v(" "),
-          _vm.restaurant.categories
-            ? _c(
-                "div",
-                { staticClass: "categories-box d-flex flex-column m-1" },
-                _vm._l(_vm.restaurant.categories, function (category) {
-                  return _c(
-                    "span",
-                    {
-                      key: category.id,
-                      staticClass: "badge badge-primary my-1",
-                    },
-                    [_vm._v(_vm._s(category.name))]
-                  )
-                }),
-                0
-              )
-            : _vm._e(),
-        ]
-      ),
+          _c("p", [
+            _vm._v(
+              _vm._s(_vm.restaurant.description.substring(0, 100) + "...")
+            ),
+          ]),
+        ]),
+      ]),
     ]
   )
 }
@@ -54857,7 +54823,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Vasco Rossi\Documents\Boolean\Progetto\deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Lavavel\deliveboo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
