@@ -1,11 +1,11 @@
 <template>
-   <div class="container">
+   <div id="restaurant-list" class="container-fluid container-md">
       <Loader v-if="isLoading" />
       <div v-else class="row">
          <div
             v-for="restaurant in restaurants"
             :key="restaurant.id"
-            class="col-4"
+            class="col-sm-6 col-md-4"
          >
             <RestaurantCard :restaurant="restaurant" />
          </div>
