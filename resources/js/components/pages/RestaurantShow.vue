@@ -49,23 +49,31 @@
           ><i class="fa-solid fa-lg fa-cart-shopping"></i
         ></a>
       </div>
+      <!-- Cards -->
       <div
         v-for="product in products"
         :key="product.id"
         class="col-sm-6 col-lg-3"
       >
-        <div class="card my-3">
+        <div class="card product-card my-3">
           <img
+            height="150"
             v-if="product.image"
             class="card-img-top"
             :src="'/storage/' + product.image"
             alt="Card image cap"
           />
-          <div class="card-body">
-            <h5>
-              <strong>{{ product.name }}</strong>
-            </h5>
-            <p class="card-text">{{ product.ingredients }}</p>
+          <div class="card-body justify-content-between d-flex flex-column">
+            <div>
+              <h5>
+                <strong>{{ product.name }}</strong>
+              </h5>
+              <p class="card-text">{{ product.ingredients }}</p>
+              <!-- Price badge -->
+              <span class="badge badge-warning price-badge">
+                <strong>{{ product.price }} €</strong>
+              </span>
+            </div>
             <div class="d-flex justify-content-around align-items-center">
               <button
                 class="btn btn-danger"
@@ -195,5 +203,17 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
+.product-card {
+  position: relative;
+  .price-badge {
+    position: absolute;
+    box-shadow: 0 0 6px rgba(107, 107, 107, 1);
+    top: 10px;
+    right: 10px;
+  }
+}
+.card {
+  min-height: 95%;
+}
 </style>
