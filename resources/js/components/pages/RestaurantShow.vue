@@ -97,9 +97,17 @@
             {{ product.quantity }}
           </td>
           <td>{{ product.price }}</td>
-          <td>{{ product.price * product.quantity }}</td>
+          <td>{{ getProductTotalPrice(product) }}</td>
         </tr>
       </tbody>
+      <tfoot>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      </tfoot>
     </table>
   </div>
 </template>
@@ -188,8 +196,8 @@ export default {
       }
     },
 
-    getTotalPrice() {
-      return this.product.quantity * this.product.price;
+    getProductTotalPrice(product) {
+      return product.quantity * product.price;
     },
   },
   mounted() {
