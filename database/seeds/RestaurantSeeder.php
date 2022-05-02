@@ -20,7 +20,7 @@ class RestaurantSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $restaurant_names = ['Pietro', 'Vasco', 'Federico', 'Angelo', 'Marco'];
+        $restaurant_names = ['Ristorante di Pietro', 'Ristorante di Vasco', 'Ristorante di Federico', 'Ristorante di Angelo', 'Ristorante di Marco'];
         $users_id = User::pluck('id')->toArray();
         $categories_id = Category::pluck('id')->toArray();
 
