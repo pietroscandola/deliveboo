@@ -2061,6 +2061,16 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantShow",
@@ -38667,9 +38677,9 @@ var render = function () {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                     " +
+                                      "\n              " +
                                         _vm._s(category.name) +
-                                        "\n                  "
+                                        "\n            "
                                     ),
                                   ]
                                 )
@@ -38699,9 +38709,9 @@ var render = function () {
                       _vm._v(" "),
                       _c("p", { staticClass: "card-text" }, [
                         _vm._v(
-                          "\n                     " +
+                          "\n              " +
                             _vm._s(_vm.restaurant.description) +
-                            "\n                  "
+                            "\n            "
                         ),
                       ]),
                       _vm._v(" "),
@@ -38715,11 +38725,7 @@ var render = function () {
                             },
                           },
                         },
-                        [
-                          _vm._v(
-                            "\n                     Indietro\n                  "
-                          ),
-                        ]
+                        [_vm._v("\n              Indietro\n            ")]
                       ),
                     ]),
                   ]),
@@ -38756,27 +38762,42 @@ var render = function () {
                         _c("p", { staticClass: "card-text" }, [_vm._v("REE")]),
                         _vm._v(" "),
                         _c(
-                          "button",
+                          "div",
                           {
-                            on: {
-                              click: function ($event) {
-                                return _vm.removeFromCart(product.id)
-                              },
-                            },
+                            staticClass:
+                              "d-flex justify-content-around align-items-center",
                           },
-                          [_vm._v("Rimuovi")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            on: {
-                              click: function ($event) {
-                                return _vm.addCart(product.id)
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-danger",
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.removeFromCart(product.id)
+                                  },
+                                },
                               },
-                            },
-                          },
-                          [_vm._v("Aggiungi")]
+                              [_c("i", { staticClass: "fa-solid fa-minus" })]
+                            ),
+                            _vm._v(" "),
+                            _c("i", {
+                              staticClass: "fa-solid fa-cart-shopping",
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-success",
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.addCart(product.id)
+                                  },
+                                },
+                              },
+                              [_c("i", { staticClass: "fa-solid fa-plus" })]
+                            ),
+                          ]
                         ),
                       ]),
                     ]),
@@ -54857,7 +54878,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Vasco Rossi\Documents\Boolean\Progetto\deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\pietr\Desktop\deliveboo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
