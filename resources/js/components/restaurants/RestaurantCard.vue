@@ -64,7 +64,7 @@ a {
         right: 30px;
         display: flex;
         flex-direction: column;
-        justify-content: end;
+        justify-content: flex-end;
         align-items: flex-end;
         .category-badge {
           padding: 1px 3px;
