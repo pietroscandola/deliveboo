@@ -57,6 +57,10 @@
             alt="Card image cap"
           />
           <div class="card-body">
+            <h5>{{ product.name }}, {{ product.id }}</h5>
+            <p class="card-text">REE</p>
+            <button @click="removeFromCart(product.id)">Rimuovi</button>
+            <button @click="addCart(product.id)">Aggiungi</button>
             <h5>{{ product.name }}</h5>
             <p class="card-text">{{ product.ingredients }}</p>
             <div class="d-flex justify-content-around align-items-center">
@@ -193,6 +197,19 @@ export default {
   },
   mounted() {
     this.getRestaurant();
+
+    // SessionStorageCart
+    if (sessionStorage.cart) {
+      this.cart = JSON.parse(sessionStorage.cart);
+    }
+  },
+  watch: {
+    cart: {
+      handler(newCart) {
+        sessionStorage.cart = JSON.stringify(newCart);
+      },
+      deep: true,
+    },
   },
 };
 </script>
