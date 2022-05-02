@@ -56,6 +56,7 @@
       >
         <div class="card my-3">
           <img
+            height="150"
             v-if="product.image"
             class="card-img-top"
             :src="'/storage/' + product.image"
