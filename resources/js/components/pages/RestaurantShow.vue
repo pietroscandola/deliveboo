@@ -61,6 +61,20 @@
             <p class="card-text">REE</p>
             <button @click="removeFromCart(product.id)">Rimuovi</button>
             <button @click="addCart(product.id)">Aggiungi</button>
+            <h5>{{ product.name }}</h5>
+            <p class="card-text">{{ product.ingredients }}</p>
+            <div class="d-flex justify-content-around align-items-center">
+              <button
+                class="btn btn-danger"
+                @click="removeFromCart(product.id)"
+              >
+                <i class="fa-solid fa-minus"></i>
+              </button>
+              <i class="fa-solid fa-cart-shopping"></i>
+              <button class="btn btn-success" @click="addCart(product.id)">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+            </div>
           </div>
         </div>
       </div>
