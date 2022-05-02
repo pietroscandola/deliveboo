@@ -38753,11 +38753,7 @@ var render = function () {
                         : _vm._e(),
                       _vm._v(" "),
                       _c("div", { staticClass: "card-body" }, [
-                        _c("h5", [
-                          _vm._v(
-                            _vm._s(product.name) + ", " + _vm._s(product.id)
-                          ),
-                        ]),
+                        _c("h5", [_vm._v(_vm._s(product.name))]),
                         _vm._v(" "),
                         _c("p", { staticClass: "card-text" }, [
                           _vm._v(_vm._s(product.ingredients)),

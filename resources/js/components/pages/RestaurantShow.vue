@@ -57,7 +57,7 @@
             alt="Card image cap"
           />
           <div class="card-body">
-            <h5>{{ product.name }}, {{ product.id }}</h5>
+            <h5>{{ product.name }}</h5>
             <p class="card-text">{{ product.ingredients }}</p>
             <div class="d-flex justify-content-around align-items-center">
               <button
