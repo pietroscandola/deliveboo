@@ -2371,14 +2371,14 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
   mounted: function mounted() {
     this.getRestaurant(); // SessionStorageCart
 
-    if (sessionStorage.cart) {
-      this.cart = JSON.parse(sessionStorage.cart);
+    if (localStorage.cart) {
+      this.cart = JSON.parse(localStorage.cart);
     }
   },
   watch: {
     cart: {
       handler: function handler(newCart) {
-        sessionStorage.cart = JSON.stringify(newCart);
+        localStorage.cart = JSON.stringify(newCart);
       },
       deep: true
     }
