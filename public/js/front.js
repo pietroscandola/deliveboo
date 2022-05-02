@@ -2104,6 +2104,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Cart",
   data: function data() {
@@ -2185,30 +2187,6 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -2393,14 +2371,14 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
   mounted: function mounted() {
     this.getRestaurant(); // SessionStorageCart
 
-    if (localStorage.cart) {
-      this.cart = JSON.parse(localStorage.cart);
+    if (sessionStorage.cart) {
+      this.cart = JSON.parse(sessionStorage.cart);
     }
   },
   watch: {
     cart: {
       handler: function handler(newCart) {
-        localStorage.cart = JSON.stringify(newCart);
+        sessionStorage.cart = JSON.stringify(newCart);
       },
       deep: true
     }
@@ -38995,43 +38973,47 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.cart.length
-    ? _c("table", { staticClass: "table" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.cart, function (product) {
-            return _c("tr", { key: product.id }, [
-              _c("td", { attrs: { scope: "row" } }, [
-                _vm._v("\n        " + _vm._s(product.name) + "\n      "),
-              ]),
+  return _c("div", { staticClass: "container" }, [
+    _vm.cart.length
+      ? _c("table", { staticClass: "table" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "tbody",
+            _vm._l(_vm.cart, function (product) {
+              return _c("tr", { key: product.id }, [
+                _c("td", { attrs: { scope: "row" } }, [
+                  _vm._v("\n          " + _vm._s(product.name) + "\n        "),
+                ]),
+                _vm._v(" "),
+                _c("td", [
+                  _vm._v(
+                    "\n          " + _vm._s(product.quantity) + "\n        "
+                  ),
+                ]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(product.price))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(_vm.getProductTotalPrice(product)))]),
+              ])
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c("tfoot", [
+            _c("tr", [
+              _c("td"),
               _vm._v(" "),
-              _c("td", [
-                _vm._v("\n        " + _vm._s(product.quantity) + "\n      "),
-              ]),
+              _c("td"),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(product.price))]),
+              _c("td"),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(_vm.getProductTotalPrice(product)))]),
-            ])
-          }),
-          0
-        ),
-        _vm._v(" "),
-        _c("tfoot", [
-          _c("tr", [
-            _c("td"),
-            _vm._v(" "),
-            _c("td"),
-            _vm._v(" "),
-            _c("td"),
-            _vm._v(" "),
-            _c("td", [_vm._v(_vm._s(_vm.getTotal()))]),
+              _c("td", [_vm._v(_vm._s(_vm.getTotal()))]),
+            ]),
           ]),
-        ]),
-      ])
-    : _vm._e()
+        ])
+      : _vm._e(),
+  ])
 }
 var staticRenderFns = [
   function () {
@@ -39118,7 +39100,7 @@ var render = function () {
                     },
                     [
                       _c("h5", { staticClass: "m-0" }, [
-                        _vm._v(_vm._s(_vm.restaurant.name)),
+                        _c("strong", [_vm._v(_vm._s(_vm.restaurant.name))]),
                       ]),
                       _vm._v(" "),
                       _vm.restaurant.categories
@@ -39191,9 +39173,17 @@ var render = function () {
                 ]),
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-12 mt-3" }, [
-                _c("h2", [_vm._v("Prodotti")]),
-              ]),
+              _c(
+                "div",
+                { staticClass: "col-12 mt-3 d-flex justify-content-between" },
+                [
+                  _c("h2", { staticClass: "d-inline" }, [_vm._v("Prodotti")]),
+                  _vm._v(" "),
+                  _c("a", { attrs: { href: "http://127.0.0.1:8000/cart" } }, [
+                    _c("i", { staticClass: "fa-solid fa-lg fa-cart-shopping" }),
+                  ]),
+                ]
+              ),
               _vm._v(" "),
               _vm._l(_vm.products, function (product) {
                 return _c(
@@ -39212,7 +39202,9 @@ var render = function () {
                         : _vm._e(),
                       _vm._v(" "),
                       _c("div", { staticClass: "card-body" }, [
-                        _c("h5", [_vm._v(_vm._s(product.name))]),
+                        _c("h5", [
+                          _c("strong", [_vm._v(_vm._s(product.name))]),
+                        ]),
                         _vm._v(" "),
                         _c("p", { staticClass: "card-text" }, [
                           _vm._v(_vm._s(product.ingredients)),
@@ -39268,76 +39260,11 @@ var render = function () {
             ],
             2
           ),
-      _vm._v(" "),
-      _vm.cart.length
-        ? _c("table", { staticClass: "table" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.cart, function (product) {
-                return _c("tr", { key: product.id }, [
-                  _c("td", { attrs: { scope: "row" } }, [
-                    _vm._v(
-                      "\n          " + _vm._s(product.name) + "\n        "
-                    ),
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _vm._v(
-                      "\n          " + _vm._s(product.quantity) + "\n        "
-                    ),
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(product.price))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(_vm.getProductTotalPrice(product)))]),
-                ])
-              }),
-              0
-            ),
-            _vm._v(" "),
-            _vm._m(1),
-          ])
-        : _vm._e(),
     ],
     1
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nome Prodotto")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Quantità")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Prezzo")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Totale")]),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tfoot", [
-      _c("tr", [
-        _c("td"),
-        _vm._v(" "),
-        _c("td"),
-        _vm._v(" "),
-        _c("td"),
-        _vm._v(" "),
-        _c("td"),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

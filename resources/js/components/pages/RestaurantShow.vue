@@ -8,7 +8,9 @@
         <div class="card">
           <!-- Header con nome e categorie -->
           <div class="card-header d-flex justify-content-between">
-            <h5 class="m-0">{{ restaurant.name }}</h5>
+            <h5 class="m-0">
+              <strong>{{ restaurant.name }}</strong>
+            </h5>
             <div v-if="restaurant.categories" class="categories-box">
               <span
                 v-for="category in restaurant.categories"
@@ -41,8 +43,11 @@
         </div>
       </div>
       <!-- PRODOTTI -->
-      <div class="col-12 mt-3">
-        <h2>Prodotti</h2>
+      <div class="col-12 mt-3 d-flex justify-content-between">
+        <h2 class="d-inline">Prodotti</h2>
+        <a href="http://127.0.0.1:8000/cart"
+          ><i class="fa-solid fa-lg fa-cart-shopping"></i
+        ></a>
       </div>
       <div
         v-for="product in products"
@@ -57,7 +62,9 @@
             alt="Card image cap"
           />
           <div class="card-body">
-            <h5>{{ product.name }}</h5>
+            <h5>
+              <strong>{{ product.name }}</strong>
+            </h5>
             <p class="card-text">{{ product.ingredients }}</p>
             <div class="d-flex justify-content-around align-items-center">
               <button
@@ -78,37 +85,6 @@
         </div>
       </div>
     </div>
-
-    <table class="table" v-if="cart.length">
-      <thead>
-        <tr>
-          <th scope="col">Nome Prodotto</th>
-          <th scope="col">Quantità</th>
-          <th scope="col">Prezzo</th>
-          <th scope="col">Totale</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="product in cart" :key="product.id">
-          <td scope="row">
-            {{ product.name }}
-          </td>
-          <td>
-            {{ product.quantity }}
-          </td>
-          <td>{{ product.price }}</td>
-          <td>{{ getProductTotalPrice(product) }}</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </tfoot>
-    </table>
   </div>
 </template>
 
@@ -204,14 +180,14 @@ export default {
     this.getRestaurant();
 
     // SessionStorageCart
-    if (localStorage.cart) {
-      this.cart = JSON.parse(localStorage.cart);
+    if (sessionStorage.cart) {
+      this.cart = JSON.parse(sessionStorage.cart);
     }
   },
   watch: {
     cart: {
       handler(newCart) {
-        localStorage.cart = JSON.stringify(newCart);
+        sessionStorage.cart = JSON.stringify(newCart);
       },
       deep: true,
     },
