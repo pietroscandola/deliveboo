@@ -2097,6 +2097,14 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantShow",
@@ -2184,8 +2192,8 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
         });
       }
     },
-    getTotalPrice: function getTotalPrice() {
-      return this.product.quantity * this.product.price;
+    getProductTotalPrice: function getProductTotalPrice(product) {
+      return product.quantity * product.price;
     }
   },
   mounted: function mounted() {
@@ -38875,11 +38883,13 @@ var render = function () {
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(product.price))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(product.price * product.quantity))]),
+                  _c("td", [_vm._v(_vm._s(_vm.getProductTotalPrice(product)))]),
                 ])
               }),
               0
             ),
+            _vm._v(" "),
+            _vm._m(1),
           ])
         : _vm._e(),
     ],
@@ -38900,6 +38910,22 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Prezzo")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Totale")]),
+      ]),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("tfoot", [
+      _c("tr", [
+        _c("td"),
+        _vm._v(" "),
+        _c("td"),
+        _vm._v(" "),
+        _c("td"),
+        _vm._v(" "),
+        _c("td"),
       ]),
     ])
   },
