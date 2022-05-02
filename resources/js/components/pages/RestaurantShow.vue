@@ -67,7 +67,10 @@
                 <i class="fa-solid fa-minus"></i>
               </button>
               <i class="fa-solid fa-cart-shopping"></i>
-              <button class="btn btn-success" @click="addCart(product.id)">
+              <button
+                class="btn btn-success"
+                @click="addCart(product.id, product.name, product.price)"
+              >
                 <i class="fa-solid fa-plus"></i>
               </button>
             </div>
@@ -75,6 +78,28 @@
         </div>
       </div>
     </div>
+
+    <table class="table" v-if="cart.length">
+      <thead>
+        <tr>
+          <th scope="col">Nome Prodotto</th>
+          <th scope="col">Quantità</th>
+          <th scope="col">Prezzo</th>
+          <th scope="col">Totale</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="product in cart" :key="product.id">
+          <td scope="row">
+            {{ product.name }}
+          </td>
+          <td>
+            {{ product.quantity }}
+          </td>
+          <td>{{ product.price }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </template>
 
@@ -113,10 +138,12 @@ export default {
         });
     },
 
-    addCart(id) {
+    addCart(id, name, price) {
       // this.cart.push({ prod_id: id, unitprice: "helo", code: "helo" }); // what to push unto the rows array?
       const can = {
         prod_id: id,
+        name,
+        price,
         quantity: 1,
       };
       let already_in = false;
@@ -158,6 +185,10 @@ export default {
           }
         });
       }
+    },
+
+    getTotalPrice() {
+      return this.product.quantity * this.product.price;
     },
   },
   mounted() {

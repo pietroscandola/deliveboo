@@ -2071,6 +2071,31 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantShow",
@@ -2104,12 +2129,14 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
         console.log("OK API");
       });
     },
-    addCart: function addCart(id) {
+    addCart: function addCart(id, name, price) {
       var _this2 = this;
 
       // this.cart.push({ prod_id: id, unitprice: "helo", code: "helo" }); // what to push unto the rows array?
       var can = {
         prod_id: id,
+        name: name,
+        price: price,
         quantity: 1
       };
       var already_in = false;
@@ -2155,6 +2182,9 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
           }
         });
       }
+    },
+    getTotalPrice: function getTotalPrice() {
+      return this.product.quantity * this.product.price;
     }
   },
   mounted: function mounted() {
@@ -38789,7 +38819,11 @@ var render = function () {
                                 staticClass: "btn btn-success",
                                 on: {
                                   click: function ($event) {
-                                    return _vm.addCart(product.id)
+                                    return _vm.addCart(
+                                      product.id,
+                                      product.name,
+                                      product.price
+                                    )
                                   },
                                 },
                               },
@@ -38805,11 +38839,56 @@ var render = function () {
             ],
             2
           ),
+      _vm._v(" "),
+      _vm.cart.length
+        ? _c("table", { staticClass: "table" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.cart, function (product) {
+                return _c("tr", { key: product.id }, [
+                  _c("td", { attrs: { scope: "row" } }, [
+                    _vm._v(
+                      "\n          " + _vm._s(product.name) + "\n        "
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(
+                      "\n          " + _vm._s(product.quantity) + "\n        "
+                    ),
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(product.price))]),
+                ])
+              }),
+              0
+            ),
+          ])
+        : _vm._e(),
     ],
     1
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nome Prodotto")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Quantità")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Prezzo")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Totale")]),
+      ]),
+    ])
+  },
+]
 render._withStripped = true
 
 
