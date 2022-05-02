@@ -57,10 +57,6 @@
             alt="Card image cap"
           />
           <div class="card-body">
-            <h5>{{ product.name }}, {{ product.id }}</h5>
-            <p class="card-text">REE</p>
-            <button @click="removeFromCart(product.id)">Rimuovi</button>
-            <button @click="addCart(product.id)">Aggiungi</button>
             <h5>{{ product.name }}</h5>
             <p class="card-text">{{ product.ingredients }}</p>
             <div class="d-flex justify-content-around align-items-center">
@@ -101,6 +97,7 @@
             {{ product.quantity }}
           </td>
           <td>{{ product.price }}</td>
+          <td>{{ product.price * product.quantity }}</td>
         </tr>
       </tbody>
     </table>
