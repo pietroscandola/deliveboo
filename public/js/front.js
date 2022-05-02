@@ -38759,7 +38759,9 @@ var render = function () {
                           ),
                         ]),
                         _vm._v(" "),
-                        _c("p", { staticClass: "card-text" }, [_vm._v("REE")]),
+                        _c("p", { staticClass: "card-text" }, [
+                          _vm._v(_vm._s(product.ingredients)),
+                        ]),
                         _vm._v(" "),
                         _c(
                           "div",
