@@ -55,7 +55,7 @@
         :key="product.id"
         class="col-sm-6 col-lg-3"
       >
-        <div class="card my-3">
+        <div class="card product-card my-3">
           <img
             height="150"
             v-if="product.image"
@@ -69,9 +69,10 @@
                 <strong>{{ product.name }}</strong>
               </h5>
               <p class="card-text">{{ product.ingredients }}</p>
-              <p class="card-text">
-                <strong>Prezzo:</strong> {{ product.price }} €
-              </p>
+              <!-- Price badge -->
+              <span class="badge badge-warning price-badge">
+                <strong>{{ product.price }} €</strong>
+              </span>
             </div>
             <div class="d-flex justify-content-around align-items-center">
               <button
@@ -203,6 +204,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.product-card {
+  position: relative;
+  .price-badge {
+    position: absolute;
+    box-shadow: 0 0 6px rgba(107, 107, 107, 1);
+    top: 10px;
+    right: 10px;
+  }
+}
 .card {
   min-height: 95%;
 }

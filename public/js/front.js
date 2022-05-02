@@ -2290,6 +2290,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantShow",
@@ -6938,7 +6939,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".card[data-v-cddbf820] {\n  min-height: 95%;\n}", ""]);
+exports.push([module.i, ".product-card[data-v-cddbf820] {\n  position: relative;\n}\n.product-card .price-badge[data-v-cddbf820] {\n  position: absolute;\n  box-shadow: 0 0 6px rgb(107, 107, 107);\n  top: 10px;\n  right: 10px;\n}\n.card[data-v-cddbf820] {\n  min-height: 95%;\n}", ""]);
 
 // exports
 
@@ -39337,7 +39338,7 @@ var render = function () {
                   "div",
                   { key: product.id, staticClass: "col-sm-6 col-lg-3" },
                   [
-                    _c("div", { staticClass: "card my-3" }, [
+                    _c("div", { staticClass: "card product-card my-3" }, [
                       product.image
                         ? _c("img", {
                             staticClass: "card-img-top",
@@ -39365,12 +39366,17 @@ var render = function () {
                               _vm._v(_vm._s(product.ingredients)),
                             ]),
                             _vm._v(" "),
-                            _c("p", { staticClass: "card-text" }, [
-                              _c("strong", [_vm._v("Prezzo:")]),
-                              _vm._v(
-                                " " + _vm._s(product.price) + " €\n            "
-                              ),
-                            ]),
+                            _c(
+                              "span",
+                              {
+                                staticClass: "badge badge-warning price-badge",
+                              },
+                              [
+                                _c("strong", [
+                                  _vm._v(_vm._s(product.price) + " €"),
+                                ]),
+                              ]
+                            ),
                           ]),
                           _vm._v(" "),
                           _c(
