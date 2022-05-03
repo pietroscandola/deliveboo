@@ -24,7 +24,7 @@
             {{ product.quantity }}
           </td>
           <td>{{ product.price }} €</td>
-          <td>{{ getProductTotalPrice(product) }} €</td>
+          <td>{{ getProductTotalPrice(product).toFixed(2) }} €</td>
         </tr>
       </tbody>
       <tfoot>
@@ -32,7 +32,7 @@
           <td><strong>Totale</strong></td>
           <td>-</td>
           <td>-</td>
-          <td>{{ getTotal() }} €</td>
+          <td>{{ getTotal().toFixed(2) }} €</td>
         </tr>
       </tfoot>
     </table>
