@@ -45,9 +45,18 @@
       <!-- PRODOTTI -->
       <div class="col-12 mt-3 d-flex justify-content-between">
         <h2 class="d-inline">Prodotti</h2>
-        <a href="http://127.0.0.1:8000/cart"
-          ><i class="fa-solid fa-lg fa-cart-shopping"></i
-        ></a>
+        <div class="position-relative">
+          <a href="http://127.0.0.1:8000/cart">
+            <i class="fa-solid fa-cart-shopping fa-2x"></i>
+            <span
+              v-if="cart.length"
+              class="badge badge-danger position-absolute"
+              style="top: -3px; right: -4px"
+            >
+              {{ getTotalQuantity }}
+            </span>
+          </a>
+        </div>
       </div>
       <!-- Cards -->
       <div
@@ -198,6 +207,15 @@ export default {
         sessionStorage.cart = JSON.stringify(newCart);
       },
       deep: true,
+    },
+  },
+  computed: {
+    getTotalQuantity() {
+      let total = 0;
+      this.cart.forEach((product) => {
+        total += product.quantity;
+      });
+      return total;
     },
   },
 };
