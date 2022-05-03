@@ -58,48 +58,56 @@
           </a>
         </div>
       </div>
-      <!-- Cards -->
-      <div
-        v-for="product in products"
-        :key="product.id"
-        class="col-sm-6 col-lg-3"
-      >
-        <div class="card product-card my-3">
-          <img
-            height="150"
-            v-if="product.image"
-            class="card-img-top"
-            :src="'/storage/' + product.image"
-            alt="Card image cap"
-          />
-          <div class="card-body justify-content-between d-flex flex-column">
-            <div>
-              <h5>
-                <strong>{{ product.name }}</strong>
-              </h5>
-              <p class="card-text">{{ product.ingredients }}</p>
-              <!-- Price badge -->
-              <span class="badge badge-warning price-badge">
-                <strong>{{ product.price }} €</strong>
-              </span>
-            </div>
-            <div class="d-flex justify-content-around align-items-center">
-              <button
-                class="btn btn-danger"
-                @click="removeFromCart(product.id)"
-              >
-                <i class="fa-solid fa-minus"></i>
-              </button>
-              <i class="fa-solid fa-cart-shopping"></i>
-              <button
-                class="btn btn-success"
-                @click="addCart(product.id, product.name, product.price)"
-              >
-                <i class="fa-solid fa-plus"></i>
-              </button>
+      <div class="row"></div>
+      <div class="col-8">
+        <!-- Cards -->
+        <div class="row">
+          <div
+            v-for="product in products"
+            :key="product.id"
+            class="col-sm-6 col-lg-3"
+          >
+            <div class="card product-card my-3">
+              <img
+                height="150"
+                v-if="product.image"
+                class="card-img-top"
+                :src="'/storage/' + product.image"
+                alt="Card image cap"
+              />
+              <div class="card-body justify-content-between d-flex flex-column">
+                <div>
+                  <h5>
+                    <strong>{{ product.name }}</strong>
+                  </h5>
+                  <p class="card-text">{{ product.ingredients }}</p>
+                  <!-- Price badge -->
+                  <span class="badge badge-warning price-badge">
+                    <strong>{{ product.price }} €</strong>
+                  </span>
+                </div>
+                <div class="d-flex justify-content-around align-items-center">
+                  <button
+                    class="btn btn-danger"
+                    @click="removeFromCart(product.id)"
+                  >
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  <button
+                    class="btn btn-success"
+                    @click="addCart(product.id, product.name, product.price)"
+                  >
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+      <div class="col-4">
+        <RestaurantCart :cart="cart" />
       </div>
     </div>
   </div>
@@ -107,11 +115,13 @@
 
 <script>
 import Loader from "../Loader.vue";
+import RestaurantCart from "../restaurants/RestaurantCart.vue";
 
 export default {
   name: "RestaurantShow",
   components: {
     Loader,
+    RestaurantCart,
   },
   data() {
     return {
