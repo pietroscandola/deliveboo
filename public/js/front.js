@@ -39153,7 +39153,9 @@ var render = function () {
                 _c("td", [_vm._v(_vm._s(product.price) + " €")]),
                 _vm._v(" "),
                 _c("td", [
-                  _vm._v(_vm._s(_vm.getProductTotalPrice(product)) + " €"),
+                  _vm._v(
+                    _vm._s(_vm.getProductTotalPrice(product).toFixed(2)) + " €"
+                  ),
                 ]),
               ])
             }),
@@ -39168,7 +39170,7 @@ var render = function () {
               _vm._v(" "),
               _c("td", [_vm._v("-")]),
               _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(_vm.getTotal()) + " €")]),
+              _c("td", [_vm._v(_vm._s(_vm.getTotal().toFixed(2)) + " €")]),
             ]),
           ]),
         ])
@@ -55681,7 +55683,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\pietr\Desktop\deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
