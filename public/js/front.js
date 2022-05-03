@@ -2328,6 +2328,12 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -7036,7 +7042,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".product-card[data-v-cddbf820] {\n  position: relative;\n}\n.product-card .price-badge[data-v-cddbf820] {\n  position: absolute;\n  box-shadow: 0 0 6px rgb(107, 107, 107);\n  top: 10px;\n  right: 10px;\n}\n.card[data-v-cddbf820] {\n  min-height: 95%;\n}", ""]);
+exports.push([module.i, ".product-card[data-v-cddbf820] {\n  position: relative;\n}\n.product-card .price-badge[data-v-cddbf820] {\n  position: absolute;\n  box-shadow: 0 0 6px rgb(107, 107, 107);\n  top: 10px;\n  right: 10px;\n}\n.empty-cart[data-v-cddbf820] {\n  height: 150px;\n  margin-top: 15px;\n  color: rgb(138, 138, 138);\n  background-color: #fff;\n  border: 1px solid #e2e5e5;\n  border-radius: 5px;\n}\n.card[data-v-cddbf820] {\n  min-height: 95%;\n}", ""]);
 
 // exports
 
@@ -39565,17 +39571,17 @@ var render = function () {
                       "div",
                       {
                         staticClass:
-                          "d-flex justify-content-center flex-column align-items-center",
+                          "\n          empty-cart\n          d-flex\n          justify-content-center\n          flex-column\n          align-items-center\n        ",
                       },
                       [
                         _c(
                           "svg",
                           {
-                            staticClass: "bi bi-basket",
+                            staticClass: "bi bi-basket my-3",
                             attrs: {
                               xmlns: "http://www.w3.org/2000/svg",
-                              width: "16",
-                              height: "16",
+                              width: "32px",
+                              height: "32px",
                               fill: "currentColor",
                               viewBox: "0 0 16 16",
                             },

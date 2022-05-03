@@ -111,14 +111,20 @@
         <!-- Empty Cart -->
         <div
           v-else
-          class="d-flex justify-content-center flex-column align-items-center"
+          class="
+            empty-cart
+            d-flex
+            justify-content-center
+            flex-column
+            align-items-center
+          "
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
+            width="32px"
+            height="32px"
             fill="currentColor"
-            class="bi bi-basket"
+            class="bi bi-basket my-3"
             viewBox="0 0 16 16"
           >
             <path
@@ -259,6 +265,14 @@ export default {
     top: 10px;
     right: 10px;
   }
+}
+.empty-cart {
+  height: 150px;
+  margin-top: 15px;
+  color: rgb(138, 138, 138);
+  background-color: #fff;
+  border: 1px solid #e2e5e5;
+  border-radius: 5px;
 }
 .card {
   min-height: 95%;
