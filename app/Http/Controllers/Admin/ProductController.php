@@ -83,8 +83,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show($id)
     {
+        $product = Product::withTrashed()->findOrFail($id);
+
         return view('admin.products.show', compact('product'));
     }
 
@@ -94,8 +96,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
+        $product = Product::withTrashed()->findOrFail($id);
+
         $categories = ['Primi Piatti', 'Secondi Piatti', 'Bevande', 'Pizze', 'Sushi'];
 
         return view('admin.products.edit', compact('product', 'categories'));
@@ -108,10 +112,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
         // Recupera l'id del ristorante in cui si stanno modificando i prodotti
         $restaurantId = Restaurant::where('user_id', Auth::id())->value('id');
+        $product = Product::withTrashed()->findOrFail($id);
 
         $request->validate([
             'name' => ['required', 'string', Rule::unique('products')->where('restaurant_id', $restaurantId)->ignore($product->id), 'min:3'],
@@ -122,7 +127,6 @@ class ProductController extends Controller
             'restaurant_id' => 'nullable| exists:restaurant,id',
         ]);
         $data = $request->all();
-
 
         // IMG input
         if (array_key_exists('image', $data)) {
