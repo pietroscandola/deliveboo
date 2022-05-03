@@ -25,6 +25,7 @@
     },
     "dependencies": {
         "@fontsource/ibm-plex-sans": "^4.5.10",
+        "bootstrap-icons": "^1.8.1",
         "vue-router": "^3.5.3"
     }
 }
