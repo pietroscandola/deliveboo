@@ -20,8 +20,12 @@ class ProductTrashController extends Controller
         return view('admin.products.trash.index', compact('products'));
     }
 
-    public function restore()
+    public function restore($id)
     {
+        $product = Product::withTrashed()->findOrFail($id);
+        $product->restore();
+
+        return redirect()->route('admin.products.show', compact('product'));
     }
 
     public function destroy($id)
