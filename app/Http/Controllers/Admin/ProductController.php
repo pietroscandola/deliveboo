@@ -97,8 +97,13 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $categories = ['Primi Piatti', 'Secondi Piatti', 'Bevande', 'Pizze', 'Sushi'];
+        $restaurantId = Restaurant::where('user_id', Auth::id())->value('id');
 
-        return view('admin.products.edit', compact('product', 'categories'));
+        if ($restaurantId === $product->restaurant_id) {
+            return view('admin.products.edit', compact('product', 'categories'));
+        } else {
+            return view('admin.products.includes.error');
+        }
     }
 
     /**
