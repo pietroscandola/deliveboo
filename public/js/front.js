@@ -2291,6 +2291,15 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantShow",
@@ -2395,6 +2404,15 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
         sessionStorage.cart = JSON.stringify(newCart);
       },
       deep: true
+    }
+  },
+  computed: {
+    getTotalQuantity: function getTotalQuantity() {
+      var total = 0;
+      this.cart.forEach(function (product) {
+        total += product.quantity;
+      });
+      return total;
     }
   }
 });
@@ -39327,8 +39345,30 @@ var render = function () {
                 [
                   _c("h2", { staticClass: "d-inline" }, [_vm._v("Prodotti")]),
                   _vm._v(" "),
-                  _c("a", { attrs: { href: "http://127.0.0.1:8000/cart" } }, [
-                    _c("i", { staticClass: "fa-solid fa-lg fa-cart-shopping" }),
+                  _c("div", { staticClass: "position-relative" }, [
+                    _c("a", { attrs: { href: "http://127.0.0.1:8000/cart" } }, [
+                      _c("i", {
+                        staticClass: "fa-solid fa-cart-shopping fa-2x",
+                      }),
+                      _vm._v(" "),
+                      _vm.cart.length
+                        ? _c(
+                            "span",
+                            {
+                              staticClass:
+                                "badge badge-danger position-absolute",
+                              staticStyle: { top: "-3px", right: "-4px" },
+                            },
+                            [
+                              _vm._v(
+                                "\n            " +
+                                  _vm._s(_vm.getTotalQuantity) +
+                                  "\n          "
+                              ),
+                            ]
+                          )
+                        : _vm._e(),
+                    ]),
                   ]),
                 ]
               ),
