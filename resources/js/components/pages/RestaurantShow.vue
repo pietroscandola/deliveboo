@@ -188,14 +188,14 @@ export default {
     this.getRestaurant();
 
     // SessionStorageCart
-    if (localStorage.cart) {
-      this.cart = JSON.parse(localStorage.cart);
+    if (sessionStorage.cart) {
+      this.cart = JSON.parse(sessionStorage.cart);
     }
   },
   watch: {
     cart: {
       handler(newCart) {
-        localStorage.cart = JSON.stringify(newCart);
+        sessionStorage.cart = JSON.stringify(newCart);
       },
       deep: true,
     },

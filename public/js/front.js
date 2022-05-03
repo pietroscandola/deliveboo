@@ -2116,7 +2116,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   name: "Cart",
   data: function data() {
     return {
-      cart: JSON.parse(localStorage.cart)
+      cart: JSON.parse(sessionStorage.cart)
     };
   },
   methods: {
@@ -2124,7 +2124,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       return product.quantity * product.price;
     },
     getTotal: function getTotal() {
-      var cart = JSON.parse(localStorage.cart);
+      var cart = JSON.parse(sessionStorage.cart);
       var total = 0;
 
       var _iterator = _createForOfIteratorHelper(cart),
@@ -2385,14 +2385,14 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
   mounted: function mounted() {
     this.getRestaurant(); // SessionStorageCart
 
-    if (localStorage.cart) {
-      this.cart = JSON.parse(localStorage.cart);
+    if (sessionStorage.cart) {
+      this.cart = JSON.parse(sessionStorage.cart);
     }
   },
   watch: {
     cart: {
       handler: function handler(newCart) {
-        localStorage.cart = JSON.stringify(newCart);
+        sessionStorage.cart = JSON.stringify(newCart);
       },
       deep: true
     }
@@ -55641,7 +55641,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Lavavel\deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\pietr\Desktop\deliveboo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
