@@ -44,7 +44,7 @@ export default {
   name: "Cart",
   data() {
     return {
-      cart: JSON.parse(localStorage.cart),
+      cart: JSON.parse(sessionStorage.cart),
     };
   },
   methods: {
@@ -52,7 +52,7 @@ export default {
       return product.quantity * product.price;
     },
     getTotal() {
-      const cart = JSON.parse(localStorage.cart);
+      const cart = JSON.parse(sessionStorage.cart);
       let total = 0;
 
       for (const product of cart) {
