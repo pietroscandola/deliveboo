@@ -93,7 +93,11 @@
                   >
                     <i class="fa-solid fa-minus"></i>
                   </button>
-                  <i class="fa-solid fa-cart-shopping"></i>
+                  <div>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <p>2</p>
+                    <!-- da inserire la quantità incrementata -->
+                  </div>
                   <button
                     class="btn btn-success"
                     @click="addCart(product.id, product.name, product.price)"
