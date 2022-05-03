@@ -1,5 +1,25 @@
 <template>
   <section id="home">
+
+    <!-- CARD -->
+    <div class="d-flex justify-content-center">
+
+      <div v-for="category in categories" :key="category.id">
+        <router-link
+         :to="{ name: 'restaurant-categories', params: { name: categories.name } }"
+        >
+          <div class="card">
+            <img src="#" class="card-img-top" alt="#">
+            <div class="card-body">
+              <p class="card-text">{{ category.name }}</p>
+            </div>
+          </div>
+        </router-link>
+
+      </div>
+
+    </div>
+
     <RestaurantList />
   </section>
 </template>
@@ -14,6 +34,33 @@ export default {
   components: {
     RestaurantList,
   },
+  data(){
+    return{
+      categories: [],
+    }
+  },
+  methods: {
+    getCategories() {
+      this.isLoading = true;
+      axios
+        .get("http://localhost:8000/api/categories")
+        .then((res) => {
+          const categories = res.data;
+          this.categories = categories;
+          console.log(categories);
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+        // .then(() => {
+        //   this.isLoading = false;
+        //   console.log("OK API");
+        // });
+    },
+  },
+  mounted() {
+    this.getCategories();
+  }
 };
 </script>
 

@@ -15,6 +15,7 @@ const router = new VueRouter({
     routes: [
         {path: '/', component: Home, name: 'home'},
         {path: '/restaurants/:id', component: RestaurantShow, name: 'restaurant-details'},
+        {path: '/restaurants/:name', component: RestaurantShow, name: 'restaurant-categories'},
         {path: '/cart', component: Cart, name: 'cart'}
     ]
 });

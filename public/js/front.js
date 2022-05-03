@@ -2166,12 +2166,57 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Home",
   components: {
     RestaurantList: _restaurants_RestaurantsList_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      categories: []
+    };
+  },
+  methods: {
+    getCategories: function getCategories() {
+      var _this = this;
+
+      this.isLoading = true;
+      axios.get("http://localhost:8000/api/categories").then(function (res) {
+        var categories = res.data;
+        _this.categories = categories;
+        console.log(categories);
+      })["catch"](function (err) {
+        console.error(err);
+      }); // .then(() => {
+      //   this.isLoading = false;
+      //   console.log("OK API");
+      // });
+    }
+  },
+  mounted: function mounted() {
+    this.getCategories();
   }
 });
 
@@ -39222,7 +39267,54 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", { attrs: { id: "home" } }, [_c("RestaurantList")], 1)
+  return _c(
+    "section",
+    { attrs: { id: "home" } },
+    [
+      _c(
+        "div",
+        { staticClass: "d-flex justify-content-center" },
+        _vm._l(_vm.categories, function (category) {
+          return _c(
+            "div",
+            { key: category.id },
+            [
+              _c(
+                "router-link",
+                {
+                  attrs: {
+                    to: {
+                      name: "restaurant-categories",
+                      params: { name: _vm.categories.name },
+                    },
+                  },
+                },
+                [
+                  _c("div", { staticClass: "card" }, [
+                    _c("img", {
+                      staticClass: "card-img-top",
+                      attrs: { src: "#", alt: "#" },
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "card-body" }, [
+                      _c("p", { staticClass: "card-text" }, [
+                        _vm._v(_vm._s(category.name)),
+                      ]),
+                    ]),
+                  ]),
+                ]
+              ),
+            ],
+            1
+          )
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c("RestaurantList"),
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -55667,6 +55759,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     component: _components_pages_RestaurantShow_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
     name: 'restaurant-details'
   }, {
+    path: '/restaurants/:name',
+    component: _components_pages_RestaurantShow_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    name: 'restaurant-categories'
+  }, {
     path: '/cart',
     component: _components_pages_Cart_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
     name: 'cart'
@@ -55683,7 +55779,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\Federico\Desktop\deliveboo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
