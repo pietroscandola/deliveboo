@@ -28,6 +28,13 @@ Route::middleware('auth')
     ->group(function () {
         Route::get('/home', 'RestaurantController@show')->name('restaurant.home');
 
+        // GRUPPO CESTINO PRODOTTI
+        Route::prefix('products')->name('products.trash.')->group(function () {
+            Route::get('/trash', 'ProductTrashController@index')->name('index');
+            Route::patch('/{product}/trash', 'ProductTrashController@restore')->name('restore');
+            Route::delete('/{product}/destroy', 'ProductTrashController@destroy')->name('destroy');
+        });
+
         Route::resource('restaurants', 'RestaurantController');
         Route::resource('products', 'ProductController');
         Route::resource('orders', 'OrderController');
