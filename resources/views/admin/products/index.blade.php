@@ -8,14 +8,16 @@
             <h3>I tuoi prodotti</h3>
          </div>
          <div class="col-6 d-flex justify-content-end">
-            <a class="btn btn-secondary mx-2" href="{{ route('admin.products.trash.index') }}">Cestino</a>
+            <a class="btn btn-secondary mx-2" href="{{ route('admin.products.trash.index') }}">
+               <i class="fa-solid fa-trash-can fa-lg"></i>
+            </a>
             <a class="btn btn-success" href="{{ route('admin.products.create') }}">Crea</a>
          </div>
       </div>
 
       {{-- RISTORANTE INFO --}}
 
-      <div class="row justify-content-center">
+      <div class="row">
          {{-- <div class="d-flex flex-wrap"> --}}
          @foreach ($products as $product)
             <div class="col-xs-6 col-lg-4 col-md-6">
@@ -46,7 +48,7 @@
                            class='delete_form'>
                            @csrf
                            @method('DELETE')
-                           <input type="submit" class="btn btn-danger" value="Elimina">
+                           <button type="submit" class="btn btn-danger">Cestina</button>
                         </form>
                      </div>
                   </div>

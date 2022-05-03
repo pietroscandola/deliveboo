@@ -14,7 +14,7 @@
 
       {{-- RISTORANTE INFO --}}
 
-      <div class="row justify-content-center">
+      <div class="row">
          {{-- <div class="d-flex flex-wrap"> --}}
          @foreach ($products as $product)
             <div class="col-xs-6 col-lg-4 col-md-6">
