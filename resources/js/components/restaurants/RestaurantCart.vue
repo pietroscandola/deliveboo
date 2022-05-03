@@ -11,13 +11,21 @@
     <tbody>
       <tr v-for="product in cart" :key="product.id">
         <td scope="row">
-          {{ product.name }}
+          <small>
+            {{ product.name }}
+          </small>
         </td>
         <td>
-          {{ product.quantity }}
+          <small>
+            {{ product.quantity }}
+          </small>
         </td>
-        <td>{{ product.price }} €</td>
-        <!-- <td>{{ getProductTotalPrice(product).toFixed(2) }} €</td> -->
+        <td>
+          <small>{{ product.price }} € </small>
+        </td>
+        <td>
+          <small> {{ getProductTotalPrice(product).toFixed(2) }} € </small>
+        </td>
       </tr>
     </tbody>
     <tfoot>
@@ -25,7 +33,9 @@
         <td><strong>Totale</strong></td>
         <td>-</td>
         <td>-</td>
-        <!-- <td>{{ getTotal().toFixed(2) }} €</td> -->
+        <td>
+          <small> {{ getTotal().toFixed(2) }} € </small>
+        </td>
       </tr>
     </tfoot>
   </table>
@@ -35,6 +45,21 @@
 export default {
   name: "RestaurantCart",
   props: ["cart"],
+  methods: {
+    getProductTotalPrice(product) {
+      return product.quantity * product.price;
+    },
+    getTotal() {
+      const cart = JSON.parse(sessionStorage.cart);
+      let total = 0;
+
+      for (const product of cart) {
+        total += product.price * product.quantity;
+      }
+
+      return total;
+    },
+  },
 };
 </script>
 
