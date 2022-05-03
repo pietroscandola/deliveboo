@@ -95,7 +95,7 @@
                   </button>
                   <div>
                     <i class="fa-solid fa-cart-shopping"></i>
-                    <p>2</p>
+                    <p>{{ getIncrement(product.id) }}</p>
                     <!-- da inserire la quantità incrementata -->
                   </div>
                   <button
@@ -230,6 +230,19 @@ export default {
 
     getProductTotalPrice(product) {
       return product.quantity * product.price;
+    },
+
+    getIncrement(id) {
+       let total = 0;
+       const can = {
+        prod_id: id,
+      };
+      this.cart.forEach((product) => {
+          if (product["prod_id"] === id) {
+            total += product.quantity;
+          }
+        });
+        return total
     },
   },
   mounted() {
