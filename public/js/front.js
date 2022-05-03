@@ -2429,6 +2429,18 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
     },
     getProductTotalPrice: function getProductTotalPrice(product) {
       return product.quantity * product.price;
+    },
+    getIncrement: function getIncrement(id) {
+      var total = 0;
+      var can = {
+        prod_id: id
+      };
+      this.cart.forEach(function (product) {
+        if (product["prod_id"] === id) {
+          total += product.quantity;
+        }
+      });
+      return total;
     }
   },
   mounted: function mounted() {
@@ -39579,7 +39591,11 @@ var render = function () {
                                     staticClass: "fa-solid fa-cart-shopping",
                                   }),
                                   _vm._v(" "),
-                                  _c("p", [_vm._v("2")]),
+                                  _c("p", [
+                                    _vm._v(
+                                      _vm._s(_vm.getIncrement(product.id))
+                                    ),
+                                  ]),
                                 ]),
                                 _vm._v(" "),
                                 _c(
@@ -56028,7 +56044,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\pietr\Desktop\deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
