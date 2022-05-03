@@ -3,14 +3,11 @@
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Restaurant;
+
 use Illuminate\Database\Seeder;
-use Faker\Generator as Faker;
 use Illuminate\Support\Arr;
 
-
-
-
-
+use Faker\Generator as Faker;
 
 class OrderSeeder extends Seeder
 {
@@ -21,11 +18,13 @@ class OrderSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-
         $restaurants_ids = Restaurant::pluck('id')->toArray();
+
         for ($i = 0; $i < 20; $i++) {
+            $restaurant_id = Arr::random($restaurants_ids);
+
             $order = new Order();
-            $order->restaurant_id = Arr::random($restaurants_ids);
+            $order->restaurant_id = $restaurant_id;
             $order->customer_name = $faker->name();
             $order->customer_surname = $faker->name();
             $order->customer_address = $faker->address();
@@ -36,7 +35,10 @@ class OrderSeeder extends Seeder
             $order->is_paid = true;
             $order->save();
 
-            $order->products()->attach(3);
+            $restaurant = Restaurant::where('id', $restaurant_id)->first();
+            $products_ids = $restaurant->products->pluck('id')->toArray();
+
+            $order->products()->attach(Arr::random($products_ids, $faker->numberBetween(0, count($products_ids) - 1)));
         }
     }
 }

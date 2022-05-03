@@ -5,13 +5,10 @@
       <div class="row align-items-center">
          <div class="col-6 mb-3">
             <h1>Benvenuto</h1>
-            <h3>I tuoi prodotti</h3>
+            <h3>Cestino prodotti</h3>
          </div>
          <div class="col-6 d-flex justify-content-end">
-            <a class="btn btn-secondary mx-2" href="{{ route('admin.products.trash.index') }}">
-               <i class="fa-solid fa-trash-can fa-lg"></i>
-            </a>
-            <a class="btn btn-success" href="{{ route('admin.products.create') }}">Crea</a>
+            <a class="btn btn-secondary" href="{{ route('admin.products.index') }}">Torna ai piatti</a>
          </div>
       </div>
 
@@ -39,26 +36,35 @@
                      <p class="card-text"><strong>Categoria:</strong> {{ $product->category }}</p>
                      <p class="card-text"><strong>Ingredienti:</strong> {{ $product->ingredients }}</p>
                      <hr>
-                     <div class="d-flex justify-content-center">
-                        <a href="{{ route('admin.products.show', $product->id) }}" class="btn btn-primary">Vedi</a>
-                        <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-warning ml-3 mr-3">
-                           Modifica
+                     <div class="d-flex justify-content-around">
+                        <a href="{{ route('admin.products.show', $product->id) }}" class="btn btn-primary">
+                           <i class="fa-solid fa-circle-info fa-lg"></i>
                         </a>
-                        <form action="{{ route('admin.products.destroy', $product->id) }}" method="post"
+                        <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-warning">
+                           <i class="fa-solid fa-pencil"></i>
+                        </a>
+                        <form action="{{ route('admin.products.trash.restore', $product->id) }}" method="POST">
+                           @csrf
+                           @method('PATCH')
+                           <button type="submit" class="btn btn-success">
+                              <i class="fa-solid fa-arrow-rotate-left"></i>
+                           </button>
+                        </form>
+                        <form action="{{ route('admin.products.trash.destroy', $product->id) }}" method="post"
                            class='delete_form'>
                            @csrf
                            @method('DELETE')
-                           <button type="submit" class="btn btn-danger">Cestina</button>
+                           <button type="submit" class="btn btn-danger">
+                              <i class="fa-solid fa-ban"></i>
+                           </button>
                         </form>
                      </div>
                   </div>
                </div>
             </div>
          @endforeach
-         {{-- </div> --}}
 
       </div>
-      {{-- CARD CIBO --}}
    </div>
 @endsection
 
