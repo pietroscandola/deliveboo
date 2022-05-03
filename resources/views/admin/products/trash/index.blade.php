@@ -36,26 +36,35 @@
                      <p class="card-text"><strong>Categoria:</strong> {{ $product->category }}</p>
                      <p class="card-text"><strong>Ingredienti:</strong> {{ $product->ingredients }}</p>
                      <hr>
-                     <div class="d-flex justify-content-center">
-                        <a href="{{ route('admin.products.show', $product->id) }}" class="btn btn-primary">Vedi</a>
-                        <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-warning ml-3 mr-3">
-                           Modifica
+                     <div class="d-flex justify-content-around">
+                        <a href="{{ route('admin.products.show', $product->id) }}" class="btn btn-primary">
+                           <i class="fa-solid fa-circle-info fa-lg"></i>
                         </a>
-                        <form action="{{ route('admin.products.destroy', $product->id) }}" method="post"
+                        <a href="{{ route('admin.products.edit', $product->id) }}" class="btn btn-warning">
+                           <i class="fa-solid fa-pencil"></i>
+                        </a>
+                        <form action="{{ route('admin.products.trash.restore', $product->id) }}" method="POST">
+                           @csrf
+                           @method('PATCH')
+                           <button type="submit" class="btn btn-success">
+                              <i class="fa-solid fa-arrow-rotate-left"></i>
+                           </button>
+                        </form>
+                        <form action="{{ route('admin.products.trash.destroy', $product->id) }}" method="post"
                            class='delete_form'>
                            @csrf
                            @method('DELETE')
-                           <input type="submit" class="btn btn-danger" value="Elimina">
+                           <button type="submit" class="btn btn-danger">
+                              <i class="fa-solid fa-ban"></i>
+                           </button>
                         </form>
                      </div>
                   </div>
                </div>
             </div>
          @endforeach
-         {{-- </div> --}}
 
       </div>
-      {{-- CARD CIBO --}}
    </div>
 @endsection
 
