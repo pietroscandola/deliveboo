@@ -1,6 +1,11 @@
 <template>
   <section>
     <h1>{{ category.name }}</h1>
+    <div class="restaurants">
+      <h3 v-for="restaurant in category.restaurants" :key="restaurant.id">
+        {{ restaurant.name }}
+      </h3>
+    </div>
   </section>
 </template>
 

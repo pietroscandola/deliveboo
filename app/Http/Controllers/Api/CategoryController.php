@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Restaurant;
 
 class CategoryController extends Controller
 {
@@ -38,7 +39,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = Category::where('id', $id)->first();
+        $category = Category::where('id', $id)->with(['restaurants'])->first();
         if (!$category) return response('Category Not Found', 404);
         return response()->json($category);
     }

@@ -2234,6 +2234,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantByCategory",
   components: {},
@@ -39379,7 +39384,20 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", [_c("h1", [_vm._v(_vm._s(_vm.category.name))])])
+  return _c("section", [
+    _c("h1", [_vm._v(_vm._s(_vm.category.name))]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "restaurants" },
+      _vm._l(_vm.category.restaurants, function (restaurant) {
+        return _c("h3", { key: restaurant.id }, [
+          _vm._v("\n      " + _vm._s(restaurant.name) + "\n    "),
+        ])
+      }),
+      0
+    ),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
