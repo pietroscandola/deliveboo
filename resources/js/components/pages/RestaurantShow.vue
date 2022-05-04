@@ -58,47 +58,84 @@
           </a>
         </div>
       </div>
-      <!-- Cards -->
-      <div
-        v-for="product in products"
-        :key="product.id"
-        class="col-sm-6 col-lg-3"
-      >
-        <div class="card product-card my-3">
-          <img
-            height="150"
-            v-if="product.image"
-            class="card-img-top"
-            :src="'/storage/' + product.image"
-            alt="Card image cap"
-          />
-          <div class="card-body justify-content-between d-flex flex-column">
-            <div>
-              <h5>
-                <strong>{{ product.name }}</strong>
-              </h5>
-              <p class="card-text">{{ product.ingredients }}</p>
-              <!-- Price badge -->
-              <span class="badge badge-warning price-badge">
-                <strong>{{ product.price }} €</strong>
-              </span>
-            </div>
-            <div class="d-flex justify-content-around align-items-center">
-              <button
-                class="btn btn-danger"
-                @click="removeFromCart(product.id)"
-              >
-                <i class="fa-solid fa-minus"></i>
-              </button>
-              <i class="fa-solid fa-cart-shopping"></i>
-              <button
-                class="btn btn-success"
-                @click="addCart(product.id, product.name, product.price)"
-              >
-                <i class="fa-solid fa-plus"></i>
-              </button>
+      <div class="row"></div>
+      <div class="col-8">
+        <!-- Cards -->
+        <div class="row">
+          <div
+            v-for="product in products"
+            :key="product.id"
+            class="col-sm-6 col-lg-4"
+          >
+            <div class="card product-card my-3">
+              <img
+                height="150"
+                v-if="product.image"
+                class="card-img-top"
+                :src="'/storage/' + product.image"
+                alt="Card image cap"
+              />
+              <div class="card-body justify-content-between d-flex flex-column">
+                <div>
+                  <h5>
+                    <strong>{{ product.name }}</strong>
+                  </h5>
+                  <p class="card-text">{{ product.ingredients }}</p>
+                  <!-- Price badge -->
+                  <span class="badge badge-warning price-badge">
+                    <strong>{{ product.price }} €</strong>
+                  </span>
+                </div>
+                <div class="d-flex justify-content-around align-items-center">
+                  <button
+                    class="btn btn-danger"
+                    @click="removeFromCart(product.id)"
+                  >
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                  <div>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <p>{{ getIncrement(product.id) }}</p>
+                    <!-- da inserire la quantità incrementata -->
+                  </div>
+                  <button
+                    class="btn btn-success"
+                    @click="addCart(product.id, product.name, product.price)"
+                  >
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="col-4">
+        <RestaurantCart v-if="cart.length" :cart="cart" />
+        <!-- Empty Cart -->
+        <div
+          v-else
+          class="
+            empty-cart
+            d-flex
+            justify-content-center
+            flex-column
+            align-items-center
+          "
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32px"
+            height="32px"
+            fill="currentColor"
+            class="bi bi-basket my-3"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"
+            />
+          </svg>
+          <h3>Il carrello è vuoto</h3>
         </div>
       </div>
     </div>
@@ -107,11 +144,13 @@
 
 <script>
 import Loader from "../Loader.vue";
+import RestaurantCart from "../restaurants/RestaurantCart.vue";
 
 export default {
   name: "RestaurantShow",
   components: {
     Loader,
+    RestaurantCart,
   },
   data() {
     return {
@@ -192,6 +231,19 @@ export default {
     getProductTotalPrice(product) {
       return product.quantity * product.price;
     },
+
+    getIncrement(id) {
+       let total = 0;
+       const can = {
+        prod_id: id,
+      };
+      this.cart.forEach((product) => {
+          if (product["prod_id"] === id) {
+            total += product.quantity;
+          }
+        });
+        return total
+    },
   },
   mounted() {
     this.getRestaurant();
@@ -230,6 +282,14 @@ export default {
     top: 10px;
     right: 10px;
   }
+}
+.empty-cart {
+  height: 150px;
+  margin-top: 15px;
+  color: rgb(138, 138, 138);
+  background-color: #fff;
+  border: 1px solid #e2e5e5;
+  border-radius: 5px;
 }
 .card {
   min-height: 95%;
