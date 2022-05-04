@@ -5,7 +5,7 @@
     <div
       v-if="!isLoading"
       id="categories-container"
-      class="d-flex justify-content-center"
+      class="d-flex justify-content-center mb-4"
     >
       <div v-for="category in categories" :key="category.id">
         <CategoryCard :category="category" />

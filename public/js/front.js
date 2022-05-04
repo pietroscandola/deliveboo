@@ -39463,7 +39463,7 @@ var render = function () {
         ? _c(
             "div",
             {
-              staticClass: "d-flex justify-content-center",
+              staticClass: "d-flex justify-content-center mb-4",
               attrs: { id: "categories-container" },
             },
             _vm._l(_vm.categories, function (category) {
