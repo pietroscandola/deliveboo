@@ -1,23 +1,19 @@
 <template>
   <section id="home">
-
     <!-- CARD -->
-    <div class="d-flex justify-content-center">
-
+    <div id="categories-container" class="d-flex justify-content-center">
       <div v-for="category in categories" :key="category.id">
         <router-link
-         :to="{ name: 'restaurant-categories', params: { id: categories.id } }"
+          :to="{ name: 'restaurant-categories', params: { id: categories.id } }"
         >
           <div class="card">
-            <img src="#" class="card-img-top" alt="#">
+            <img src="#" class="card-img-top" alt="#" />
             <div class="card-body">
               <p class="card-text">{{ category.name }}</p>
             </div>
           </div>
         </router-link>
-
       </div>
-
     </div>
 
     <RestaurantList />
@@ -34,10 +30,10 @@ export default {
   components: {
     RestaurantList,
   },
-  data(){
-    return{
+  data() {
+    return {
       categories: [],
-    }
+    };
   },
   methods: {
     getCategories() {
@@ -51,13 +47,12 @@ export default {
         })
         .catch((err) => {
           console.error(err);
-        })
-
+        });
     },
   },
   mounted() {
     this.getCategories();
-  }
+  },
 };
 </script>
 
