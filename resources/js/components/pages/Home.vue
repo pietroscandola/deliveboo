@@ -1,7 +1,12 @@
 <template>
   <section id="home">
+    <Loader v-if="isLoading" />
     <!-- CARD -->
-    <div id="categories-container" class="d-flex justify-content-center">
+    <div
+      v-if="!isLoading"
+      id="categories-container"
+      class="d-flex justify-content-center"
+    >
       <div v-for="category in categories" :key="category.id">
         <CategoryCard :category="category" />
       </div>
@@ -14,6 +19,7 @@
 <script>
 import RestaurantList from "../restaurants/RestaurantsList.vue";
 import CategoryCard from "../categories/CategoryCard.vue";
+import Loader from "../Loader.vue";
 
 import "@fontsource/ibm-plex-sans";
 
@@ -22,10 +28,12 @@ export default {
   components: {
     RestaurantList,
     CategoryCard,
+    Loader,
   },
   data() {
     return {
       categories: [],
+      isLoading: false,
     };
   },
   methods: {
@@ -40,6 +48,10 @@ export default {
         })
         .catch((err) => {
           console.error(err);
+        })
+        .then(() => {
+          this.isLoading = false;
+          console.log("OK CATEGORIES API");
         });
     },
   },

@@ -2188,8 +2188,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _restaurants_RestaurantsList_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../restaurants/RestaurantsList.vue */ "./resources/js/components/restaurants/RestaurantsList.vue");
 /* harmony import */ var _categories_CategoryCard_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../categories/CategoryCard.vue */ "./resources/js/components/categories/CategoryCard.vue");
-/* harmony import */ var _fontsource_ibm_plex_sans__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @fontsource/ibm-plex-sans */ "./node_modules/@fontsource/ibm-plex-sans/index.css");
-/* harmony import */ var _fontsource_ibm_plex_sans__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_fontsource_ibm_plex_sans__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Loader_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Loader.vue */ "./resources/js/components/Loader.vue");
+/* harmony import */ var _fontsource_ibm_plex_sans__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fontsource/ibm-plex-sans */ "./node_modules/@fontsource/ibm-plex-sans/index.css");
+/* harmony import */ var _fontsource_ibm_plex_sans__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_fontsource_ibm_plex_sans__WEBPACK_IMPORTED_MODULE_3__);
 //
 //
 //
@@ -2203,6 +2204,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+
 
 
 
@@ -2210,11 +2217,13 @@ __webpack_require__.r(__webpack_exports__);
   name: "Home",
   components: {
     RestaurantList: _restaurants_RestaurantsList_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    CategoryCard: _categories_CategoryCard_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    CategoryCard: _categories_CategoryCard_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    Loader: _Loader_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: function data() {
     return {
-      categories: []
+      categories: [],
+      isLoading: false
     };
   },
   methods: {
@@ -2228,6 +2237,9 @@ __webpack_require__.r(__webpack_exports__);
         console.log(categories);
       })["catch"](function (err) {
         console.error(err);
+      }).then(function () {
+        _this.isLoading = false;
+        console.log("OK CATEGORIES API");
       });
     }
   },
@@ -7031,7 +7043,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "#loader-box[data-v-e79ec684] {\n  z-index: 1;\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n#loader-box .spinner-border[data-v-e79ec684] {\n  height: 150px;\n  width: 150px;\n}", ""]);
+exports.push([module.i, "#loader-box[data-v-e79ec684] {\n  -webkit-backdrop-filter: blur(10px);\n          backdrop-filter: blur(10px);\n  z-index: 1;\n  position: fixed;\n  top: 0;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n#loader-box .spinner-border[data-v-e79ec684] {\n  height: 150px;\n  width: 150px;\n}", ""]);
 
 // exports
 
@@ -39402,22 +39414,26 @@ var render = function () {
     "section",
     { attrs: { id: "home" } },
     [
-      _c(
-        "div",
-        {
-          staticClass: "d-flex justify-content-center",
-          attrs: { id: "categories-container" },
-        },
-        _vm._l(_vm.categories, function (category) {
-          return _c(
+      _vm.isLoading ? _c("Loader") : _vm._e(),
+      _vm._v(" "),
+      !_vm.isLoading
+        ? _c(
             "div",
-            { key: category.id },
-            [_c("CategoryCard", { attrs: { category: category } })],
-            1
+            {
+              staticClass: "d-flex justify-content-center",
+              attrs: { id: "categories-container" },
+            },
+            _vm._l(_vm.categories, function (category) {
+              return _c(
+                "div",
+                { key: category.id },
+                [_c("CategoryCard", { attrs: { category: category } })],
+                1
+              )
+            }),
+            0
           )
-        }),
-        0
-      ),
+        : _vm._e(),
       _vm._v(" "),
       _c("RestaurantList"),
     ],
