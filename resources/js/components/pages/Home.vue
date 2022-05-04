@@ -4,7 +4,7 @@
     <div id="categories-container" class="d-flex justify-content-center">
       <div v-for="category in categories" :key="category.id">
         <router-link
-          :to="{ name: 'restaurant-categories', params: { id: categories.id } }"
+          :to="{ name: 'restaurant-categories', params: { id: category.id } }"
         >
           <div class="card">
             <img src="#" class="card-img-top" alt="#" />

@@ -39351,7 +39351,7 @@ var render = function () {
                   attrs: {
                     to: {
                       name: "restaurant-categories",
-                      params: { id: _vm.categories.id },
+                      params: { id: category.id },
                     },
                   },
                 },
