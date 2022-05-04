@@ -38,7 +38,9 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        $category = Category::where('id', $id)->first();
+        if (!$category) return response('Category Not Found', 404);
+        return response()->json($category);
     }
 
     /**

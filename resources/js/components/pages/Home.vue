@@ -6,7 +6,7 @@
 
       <div v-for="category in categories" :key="category.id">
         <router-link
-         :to="{ name: 'restaurant-categories', params: { name: categories.name } }"
+         :to="{ name: 'restaurant-categories', params: { id: categories.id } }"
         >
           <div class="card">
             <img src="#" class="card-img-top" alt="#">
@@ -52,10 +52,7 @@ export default {
         .catch((err) => {
           console.error(err);
         })
-        // .then(() => {
-        //   this.isLoading = false;
-        //   console.log("OK API");
-        // });
+
     },
   },
   mounted() {
