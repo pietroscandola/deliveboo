@@ -1,31 +1,39 @@
 <template>
   <section>
-      <h1>{{ category.name }}</h1>
-
-    <RestaurantCard />
+    <h1>{{ category.name }}</h1>
   </section>
 </template>
 
 <script>
-import Loader from "../Loader.vue";
-import RestaurantCard from "./RestaurantCard.vue";
-
-
 export default {
-    name: "RestaurantByCategory",
-    components: {
-        Loader,
-        RestaurantCard,
+  name: "RestaurantByCategory",
+  components: {},
+  data() {
+    return {
+      category: {},
+    };
+  },
+  methods: {
+    getCategory() {
+      axios
+        .get("http://localhost:8000/api/categories/" + this.$route.params.id)
+        .then((res) => {
+          const category = res.data;
+          this.category = category;
+        })
+        .catch((err) => {
+          console.error(err);
+        })
+        .then(() => {
+          console.log("OK API");
+        });
     },
-    data(){
-        return {
-            isLoading: false,
-
-        }
-    }
-}
+  },
+  mounted() {
+    this.getCategory();
+  },
+};
 </script>
 
 <style>
-
 </style>
