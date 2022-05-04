@@ -3,16 +3,7 @@
     <!-- CARD -->
     <div id="categories-container" class="d-flex justify-content-center">
       <div v-for="category in categories" :key="category.id">
-        <router-link
-          :to="{ name: 'restaurant-categories', params: { id: category.id } }"
-        >
-          <div class="card">
-            <img src="#" class="card-img-top" alt="#" />
-            <div class="card-body">
-              <p class="card-text">{{ category.name }}</p>
-            </div>
-          </div>
-        </router-link>
+        <CategoryCard :category="category" />
       </div>
     </div>
 
@@ -22,6 +13,7 @@
 
 <script>
 import RestaurantList from "../restaurants/RestaurantsList.vue";
+import CategoryCard from "../categories/CategoryCard.vue";
 
 import "@fontsource/ibm-plex-sans";
 
@@ -29,6 +21,7 @@ export default {
   name: "Home",
   components: {
     RestaurantList,
+    CategoryCard,
   },
   data() {
     return {
