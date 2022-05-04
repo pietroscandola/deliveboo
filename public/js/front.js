@@ -2225,6 +2225,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _restaurants_RestaurantCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../restaurants/RestaurantCard.vue */ "./resources/js/components/restaurants/RestaurantCard.vue");
+/* harmony import */ var _Loader_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Loader.vue */ "./resources/js/components/Loader.vue");
+//
 //
 //
 //
@@ -2247,26 +2249,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantByCategory",
   components: {
-    RestaurantCard: _restaurants_RestaurantCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+    RestaurantCard: _restaurants_RestaurantCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
+    Loader: _Loader_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
-      category: {}
+      category: {},
+      isLoading: false
     };
   },
   methods: {
     getCategory: function getCategory() {
       var _this = this;
 
+      this.isLoading = true;
       axios.get("http://localhost:8000/api/categories/" + this.$route.params.id).then(function (res) {
         var category = res.data;
         _this.category = category;
       })["catch"](function (err) {
         console.error(err);
       }).then(function () {
+        _this.isLoading = false;
         console.log("OK API");
       });
     }
@@ -39401,6 +39408,8 @@ var render = function () {
     "section",
     { staticClass: "row", attrs: { id: "restaurants-by-category" } },
     [
+      _vm.isLoading ? _c("Loader") : _vm._e(),
+      _vm._v(" "),
       _c(
         "div",
         {
@@ -39433,7 +39442,8 @@ var render = function () {
           1
         ),
       ]),
-    ]
+    ],
+    1
   )
 }
 var staticRenderFns = []
