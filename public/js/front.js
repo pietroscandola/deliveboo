@@ -2718,6 +2718,7 @@ __webpack_require__.r(__webpack_exports__);
 
     braintree_web__WEBPACK_IMPORTED_MODULE_0___default.a.client.create({
       // Bisogna inserire la key di braintree
+      // TODO aggiungere collegamento a variabile in .env, con key di autorizzazione funziona
       authorization: process.env.VUE_APP_BT_SDK //se funzionasse :)
 
     }).then(function (clientInstance) {

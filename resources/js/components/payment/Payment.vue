@@ -95,6 +95,7 @@ export default {
       braintree.client
          .create({
             // Bisogna inserire la key di braintree
+            // TODO aggiungere collegamento a variabile in .env, con key di autorizzazione funziona
             authorization: process.env.VUE_APP_BT_SDK, //se funzionasse :)
          })
          .then((clientInstance) => {
