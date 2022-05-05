@@ -37,6 +37,11 @@
         ><strong>{{ getTotal().toFixed(2) }} €</strong></span
       >
     </div>
+    <div class="mt-3">
+      <a class="checkout-button" href="http://127.0.0.1:8000/cart">
+        Vai al pagamento
+      </a>
+    </div>
   </div>
 </template>
 
@@ -65,5 +70,18 @@ export default {
 <style scoped lang="scss">
 .cart-card {
   margin-top: 16px;
+  h3 {
+    font-weight: 900;
+  }
+  .checkout-button {
+    display: block;
+    text-align: center;
+    background-color: #00c2b3;
+    color: #fff;
+    border-radius: 5px;
+    font-weight: 900;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }
 </style>
