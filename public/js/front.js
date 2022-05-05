@@ -39912,32 +39912,7 @@ var render = function () {
             _c(
               "div",
               { staticClass: "col-12 mt-3 d-flex justify-content-between" },
-              [
-                _c("h2", { staticClass: "d-inline" }, [_vm._v("Prodotti")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "position-relative" }, [
-                  _c("a", { attrs: { href: "http://127.0.0.1:8000/cart" } }, [
-                    _c("i", { staticClass: "fa-solid fa-cart-shopping fa-2x" }),
-                    _vm._v(" "),
-                    _vm.cart.length
-                      ? _c(
-                          "span",
-                          {
-                            staticClass: "badge badge-danger position-absolute",
-                            staticStyle: { top: "-3px", right: "-4px" },
-                          },
-                          [
-                            _vm._v(
-                              "\n            " +
-                                _vm._s(_vm.getTotalQuantity) +
-                                "\n          "
-                            ),
-                          ]
-                        )
-                      : _vm._e(),
-                  ]),
-                ]),
-              ]
+              [_c("h2", { staticClass: "d-inline" }, [_vm._v("Prodotti")])]
             ),
             _vm._v(" "),
             _c("div", { staticClass: "row" }),

@@ -45,7 +45,7 @@
       <!-- PRODOTTI -->
       <div class="col-12 mt-3 d-flex justify-content-between">
         <h2 class="d-inline">Prodotti</h2>
-        <div class="position-relative">
+        <!-- <div class="position-relative">
           <a href="http://127.0.0.1:8000/cart">
             <i class="fa-solid fa-cart-shopping fa-2x"></i>
             <span
@@ -56,7 +56,7 @@
               {{ getTotalQuantity }}
             </span>
           </a>
-        </div>
+        </div> -->
       </div>
       <div class="row"></div>
       <div class="col-8">
