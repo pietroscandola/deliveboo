@@ -9,14 +9,14 @@
     <!-- Prodotti -->
     <div class="mb-3">
       <div v-for="product in cart" :key="product.id">
-        <div class="product d-flex justify-content-between row">
+        <div class="product d-flex justify-content-between row mb-1">
           <div class="col-6">
             <!-- Product Name -->
             <span class="mb-1">{{ product.name }}</span>
           </div>
           <div class="col-6 d-flex justify-content-between">
             <!-- Buttons -->
-            <div class="button-container">
+            <div class="button-container d-flex">
               <!-- Minus SVG -->
               <svg
                 @click="removeFromCart(product.product_id)"
@@ -29,6 +29,7 @@
                 focusable="false"
                 class="
                   ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049
+                  mr-1
                 "
               >
                 <path
@@ -37,7 +38,7 @@
                 ></path>
               </svg>
               <!-- Product Quantity -->
-              <span> {{ product.quantity }} </span>
+              <span class="mr-1"> {{ product.quantity }} </span>
               <!-- Plus SVG -->
               <svg
                 @click="
@@ -83,17 +84,17 @@
         Vai al pagamento
       </a>
     </div>
-    <Payment :getTotal="getTotal()" />
+    <!-- <Payment :getTotal="getTotal()" /> -->
   </div>
 </template>
 
 <script>
-import Payment from "../payment/Payment.vue";
+// import Payment from "../payment/Payment.vue";
 
 export default {
   name: "RestaurantCart",
   components: {
-    Payment,
+    // Payment,
   },
   props: ["cart", "restaurant", "addCart", "removeFromCart"],
   methods: {

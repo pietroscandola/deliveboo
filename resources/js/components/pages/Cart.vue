@@ -36,12 +36,17 @@
         </tr>
       </tfoot>
     </table>
+    <Payment :getTotal="getTotal()" />
   </section>
 </template>
 
 <script>
+import Payment from "../payment/Payment.vue";
 export default {
   name: "Cart",
+  components: {
+    Payment,
+  },
   data() {
     return {
       cart: JSON.parse(sessionStorage.cart),
