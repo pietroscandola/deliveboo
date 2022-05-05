@@ -100,7 +100,14 @@
                   </div>
                   <button
                     class="btn btn-success"
-                    @click="addCart(product.id, product.name, product.price)"
+                    v-if="currentRestaurant !== restaurant.id" data-bs-toggle="modal" data-bs-target="#modale"
+                  >
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                  <button
+                    v-else
+                    class="btn btn-success"
+                    @click="addCart(product.id, product.name, product.price, restaurant.id)"
                   >
                     <i class="fa-solid fa-plus"></i>
                   </button>
@@ -111,7 +118,7 @@
         </div>
       </div>
       <div class="col-4">
-        <RestaurantCart v-if="cart.length" :cart="cart" />
+        <RestaurantCart v-if="cart.length && currentRestaurant === restaurant.id" :cart="cart" />
         <!-- Empty Cart -->
         <div
           v-else
@@ -139,6 +146,25 @@
         </div>
       </div>
     </div>
+
+      <!-- Modal -->
+      <div v-for="product in products" :key="product.id" class="modal fade" id="modale" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">ATTENZIONE</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+            </div>
+            <div class="modal-body">
+              <h6>Vuoi svuotare il carrello per crearne uno nuovo?</h6> 
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiudi</button>
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal" @click="getEmptyCart(product.id, product.name, product.price, restaurant.id)">Conferma</button>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
 </template>
 
@@ -155,9 +181,10 @@ export default {
   data() {
     return {
       isLoading: false,
-      restaurant: {},
+      restaurant: [],
       products: [],
       cart: [],
+      currentRestaurant: 0,
     };
   },
   methods: {
@@ -179,7 +206,7 @@ export default {
         });
     },
 
-    addCart(id, name, price) {
+    addCart(id, name, price, restaurant_id) {
       // this.cart.push({ prod_id: id, unitprice: "helo", code: "helo" }); // what to push unto the rows array?
       const can = {
         prod_id: id,
@@ -187,7 +214,15 @@ export default {
         price,
         quantity: 1,
       };
+
       let already_in = false;
+
+      if(restaurant_id !== this.currentRestaurant) {
+        this.cart = [];
+        this.currentRestaurant = restaurant_id;
+      } else {
+        this.currentRestaurant = restaurant_id;
+      }
 
       if (this.cart.length === 0) {
         this.cart.push(can);
@@ -244,16 +279,42 @@ export default {
         });
         return total
     },
+
+    getEmptyCart(id, name, price, restaurant_id) {
+        this.cart = [];
+        this.currentRestaurant = restaurant_id;
+
+        const can = {
+        prod_id: id,
+        name,
+        price,
+        quantity: 1,
+      };
+
+      this.cart.push(can);
+    }
   },
+
   mounted() {
     this.getRestaurant();
 
-    // SessionStorageCart
+    // SessionStorageCart - Restaurant (NUOVO)
+    if(sessionStorage.currentRestaurant) {
+      this.currentRestaurant = JSON.parse(sessionStorage.currentRestaurant);
+    } 
+
+      // SessionStorageCart - Cart (VECCHIO)
     if (sessionStorage.cart) {
       this.cart = JSON.parse(sessionStorage.cart);
     }
   },
   watch: {
+    currentRestaurant: {
+      handler(newCurrentRestaurant) {
+        sessionStorage.currentRestaurant = JSON.stringify(newCurrentRestaurant);
+      },
+      deep: true,
+    },
     cart: {
       handler(newCart) {
         sessionStorage.cart = JSON.stringify(newCart);
