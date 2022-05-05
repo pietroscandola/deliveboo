@@ -72,17 +72,17 @@
       </div>
     </div>
     <!-- Totale -->
-    <div class="d-flex justify-content-between">
+    <div class="d-flex justify-content-between mb-5">
       <span><strong>Totale</strong></span>
       <span
         ><strong>{{ getTotal().toFixed(2) }} €</strong></span
       >
     </div>
-    <div class="mt-3">
+    <!-- <div class="mt-3">
       <a class="checkout-button" href="http://127.0.0.1:8000/cart">
         Vai al pagamento
       </a>
-    </div>
+    </div> -->
     <Payment :getTotal="getTotal()" />
   </div>
 </template>
