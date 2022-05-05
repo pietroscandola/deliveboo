@@ -63,13 +63,13 @@ import braintree from "braintree-web";
 
 export default {
    name: "PaymentTwo",
-   props: ["getTotal"],
+   props: ["tot"],
    data() {
       return {
          hostedFieldInstance: false,
          nonce: "",
          error: "",
-         amount: this.getTotal,
+         amount: this.tot,
       };
    },
    methods: {
@@ -131,7 +131,7 @@ export default {
          .catch((err) => {});
    },
    watch: {
-      getTotal: function (v) {
+      tot: function (v) {
          this.amount = v.toFixed(2);
       },
    },
