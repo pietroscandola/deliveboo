@@ -2818,7 +2818,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   watch: {
     tot: function tot(v) {
-      this.amount = v.toFixed(2);
+      this.amount = parseFloat(v.toFixed(2));
     }
   }
 });
