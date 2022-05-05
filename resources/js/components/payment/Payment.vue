@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid">
+  <div>
     <div>
       <div class="card bg-light">
         <div class="card-header">Informazioni di Pagamento</div>
@@ -45,10 +45,7 @@
                 </div>
               </div>
             </div>
-            <button
-              class="btn btn-primary btn-block"
-              @click.prevent="payWithCreditCard"
-            >
+            <button class="payment-button" @click.prevent="payWithCreditCard">
               Paga
             </button>
           </form>
@@ -132,6 +129,24 @@ export default {
   },
 };
 </script>
-
-<style>
+<style scoped lang="scss">
+.payment-button {
+  width: 100%;
+  border: none;
+  display: block;
+  text-align: center;
+  background-color: #00ccbc;
+  color: #fff;
+  border-radius: 5px;
+  font-weight: 900;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  &:focus {
+    box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);
+  }
+  &:hover {
+    background-color: #00c2b3;
+    text-decoration: none;
+  }
+}
 </style>
