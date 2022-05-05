@@ -83,12 +83,18 @@
         Vai al pagamento
       </a>
     </div>
+    <Payment :getTotal="getTotal()" />
   </div>
 </template>
 
 <script>
+import Payment from "../payment/Payment.vue";
+
 export default {
   name: "RestaurantCart",
+  components: {
+    Payment,
+  },
   props: ["cart", "restaurant", "addCart", "removeFromCart"],
   methods: {
     getProductTotalPrice(product) {
