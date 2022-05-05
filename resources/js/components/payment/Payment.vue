@@ -23,7 +23,7 @@
                   type="text"
                   id="amount"
                   class="form-control"
-                  :value="getTotal.toFixed(2)"
+                  v-model="amount"
                   disabled
                 />
               </div>
@@ -57,16 +57,15 @@
 
 <script>
 import braintree from "braintree-web";
-
 export default {
   name: "PaymentTwo",
-  props: ["getTotal"],
+  props: ["tot"],
   data() {
     return {
       hostedFieldInstance: false,
       nonce: "",
       error: "",
-      amount: 0,
+      amount: this.tot,
     };
   },
   methods: {
@@ -74,7 +73,6 @@ export default {
       if (this.hostedFieldInstance) {
         this.error = "";
         this.nonce = "";
-
         this.hostedFieldInstance
           .tokenize()
           .then((payload) => {
@@ -126,6 +124,11 @@ export default {
         this.hostedFieldInstance = hostedFieldInstance;
       })
       .catch((err) => {});
+  },
+  watch: {
+    tot: function (v) {
+      this.amount = parseFloat(v.toFixed(2));
+    },
   },
 };
 </script>
