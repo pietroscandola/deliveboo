@@ -48,7 +48,7 @@ Route::prefix('pay')->group(function () {
 
         $token = $gateway->ClientToken()->generate();
 
-        return view('welblade', [
+        return view('pay', [
             'token' => $token
         ]);
     });
@@ -105,7 +105,7 @@ Route::prefix('pay')->group(function () {
 
         $token = $gateway->ClientToken()->generate();
 
-        return view('hosted', [
+        return view('payform', [
             'token' => $token
         ]);
     });
