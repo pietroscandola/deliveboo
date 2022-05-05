@@ -130,7 +130,7 @@ export default {
    },
    watch: {
       tot: function (v) {
-         this.amount = v.toFixed(2);
+         this.amount = parseFloat(v.toFixed(2));
       },
    },
 };
