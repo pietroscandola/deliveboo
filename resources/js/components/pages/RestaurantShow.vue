@@ -100,7 +100,14 @@
                   </div>
                   <button
                     class="btn btn-success"
-                    @click="addCart(product.id, product.name, product.price, restaurant.id)"
+                    @click="
+                      addCart(
+                        product.id,
+                        product.name,
+                        product.price,
+                        restaurant.id
+                      )
+                    "
                   >
                     <i class="fa-solid fa-plus"></i>
                   </button>
@@ -111,7 +118,10 @@
         </div>
       </div>
       <div class="col-4">
-        <RestaurantCart v-if="cart.length && currentRestaurant === restaurant.id" :cart="cart" />
+        <RestaurantCart
+          v-if="cart.length && currentRestaurant === restaurant.id"
+          :cart="cart"
+        />
         <!-- Empty Cart -->
         <div
           v-else
@@ -191,7 +201,10 @@ export default {
 
       let already_in = false;
 
-      if(this.currentRestaurant > 0 && restaurant_id !== this.currentRestaurant) {
+      if (
+        this.currentRestaurant > 0 &&
+        restaurant_id !== this.currentRestaurant
+      ) {
         this.cart = [];
         this.currentRestaurant = restaurant_id;
       } else {
@@ -242,25 +255,25 @@ export default {
     },
 
     getIncrement(id) {
-       let total = 0;
-       const can = {
+      let total = 0;
+      const can = {
         prod_id: id,
       };
       this.cart.forEach((product) => {
-          if (product["prod_id"] === id) {
-            total += product.quantity;
-          }
-        });
-        return total
+        if (product["prod_id"] === id) {
+          total += product.quantity;
+        }
+      });
+      return total;
     },
   },
   mounted() {
     this.getRestaurant();
 
     // SessionStorageCart
-    if(sessionStorage.currentRestaurant) {
+    if (sessionStorage.currentRestaurant) {
       this.currentRestaurant = JSON.parse(sessionStorage.currentRestaurant);
-    } 
+    }
 
     if (sessionStorage.cart) {
       this.cart = JSON.parse(sessionStorage.cart);
@@ -294,6 +307,7 @@ export default {
 
 <style scoped lang="scss">
 .product-card {
+  min-height: 95%;
   position: relative;
   .price-badge {
     position: absolute;
@@ -309,8 +323,5 @@ export default {
   background-color: #fff;
   border: 1px solid #e2e5e5;
   border-radius: 5px;
-}
-.card {
-  min-height: 95%;
 }
 </style>
