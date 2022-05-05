@@ -2727,6 +2727,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantCart",
   props: ["cart"],
@@ -40094,56 +40097,64 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("table", { staticClass: "table" }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c(
-      "tbody",
-      _vm._l(_vm.cart, function (product) {
-        return _c("tr", { key: product.id }, [
-          _c("td", { attrs: { scope: "row" } }, [
-            _c("small", [
-              _vm._v("\n          " + _vm._s(product.name) + "\n        "),
+  return _c("div", [
+    _c("table", { staticClass: "table" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "tbody",
+        _vm._l(_vm.cart, function (product) {
+          return _c("tr", { key: product.id }, [
+            _c("td", { attrs: { scope: "row" } }, [
+              _c("small", [
+                _vm._v(
+                  "\n            " + _vm._s(product.name) + "\n          "
+                ),
+              ]),
             ]),
-          ]),
+            _vm._v(" "),
+            _c("td", [
+              _c("small", [
+                _vm._v(
+                  "\n            " + _vm._s(product.quantity) + "\n          "
+                ),
+              ]),
+            ]),
+            _vm._v(" "),
+            _c("td", [_c("small", [_vm._v(_vm._s(product.price) + " € ")])]),
+            _vm._v(" "),
+            _c("td", [
+              _c("small", [
+                _vm._v(
+                  " " +
+                    _vm._s(_vm.getProductTotalPrice(product).toFixed(2)) +
+                    " € "
+                ),
+              ]),
+            ]),
+          ])
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c("tfoot", [
+        _c("tr", [
+          _vm._m(1),
+          _vm._v(" "),
+          _c("td", [_vm._v("-")]),
+          _vm._v(" "),
+          _c("td", [_vm._v("-")]),
           _vm._v(" "),
           _c("td", [
             _c("small", [
-              _vm._v("\n          " + _vm._s(product.quantity) + "\n        "),
+              _vm._v(" " + _vm._s(_vm.getTotal().toFixed(2)) + " € "),
             ]),
-          ]),
-          _vm._v(" "),
-          _c("td", [_c("small", [_vm._v(_vm._s(product.price) + " € ")])]),
-          _vm._v(" "),
-          _c("td", [
-            _c("small", [
-              _vm._v(
-                " " +
-                  _vm._s(_vm.getProductTotalPrice(product).toFixed(2)) +
-                  " € "
-              ),
-            ]),
-          ]),
-        ])
-      }),
-      0
-    ),
-    _vm._v(" "),
-    _c("tfoot", [
-      _c("tr", [
-        _vm._m(1),
-        _vm._v(" "),
-        _c("td", [_vm._v("-")]),
-        _vm._v(" "),
-        _c("td", [_vm._v("-")]),
-        _vm._v(" "),
-        _c("td", [
-          _c("small", [
-            _vm._v(" " + _vm._s(_vm.getTotal().toFixed(2)) + " € "),
           ]),
         ]),
       ]),
     ]),
+    _vm._v(" "),
+    _vm._m(2),
   ])
 }
 var staticRenderFns = [
@@ -40168,6 +40179,16 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("td", [_c("strong", [_vm._v("Totale")])])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("a", { attrs: { href: "http://127.0.0.1:8000/cart" } }, [
+        _vm._v(" Vai al pagamento "),
+      ]),
+    ])
   },
 ]
 render._withStripped = true
@@ -56548,7 +56569,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Lavavel\deliveboo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
