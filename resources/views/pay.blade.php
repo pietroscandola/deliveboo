@@ -99,7 +99,7 @@
       @endif
 
       <div class="content">
-         <form method="post" id="payment-form" action="{{ url('/checkout') }}">
+         <form method="post" id="payment-form" action="{{ url('/pay/checkout') }}">
             @csrf
             <section>
                <label for="amount">

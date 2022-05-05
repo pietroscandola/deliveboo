@@ -50,7 +50,7 @@
                </ul>
             </div>
          @endif
-         <form action="{{ url('/checkout') }}" method="POST" id="payment-form">
+         <form action="{{ url('/pay/checkout') }}" method="POST" id="payment-form">
             @csrf
             <div class="form-group">
                <label for="email">Email Address</label>
