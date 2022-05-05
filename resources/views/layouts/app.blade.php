@@ -31,12 +31,12 @@
                 @guest
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{-- {{ config('app.name', 'Laravel') }} --}}
-                    Deliveboo
+                    <img width="100px" src="{{ asset('img/deliveboo-logo.png') }}" alt="">
                 </a>
                 @else
                 <a class="navbar-brand" href="{{ url('/admin/home') }}">
                     {{-- {{ config('app.name', 'Laravel') }} --}}
-                    Deliveboo
+                    <img width="100px" src="{{ asset('img/deliveboo-logo.png') }}" alt="">
                 </a>
                 @endguest
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
