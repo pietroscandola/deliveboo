@@ -2077,9 +2077,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "CategoryCard",
-  props: ["category"]
+  props: ["category"],
+  data: function data() {
+    return {
+      isActive: false
+    };
+  },
+  methods: {
+    myFilter: function myFilter() {
+      if (this.isActive) {
+        this.isActive = false;
+      } else {
+        this.isActive = true;
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -7203,7 +7220,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "a[data-v-5619f966] {\n  color: white;\n  font-weight: bolder;\n  text-decoration: none;\n  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);\n}\n.card-body[data-v-5619f966] {\n  background-image: url(\"https://consumer-component-library.roocdn.com/25.30.2/static/images/placeholder.svg\");\n  background-position: center;\n  block-size: cover;\n}", ""]);
+exports.push([module.i, "a[data-v-5619f966] {\n  color: white;\n  font-weight: bolder;\n  text-decoration: none;\n  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);\n}\n.card-body[data-v-5619f966] {\n  background-image: url(\"https://consumer-component-library.roocdn.com/25.30.2/static/images/placeholder.svg\");\n  background-position: center;\n  block-size: cover;\n}\n.active[data-v-5619f966] {\n  outline: 2px solid blue;\n  cursor: pointer;\n}", ""]);
 
 // exports
 
@@ -39436,23 +39453,27 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "router-link",
-    {
-      attrs: {
-        to: { name: "restaurant-categories", params: { id: _vm.category.id } },
+  return _c("div", [
+    _c(
+      "div",
+      {
+        staticClass: "card mr-3",
+        class: { active: _vm.isActive },
+        on: {
+          click: function ($event) {
+            return _vm.myFilter()
+          },
+        },
       },
-    },
-    [
-      _c("div", { staticClass: "card mr-3" }, [
+      [
         _c("div", { staticClass: "card-body" }, [
           _c("p", { staticClass: "card-text" }, [
             _vm._v(_vm._s(_vm.category.name)),
           ]),
         ]),
-      ]),
-    ]
-  )
+      ]
+    ),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -56529,7 +56550,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Lavavel\deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\Federico\Desktop\deliveboo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })

@@ -1,19 +1,38 @@
 <template>
-  <router-link
-    :to="{ name: 'restaurant-categories', params: { id: category.id } }"
-  >
-    <div class="card mr-3">
+
+  <div>
+
+    <div class="card mr-3" @click="myFilter()" :class="{active: isActive}">
       <div class="card-body">
         <p class="card-text">{{ category.name }}</p>
       </div>
     </div>
-  </router-link>
+
+  </div>
+
+
 </template>
 
 <script>
 export default {
   name: "CategoryCard",
   props: ["category"],
+  data() { 
+    return {
+      isActive : false,
+
+    }
+  },
+  methods: {
+    myFilter() {
+     
+      if (this.isActive) {
+        this.isActive = false;
+      } else {
+        this.isActive = true;
+      }
+  }
+  }
 };
 </script>
 
@@ -28,5 +47,9 @@ a {
   background-image: url("https://consumer-component-library.roocdn.com/25.30.2/static/images/placeholder.svg");
   background-position: center;
   block-size: cover;
+}
+.active {
+  outline: 2px solid blue;
+  cursor: pointer;
 }
 </style>
