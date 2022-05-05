@@ -127,7 +127,7 @@
                            </div>
                            <!-- Fake Plus -->
                            <svg
-                            v-if="currentRestaurant !== restaurant.id" data-bs-toggle="modal" data-bs-target="#modale"
+                            v-if="currentRestaurant !== restaurant.id && currentRestaurant !== 0" data-bs-toggle="modal" data-bs-target="#modale"
                               
                               xmlns:xlink="http://www.w3.org/1999/xlink"
                               xmlns="http://www.w3.org/2000/svg"
@@ -255,6 +255,7 @@ export default {
          products: [],
          cart: [],
          currentRestaurant: 0,
+         currentProducts: [],
       };
    },
    methods: {
@@ -310,6 +311,7 @@ export default {
             this.cart.push(can);
             console.log(this.cart, "NEW");
          }
+         this.currentProduct = this.cart;
          // console.log(id);
       },
       removeFromCart(id) {
@@ -329,6 +331,9 @@ export default {
                   console.log(this.cart, "REMOVED");
                }
             });
+         }
+         if (this.cart.length < 1) {
+           this.currentRestaurant = 0;
          }
       },
       getProductTotalPrice(product) {
@@ -350,6 +355,7 @@ export default {
       emptyCart() {
          this.cart = [];
       },
+
       getEmptyCart(id, name, price, restaurant_id) {
         this.cart = [];
         this.currentRestaurant = restaurant_id;
@@ -362,6 +368,7 @@ export default {
       this.cart.push(can);
     }
    },
+   
    mounted() {
       this.getRestaurant();
       // SessionStorageCart - Restaurant (NUOVO)
