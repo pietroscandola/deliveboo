@@ -1,58 +1,56 @@
 <template>
-   <div class="container-fluid">
-      <div>
-         <div class="card bg-light">
-            <div class="card-header">Informazioni di Pagamento</div>
-            <div class="card-body">
-               <!-- SUCCESSO -->
-               <div class="alert alert-success" v-if="nonce">
-                  Pagamento andato a buon fine
-               </div>
-               <!-- ERRORE -->
-               <div class="alert alert-danger" v-if="error">
-                  {{ error }}
-               </div>
-               <form>
-                  <div class="form-group">
-                     <label for="amount">Importo Totale</label>
-                     <div class="input-group">
-                        <div class="input-group-prepend">
-                           <span class="input-group-text">€</span>
-                        </div>
-                        <input
-                           type="text"
-                           id="amount"
-                           class="form-control"
-                           v-model="amount"
-                           disabled
-                        />
-                     </div>
-                  </div>
-                  <hr />
-                  <div class="form-group">
-                     <label>Numero Carta di Credito</label>
-                     <div id="creditCardNumber" class="form-control"></div>
-                  </div>
-                  <div class="form-group">
-                     <div class="row">
-                        <div class="col-6">
-                           <label>Data di Scadenza</label>
-                           <div id="expireDate" class="form-control"></div>
-                        </div>
-                        <div class="col-6">
-                           <label>CVV</label>
-                           <div id="cvv" class="form-control"></div>
-                        </div>
-                     </div>
-                  </div>
-                  <button
-                     class="checkout-button w-100"
-                     @click.prevent="payWithCreditCard"
-                  >
-                     Paga
-                  </button>
-               </form>
+   <div>
+      <div class="card bg-light">
+         <div class="card-header">Informazioni di Pagamento</div>
+         <div class="card-body">
+            <!-- SUCCESSO -->
+            <div class="alert alert-success" v-if="nonce">
+               Pagamento andato a buon fine
             </div>
+            <!-- ERRORE -->
+            <div class="alert alert-danger" v-if="error">
+               {{ error }}
+            </div>
+            <form>
+               <div class="form-group">
+                  <label for="amount">Importo Totale</label>
+                  <div class="input-group">
+                     <div class="input-group-prepend">
+                        <span class="input-group-text">€</span>
+                     </div>
+                     <input
+                        type="text"
+                        id="amount"
+                        class="form-control"
+                        v-model="amount"
+                        disabled
+                     />
+                  </div>
+               </div>
+               <hr />
+               <div class="form-group">
+                  <label>Numero Carta di Credito</label>
+                  <div id="creditCardNumber" class="form-control"></div>
+               </div>
+               <div class="form-group">
+                  <div class="row">
+                     <div class="col-6">
+                        <label>Data di Scadenza</label>
+                        <div id="expireDate" class="form-control"></div>
+                     </div>
+                     <div class="col-6">
+                        <label>CVV</label>
+                        <div id="cvv" class="form-control"></div>
+                     </div>
+                  </div>
+               </div>
+               <button
+                  class="checkout-button w-100"
+                  @click.prevent="payWithCreditCard"
+               >
+                  Paga
+               </button>
+            </form>
          </div>
       </div>
    </div>
