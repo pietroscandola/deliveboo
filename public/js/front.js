@@ -2640,7 +2640,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var braintree_web__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! braintree-web */ "./node_modules/braintree-web/dist/browser/index.js");
+/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var braintree_web__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! braintree-web */ "./node_modules/braintree-web/dist/browser/index.js");
 /* harmony import */ var braintree_web__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(braintree_web__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
@@ -2705,7 +2705,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PaymentTwo",
-  props: [],
+  props: ["getTotal"],
   data: function data() {
     return {
       hostedFieldInstance: false,
@@ -2734,12 +2734,10 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    console.log("sandbox_ktyfs7dd_h64c3rb9ttj7fvq9");
     braintree_web__WEBPACK_IMPORTED_MODULE_0___default.a.client.create({
       // Bisogna inserire la key di braintree
-      // TODO aggiungere collegamento a variabile in .env, con key di autorizzazione funziona
-      authorization: "sandbox_ktyfs7dd_h64c3rb9ttj7fvq9" //se funzionasse :)
-
+      // Aggiungere MIX_VUE_APP_BT_SDK con la propria key
+      authorization: process.env.MIX_VUE_APP_BT_SDK
     }).then(function (clientInstance) {
       var options = {
         client: clientInstance,
@@ -2771,6 +2769,7 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (err) {});
   }
 });
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -2828,8 +2827,6 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-//
-//
 //
 //
 //
@@ -63421,57 +63418,35 @@ var render = function () {
     _c("div", [
       _c("div", { staticClass: "card bg-light" }, [
         _c("div", { staticClass: "card-header" }, [
-          _vm._v("Payment Information"),
+          _vm._v("Informazioni di Pagamento"),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-body" }, [
           _vm.nonce
             ? _c("div", { staticClass: "alert alert-success" }, [
-                _vm._v(
-                  "\n               Successfully generated nonce.\n            "
-                ),
+                _vm._v("\n          Pagamento andato a buon fine\n        "),
               ])
             : _vm._e(),
           _vm._v(" "),
           _vm.error
             ? _c("div", { staticClass: "alert alert-danger" }, [
-                _vm._v(
-                  "\n               " + _vm._s(_vm.error) + "\n            "
-                ),
+                _vm._v("\n          " + _vm._s(_vm.error) + "\n        "),
               ])
             : _vm._e(),
           _vm._v(" "),
           _c("form", [
             _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "amount" } }, [_vm._v("Amount")]),
+              _c("label", { attrs: { for: "amount" } }, [
+                _vm._v("Importo Totale"),
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "input-group" }, [
                 _vm._m(0),
                 _vm._v(" "),
                 _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.amount,
-                      expression: "amount",
-                    },
-                  ],
                   staticClass: "form-control",
-                  attrs: {
-                    type: "number",
-                    id: "amount",
-                    placeholder: "Enter Amount",
-                  },
-                  domProps: { value: _vm.amount },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.amount = $event.target.value
-                    },
-                  },
+                  attrs: { type: "text", id: "amount", disabled: "" },
+                  domProps: { value: _vm.getTotal.toFixed(2) },
                 }),
               ]),
             ]),
@@ -63493,11 +63468,7 @@ var render = function () {
                   },
                 },
               },
-              [
-                _vm._v(
-                  "\n                  Pay with Credit Card\n               "
-                ),
-              ]
+              [_vm._v("\n            Paga\n          ")]
             ),
           ]),
         ]),
@@ -63511,7 +63482,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "input-group-prepend" }, [
-      _c("span", { staticClass: "input-group-text" }, [_vm._v("$")]),
+      _c("span", { staticClass: "input-group-text" }, [_vm._v("€")]),
     ])
   },
   function () {
@@ -63519,7 +63490,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "form-group" }, [
-      _c("label", [_vm._v("Credit Card Number")]),
+      _c("label", [_vm._v("Numero Carta di Credito")]),
       _vm._v(" "),
       _c("div", {
         staticClass: "form-control",
@@ -63534,7 +63505,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "form-group" }, [
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-6" }, [
-          _c("label", [_vm._v("Expire Date")]),
+          _c("label", [_vm._v("Data di Scadenza")]),
           _vm._v(" "),
           _c("div", {
             staticClass: "form-control",
@@ -63644,9 +63615,7 @@ var render = function () {
               _c("td", { attrs: { scope: "row" } }, [
                 _c("small", [
                   _vm._v(
-                    "\n                  " +
-                      _vm._s(product.name) +
-                      "\n               "
+                    "\n            " + _vm._s(product.name) + "\n          "
                   ),
                 ]),
               ]),
@@ -63654,9 +63623,7 @@ var render = function () {
               _c("td", [
                 _c("small", [
                   _vm._v(
-                    "\n                  " +
-                      _vm._s(product.quantity) +
-                      "\n               "
+                    "\n            " + _vm._s(product.quantity) + "\n          "
                   ),
                 ]),
               ]),
@@ -63666,9 +63633,9 @@ var render = function () {
               _c("td", [
                 _c("small", [
                   _vm._v(
-                    "\n                  " +
+                    " " +
                       _vm._s(_vm.getProductTotalPrice(product).toFixed(2)) +
-                      " €\n               "
+                      " € "
                   ),
                 ]),
               ]),
@@ -63694,7 +63661,7 @@ var render = function () {
         ]),
       ]),
       _vm._v(" "),
-      _c("Payment"),
+      _c("Payment", { attrs: { getTotal: _vm.getTotal() } }),
     ],
     1
   )
@@ -80170,7 +80137,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Vasco Rossi\Documents\Boolean\Progetto\deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\pietr\Desktop\deliveboo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
