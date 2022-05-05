@@ -2530,6 +2530,19 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -63342,9 +63355,9 @@ var render = function () {
                                 },
                                 [
                                   _vm._v(
-                                    "\n              " +
+                                    "\n                     " +
                                       _vm._s(category.name) +
-                                      "\n            "
+                                      "\n                  "
                                   ),
                                 ]
                               )
@@ -63374,9 +63387,9 @@ var render = function () {
                     _vm._v(" "),
                     _c("p", { staticClass: "card-text" }, [
                       _vm._v(
-                        "\n              " +
+                        "\n                     " +
                           _vm._s(_vm.restaurant.description) +
-                          "\n            "
+                          "\n                  "
                       ),
                     ]),
                     _vm._v(" "),
@@ -63390,7 +63403,11 @@ var render = function () {
                           },
                         },
                       },
-                      [_vm._v("\n              Indietro\n            ")]
+                      [
+                        _vm._v(
+                          "\n                     Indietro\n                  "
+                        ),
+                      ]
                     ),
                   ]),
                 ]),
@@ -63430,7 +63447,7 @@ var render = function () {
                           "div",
                           {
                             staticClass:
-                              "card-body justify-content-between d-flex flex-column",
+                              "\n                        card-body\n                        justify-content-between\n                        d-flex\n                        flex-column\n                     ",
                           },
                           [
                             _c("div", [
@@ -63450,7 +63467,9 @@ var render = function () {
                                 },
                                 [
                                   _c("strong", [
-                                    _vm._v(_vm._s(product.price) + " €"),
+                                    _vm._v(
+                                      _vm._s(product.price.toFixed(2)) + " €"
+                                    ),
                                   ]),
                                 ]
                               ),
@@ -63460,14 +63479,14 @@ var render = function () {
                               "div",
                               {
                                 staticClass:
-                                  "d-flex justify-content-around align-items-center",
+                                  "\n                           d-flex\n                           justify-content-around\n                           align-items-center\n                        ",
                               },
                               [
                                 _c(
                                   "svg",
                                   {
                                     staticClass:
-                                      "\n                    ccl-0f24ac4b87ce1f67\n                    ccl-ed34b65f78f16205\n                    ccl-c738ab1fde928049\n                  ",
+                                      "\n                              ccl-0f24ac4b87ce1f67\n                              ccl-ed34b65f78f16205\n                              ccl-c738ab1fde928049\n                           ",
                                     attrs: {
                                       "xmlns:xlink":
                                         "http://www.w3.org/1999/xlink",
@@ -63506,7 +63525,7 @@ var render = function () {
                                   "svg",
                                   {
                                     staticClass:
-                                      "\n                    ccl-0f24ac4b87ce1f67\n                    ccl-ed34b65f78f16205\n                    ccl-c738ab1fde928049\n                  ",
+                                      "\n                              ccl-0f24ac4b87ce1f67\n                              ccl-ed34b65f78f16205\n                              ccl-c738ab1fde928049\n                           ",
                                     attrs: {
                                       "xmlns:xlink":
                                         "http://www.w3.org/1999/xlink",
@@ -63567,7 +63586,7 @@ var render = function () {
                       "div",
                       {
                         staticClass:
-                          "\n          empty-cart\n          d-flex\n          justify-content-center\n          flex-column\n          align-items-center\n        ",
+                          "\n               empty-cart\n               d-flex\n               justify-content-center\n               flex-column\n               align-items-center\n            ",
                       },
                       [
                         _c(
