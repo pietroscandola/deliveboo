@@ -100,7 +100,7 @@
                   </div>
                   <button
                     class="btn btn-success"
-                    @click="addCart(product.id, product.name, product.price)"
+                    @click="addCart(product.id, product.name, product.price, restaurant.id)"
                   >
                     <i class="fa-solid fa-plus"></i>
                   </button>
@@ -111,7 +111,7 @@
         </div>
       </div>
       <div class="col-4">
-        <RestaurantCart v-if="cart.length" :cart="cart" />
+        <RestaurantCart v-if="cart.length && currentRestaurant === restaurant.id" :cart="cart" />
         <!-- Empty Cart -->
         <div
           v-else
@@ -155,9 +155,10 @@ export default {
   data() {
     return {
       isLoading: false,
-      restaurant: {},
+      restaurant: [],
       products: [],
       cart: [],
+      currentRestaurant: 0,
     };
   },
   methods: {
@@ -179,7 +180,7 @@ export default {
         });
     },
 
-    addCart(id, name, price) {
+    addCart(id, name, price, restaurant_id) {
       // this.cart.push({ prod_id: id, unitprice: "helo", code: "helo" }); // what to push unto the rows array?
       const can = {
         prod_id: id,
@@ -187,7 +188,15 @@ export default {
         price,
         quantity: 1,
       };
+
       let already_in = false;
+
+      if(this.currentRestaurant > 0 && restaurant_id !== this.currentRestaurant) {
+        this.cart = [];
+        this.currentRestaurant = restaurant_id;
+      } else {
+        this.currentRestaurant = restaurant_id;
+      }
 
       if (this.cart.length === 0) {
         this.cart.push(can);
@@ -249,11 +258,21 @@ export default {
     this.getRestaurant();
 
     // SessionStorageCart
+    if(sessionStorage.currentRestaurant) {
+      this.currentRestaurant = JSON.parse(sessionStorage.currentRestaurant);
+    } 
+
     if (sessionStorage.cart) {
       this.cart = JSON.parse(sessionStorage.cart);
     }
   },
   watch: {
+    currentRestaurant: {
+      handler(newCurrentRestaurant) {
+        sessionStorage.currentRestaurant = JSON.stringify(newCurrentRestaurant);
+      },
+      deep: true,
+    },
     cart: {
       handler(newCart) {
         sessionStorage.cart = JSON.stringify(newCart);
