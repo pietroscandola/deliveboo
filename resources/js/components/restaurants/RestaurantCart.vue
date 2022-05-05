@@ -76,12 +76,19 @@ export default {
   .checkout-button {
     display: block;
     text-align: center;
-    background-color: #00c2b3;
+    background-color: #00ccbc;
     color: #fff;
     border-radius: 5px;
     font-weight: 900;
     padding-top: 10px;
     padding-bottom: 10px;
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);
+    }
+    &:hover {
+      background-color: #00c2b3;
+      text-decoration: none;
+    }
   }
 }
 </style>
