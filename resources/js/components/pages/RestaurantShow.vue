@@ -45,7 +45,7 @@
       <!-- PRODOTTI -->
       <div class="col-12 mt-3 d-flex justify-content-between">
         <h2 class="d-inline">Prodotti</h2>
-        <div class="position-relative">
+        <!-- <div class="position-relative">
           <a href="http://127.0.0.1:8000/cart">
             <i class="fa-solid fa-cart-shopping fa-2x"></i>
             <span
@@ -56,7 +56,7 @@
               {{ getTotalQuantity }}
             </span>
           </a>
-        </div>
+        </div> -->
       </div>
       <div class="row"></div>
       <div class="col-8">
@@ -87,23 +87,59 @@
                   </span>
                 </div>
                 <div class="d-flex justify-content-around align-items-center">
-                  <button
-                    class="btn btn-danger"
+                  <!-- Minus SVG -->
+                  <svg
                     @click="removeFromCart(product.id)"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24"
+                    width="24"
+                    viewBox="0 0 24 24"
+                    role="button"
+                    focusable="false"
+                    class="
+                      ccl-0f24ac4b87ce1f67
+                      ccl-ed34b65f78f16205
+                      ccl-c738ab1fde928049
+                    "
                   >
-                    <i class="fa-solid fa-minus"></i>
-                  </button>
+                    <path
+                      d="M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z"
+                      fill="#00CCBC"
+                    ></path>
+                  </svg>
                   <div>
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <p>{{ getIncrement(product.id) }}</p>
+                    <p class="m-0">{{ getIncrement(product.id) }}</p>
                     <!-- da inserire la quantità incrementata -->
                   </div>
-                  <button
-                    class="btn btn-success"
-                    @click="addCart(product.id, product.name, product.price, restaurant.id)"
+                  <!-- Plus SVG -->
+                  <svg
+                    @click="
+                      addCart(
+                        product.id,
+                        product.name,
+                        product.price,
+                        restaurant.id
+                      )
+                    "
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24"
+                    width="24"
+                    viewBox="0 0 24 24"
+                    role="button"
+                    focusable="false"
+                    class="
+                      ccl-0f24ac4b87ce1f67
+                      ccl-ed34b65f78f16205
+                      ccl-c738ab1fde928049
+                    "
                   >
-                    <i class="fa-solid fa-plus"></i>
-                  </button>
+                    <path
+                      d="M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z"
+                      fill="#00CCBC"
+                    ></path>
+                  </svg>
                 </div>
               </div>
             </div>
@@ -111,7 +147,14 @@
         </div>
       </div>
       <div class="col-4">
-        <RestaurantCart v-if="cart.length && currentRestaurant === restaurant.id" :cart="cart" />
+        <RestaurantCart
+          v-if="cart.length && currentRestaurant === restaurant.id"
+          :addCart="addCart"
+          :removeFromCart="removeFromCart"
+          :restaurant="restaurant"
+          :cart="cart"
+          @empty-cart="emptyCart"
+        />
         <!-- Empty Cart -->
         <div
           v-else
@@ -181,9 +224,10 @@ export default {
     },
 
     addCart(id, name, price, restaurant_id) {
-      // this.cart.push({ prod_id: id, unitprice: "helo", code: "helo" }); // what to push unto the rows array?
+      console.log("prova");
+      // this.cart.push({ product_id: id, unitprice: "helo", code: "helo" }); // what to push unto the rows array?
       const can = {
-        prod_id: id,
+        product_id: id,
         name,
         price,
         quantity: 1,
@@ -191,7 +235,7 @@ export default {
 
       let already_in = false;
 
-      if(this.currentRestaurant > 0 && restaurant_id !== this.currentRestaurant) {
+      if (restaurant_id !== this.currentRestaurant) {
         this.cart = [];
         this.currentRestaurant = restaurant_id;
       } else {
@@ -204,7 +248,7 @@ export default {
         console.log(this.cart, "NEW FROM EMPTY");
       } else {
         this.cart.forEach((product) => {
-          if (product["prod_id"] === id) {
+          if (product["product_id"] === id) {
             product.quantity++;
             already_in = true;
             console.log(this.cart, "QUANTITY");
@@ -219,16 +263,17 @@ export default {
     },
 
     removeFromCart(id) {
+      console.log();
       if (this.cart.length === 0) {
         console.log("EMPTY CART");
       } else {
         this.cart.forEach((product) => {
-          if (product["prod_id"] === id && product["quantity"] != 1) {
+          if (product["product_id"] === id && product["quantity"] != 1) {
             product.quantity--;
             console.log(this.cart, "LESS QUANTITY");
-          } else if (product["prod_id"] === id) {
+          } else if (product["product_id"] === id) {
             const i = this.cart.findIndex((object) => {
-              return object.prod_id === id;
+              return object.product_id === id;
             });
             this.cart.splice(i, 1);
             console.log(this.cart, "REMOVED");
@@ -242,25 +287,30 @@ export default {
     },
 
     getIncrement(id) {
-       let total = 0;
-       const can = {
-        prod_id: id,
+      let total = 0;
+      const can = {
+        product_id: id,
       };
       this.cart.forEach((product) => {
-          if (product["prod_id"] === id) {
-            total += product.quantity;
-          }
-        });
-        return total
+        if (product["product_id"] === id) {
+          total += product.quantity;
+        }
+      });
+      return total;
+    },
+
+    // Cart deleting from children RestaurantCart through $emit
+    emptyCart() {
+      this.cart = [];
     },
   },
   mounted() {
     this.getRestaurant();
 
     // SessionStorageCart
-    if(sessionStorage.currentRestaurant) {
+    if (sessionStorage.currentRestaurant) {
       this.currentRestaurant = JSON.parse(sessionStorage.currentRestaurant);
-    } 
+    }
 
     if (sessionStorage.cart) {
       this.cart = JSON.parse(sessionStorage.cart);
@@ -294,6 +344,7 @@ export default {
 
 <style scoped lang="scss">
 .product-card {
+  min-height: 95%;
   position: relative;
   .price-badge {
     position: absolute;
@@ -309,8 +360,5 @@ export default {
   background-color: #fff;
   border: 1px solid #e2e5e5;
   border-radius: 5px;
-}
-.card {
-  min-height: 95%;
 }
 </style>
