@@ -1,10 +1,16 @@
 <template>
   <div class="cart-card card p-3">
-    <div class="div d-flex justify-content-between align-items-center mb-1">
+    <div
+      v-if="!isCheckOutPage"
+      class="div d-flex justify-content-between align-items-center mb-1"
+    >
       <h3 class="mb-3">Il tuo ordine</h3>
       <span class="mb-3" role="button" @click="deleteCart()"
         ><i class="fa-solid fa-trash-can fa-lg"></i
       ></span>
+    </div>
+    <div v-else>
+      <h3 class="cart-h3">Carrello</h3>
     </div>
     <!-- Prodotti -->
     <div class="mb-3">
@@ -12,11 +18,12 @@
         <div class="product d-flex justify-content-between row mb-1">
           <div class="col-6">
             <!-- Product Name -->
+            <span class="mr-1"> {{ product.quantity }}x </span>
             <span class="mb-1">{{ product.name }}</span>
           </div>
           <div class="col-6 d-flex justify-content-between">
             <!-- Buttons -->
-            <div class="button-container d-flex">
+            <div v-if="!isCheckOutPage" class="button-container d-flex">
               <!-- Minus SVG -->
               <svg
                 @click="removeFromCart(product.product_id)"
@@ -66,6 +73,8 @@
                 ></path>
               </svg>
             </div>
+            <!-- place holder for Cart Page -->
+            <div></div>
             <!-- Price -->
             <span>{{ getProductTotalPrice(product).toFixed(2) }} €</span>
           </div>
@@ -79,7 +88,7 @@
         ><strong>{{ getTotal().toFixed(2) }} €</strong></span
       >
     </div>
-    <div class="mt-3">
+    <div v-if="!isCheckOutPage" class="mt-3">
       <a class="checkout-button" href="http://127.0.0.1:8000/cart">
         Vai al pagamento
       </a>
@@ -117,6 +126,11 @@ export default {
       this.$emit("empty-cart");
     },
   },
+  computed: {
+    isCheckOutPage() {
+      return this.$route.name === "cart";
+    },
+  },
 };
 </script>
 
@@ -126,6 +140,10 @@ export default {
     color: rgb(255 49 49);
   }
   margin-top: 16px;
+  .cart-h3 {
+    font-size: 1.5em;
+    margin-bottom: 7px;
+  }
   h3 {
     font-weight: 900;
   }
