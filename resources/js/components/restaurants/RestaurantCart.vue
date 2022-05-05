@@ -1,6 +1,11 @@
 <template>
   <div class="cart-card card p-3">
-    <h3 class="mb-3">Il tuo ordine</h3>
+    <div class="div d-flex justify-content-between align-items-center mb-1">
+      <h3 class="mb-3">Il tuo ordine</h3>
+      <span class="mb-3" role="button" @click="deleteCart()"
+        ><i class="fa-solid fa-trash-can fa-lg"></i
+      ></span>
+    </div>
     <!-- Prodotti -->
     <div class="mb-3">
       <div v-for="product in cart" :key="product.id">
@@ -14,12 +19,13 @@
             <div class="button-container">
               <!-- Minus SVG -->
               <svg
+                @click="removeFromCart(product.product_id)"
                 xmlns:xlink="http://www.w3.org/1999/xlink"
                 xmlns="http://www.w3.org/2000/svg"
                 height="24"
                 width="24"
                 viewBox="0 0 24 24"
-                role="presentation"
+                role="button"
                 focusable="false"
                 class="
                   ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049
@@ -34,12 +40,20 @@
               <span> {{ product.quantity }} </span>
               <!-- Plus SVG -->
               <svg
+                @click="
+                  addCart(
+                    product.product_id,
+                    product.name,
+                    product.price,
+                    restaurant.id
+                  )
+                "
                 xmlns:xlink="http://www.w3.org/1999/xlink"
                 xmlns="http://www.w3.org/2000/svg"
                 height="24"
                 width="24"
                 viewBox="0 0 24 24"
-                role="presentation"
+                role="button"
                 focusable="false"
                 class="
                   ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049
@@ -75,7 +89,7 @@
 <script>
 export default {
   name: "RestaurantCart",
-  props: ["cart"],
+  props: ["cart", "restaurant", "addCart", "removeFromCart"],
   methods: {
     getProductTotalPrice(product) {
       return product.quantity * product.price;
@@ -90,12 +104,20 @@ export default {
 
       return total;
     },
+    deleteCart() {
+      sessionStorage.removeItem("cart");
+      // Update Cart
+      this.$emit("empty-cart");
+    },
   },
 };
 </script>
 
 <style scoped lang="scss">
 .cart-card {
+  .fa-trash-can {
+    color: rgb(255 49 49);
+  }
   margin-top: 16px;
   h3 {
     font-weight: 900;

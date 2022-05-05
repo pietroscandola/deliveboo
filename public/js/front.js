@@ -2490,6 +2490,39 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2529,16 +2562,17 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
     addCart: function addCart(id, name, price, restaurant_id) {
       var _this2 = this;
 
-      // this.cart.push({ prod_id: id, unitprice: "helo", code: "helo" }); // what to push unto the rows array?
+      console.log("prova"); // this.cart.push({ product_id: id, unitprice: "helo", code: "helo" }); // what to push unto the rows array?
+
       var can = {
-        prod_id: id,
+        product_id: id,
         name: name,
         price: price,
         quantity: 1
       };
       var already_in = false;
 
-      if (this.currentRestaurant > 0 && restaurant_id !== this.currentRestaurant) {
+      if (restaurant_id !== this.currentRestaurant) {
         this.cart = [];
         this.currentRestaurant = restaurant_id;
       } else {
@@ -2551,7 +2585,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
         console.log(this.cart, "NEW FROM EMPTY");
       } else {
         this.cart.forEach(function (product) {
-          if (product["prod_id"] === id) {
+          if (product["product_id"] === id) {
             product.quantity++;
             already_in = true;
             console.log(_this2.cart, "QUANTITY");
@@ -2568,16 +2602,18 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
     removeFromCart: function removeFromCart(id) {
       var _this3 = this;
 
+      console.log();
+
       if (this.cart.length === 0) {
         console.log("EMPTY CART");
       } else {
         this.cart.forEach(function (product) {
-          if (product["prod_id"] === id && product["quantity"] != 1) {
+          if (product["product_id"] === id && product["quantity"] != 1) {
             product.quantity--;
             console.log(_this3.cart, "LESS QUANTITY");
-          } else if (product["prod_id"] === id) {
+          } else if (product["product_id"] === id) {
             var i = _this3.cart.findIndex(function (object) {
-              return object.prod_id === id;
+              return object.product_id === id;
             });
 
             _this3.cart.splice(i, 1);
@@ -2593,14 +2629,18 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
     getIncrement: function getIncrement(id) {
       var total = 0;
       var can = {
-        prod_id: id
+        product_id: id
       };
       this.cart.forEach(function (product) {
-        if (product["prod_id"] === id) {
+        if (product["product_id"] === id) {
           total += product.quantity;
         }
       });
       return total;
+    },
+    // Cart deleting from children RestaurantCart through $emit
+    emptyCart: function emptyCart() {
+      this.cart = [];
     }
   },
   mounted: function mounted() {
@@ -2768,9 +2808,23 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantCart",
-  props: ["cart"],
+  props: ["cart", "restaurant", "addCart", "removeFromCart"],
   methods: {
     getProductTotalPrice: function getProductTotalPrice(product) {
       return product.quantity * product.price;
@@ -2794,6 +2848,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }
 
       return total;
+    },
+    deleteCart: function deleteCart() {
+      sessionStorage.removeItem("cart"); // Update Cart
+
+      this.$emit("empty-cart");
     }
   }
 });
@@ -7357,7 +7416,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".cart-card[data-v-5cfa23fe] {\n  margin-top: 16px;\n}\n.cart-card h3[data-v-5cfa23fe] {\n  font-weight: 900;\n}\n.cart-card span[data-v-5cfa23fe] {\n  font-size: 16px;\n}\n.cart-card .checkout-button[data-v-5cfa23fe] {\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border-radius: 5px;\n  font-weight: 900;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.cart-card .checkout-button[data-v-5cfa23fe]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.cart-card .checkout-button[data-v-5cfa23fe]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}", ""]);
+exports.push([module.i, ".cart-card[data-v-5cfa23fe] {\n  margin-top: 16px;\n}\n.cart-card .fa-trash-can[data-v-5cfa23fe] {\n  color: rgb(255, 49, 49);\n}\n.cart-card h3[data-v-5cfa23fe] {\n  font-weight: 900;\n}\n.cart-card span[data-v-5cfa23fe] {\n  font-size: 16px;\n}\n.cart-card .checkout-button[data-v-5cfa23fe] {\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border-radius: 5px;\n  font-weight: 900;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.cart-card .checkout-button[data-v-5cfa23fe]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.cart-card .checkout-button[data-v-5cfa23fe]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}", ""]);
 
 // exports
 
@@ -39976,9 +40035,20 @@ var render = function () {
                               },
                               [
                                 _c(
-                                  "button",
+                                  "svg",
                                   {
-                                    staticClass: "btn btn-danger",
+                                    staticClass:
+                                      "\n                    ccl-0f24ac4b87ce1f67\n                    ccl-ed34b65f78f16205\n                    ccl-c738ab1fde928049\n                  ",
+                                    attrs: {
+                                      "xmlns:xlink":
+                                        "http://www.w3.org/1999/xlink",
+                                      xmlns: "http://www.w3.org/2000/svg",
+                                      height: "24",
+                                      width: "24",
+                                      viewBox: "0 0 24 24",
+                                      role: "button",
+                                      focusable: "false",
+                                    },
                                     on: {
                                       click: function ($event) {
                                         return _vm.removeFromCart(product.id)
@@ -39986,18 +40056,17 @@ var render = function () {
                                     },
                                   },
                                   [
-                                    _c("i", {
-                                      staticClass: "fa-solid fa-minus",
+                                    _c("path", {
+                                      attrs: {
+                                        d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z",
+                                        fill: "#00CCBC",
+                                      },
                                     }),
                                   ]
                                 ),
                                 _vm._v(" "),
                                 _c("div", [
-                                  _c("i", {
-                                    staticClass: "fa-solid fa-cart-shopping",
-                                  }),
-                                  _vm._v(" "),
-                                  _c("p", [
+                                  _c("p", { staticClass: "m-0" }, [
                                     _vm._v(
                                       _vm._s(_vm.getIncrement(product.id))
                                     ),
@@ -40005,9 +40074,20 @@ var render = function () {
                                 ]),
                                 _vm._v(" "),
                                 _c(
-                                  "button",
+                                  "svg",
                                   {
-                                    staticClass: "btn btn-success",
+                                    staticClass:
+                                      "\n                    ccl-0f24ac4b87ce1f67\n                    ccl-ed34b65f78f16205\n                    ccl-c738ab1fde928049\n                  ",
+                                    attrs: {
+                                      "xmlns:xlink":
+                                        "http://www.w3.org/1999/xlink",
+                                      xmlns: "http://www.w3.org/2000/svg",
+                                      height: "24",
+                                      width: "24",
+                                      viewBox: "0 0 24 24",
+                                      role: "button",
+                                      focusable: "false",
+                                    },
                                     on: {
                                       click: function ($event) {
                                         return _vm.addCart(
@@ -40019,7 +40099,14 @@ var render = function () {
                                       },
                                     },
                                   },
-                                  [_c("i", { staticClass: "fa-solid fa-plus" })]
+                                  [
+                                    _c("path", {
+                                      attrs: {
+                                        d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z",
+                                        fill: "#00CCBC",
+                                      },
+                                    }),
+                                  ]
                                 ),
                               ]
                             ),
@@ -40038,7 +40125,15 @@ var render = function () {
               { staticClass: "col-4" },
               [
                 _vm.cart.length && _vm.currentRestaurant === _vm.restaurant.id
-                  ? _c("RestaurantCart", { attrs: { cart: _vm.cart } })
+                  ? _c("RestaurantCart", {
+                      attrs: {
+                        addCart: _vm.addCart,
+                        removeFromCart: _vm.removeFromCart,
+                        restaurant: _vm.restaurant,
+                        cart: _vm.cart,
+                      },
+                      on: { "empty-cart": _vm.emptyCart },
+                    })
                   : _c(
                       "div",
                       {
@@ -40160,7 +40255,30 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "cart-card card p-3" }, [
-    _c("h3", { staticClass: "mb-3" }, [_vm._v("Il tuo ordine")]),
+    _c(
+      "div",
+      {
+        staticClass:
+          "div d-flex justify-content-between align-items-center mb-1",
+      },
+      [
+        _c("h3", { staticClass: "mb-3" }, [_vm._v("Il tuo ordine")]),
+        _vm._v(" "),
+        _c(
+          "span",
+          {
+            staticClass: "mb-3",
+            attrs: { role: "button" },
+            on: {
+              click: function ($event) {
+                return _vm.deleteCart()
+              },
+            },
+          },
+          [_c("i", { staticClass: "fa-solid fa-trash-can fa-lg" })]
+        ),
+      ]
+    ),
     _vm._v(" "),
     _c(
       "div",
@@ -40193,8 +40311,13 @@ var render = function () {
                           height: "24",
                           width: "24",
                           viewBox: "0 0 24 24",
-                          role: "presentation",
+                          role: "button",
                           focusable: "false",
+                        },
+                        on: {
+                          click: function ($event) {
+                            return _vm.removeFromCart(product.product_id)
+                          },
                         },
                       },
                       [
@@ -40220,8 +40343,18 @@ var render = function () {
                           height: "24",
                           width: "24",
                           viewBox: "0 0 24 24",
-                          role: "presentation",
+                          role: "button",
                           focusable: "false",
+                        },
+                        on: {
+                          click: function ($event) {
+                            return _vm.addCart(
+                              product.product_id,
+                              product.name,
+                              product.price,
+                              _vm.restaurant.id
+                            )
+                          },
                         },
                       },
                       [
