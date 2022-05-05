@@ -354,7 +354,7 @@ export default {
         this.cart = [];
         this.currentRestaurant = restaurant_id;
         const can = {
-        prod_id: id,
+        product_id: id,
         name,
         price,
         quantity: 1,
