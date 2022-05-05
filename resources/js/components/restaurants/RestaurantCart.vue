@@ -100,6 +100,9 @@ export default {
   h3 {
     font-weight: 900;
   }
+  span {
+    font-size: 16px;
+  }
   .checkout-button {
     display: block;
     text-align: center;

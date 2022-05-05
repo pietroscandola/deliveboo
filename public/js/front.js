@@ -7357,7 +7357,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".cart-card[data-v-5cfa23fe] {\n  margin-top: 16px;\n}\n.cart-card h3[data-v-5cfa23fe] {\n  font-weight: 900;\n}\n.cart-card .checkout-button[data-v-5cfa23fe] {\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border-radius: 5px;\n  font-weight: 900;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.cart-card .checkout-button[data-v-5cfa23fe]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.cart-card .checkout-button[data-v-5cfa23fe]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}", ""]);
+exports.push([module.i, ".cart-card[data-v-5cfa23fe] {\n  margin-top: 16px;\n}\n.cart-card h3[data-v-5cfa23fe] {\n  font-weight: 900;\n}\n.cart-card span[data-v-5cfa23fe] {\n  font-size: 16px;\n}\n.cart-card .checkout-button[data-v-5cfa23fe] {\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border-radius: 5px;\n  font-weight: 900;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.cart-card .checkout-button[data-v-5cfa23fe]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.cart-card .checkout-button[data-v-5cfa23fe]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}", ""]);
 
 // exports
 
