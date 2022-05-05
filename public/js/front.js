@@ -2640,7 +2640,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* WEBPACK VAR INJECTION */(function(process) {/* harmony import */ var braintree_web__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! braintree-web */ "./node_modules/braintree-web/dist/browser/index.js");
+/* harmony import */ var braintree_web__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! braintree-web */ "./node_modules/braintree-web/dist/browser/index.js");
 /* harmony import */ var braintree_web__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(braintree_web__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
@@ -2734,10 +2734,11 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
+    console.log("sandbox_ktyfs7dd_h64c3rb9ttj7fvq9");
     braintree_web__WEBPACK_IMPORTED_MODULE_0___default.a.client.create({
       // Bisogna inserire la key di braintree
       // TODO aggiungere collegamento a variabile in .env, con key di autorizzazione funziona
-      authorization: process.env.VUE_APP_BT_SDK //se funzionasse :)
+      authorization: "sandbox_ktyfs7dd_h64c3rb9ttj7fvq9" //se funzionasse :)
 
     }).then(function (clientInstance) {
       var options = {
@@ -2770,7 +2771,6 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (err) {});
   }
 });
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../../node_modules/process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
@@ -80170,7 +80170,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\Vasco Rossi\Documents\Boolean\Progetto\deliveboo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
