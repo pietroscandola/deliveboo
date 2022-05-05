@@ -2491,9 +2491,10 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
   data: function data() {
     return {
       isLoading: false,
-      restaurant: {},
+      restaurant: [],
       products: [],
-      cart: []
+      cart: [],
+      currentRestaurant: 0
     };
   },
   methods: {
@@ -2515,7 +2516,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
         console.log("OK API");
       });
     },
-    addCart: function addCart(id, name, price) {
+    addCart: function addCart(id, name, price, restaurant_id) {
       var _this2 = this;
 
       // this.cart.push({ prod_id: id, unitprice: "helo", code: "helo" }); // what to push unto the rows array?
@@ -2526,6 +2527,13 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
         quantity: 1
       };
       var already_in = false;
+
+      if (this.currentRestaurant > 0 && restaurant_id !== this.currentRestaurant) {
+        this.cart = [];
+        this.currentRestaurant = restaurant_id;
+      } else {
+        this.currentRestaurant = restaurant_id;
+      }
 
       if (this.cart.length === 0) {
         this.cart.push(can);
@@ -2588,11 +2596,21 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
   mounted: function mounted() {
     this.getRestaurant(); // SessionStorageCart
 
+    if (sessionStorage.currentRestaurant) {
+      this.currentRestaurant = JSON.parse(sessionStorage.currentRestaurant);
+    }
+
     if (sessionStorage.cart) {
       this.cart = JSON.parse(sessionStorage.cart);
     }
   },
   watch: {
+    currentRestaurant: {
+      handler: function handler(newCurrentRestaurant) {
+        sessionStorage.currentRestaurant = JSON.stringify(newCurrentRestaurant);
+      },
+      deep: true
+    },
     cart: {
       handler: function handler(newCart) {
         sessionStorage.cart = JSON.stringify(newCart);
@@ -39930,7 +39948,8 @@ var render = function () {
                                         return _vm.addCart(
                                           product.id,
                                           product.name,
-                                          product.price
+                                          product.price,
+                                          _vm.restaurant.id
                                         )
                                       },
                                     },
@@ -39953,7 +39972,7 @@ var render = function () {
               "div",
               { staticClass: "col-4" },
               [
-                _vm.cart.length
+                _vm.cart.length && _vm.currentRestaurant === _vm.restaurant.id
                   ? _c("RestaurantCart", { attrs: { cart: _vm.cart } })
                   : _c(
                       "div",
@@ -56529,7 +56548,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Lavavel\deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
