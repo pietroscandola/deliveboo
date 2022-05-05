@@ -2598,7 +2598,8 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
       restaurant: [],
       products: [],
       cart: [],
-      currentRestaurant: 0
+      currentRestaurant: 0,
+      currentProducts: []
     };
   },
   methods: {
@@ -2657,8 +2658,9 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
       if (!already_in) {
         this.cart.push(can);
         console.log(this.cart, "NEW");
-      } // console.log(id);
+      }
 
+      this.currentProduct = this.cart; // console.log(id);
     },
     removeFromCart: function removeFromCart(id) {
       var _this3 = this;
@@ -2682,6 +2684,10 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
             console.log(_this3.cart, "REMOVED");
           }
         });
+      }
+
+      if (this.cart.length < 1) {
+        this.currentRestaurant = 0;
       }
     },
     getProductTotalPrice: function getProductTotalPrice(product) {
@@ -63579,7 +63585,8 @@ var render = function () {
                                     ]),
                                   ]),
                                   _vm._v(" "),
-                                  _vm.currentRestaurant !== _vm.restaurant.id
+                                  _vm.currentRestaurant !== _vm.restaurant.id &&
+                                  _vm.currentRestaurant !== 0
                                     ? _c(
                                         "svg",
                                         {
