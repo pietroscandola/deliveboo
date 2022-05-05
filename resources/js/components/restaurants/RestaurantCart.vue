@@ -18,7 +18,9 @@
         <div class="product d-flex justify-content-between row mb-1">
           <div class="col-6">
             <!-- Product Name -->
-            <span class="mr-1"> {{ product.quantity }}x </span>
+            <span v-if="isCheckOutPage" class="mr-1">
+              {{ product.quantity }}x
+            </span>
             <span class="mb-1">{{ product.name }}</span>
           </div>
           <div class="col-6 d-flex justify-content-between">

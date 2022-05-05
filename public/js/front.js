@@ -2982,6 +2982,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
 // import Payment from "../payment/Payment.vue";
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantCart",
@@ -63863,9 +63865,15 @@ var render = function () {
             { staticClass: "product d-flex justify-content-between row mb-1" },
             [
               _c("div", { staticClass: "col-6" }, [
-                _c("span", { staticClass: "mr-1" }, [
-                  _vm._v(" " + _vm._s(product.quantity) + "x "),
-                ]),
+                _vm.isCheckOutPage
+                  ? _c("span", { staticClass: "mr-1" }, [
+                      _vm._v(
+                        "\n            " +
+                          _vm._s(product.quantity) +
+                          "x\n          "
+                      ),
+                    ])
+                  : _vm._e(),
                 _vm._v(" "),
                 _c("span", { staticClass: "mb-1" }, [
                   _vm._v(_vm._s(product.name)),
