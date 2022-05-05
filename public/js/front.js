@@ -2480,6 +2480,32 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2528,7 +2554,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
       };
       var already_in = false;
 
-      if (this.currentRestaurant > 0 && restaurant_id !== this.currentRestaurant) {
+      if (restaurant_id !== this.currentRestaurant) {
         this.cart = [];
         this.currentRestaurant = restaurant_id;
       } else {
@@ -2591,14 +2617,26 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
         }
       });
       return total;
+    },
+    getEmptyCart: function getEmptyCart(id, name, price, restaurant_id) {
+      this.cart = [];
+      this.currentRestaurant = restaurant_id;
+      var can = {
+        prod_id: id,
+        name: name,
+        price: price,
+        quantity: 1
+      };
+      this.cart.push(can);
     }
   },
   mounted: function mounted() {
-    this.getRestaurant(); // SessionStorageCart
+    this.getRestaurant(); // SessionStorageCart - Restaurant (NUOVO)
 
     if (sessionStorage.currentRestaurant) {
       this.currentRestaurant = JSON.parse(sessionStorage.currentRestaurant);
-    }
+    } // SessionStorageCart - Cart (VECCHIO)
+
 
     if (sessionStorage.cart) {
       this.cart = JSON.parse(sessionStorage.cart);
@@ -39939,23 +39977,43 @@ var render = function () {
                                   ]),
                                 ]),
                                 _vm._v(" "),
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-success",
-                                    on: {
-                                      click: function ($event) {
-                                        return _vm.addCart(
-                                          product.id,
-                                          product.name,
-                                          product.price,
-                                          _vm.restaurant.id
-                                        )
+                                _vm.currentRestaurant !== _vm.restaurant.id
+                                  ? _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn btn-success",
+                                        attrs: {
+                                          "data-bs-toggle": "modal",
+                                          "data-bs-target": "#modale",
+                                        },
                                       },
-                                    },
-                                  },
-                                  [_c("i", { staticClass: "fa-solid fa-plus" })]
-                                ),
+                                      [
+                                        _c("i", {
+                                          staticClass: "fa-solid fa-plus",
+                                        }),
+                                      ]
+                                    )
+                                  : _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn btn-success",
+                                        on: {
+                                          click: function ($event) {
+                                            return _vm.addCart(
+                                              product.id,
+                                              product.name,
+                                              product.price,
+                                              _vm.restaurant.id
+                                            )
+                                          },
+                                        },
+                                      },
+                                      [
+                                        _c("i", {
+                                          staticClass: "fa-solid fa-plus",
+                                        }),
+                                      ]
+                                    ),
                               ]
                             ),
                           ]
@@ -40009,11 +40067,100 @@ var render = function () {
               1
             ),
           ]),
+      _vm._v(" "),
+      _vm._l(_vm.products, function (product) {
+        return _c(
+          "div",
+          {
+            key: product.id,
+            staticClass: "modal fade",
+            attrs: {
+              id: "modale",
+              tabindex: "-1",
+              "aria-labelledby": "exampleModalLabel",
+              "aria-hidden": "true",
+            },
+          },
+          [
+            _c("div", { staticClass: "modal-dialog" }, [
+              _c("div", { staticClass: "modal-content" }, [
+                _vm._m(0, true),
+                _vm._v(" "),
+                _vm._m(1, true),
+                _vm._v(" "),
+                _c("div", { staticClass: "modal-footer" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-secondary",
+                      attrs: { type: "button", "data-bs-dismiss": "modal" },
+                    },
+                    [_vm._v("Chiudi")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary",
+                      attrs: { type: "button", "data-bs-dismiss": "modal" },
+                      on: {
+                        click: function ($event) {
+                          return _vm.getEmptyCart(
+                            product.id,
+                            product.name,
+                            product.price,
+                            _vm.restaurant.id
+                          )
+                        },
+                      },
+                    },
+                    [_vm._v("Conferma")]
+                  ),
+                ]),
+              ]),
+            ]),
+          ]
+        )
+      }),
     ],
-    1
+    2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
+        [_vm._v("ATTENZIONE")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn-close",
+          attrs: {
+            type: "button",
+            "data-bs-dismiss": "modal",
+            "aria-label": "Close",
+          },
+        },
+        [_vm._v("X")]
+      ),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-body" }, [
+      _c("h6", [_vm._v("Vuoi svuotare il carrello per crearne uno nuovo?")]),
+    ])
+  },
+]
 render._withStripped = true
 
 
