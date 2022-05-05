@@ -149,6 +149,7 @@
                            </svg>
                            <!-- Plus SVG -->
                            <svg
+                           v-else
                               @click="
                                  addCart(
                                     product.id,
