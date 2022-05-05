@@ -21,7 +21,7 @@
     <!-- Pagamento e carrello -->
     <div class="row d-flex flex-lg-row flex-column-reverse">
       <div class="col-12 col-lg-8">
-        <Payment class="mt-3" :getTotal="getTotal()" />
+        <Payment class="mt-3" :tot="getTotal()" />
       </div>
       <div class="col-12 col-lg-4">
         <RestaurantCart
