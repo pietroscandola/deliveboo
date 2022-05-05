@@ -2140,6 +2140,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2790,7 +2791,7 @@ __webpack_require__.r(__webpack_exports__);
     braintree_web__WEBPACK_IMPORTED_MODULE_0___default.a.client.create({
       // Bisogna inserire la key di braintree
       // Aggiungere MIX_VUE_APP_BT_SDK con la propria key
-      authorization: "sandbox_hccvgrtg_8skhy3btn37pxc6y"
+      authorization: "sandbox_ktyfs7dd_h64c3rb9ttj7fvq9"
     }).then(function (clientInstance) {
       var options = {
         client: clientInstance,
@@ -63102,7 +63103,7 @@ var render = function () {
           "div",
           {
             staticClass:
-              "\n        col-12 col-md-5\n        d-flex\n        justify-content-start justify-content-md-end\n        mt-md-0 mt-1\n      ",
+              "\n            col-12 col-md-5\n            d-flex\n            justify-content-start justify-content-md-end\n            mt-md-0 mt-1\n         ",
           },
           [
             _c(
@@ -63117,7 +63118,7 @@ var render = function () {
                 },
               },
               [
-                _vm._v("Modifica il tuo Ordine "),
+                _vm._v("Modifica il tuo Ordine\n            "),
                 _c("i", { staticClass: "fa-solid fa-arrow-rotate-left" }),
               ]
             ),
@@ -63133,7 +63134,7 @@ var render = function () {
         [
           _c("Payment", {
             staticClass: "mt-3",
-            attrs: { tot: _vm.getTotal() },
+            attrs: { tot: _vm.getTotal().toFixed(2) },
           }),
         ],
         1
@@ -80487,7 +80488,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Lavavel\deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\Vasco Rossi\Documents\Boolean\Progetto\deliveboo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
