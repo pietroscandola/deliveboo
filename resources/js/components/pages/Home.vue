@@ -7,12 +7,34 @@
       id="categories-container"
       class="d-flex justify-content-center mb-4"
     >
-      <div v-for="category in categories" :key="category.id">
+      <!-- <div v-for="category in categories" :key="category.id">
         <CategoryCard :category="category" />
+      </div> -->
+      <ul class="object administrator-checkbox-list">
+        <li v-for="category in categories" :key="category.id">
+          <label v-bind:for="category.id">
+            <input
+              type="checkbox"
+              v-model="categoria"
+              v-bind:value="category"
+              v-bind:id="category.id"
+            />
+            <span>{{ category.name }}</span>
+          </label>
+        </li>
+      </ul>
+    </div>
+    <div v-if="!categoria.length">
+      <RestaurantList />
+    </div>
+    <div v-else>
+      <div v-for="i in categoria" :key="i.id">
+        <p>{{ i.name }}</p>
+        <ul v-for="j in i.restaurants" :key="j.id">
+          <li>{{ j.name }}</li>
+        </ul>
       </div>
     </div>
-
-    <RestaurantList />
   </section>
 </template>
 
@@ -33,6 +55,7 @@ export default {
   data() {
     return {
       categories: [],
+      categoria: [],
       isLoading: false,
     };
   },

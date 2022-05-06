@@ -2215,6 +2215,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2229,6 +2251,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       categories: [],
+      categoria: [],
       isLoading: false
     };
   },
@@ -2897,7 +2920,7 @@ __webpack_require__.r(__webpack_exports__);
     braintree_web__WEBPACK_IMPORTED_MODULE_0___default.a.client.create({
       // Bisogna inserire la key di braintree
       // Aggiungere MIX_VUE_APP_BT_SDK con la propria key
-      authorization: "sandbox_4xx2ctm8_gmbpfv6ry93hzk98"
+      authorization: "sandbox_5rmbzfb5_d2m5rwjgpchndk39"
     }).then(function (clientInstance) {
       var options = {
         client: clientInstance,
@@ -63310,19 +63333,84 @@ var render = function () {
               staticClass: "d-flex justify-content-center mb-4",
               attrs: { id: "categories-container" },
             },
-            _vm._l(_vm.categories, function (category) {
-              return _c(
-                "div",
-                { key: category.id },
-                [_c("CategoryCard", { attrs: { category: category } })],
-                1
-              )
-            }),
-            0
+            [
+              _c(
+                "ul",
+                { staticClass: "object administrator-checkbox-list" },
+                _vm._l(_vm.categories, function (category) {
+                  return _c("li", { key: category.id }, [
+                    _c("label", { attrs: { for: category.id } }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.categoria,
+                            expression: "categoria",
+                          },
+                        ],
+                        attrs: { type: "checkbox", id: category.id },
+                        domProps: {
+                          value: category,
+                          checked: Array.isArray(_vm.categoria)
+                            ? _vm._i(_vm.categoria, category) > -1
+                            : _vm.categoria,
+                        },
+                        on: {
+                          change: function ($event) {
+                            var $$a = _vm.categoria,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = category,
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 && (_vm.categoria = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.categoria = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.categoria = $$c
+                            }
+                          },
+                        },
+                      }),
+                      _vm._v(" "),
+                      _c("span", [_vm._v(_vm._s(category.name))]),
+                    ]),
+                  ])
+                }),
+                0
+              ),
+            ]
           )
         : _vm._e(),
       _vm._v(" "),
-      _c("RestaurantList"),
+      !_vm.categoria.length
+        ? _c("div", [_c("RestaurantList")], 1)
+        : _c(
+            "div",
+            _vm._l(_vm.categoria, function (i) {
+              return _c(
+                "div",
+                { key: i.id },
+                [
+                  _c("p", [_vm._v(_vm._s(i.name))]),
+                  _vm._v(" "),
+                  _vm._l(i.restaurants, function (j) {
+                    return _c("ul", { key: j.id }, [
+                      _c("li", [_vm._v(_vm._s(j.name))]),
+                    ])
+                  }),
+                ],
+                2
+              )
+            }),
+            0
+          ),
     ],
     1
   )
@@ -80716,7 +80804,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\pietr\Desktop\deliveboo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
