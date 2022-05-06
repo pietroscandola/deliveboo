@@ -383,6 +383,8 @@ export default {
     // Cart deleting from children RestaurantCart through $emit
     emptyCart() {
       this.cart = [];
+
+      this.currentRestaurant = 0;
     },
 
     getEmptyCart(id, name, price, restaurant_id) {
