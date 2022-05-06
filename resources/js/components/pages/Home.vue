@@ -15,7 +15,7 @@
           <label v-bind:for="category.id">
             <input
               type="checkbox"
-              v-model="categoria"
+              v-model="checked_categories"
               v-bind:value="category"
               v-bind:id="category.id"
             />
@@ -24,14 +24,14 @@
         </li>
       </ul>
     </div>
-    <div v-if="!categoria.length">
+    <div v-if="!checked_categories.length">
       <RestaurantList />
     </div>
     <div v-else>
-      <div v-for="i in categoria" :key="i.id">
-        <p>{{ i.name }}</p>
-        <ul v-for="j in i.restaurants" :key="j.id">
-          <li>{{ j.name }}</li>
+      <div v-for="checked in checked_categories" :key="checked.id">
+        <p>{{ checked.name }}</p>
+        <ul v-for="restaurant in checked.restaurants" :key="restaurant.id">
+          <li>{{ restaurant.name }}</li>
         </ul>
       </div>
     </div>
@@ -55,7 +55,7 @@ export default {
   data() {
     return {
       categories: [],
-      categoria: [],
+      checked_categories: [],
       isLoading: false,
     };
   },

@@ -2251,7 +2251,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       categories: [],
-      categoria: [],
+      checked_categories: [],
       isLoading: false
     };
   },
@@ -63345,35 +63345,36 @@ var render = function () {
                           {
                             name: "model",
                             rawName: "v-model",
-                            value: _vm.categoria,
-                            expression: "categoria",
+                            value: _vm.checked_categories,
+                            expression: "checked_categories",
                           },
                         ],
                         attrs: { type: "checkbox", id: category.id },
                         domProps: {
                           value: category,
-                          checked: Array.isArray(_vm.categoria)
-                            ? _vm._i(_vm.categoria, category) > -1
-                            : _vm.categoria,
+                          checked: Array.isArray(_vm.checked_categories)
+                            ? _vm._i(_vm.checked_categories, category) > -1
+                            : _vm.checked_categories,
                         },
                         on: {
                           change: function ($event) {
-                            var $$a = _vm.categoria,
+                            var $$a = _vm.checked_categories,
                               $$el = $event.target,
                               $$c = $$el.checked ? true : false
                             if (Array.isArray($$a)) {
                               var $$v = category,
                                 $$i = _vm._i($$a, $$v)
                               if ($$el.checked) {
-                                $$i < 0 && (_vm.categoria = $$a.concat([$$v]))
+                                $$i < 0 &&
+                                  (_vm.checked_categories = $$a.concat([$$v]))
                               } else {
                                 $$i > -1 &&
-                                  (_vm.categoria = $$a
+                                  (_vm.checked_categories = $$a
                                     .slice(0, $$i)
                                     .concat($$a.slice($$i + 1)))
                               }
                             } else {
-                              _vm.categoria = $$c
+                              _vm.checked_categories = $$c
                             }
                           },
                         },
@@ -63389,20 +63390,20 @@ var render = function () {
           )
         : _vm._e(),
       _vm._v(" "),
-      !_vm.categoria.length
+      !_vm.checked_categories.length
         ? _c("div", [_c("RestaurantList")], 1)
         : _c(
             "div",
-            _vm._l(_vm.categoria, function (i) {
+            _vm._l(_vm.checked_categories, function (checked) {
               return _c(
                 "div",
-                { key: i.id },
+                { key: checked.id },
                 [
-                  _c("p", [_vm._v(_vm._s(i.name))]),
+                  _c("p", [_vm._v(_vm._s(checked.name))]),
                   _vm._v(" "),
-                  _vm._l(i.restaurants, function (j) {
-                    return _c("ul", { key: j.id }, [
-                      _c("li", [_vm._v(_vm._s(j.name))]),
+                  _vm._l(checked.restaurants, function (restaurant) {
+                    return _c("ul", { key: restaurant.id }, [
+                      _c("li", [_vm._v(_vm._s(restaurant.name))]),
                     ])
                   }),
                 ],
