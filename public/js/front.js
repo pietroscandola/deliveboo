@@ -2584,6 +2584,37 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2863,7 +2894,7 @@ __webpack_require__.r(__webpack_exports__);
     braintree_web__WEBPACK_IMPORTED_MODULE_0___default.a.client.create({
       // Bisogna inserire la key di braintree
       // Aggiungere MIX_VUE_APP_BT_SDK con la propria key
-      authorization: "sandbox_4xx2ctm8_gmbpfv6ry93hzk98"
+      authorization: "sandbox_5rmbzfb5_d2m5rwjgpchndk39"
     }).then(function (clientInstance) {
       var options = {
         client: clientInstance,
@@ -63419,9 +63450,9 @@ var render = function () {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                     " +
+                                      "\n              " +
                                         _vm._s(category.name) +
-                                        "\n                  "
+                                        "\n            "
                                     ),
                                   ]
                                 )
@@ -63451,9 +63482,9 @@ var render = function () {
                       _vm._v(" "),
                       _c("p", { staticClass: "card-text" }, [
                         _vm._v(
-                          "\n                     " +
+                          "\n              " +
                             _vm._s(_vm.restaurant.description) +
-                            "\n                  "
+                            "\n            "
                         ),
                       ]),
                       _vm._v(" "),
@@ -63467,11 +63498,7 @@ var render = function () {
                             },
                           },
                         },
-                        [
-                          _vm._v(
-                            "\n                     Indietro\n                  "
-                          ),
-                        ]
+                        [_vm._v("\n              Indietro\n            ")]
                       ),
                     ]),
                   ]),
@@ -63511,7 +63538,7 @@ var render = function () {
                             "div",
                             {
                               staticClass:
-                                "\n                        card-body\n                        justify-content-between\n                        d-flex\n                        flex-column\n                     ",
+                                "card-body justify-content-between d-flex flex-column",
                             },
                             [
                               _c("div", [
@@ -63543,14 +63570,14 @@ var render = function () {
                                 "div",
                                 {
                                   staticClass:
-                                    "\n                           d-flex\n                           justify-content-around\n                           align-items-center\n                        ",
+                                    "d-flex justify-content-around align-items-center",
                                 },
                                 [
                                   _c(
                                     "svg",
                                     {
                                       staticClass:
-                                        "\n                              ccl-0f24ac4b87ce1f67\n                              ccl-ed34b65f78f16205\n                              ccl-c738ab1fde928049\n                           ",
+                                        "\n                    ccl-0f24ac4b87ce1f67\n                    ccl-ed34b65f78f16205\n                    ccl-c738ab1fde928049\n                  ",
                                       attrs: {
                                         "xmlns:xlink":
                                           "http://www.w3.org/1999/xlink",
@@ -63591,7 +63618,7 @@ var render = function () {
                                         "svg",
                                         {
                                           staticClass:
-                                            "\n                              ccl-0f24ac4b87ce1f67\n                              ccl-ed34b65f78f16205\n                              ccl-c738ab1fde928049\n                           ",
+                                            "\n                    ccl-0f24ac4b87ce1f67\n                    ccl-ed34b65f78f16205\n                    ccl-c738ab1fde928049\n                  ",
                                           attrs: {
                                             "data-bs-toggle": "modal",
                                             "data-bs-target": "#modale",
@@ -63618,7 +63645,7 @@ var render = function () {
                                         "svg",
                                         {
                                           staticClass:
-                                            "\n                              ccl-0f24ac4b87ce1f67\n                              ccl-ed34b65f78f16205\n                              ccl-c738ab1fde928049\n                           ",
+                                            "\n                    ccl-0f24ac4b87ce1f67\n                    ccl-ed34b65f78f16205\n                    ccl-c738ab1fde928049\n                  ",
                                           attrs: {
                                             "xmlns:xlink":
                                               "http://www.w3.org/1999/xlink",
@@ -63679,7 +63706,7 @@ var render = function () {
                         "div",
                         {
                           staticClass:
-                            "\n               empty-cart\n               d-flex\n               justify-content-center\n               flex-column\n               align-items-center\n            ",
+                            "\n          empty-cart\n          d-flex\n          justify-content-center\n          flex-column\n          align-items-center\n        ",
                         },
                         [
                           _c(
@@ -63733,7 +63760,11 @@ var render = function () {
                               staticClass: "modal-title",
                               attrs: { id: "exampleModalLabel" },
                             },
-                            [_vm._v("ATTENZIONE")]
+                            [
+                              _vm._v(
+                                "\n              Vuoi creare un nuovo carrello?\n            "
+                              ),
+                            ]
                           ),
                           _vm._v(" "),
                           _c(
@@ -63746,14 +63777,14 @@ var render = function () {
                                 "aria-label": "Close",
                               },
                             },
-                            [_vm._v("X")]
+                            [_vm._v("\n              X\n            ")]
                           ),
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "modal-body" }, [
                           _c("h6", [
                             _vm._v(
-                              "Vuoi svuotare il carrello per crearne uno nuovo?"
+                              "\n              Nel carrello sono presenti prodotti di un altro ristorante, sei\n              sicuro di volerli eliminare e creare un nuovo carrello?\n            "
                             ),
                           ]),
                         ]),
@@ -63768,7 +63799,7 @@ var render = function () {
                                 "data-bs-dismiss": "modal",
                               },
                             },
-                            [_vm._v("Chiudi")]
+                            [_vm._v("\n              Annulla\n            ")]
                           ),
                           _vm._v(" "),
                           _c(
@@ -63790,7 +63821,11 @@ var render = function () {
                                 },
                               },
                             },
-                            [_vm._v("Conferma")]
+                            [
+                              _vm._v(
+                                "\n              Nuovo Carrello\n            "
+                              ),
+                            ]
                           ),
                         ]),
                       ]),
@@ -80691,7 +80726,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\pietr\Desktop\deliveboo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
