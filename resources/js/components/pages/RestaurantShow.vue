@@ -114,6 +114,7 @@
                   </div>
                   <!-- Fake Plus -->
                   <svg
+                    @click="getCurrentProduct(product)"
                     v-if="
                       currentRestaurant !== restaurant.id &&
                       currentRestaurant !== 0
@@ -210,8 +211,6 @@
       </div>
       <!-- Modal -->
       <div
-        v-for="product in products"
-        :key="product.id"
         class="modal fade"
         id="modale"
         tabindex="-1"
@@ -253,9 +252,9 @@
                 data-bs-dismiss="modal"
                 @click="
                   getEmptyCart(
-                    product.id,
-                    product.name,
-                    product.price,
+                    currentProduct.id,
+                    currentProduct.name,
+                    currentProduct.price,
                     restaurant.id
                   )
                 "
@@ -286,7 +285,7 @@ export default {
       products: [],
       cart: [],
       currentRestaurant: 0,
-      currentProducts: [],
+      currentProduct: [],
     };
   },
   methods: {
@@ -398,7 +397,12 @@ export default {
       };
       this.cart.push(can);
     },
+
+    getCurrentProduct(product) {
+      this.currentProduct = product;
+    },
   },
+
 
   mounted() {
     this.getRestaurant();
