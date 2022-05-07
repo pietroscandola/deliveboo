@@ -7,9 +7,9 @@
       <div class="col-12">
         <div class="row">
           <!-- Img -->
-          <div class="col-4">
+          <div id="restaurant-image" class="col-4">
             <img
-              class="img-fluid restaurant-img"
+              class="restaurant-img"
               src="https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg"
               alt=""
             />
@@ -56,9 +56,9 @@
           </div>
         </div>
       </div>
-      <!-- PRODOTTI -->
+      <!-- PRODOTTI TITOLO -->
       <div class="col-12 mt-3 d-flex justify-content-between">
-        <h2 class="d-inline">Prodotti</h2>
+        <h3>Prodotti</h3>
       </div>
 
       <!-- Modal -->
@@ -130,8 +130,9 @@
         </div>
       </div>
     </div>
+    <!-- PRODOTTI E CARRELLO -->
     <div class="row d-flex flex-lg-row flex-column-reverse">
-      <!-- PRODOTTI -->
+      <!-- LISTA PRODOTTI -->
       <div class="col-12 col-lg-8">
         <!-- Cards -->
         <div class="row">
@@ -459,6 +460,13 @@ export default {
 </script>
 
 <style scoped lang="scss">
+#restaurant-image {
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
 #restaurant-name {
   .back-button-wrapper {
     a {

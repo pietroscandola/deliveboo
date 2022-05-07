@@ -2632,6 +2632,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -30902,7 +30903,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#restaurant-name .back-button-wrapper a[data-v-cddbf820]:hover {\n  text-decoration: none;\n}\n#restaurant-name .back-button-wrapper a span[data-v-cddbf820] {\n  line-height: 24px;\n}\n.contacts-wrapper i[data-v-cddbf820] {\n  color: #00ccbc;\n  margin-right: 10px;\n}\n.restaurant-img[data-v-cddbf820] {\n  border-radius: 15px;\n}\nh1[data-v-cddbf820] {\n  font-weight: 900;\n  margin-bottom: 0px;\n}\n.categories-container[data-v-cddbf820] {\n  margin-bottom: 15px;\n}\n.product-card[data-v-cddbf820] {\n  min-height: 95%;\n  position: relative;\n}\n.product-card .price-badge[data-v-cddbf820] {\n  position: absolute;\n  box-shadow: 0 0 6px rgb(107, 107, 107);\n  top: 10px;\n  right: 10px;\n}\n.empty-cart[data-v-cddbf820] {\n  height: 150px;\n  margin-top: 15px;\n  color: rgb(138, 138, 138);\n  background-color: #fff;\n  border: 1px solid #e2e5e5;\n  border-radius: 5px;\n}\n.modal .modal-content[data-v-cddbf820] {\n  padding-left: 5px;\n  padding-right: 5px;\n}\n.modal .modal-content .modal-header[data-v-cddbf820] {\n  border-bottom: none;\n}\n.modal .modal-content .modal-header .modal-title[data-v-cddbf820] {\n  font-weight: 900;\n  font-size: 19px;\n}\n.modal .modal-content .modal-body h6[data-v-cddbf820] {\n  font-size: 16px;\n}\n.modal .modal-content .modal-footer[data-v-cddbf820] {\n  border-top: none;\n}\n.modal .modal-content .close-button[data-v-cddbf820] {\n  border-radius: 3px;\n}\n.modal .modal-content .close-button[data-v-cddbf820]:active {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.modal .modal-content .cancel-button[data-v-cddbf820] {\n  display: block;\n  text-align: center;\n  background-color: #fff;\n  color: #00ccbc;\n  border: 1px solid #e8ebeb;\n  border-radius: 5px;\n  padding: 10px;\n}\n.modal .modal-content .cancel-button[data-v-cddbf820]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.modal .modal-content .cancel-button[data-v-cddbf820]:hover {\n  border: 1px solid #d1d4d4;\n  text-decoration: none;\n}\n.modal .modal-content .confirm-button[data-v-cddbf820] {\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border: none;\n  border-radius: 5px;\n  font-weight: 900;\n  padding: 10px;\n}\n.modal .modal-content .confirm-button[data-v-cddbf820]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.modal .modal-content .confirm-button[data-v-cddbf820]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}", ""]);
+exports.push([module.i, "#restaurant-image img[data-v-cddbf820] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n#restaurant-name .back-button-wrapper a[data-v-cddbf820]:hover {\n  text-decoration: none;\n}\n#restaurant-name .back-button-wrapper a span[data-v-cddbf820] {\n  line-height: 24px;\n}\n.contacts-wrapper i[data-v-cddbf820] {\n  color: #00ccbc;\n  margin-right: 10px;\n}\n.restaurant-img[data-v-cddbf820] {\n  border-radius: 15px;\n}\nh1[data-v-cddbf820] {\n  font-weight: 900;\n  margin-bottom: 0px;\n}\n.categories-container[data-v-cddbf820] {\n  margin-bottom: 15px;\n}\n.product-card[data-v-cddbf820] {\n  min-height: 95%;\n  position: relative;\n}\n.product-card .price-badge[data-v-cddbf820] {\n  position: absolute;\n  box-shadow: 0 0 6px rgb(107, 107, 107);\n  top: 10px;\n  right: 10px;\n}\n.empty-cart[data-v-cddbf820] {\n  height: 150px;\n  margin-top: 15px;\n  color: rgb(138, 138, 138);\n  background-color: #fff;\n  border: 1px solid #e2e5e5;\n  border-radius: 5px;\n}\n.modal .modal-content[data-v-cddbf820] {\n  padding-left: 5px;\n  padding-right: 5px;\n}\n.modal .modal-content .modal-header[data-v-cddbf820] {\n  border-bottom: none;\n}\n.modal .modal-content .modal-header .modal-title[data-v-cddbf820] {\n  font-weight: 900;\n  font-size: 19px;\n}\n.modal .modal-content .modal-body h6[data-v-cddbf820] {\n  font-size: 16px;\n}\n.modal .modal-content .modal-footer[data-v-cddbf820] {\n  border-top: none;\n}\n.modal .modal-content .close-button[data-v-cddbf820] {\n  border-radius: 3px;\n}\n.modal .modal-content .close-button[data-v-cddbf820]:active {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.modal .modal-content .cancel-button[data-v-cddbf820] {\n  display: block;\n  text-align: center;\n  background-color: #fff;\n  color: #00ccbc;\n  border: 1px solid #e8ebeb;\n  border-radius: 5px;\n  padding: 10px;\n}\n.modal .modal-content .cancel-button[data-v-cddbf820]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.modal .modal-content .cancel-button[data-v-cddbf820]:hover {\n  border: 1px solid #d1d4d4;\n  text-decoration: none;\n}\n.modal .modal-content .confirm-button[data-v-cddbf820] {\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border: none;\n  border-radius: 5px;\n  font-weight: 900;\n  padding: 10px;\n}\n.modal .modal-content .confirm-button[data-v-cddbf820]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.modal .modal-content .confirm-button[data-v-cddbf820]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}", ""]);
 
 // exports
 
@@ -63443,15 +63444,19 @@ var render = function () {
         : _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-12" }, [
               _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col-4" }, [
-                  _c("img", {
-                    staticClass: "img-fluid restaurant-img",
-                    attrs: {
-                      src: "https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg",
-                      alt: "",
-                    },
-                  }),
-                ]),
+                _c(
+                  "div",
+                  { staticClass: "col-4", attrs: { id: "restaurant-image" } },
+                  [
+                    _c("img", {
+                      staticClass: "restaurant-img",
+                      attrs: {
+                        src: "https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg",
+                        alt: "",
+                      },
+                    }),
+                  ]
+                ),
                 _vm._v(" "),
                 _c("div", { staticClass: "col-8" }, [
                   _c(
@@ -63543,7 +63548,7 @@ var render = function () {
             _c(
               "div",
               { staticClass: "col-12 mt-3 d-flex justify-content-between" },
-              [_c("h2", { staticClass: "d-inline" }, [_vm._v("Prodotti")])]
+              [_c("h3", [_vm._v("Prodotti")])]
             ),
             _vm._v(" "),
             _c(
