@@ -2614,6 +2614,18 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2897,7 +2909,7 @@ __webpack_require__.r(__webpack_exports__);
     braintree_web__WEBPACK_IMPORTED_MODULE_0___default.a.client.create({
       // Bisogna inserire la key di braintree
       // Aggiungere MIX_VUE_APP_BT_SDK con la propria key
-      authorization: "sandbox_4xx2ctm8_gmbpfv6ry93hzk98"
+      authorization: "sandbox_hccvgrtg_8skhy3btn37pxc6y"
     }).then(function (clientInstance) {
       var options = {
         client: clientInstance,
@@ -30884,7 +30896,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".product-card[data-v-cddbf820] {\n  min-height: 95%;\n  position: relative;\n}\n.product-card .price-badge[data-v-cddbf820] {\n  position: absolute;\n  box-shadow: 0 0 6px rgb(107, 107, 107);\n  top: 10px;\n  right: 10px;\n}\n.empty-cart[data-v-cddbf820] {\n  height: 150px;\n  margin-top: 15px;\n  color: rgb(138, 138, 138);\n  background-color: #fff;\n  border: 1px solid #e2e5e5;\n  border-radius: 5px;\n}", ""]);
+exports.push([module.i, ".product-card[data-v-cddbf820] {\n  min-height: 95%;\n  position: relative;\n}\n.product-card .price-badge[data-v-cddbf820] {\n  position: absolute;\n  box-shadow: 0 0 6px rgb(107, 107, 107);\n  top: 10px;\n  right: 10px;\n}\n.empty-cart[data-v-cddbf820] {\n  height: 150px;\n  margin-top: 15px;\n  color: rgb(138, 138, 138);\n  background-color: #fff;\n  border: 1px solid #e2e5e5;\n  border-radius: 5px;\n}\n.modal .modal-content[data-v-cddbf820] {\n  padding-left: 5px;\n  padding-right: 5px;\n}\n.modal .modal-content .modal-header[data-v-cddbf820] {\n  border-bottom: none;\n}\n.modal .modal-content .modal-header .modal-title[data-v-cddbf820] {\n  font-weight: 900;\n  font-size: 19px;\n}\n.modal .modal-content .modal-body h6[data-v-cddbf820] {\n  font-size: 16px;\n}\n.modal .modal-content .modal-footer[data-v-cddbf820] {\n  border-top: none;\n}\n.modal .modal-content .close-button[data-v-cddbf820] {\n  border-radius: 3px;\n}\n.modal .modal-content .close-button[data-v-cddbf820]:active {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.modal .modal-content .cancel-button[data-v-cddbf820] {\n  display: block;\n  text-align: center;\n  background-color: #fff;\n  color: #00ccbc;\n  border: 1px solid #e8ebeb;\n  border-radius: 5px;\n  padding: 10px;\n}\n.modal .modal-content .cancel-button[data-v-cddbf820]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.modal .modal-content .cancel-button[data-v-cddbf820]:hover {\n  border: 1px solid #d1d4d4;\n  text-decoration: none;\n}\n.modal .modal-content .confirm-button[data-v-cddbf820] {\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border: none;\n  border-radius: 5px;\n  font-weight: 900;\n  padding: 10px;\n}\n.modal .modal-content .confirm-button[data-v-cddbf820]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.modal .modal-content .confirm-button[data-v-cddbf820]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}", ""]);
 
 // exports
 
@@ -63754,75 +63766,102 @@ var render = function () {
                 },
               },
               [
-                _c("div", { staticClass: "modal-dialog" }, [
-                  _c("div", { staticClass: "modal-content" }, [
-                    _c("div", { staticClass: "modal-header" }, [
-                      _c(
-                        "h5",
-                        {
-                          staticClass: "modal-title",
-                          attrs: { id: "exampleModalLabel" },
-                        },
-                        [
-                          _vm._v(
-                            "\n              Vuoi creare un nuovo carrello?\n            "
-                          ),
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn-close",
-                          attrs: {
-                            type: "button",
-                            "data-bs-dismiss": "modal",
-                            "aria-label": "Close",
+                _c(
+                  "div",
+                  { staticClass: "modal-dialog modal-dialog-centered" },
+                  [
+                    _c("div", { staticClass: "modal-content" }, [
+                      _c("div", { staticClass: "modal-header" }, [
+                        _c(
+                          "h5",
+                          {
+                            staticClass: "modal-title",
+                            attrs: { id: "exampleModalLabel" },
                           },
-                        },
-                        [_vm._v("\n              X\n            ")]
-                      ),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "modal-body" }, [
-                      _c("h6", [
-                        _vm._v(
-                          "\n              Nel carrello sono presenti prodotti di un altro ristorante, sei\n              sicuro di volerli eliminare e creare un nuovo carrello?\n            "
+                          [
+                            _vm._v(
+                              "\n              Vuoi creare un nuovo carrello?\n            "
+                            ),
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "svg",
+                          {
+                            staticClass:
+                              "\n                close-button\n                ccl-0f24ac4b87ce1f67 ccl-abe5c41af1b9498e ccl-c738ab1fde928049\n              ",
+                            attrs: {
+                              "data-bs-dismiss": "modal",
+                              "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                              xmlns: "http://www.w3.org/2000/svg",
+                              height: "24",
+                              width: "24",
+                              viewBox: "0 0 24 24",
+                              role: "button",
+                              focusable: "false",
+                            },
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d: "M12.0001 10.2322L5.88398 4.11612L4.11621 5.88389L10.2323 12L4.11621 18.1161L5.88398 19.8839L12.0001 13.7678L18.1162 19.8839L19.884 18.1161L13.7679 12L19.884 5.88389L18.1162 4.11612L12.0001 10.2322Z",
+                                fill: "#00CCBC",
+                              },
+                            }),
+                          ]
+                        ),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-body" }, [
+                        _c("h6", [
+                          _vm._v(
+                            "\n              Nel carrello sono presenti prodotti di un altro ristorante, sei\n              sicuro di volerli eliminare e creare un nuovo carrello?\n            "
+                          ),
+                        ]),
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "modal-footer" }, [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "cancel-button",
+                            attrs: {
+                              type: "button",
+                              "data-bs-dismiss": "modal",
+                            },
+                          },
+                          [_vm._v("\n              Annulla\n            ")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "confirm-button",
+                            attrs: {
+                              type: "button",
+                              "data-bs-dismiss": "modal",
+                            },
+                            on: {
+                              click: function ($event) {
+                                return _vm.getEmptyCart(
+                                  _vm.currentProduct.id,
+                                  _vm.currentProduct.name,
+                                  _vm.currentProduct.price,
+                                  _vm.restaurant.id
+                                )
+                              },
+                            },
+                          },
+                          [
+                            _vm._v(
+                              "\n              Nuovo Carrello\n            "
+                            ),
+                          ]
                         ),
                       ]),
                     ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "modal-footer" }, [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-secondary",
-                          attrs: { type: "button", "data-bs-dismiss": "modal" },
-                        },
-                        [_vm._v("\n              Annulla\n            ")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-primary",
-                          attrs: { type: "button", "data-bs-dismiss": "modal" },
-                          on: {
-                            click: function ($event) {
-                              return _vm.getEmptyCart(
-                                _vm.currentProduct.id,
-                                _vm.currentProduct.name,
-                                _vm.currentProduct.price,
-                                _vm.restaurant.id
-                              )
-                            },
-                          },
-                        },
-                        [_vm._v("\n              Nuovo Carrello\n            ")]
-                      ),
-                    ]),
-                  ]),
-                ]),
+                  ]
+                ),
               ]
             ),
           ]),
@@ -80716,7 +80755,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Lavavel\deliveboo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })

@@ -217,20 +217,32 @@
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">
                 Vuoi creare un nuovo carrello?
               </h5>
-              <button
-                type="button"
-                class="btn-close"
+
+              <svg
                 data-bs-dismiss="modal"
-                aria-label="Close"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                width="24"
+                viewBox="0 0 24 24"
+                role="button"
+                focusable="false"
+                class="
+                  close-button
+                  ccl-0f24ac4b87ce1f67 ccl-abe5c41af1b9498e ccl-c738ab1fde928049
+                "
               >
-                X
-              </button>
+                <path
+                  d="M12.0001 10.2322L5.88398 4.11612L4.11621 5.88389L10.2323 12L4.11621 18.1161L5.88398 19.8839L12.0001 13.7678L18.1162 19.8839L19.884 18.1161L13.7679 12L19.884 5.88389L18.1162 4.11612L12.0001 10.2322Z"
+                  fill="#00CCBC"
+                ></path>
+              </svg>
             </div>
             <div class="modal-body">
               <h6>
@@ -241,14 +253,14 @@
             <div class="modal-footer">
               <button
                 type="button"
-                class="btn btn-secondary"
+                class="cancel-button"
                 data-bs-dismiss="modal"
               >
                 Annulla
               </button>
               <button
                 type="button"
-                class="btn btn-primary"
+                class="confirm-button"
                 data-bs-dismiss="modal"
                 @click="
                   getEmptyCart(
@@ -403,7 +415,6 @@ export default {
     },
   },
 
-
   mounted() {
     this.getRestaurant();
     // SessionStorageCart - Restaurant (NUOVO)
@@ -459,5 +470,65 @@ export default {
   background-color: #fff;
   border: 1px solid #e2e5e5;
   border-radius: 5px;
+}
+.modal {
+  .modal-content {
+    padding-left: 5px;
+    padding-right: 5px;
+    .modal-header {
+      border-bottom: none;
+      .modal-title {
+        font-weight: 900;
+        font-size: 19px;
+      }
+    }
+    .modal-body {
+      h6 {
+        font-size: 16px;
+      }
+    }
+    .modal-footer {
+      border-top: none;
+    }
+    .close-button {
+      border-radius: 3px;
+      &:active {
+        box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);
+      }
+    }
+    .cancel-button {
+      display: block;
+      text-align: center;
+      background-color: #fff;
+      color: #00ccbc;
+      border: 1px solid #e8ebeb;
+      border-radius: 5px;
+      padding: 10px;
+      &:focus {
+        box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);
+      }
+      &:hover {
+        border: 1px solid #d1d4d4;
+        text-decoration: none;
+      }
+    }
+    .confirm-button {
+      display: block;
+      text-align: center;
+      background-color: #00ccbc;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-weight: 900;
+      padding: 10px;
+      &:focus {
+        box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);
+      }
+      &:hover {
+        background-color: #00c2b3;
+        text-decoration: none;
+      }
+    }
+  }
 }
 </style>
