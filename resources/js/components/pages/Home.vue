@@ -16,8 +16,8 @@
             <input
               type="checkbox"
               v-model="checked_categories"
-              v-bind:value="category"
-              v-bind:id="category.id"
+              :value="category.id"
+              :id="category.id"
             />
             <span>{{ category.name }}</span>
           </label>
@@ -28,12 +28,9 @@
       <RestaurantList />
     </div>
     <div v-else>
-      <div v-for="checked in checked_categories" :key="checked.id">
-        <p>{{ checked.name }}</p>
-        <ul v-for="restaurant in checked.restaurants" :key="restaurant.id">
-          <li>{{ restaurant.name }}</li>
-        </ul>
-      </div>
+      <ul v-for="restaurant of filteredCategory" :key="restaurant.id">
+        <li>{{ restaurant.name }}</li>
+      </ul>
     </div>
   </section>
 </template>
@@ -80,6 +77,25 @@ export default {
   },
   mounted() {
     this.getCategories();
+  },
+  computed: {
+    filteredCategory() {
+      console.log(this.checked_categories);
+      const filteredRestaurants = this.checked_categories
+        .map((category) => this.categories[category]?.restaurants || [])
+        .flat();
+
+      if (!filteredRestaurants.length) {
+        return [];
+      }
+
+      const ids = filteredRestaurants.map((restaurant) => restaurant.id);
+      console.log(ids);
+
+      return filteredRestaurants.filter(
+        ({ id }, index) => !ids.includes(id, index + 1)
+      );
+    },
   },
 };
 </script>

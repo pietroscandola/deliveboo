@@ -403,7 +403,6 @@ export default {
     },
   },
 
-
   mounted() {
     this.getRestaurant();
     // SessionStorageCart - Restaurant (NUOVO)
