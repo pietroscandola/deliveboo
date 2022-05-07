@@ -1,15 +1,41 @@
 <template>
   <div class="cart-card card p-3">
+    <!-- Il tuo ordine -->
     <div
-      v-if="!isCheckOutPage"
+      v-if="!isCheckOutPage && !isTrashCartDialogShowed"
       class="div d-flex justify-content-between align-items-center mb-1"
     >
       <h3 class="mb-3">Il tuo ordine</h3>
-      <span class="mb-3" role="button" @click="deleteCart()"
+      <span class="mb-3" role="button" @click="showTrashCartDialog()"
         ><i class="fa-solid fa-trash-can fa-lg"></i
       ></span>
     </div>
-    <div v-else>
+    <!-- Svuotare il Carrello? -->
+    <div
+      v-if="!isCheckOutPage && isTrashCartDialogShowed"
+      class="div d-flex justify-content-between align-items-center mb-1"
+    >
+      <h3 class="mb-3">Svuotare il carrello?</h3>
+      <div class="d-flex align-items-center">
+        <span
+          class="mb-3 mr-3 rounded text-success"
+          role="button"
+          @click="
+            hideTrashCartDialog();
+            deleteCart();
+          "
+          ><i class="fa-solid fa-circle-check fa-lg"></i
+        ></span>
+        <span
+          class="mb-3 rounded text-danger"
+          role="button"
+          @click="hideTrashCartDialog()"
+          ><i class="fa-solid fa-circle-xmark fa-lg"></i
+        ></span>
+      </div>
+    </div>
+
+    <div v-if="isCheckOutPage">
       <h3 class="cart-h3">Carrello</h3>
     </div>
     <!-- Prodotti -->
@@ -183,8 +209,19 @@ export default {
   components: {
     // Payment,
   },
+  data() {
+    return {
+      isTrashCartDialogShowed: false,
+    };
+  },
   props: ["cart", "restaurant", "addCart", "removeFromCart"],
   methods: {
+    showTrashCartDialog() {
+      this.isTrashCartDialogShowed = true;
+    },
+    hideTrashCartDialog() {
+      this.isTrashCartDialogShowed = false;
+    },
     getProductTotalPrice(product) {
       return product.quantity * product.price;
     },
@@ -214,9 +251,11 @@ export default {
 
 <style scoped lang="scss">
 .cart-card {
-  .fa-trash-can {
+  .fa-trash-can,
+  .fa-circle-xmark {
     color: rgb(255 49 49);
   }
+
   margin-top: 16px;
   .cart-h3 {
     font-size: 1.5em;

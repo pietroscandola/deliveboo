@@ -3246,13 +3246,50 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // import Payment from "../payment/Payment.vue";
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantCart",
   components: {// Payment,
   },
+  data: function data() {
+    return {
+      isTrashCartDialogShowed: false
+    };
+  },
   props: ["cart", "restaurant", "addCart", "removeFromCart"],
   methods: {
+    showTrashCartDialog: function showTrashCartDialog() {
+      this.isTrashCartDialogShowed = true;
+    },
+    hideTrashCartDialog: function hideTrashCartDialog() {
+      this.isTrashCartDialogShowed = false;
+    },
     getProductTotalPrice: function getProductTotalPrice(product) {
       return product.quantity * product.price;
     },
@@ -31115,7 +31152,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".cart-card[data-v-5cfa23fe] {\n  margin-top: 16px;\n}\n.cart-card .fa-trash-can[data-v-5cfa23fe] {\n  color: rgb(255, 49, 49);\n}\n.cart-card .cart-h3[data-v-5cfa23fe] {\n  font-size: 1.5em;\n  margin-bottom: 7px;\n}\n.cart-card h3[data-v-5cfa23fe] {\n  font-weight: 900;\n}\n.cart-card span[data-v-5cfa23fe] {\n  font-size: 16px;\n}\n.cart-card .checkout-button[data-v-5cfa23fe] {\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border-radius: 5px;\n  font-weight: 900;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.cart-card .checkout-button[data-v-5cfa23fe]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.cart-card .checkout-button[data-v-5cfa23fe]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}", ""]);
+exports.push([module.i, ".cart-card[data-v-5cfa23fe] {\n  margin-top: 16px;\n}\n.cart-card .fa-trash-can[data-v-5cfa23fe],\n.cart-card .fa-circle-xmark[data-v-5cfa23fe] {\n  color: rgb(255, 49, 49);\n}\n.cart-card .cart-h3[data-v-5cfa23fe] {\n  font-size: 1.5em;\n  margin-bottom: 7px;\n}\n.cart-card h3[data-v-5cfa23fe] {\n  font-weight: 900;\n}\n.cart-card span[data-v-5cfa23fe] {\n  font-size: 16px;\n}\n.cart-card .checkout-button[data-v-5cfa23fe] {\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border-radius: 5px;\n  font-weight: 900;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.cart-card .checkout-button[data-v-5cfa23fe]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.cart-card .checkout-button[data-v-5cfa23fe]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}", ""]);
 
 // exports
 
@@ -64407,7 +64444,7 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "cart-card card p-3" }, [
-    !_vm.isCheckOutPage
+    !_vm.isCheckOutPage && !_vm.isTrashCartDialogShowed
       ? _c(
           "div",
           {
@@ -64424,7 +64461,7 @@ var render = function () {
                 attrs: { role: "button" },
                 on: {
                   click: function ($event) {
-                    return _vm.deleteCart()
+                    return _vm.showTrashCartDialog()
                   },
                 },
               },
@@ -64432,7 +64469,57 @@ var render = function () {
             ),
           ]
         )
-      : _c("div", [_c("h3", { staticClass: "cart-h3" }, [_vm._v("Carrello")])]),
+      : _vm._e(),
+    _vm._v(" "),
+    !_vm.isCheckOutPage && _vm.isTrashCartDialogShowed
+      ? _c(
+          "div",
+          {
+            staticClass:
+              "div d-flex justify-content-between align-items-center mb-1",
+          },
+          [
+            _c("h3", { staticClass: "mb-3" }, [
+              _vm._v("Svuotare il carrello?"),
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "d-flex align-items-center" }, [
+              _c(
+                "span",
+                {
+                  staticClass: "mb-3 mr-3 rounded text-success",
+                  attrs: { role: "button" },
+                  on: {
+                    click: function ($event) {
+                      _vm.hideTrashCartDialog()
+                      _vm.deleteCart()
+                    },
+                  },
+                },
+                [_c("i", { staticClass: "fa-solid fa-circle-check fa-lg" })]
+              ),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  staticClass: "mb-3 rounded text-danger",
+                  attrs: { role: "button" },
+                  on: {
+                    click: function ($event) {
+                      return _vm.hideTrashCartDialog()
+                    },
+                  },
+                },
+                [_c("i", { staticClass: "fa-solid fa-circle-xmark fa-lg" })]
+              ),
+            ]),
+          ]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.isCheckOutPage
+      ? _c("div", [_c("h3", { staticClass: "cart-h3" }, [_vm._v("Carrello")])])
+      : _vm._e(),
     _vm._v(" "),
     _c(
       "div",
