@@ -18,13 +18,30 @@
             <!-- Name -->
             <div
               id="restaurant-name"
-              class="d-flex justify-content-between align-items-center"
+              class="d-flex justify-content-between align-items-center row"
             >
-              <h1>{{ restaurant.name }}</h1>
-              <div class="back-button-wrapper">
+              <div class="col-9 col-lg-9 col-md-11 col-sm-12">
+                <h1>{{ restaurant.name }}</h1>
+              </div>
+              <div
+                class="
+                  col-3 col-lg-3 col-md-1 col-sm-0
+                  d-flex
+                  justify-content-start justify-content-md-end
+                  back-button-wrapper
+                "
+              >
                 <router-link :to="{ name: 'home' }">
-                  <i class="fa-solid fa-chevron-left fa-lg mr-1"></i
-                  ><span style="line-height: 24px">Indietro</span>
+                  <i
+                    class="
+                      fa-solid fa-chevron-left fa-lg
+                      mr-1
+                      d-none d-md-inline
+                    "
+                  ></i
+                  ><span class="d-lg-inline d-none" style="line-height: 24px"
+                    >Indietro</span
+                  >
                 </router-link>
               </div>
             </div>
@@ -43,7 +60,7 @@
               <p class="text-muted">{{ restaurant.description }}</p>
               <!-- Contacts -->
               <div class="contacts-wrapper">
-                <span class="mr-3"
+                <span class="mr-3 mb-3 d-lg-inline d-block"
                   ><i class="fa-solid fa-location-dot fa-lg"></i
                   >{{ restaurant.address }}</span
                 >

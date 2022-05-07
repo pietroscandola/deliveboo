@@ -2633,6 +2633,23 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -63463,15 +63480,22 @@ var render = function () {
                     "div",
                     {
                       staticClass:
-                        "d-flex justify-content-between align-items-center",
+                        "d-flex justify-content-between align-items-center row",
                       attrs: { id: "restaurant-name" },
                     },
                     [
-                      _c("h1", [_vm._v(_vm._s(_vm.restaurant.name))]),
+                      _c(
+                        "div",
+                        { staticClass: "col-9 col-lg-9 col-md-11 col-sm-12" },
+                        [_c("h1", [_vm._v(_vm._s(_vm.restaurant.name))])]
+                      ),
                       _vm._v(" "),
                       _c(
                         "div",
-                        { staticClass: "back-button-wrapper" },
+                        {
+                          staticClass:
+                            "\n                col-3 col-lg-3 col-md-1 col-sm-0\n                d-flex\n                justify-content-start justify-content-md-end\n                back-button-wrapper\n              ",
+                        },
                         [
                           _c(
                             "router-link",
@@ -63479,11 +63503,14 @@ var render = function () {
                             [
                               _c("i", {
                                 staticClass:
-                                  "fa-solid fa-chevron-left fa-lg mr-1",
+                                  "\n                    fa-solid fa-chevron-left fa-lg\n                    mr-1\n                    d-none d-md-inline\n                  ",
                               }),
                               _c(
                                 "span",
-                                { staticStyle: { "line-height": "24px" } },
+                                {
+                                  staticClass: "d-lg-inline d-none",
+                                  staticStyle: { "line-height": "24px" },
+                                },
                                 [_vm._v("Indietro")]
                               ),
                             ]
@@ -63527,12 +63554,16 @@ var render = function () {
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "contacts-wrapper" }, [
-                        _c("span", { staticClass: "mr-3" }, [
-                          _c("i", {
-                            staticClass: "fa-solid fa-location-dot fa-lg",
-                          }),
-                          _vm._v(_vm._s(_vm.restaurant.address)),
-                        ]),
+                        _c(
+                          "span",
+                          { staticClass: "mr-3 mb-3 d-lg-inline d-block" },
+                          [
+                            _c("i", {
+                              staticClass: "fa-solid fa-location-dot fa-lg",
+                            }),
+                            _vm._v(_vm._s(_vm.restaurant.address)),
+                          ]
+                        ),
                         _vm._v(" "),
                         _c("span", [
                           _c("i", { staticClass: "fa-solid fa-phone fa-lg" }),
