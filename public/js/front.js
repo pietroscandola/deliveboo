@@ -2659,6 +2659,40 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -63600,492 +63634,553 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container-fluid", attrs: { id: "restaurant-show" } },
-    [
-      _vm.isLoading
-        ? _c("Loader")
-        : _c(
-            "div",
-            {
-              staticClass: "row bg-white pb-3 shadow-sm mb-3",
-              attrs: { id: "restaurant-info" },
-            },
-            [
-              _c("div", { staticClass: "col-12 mb-3" }, [
-                _c("div", { staticClass: "container" }, [
-                  _c("div", { staticClass: "row" }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "col-4",
-                        attrs: { id: "restaurant-image" },
-                      },
-                      [
-                        _c("img", {
-                          attrs: {
-                            src: "https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg",
-                            alt: "",
-                          },
-                        }),
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-8" }, [
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "d-flex justify-content-between align-items-center row",
-                          attrs: { id: "restaurant-name" },
-                        },
-                        [
-                          _c(
-                            "div",
-                            {
-                              staticClass: "col-9 col-lg-9 col-md-11 col-sm-12",
-                            },
-                            [_c("h1", [_vm._v(_vm._s(_vm.restaurant.name))])]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "\n                  col-3 col-lg-3 col-md-1 col-sm-0\n                  d-flex\n                  justify-content-start justify-content-md-end\n                  back-button-wrapper\n                ",
-                            },
-                            [
-                              _c(
-                                "router-link",
-                                { attrs: { to: { name: "home" } } },
-                                [
-                                  _c("i", {
-                                    staticClass:
-                                      "\n                      fa-solid fa-chevron-left fa-lg\n                      mr-1\n                      d-none d-md-inline\n                    ",
-                                  }),
-                                  _c(
-                                    "span",
-                                    {
-                                      staticClass: "d-lg-inline d-none",
-                                      staticStyle: { "line-height": "24px" },
-                                    },
-                                    [_vm._v("Indietro")]
-                                  ),
-                                ]
-                              ),
-                            ],
-                            1
-                          ),
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "categories-container mb-3" },
-                        _vm._l(_vm.restaurant.categories, function (category) {
-                          return _c(
-                            "span",
-                            {
-                              key: category.id,
-                              staticClass: "mr-1 badge badge-danger",
-                            },
-                            [
-                              _vm._v(
-                                "\n                " +
-                                  _vm._s(category.name) +
-                                  "\n              "
-                              ),
-                            ]
-                          )
-                        }),
-                        0
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass:
-                            "d-flex justify-content-between flex-column",
-                        },
-                        [
-                          _c("p", { staticClass: "text-muted" }, [
-                            _vm._v(_vm._s(_vm.restaurant.description)),
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "contacts-wrapper" }, [
-                            _c(
-                              "span",
-                              { staticClass: "mr-3 mb-3 d-lg-inline d-block" },
-                              [
-                                _c("i", {
-                                  staticClass: "fa-solid fa-location-dot fa-lg",
-                                }),
-                                _vm._v(_vm._s(_vm.restaurant.address)),
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c("span", [
-                              _c("i", {
-                                staticClass: "fa-solid fa-phone fa-lg",
-                              }),
-                              _vm._v(_vm._s(_vm.restaurant.phone)),
-                            ]),
-                          ]),
-                        ]
-                      ),
-                    ]),
-                  ]),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "modal fade",
-                  attrs: {
-                    id: "modale",
-                    tabindex: "-1",
-                    "aria-labelledby": "exampleModalLabel",
-                    "aria-hidden": "true",
-                  },
-                },
-                [
-                  _c(
-                    "div",
-                    { staticClass: "modal-dialog modal-dialog-centered" },
-                    [
-                      _c("div", { staticClass: "modal-content" }, [
-                        _c("div", { staticClass: "modal-header" }, [
-                          _c(
-                            "h5",
-                            {
-                              staticClass: "modal-title",
-                              attrs: { id: "exampleModalLabel" },
-                            },
-                            [
-                              _vm._v(
-                                "\n              Vuoi creare un nuovo carrello?\n            "
-                              ),
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "svg",
-                            {
-                              staticClass:
-                                "\n                close-button\n                ccl-0f24ac4b87ce1f67 ccl-abe5c41af1b9498e ccl-c738ab1fde928049\n              ",
-                              attrs: {
-                                "data-bs-dismiss": "modal",
-                                "xmlns:xlink": "http://www.w3.org/1999/xlink",
-                                xmlns: "http://www.w3.org/2000/svg",
-                                height: "24",
-                                width: "24",
-                                viewBox: "0 0 24 24",
-                                role: "button",
-                                focusable: "false",
-                              },
-                            },
-                            [
-                              _c("path", {
-                                attrs: {
-                                  d: "M12.0001 10.2322L5.88398 4.11612L4.11621 5.88389L10.2323 12L4.11621 18.1161L5.88398 19.8839L12.0001 13.7678L18.1162 19.8839L19.884 18.1161L13.7679 12L19.884 5.88389L18.1162 4.11612L12.0001 10.2322Z",
-                                  fill: "#00CCBC",
-                                },
-                              }),
-                            ]
-                          ),
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "modal-body" }, [
-                          _c("h6", [
-                            _vm._v(
-                              "\n              Nel carrello sono presenti prodotti di un altro ristorante, sei\n              sicuro di volerli eliminare e creare un nuovo carrello?\n            "
-                            ),
-                          ]),
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "modal-footer" }, [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "cancel-button",
-                              attrs: {
-                                type: "button",
-                                "data-bs-dismiss": "modal",
-                              },
-                            },
-                            [_vm._v("\n              Annulla\n            ")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "confirm-button",
-                              attrs: {
-                                type: "button",
-                                "data-bs-dismiss": "modal",
-                              },
-                              on: {
-                                click: function ($event) {
-                                  return _vm.getEmptyCart(
-                                    _vm.currentProduct.id,
-                                    _vm.currentProduct.name,
-                                    _vm.currentProduct.price,
-                                    _vm.restaurant.id
-                                  )
-                                },
-                              },
-                            },
-                            [
-                              _vm._v(
-                                "\n              Nuovo Carrello\n            "
-                              ),
-                            ]
-                          ),
-                        ]),
-                      ]),
-                    ]
-                  ),
-                ]
-              ),
-            ]
-          ),
-      _vm._v(" "),
-      _c("div", { staticClass: "container" }, [
-        _c("div", { staticClass: "row d-flex flex-lg-row flex-column" }, [
-          _c("div", { staticClass: "col-12 col-lg-8" }, [
-            _c(
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "container-fluid pb-5", attrs: { id: "restaurant-show" } },
+      [
+        _vm.isLoading
+          ? _c("Loader")
+          : _c(
               "div",
-              { staticClass: "row" },
-              _vm._l(_vm.products, function (product) {
-                return _c(
-                  "div",
-                  { key: product.id, staticClass: "col-sm-6 col-lg-4" },
-                  [
-                    _c("div", { staticClass: "card product-card my-3" }, [
-                      product.image
-                        ? _c("img", {
-                            staticClass: "card-img-top",
-                            attrs: {
-                              height: "150",
-                              src: "/storage/" + product.image,
-                              alt: "Card image cap",
-                            },
-                          })
-                        : _vm._e(),
-                      _vm._v(" "),
+              {
+                staticClass: "row bg-white pb-3 shadow-sm mb-3",
+                attrs: { id: "restaurant-info" },
+              },
+              [
+                _c("div", { staticClass: "col-12 mb-3" }, [
+                  _c("div", { staticClass: "container-fluid container-md" }, [
+                    _c("div", { staticClass: "row" }, [
                       _c(
                         "div",
                         {
                           staticClass:
-                            "card-body justify-content-between d-flex flex-column",
+                            "col-12 col-sm-4 mb-3 mb-sm-0 d-none d-sm-block",
+                          attrs: { id: "restaurant-image" },
                         },
                         [
-                          _c("div", [
-                            _c("h5", [
-                              _c("strong", [_vm._v(_vm._s(product.name))]),
-                            ]),
-                            _vm._v(" "),
-                            _c("p", { staticClass: "card-text" }, [
-                              _vm._v(_vm._s(product.ingredients)),
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "span",
-                              {
-                                staticClass: "badge badge-warning price-badge",
-                              },
-                              [
-                                _c("strong", [
-                                  _vm._v(
-                                    _vm._s(product.price.toFixed(2)) + " €"
-                                  ),
-                                ]),
-                              ]
-                            ),
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "d-flex justify-content-around align-items-center",
-                            },
-                            [
-                              _c(
-                                "svg",
-                                {
-                                  staticClass:
-                                    "\n                      ccl-0f24ac4b87ce1f67\n                      ccl-ed34b65f78f16205\n                      ccl-c738ab1fde928049\n                    ",
-                                  attrs: {
-                                    "xmlns:xlink":
-                                      "http://www.w3.org/1999/xlink",
-                                    xmlns: "http://www.w3.org/2000/svg",
-                                    height: "24",
-                                    width: "24",
-                                    viewBox: "0 0 24 24",
-                                    role: "button",
-                                    focusable: "false",
-                                  },
-                                  on: {
-                                    click: function ($event) {
-                                      return _vm.removeFromCart(product.id)
-                                    },
-                                  },
-                                },
-                                [
-                                  _c("path", {
-                                    attrs: {
-                                      d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z",
-                                      fill: "#00CCBC",
-                                    },
-                                  }),
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("div", [
-                                _c("p", { staticClass: "m-0" }, [
-                                  _vm._v(_vm._s(_vm.getIncrement(product.id))),
-                                ]),
-                              ]),
-                              _vm._v(" "),
-                              _vm.currentRestaurant !== _vm.restaurant.id &&
-                              _vm.currentRestaurant !== 0
-                                ? _c(
-                                    "svg",
-                                    {
-                                      staticClass:
-                                        "\n                      ccl-0f24ac4b87ce1f67\n                      ccl-ed34b65f78f16205\n                      ccl-c738ab1fde928049\n                    ",
-                                      attrs: {
-                                        "data-bs-toggle": "modal",
-                                        "data-bs-target": "#modale",
-                                        "xmlns:xlink":
-                                          "http://www.w3.org/1999/xlink",
-                                        xmlns: "http://www.w3.org/2000/svg",
-                                        height: "24",
-                                        width: "24",
-                                        viewBox: "0 0 24 24",
-                                        role: "button",
-                                        focusable: "false",
-                                      },
-                                      on: {
-                                        click: function ($event) {
-                                          return _vm.getCurrentProduct(product)
-                                        },
-                                      },
-                                    },
-                                    [
-                                      _c("path", {
-                                        attrs: {
-                                          d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z",
-                                          fill: "#00CCBC",
-                                        },
-                                      }),
-                                    ]
-                                  )
-                                : _c(
-                                    "svg",
-                                    {
-                                      staticClass:
-                                        "\n                      ccl-0f24ac4b87ce1f67\n                      ccl-ed34b65f78f16205\n                      ccl-c738ab1fde928049\n                    ",
-                                      attrs: {
-                                        "xmlns:xlink":
-                                          "http://www.w3.org/1999/xlink",
-                                        xmlns: "http://www.w3.org/2000/svg",
-                                        height: "24",
-                                        width: "24",
-                                        viewBox: "0 0 24 24",
-                                        role: "button",
-                                        focusable: "false",
-                                      },
-                                      on: {
-                                        click: function ($event) {
-                                          return _vm.addCart(
-                                            product.id,
-                                            product.name,
-                                            product.price,
-                                            _vm.restaurant.id
-                                          )
-                                        },
-                                      },
-                                    },
-                                    [
-                                      _c("path", {
-                                        attrs: {
-                                          d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z",
-                                          fill: "#00CCBC",
-                                        },
-                                      }),
-                                    ]
-                                  ),
-                            ]
-                          ),
-                        ]
-                      ),
-                    ]),
-                  ]
-                )
-              }),
-              0
-            ),
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-12 col-lg-4" },
-            [
-              _vm.cart.length && _vm.currentRestaurant === _vm.restaurant.id
-                ? _c("RestaurantCart", {
-                    attrs: {
-                      addCart: _vm.addCart,
-                      removeFromCart: _vm.removeFromCart,
-                      restaurant: _vm.restaurant,
-                      cart: _vm.cart,
-                    },
-                    on: { "empty-cart": _vm.emptyCart },
-                  })
-                : _c(
-                    "div",
-                    {
-                      staticClass:
-                        "\n            empty-cart\n            d-flex\n            justify-content-center\n            flex-column\n            align-items-center\n          ",
-                    },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "bi bi-basket my-3",
-                          attrs: {
-                            xmlns: "http://www.w3.org/2000/svg",
-                            width: "32px",
-                            height: "32px",
-                            fill: "currentColor",
-                            viewBox: "0 0 16 16",
-                          },
-                        },
-                        [
-                          _c("path", {
+                          _c("img", {
                             attrs: {
-                              d: "M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z",
+                              src: "https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg",
+                              alt: "",
                             },
                           }),
                         ]
                       ),
                       _vm._v(" "),
-                      _c("h3", [_vm._v("Il carrello è vuoto")]),
+                      _c("div", { staticClass: "col-12 col-sm-8" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "d-flex justify-content-between align-items-center row",
+                            attrs: { id: "restaurant-name" },
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "\n                    col-12 col-lg-9 col-md-11 col-sm-12\n                    text-center text-sm-left\n                  ",
+                              },
+                              [_c("h1", [_vm._v(_vm._s(_vm.restaurant.name))])]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "\n                    col-3 col-lg-3 col-md-1 col-sm-0\n                    d-flex\n                    justify-content-start justify-content-md-end\n                    back-button-wrapper\n                  ",
+                              },
+                              [
+                                _c(
+                                  "router-link",
+                                  {
+                                    staticClass: "d-flex align-items-center",
+                                    attrs: { to: { name: "home" } },
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass:
+                                        "\n                        fa-solid fa-chevron-left fa-lg\n                        mr-1\n                        d-none d-md-inline\n                      ",
+                                    }),
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass: "d-lg-inline d-none",
+                                        staticStyle: { "line-height": "24px" },
+                                      },
+                                      [_vm._v("Indietro")]
+                                    ),
+                                  ]
+                                ),
+                              ],
+                              1
+                            ),
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "\n                  categories-container\n                  mb-4 mb-sm-3\n                  text-center text-sm-left\n                ",
+                          },
+                          _vm._l(
+                            _vm.restaurant.categories,
+                            function (category) {
+                              return _c(
+                                "span",
+                                {
+                                  key: category.id,
+                                  staticClass: "mr-1 badge badge-danger",
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                  " +
+                                      _vm._s(category.name) +
+                                      "\n                "
+                                  ),
+                                ]
+                              )
+                            }
+                          ),
+                          0
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "d-flex justify-content-between flex-column",
+                          },
+                          [
+                            _c(
+                              "p",
+                              {
+                                staticClass:
+                                  "text-muted text-justify text-sm-left",
+                              },
+                              [
+                                _vm._v(
+                                  "\n                  " +
+                                    _vm._s(_vm.restaurant.description) +
+                                    "\n                "
+                                ),
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "contacts-wrapper mt-3 text-center text-sm-left",
+                              },
+                              [
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass:
+                                      "mr-3 mb-3 d-lg-inline d-block",
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass:
+                                        "fa-solid fa-location-dot fa-lg",
+                                    }),
+                                    _vm._v(_vm._s(_vm.restaurant.address)),
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("span", [
+                                  _c("i", {
+                                    staticClass: "fa-solid fa-phone fa-lg",
+                                  }),
+                                  _vm._v(_vm._s(_vm.restaurant.phone)),
+                                ]),
+                              ]
+                            ),
+                          ]
+                        ),
+                      ]),
+                    ]),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "modal fade",
+                    attrs: {
+                      id: "modale",
+                      tabindex: "-1",
+                      "aria-labelledby": "exampleModalLabel",
+                      "aria-hidden": "true",
+                    },
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "modal-dialog modal-dialog-centered" },
+                      [
+                        _c("div", { staticClass: "modal-content" }, [
+                          _c("div", { staticClass: "modal-header" }, [
+                            _c(
+                              "h5",
+                              {
+                                staticClass: "modal-title",
+                                attrs: { id: "exampleModalLabel" },
+                              },
+                              [
+                                _vm._v(
+                                  "\n                Vuoi creare un nuovo carrello?\n              "
+                                ),
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "svg",
+                              {
+                                staticClass:
+                                  "\n                  close-button\n                  ccl-0f24ac4b87ce1f67\n                  ccl-abe5c41af1b9498e\n                  ccl-c738ab1fde928049\n                ",
+                                attrs: {
+                                  "data-bs-dismiss": "modal",
+                                  "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  height: "24",
+                                  width: "24",
+                                  viewBox: "0 0 24 24",
+                                  role: "button",
+                                  focusable: "false",
+                                },
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    d: "M12.0001 10.2322L5.88398 4.11612L4.11621 5.88389L10.2323 12L4.11621 18.1161L5.88398 19.8839L12.0001 13.7678L18.1162 19.8839L19.884 18.1161L13.7679 12L19.884 5.88389L18.1162 4.11612L12.0001 10.2322Z",
+                                    fill: "#00CCBC",
+                                  },
+                                }),
+                              ]
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "modal-body" }, [
+                            _c("h6", [
+                              _vm._v(
+                                "\n                Nel carrello sono presenti prodotti di un altro ristorante,\n                sei sicuro di volerli eliminare e creare un nuovo carrello?\n              "
+                              ),
+                            ]),
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "modal-footer" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "cancel-button",
+                                attrs: {
+                                  type: "button",
+                                  "data-bs-dismiss": "modal",
+                                },
+                              },
+                              [
+                                _vm._v(
+                                  "\n                Annulla\n              "
+                                ),
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass: "confirm-button",
+                                attrs: {
+                                  type: "button",
+                                  "data-bs-dismiss": "modal",
+                                },
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.getEmptyCart(
+                                      _vm.currentProduct.id,
+                                      _vm.currentProduct.name,
+                                      _vm.currentProduct.price,
+                                      _vm.restaurant.id
+                                    )
+                                  },
+                                },
+                              },
+                              [
+                                _vm._v(
+                                  "\n                Nuovo Carrello\n              "
+                                ),
+                              ]
+                            ),
+                          ]),
+                        ]),
+                      ]
+                    ),
+                  ]
+                ),
+              ]
+            ),
+        _vm._v(" "),
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row d-flex flex-lg-row flex-column" }, [
+            _c("div", { staticClass: "col-12 col-lg-8" }, [
+              _c(
+                "div",
+                { staticClass: "row" },
+                _vm._l(_vm.products, function (product) {
+                  return _c(
+                    "div",
+                    { key: product.id, staticClass: "col-sm-6 col-lg-4" },
+                    [
+                      _c("div", { staticClass: "card product-card my-3" }, [
+                        product.image
+                          ? _c("img", {
+                              staticClass: "card-img-top",
+                              attrs: {
+                                height: "150",
+                                src: "/storage/" + product.image,
+                                alt: "Card image cap",
+                              },
+                            })
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "card-body justify-content-between d-flex flex-column",
+                          },
+                          [
+                            _c("div", [
+                              _c("h5", [
+                                _c("strong", [_vm._v(_vm._s(product.name))]),
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "card-text" }, [
+                                _vm._v(_vm._s(product.ingredients)),
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "badge badge-warning price-badge",
+                                },
+                                [
+                                  _c("strong", [
+                                    _vm._v(
+                                      _vm._s(product.price.toFixed(2)) + " €"
+                                    ),
+                                  ]),
+                                ]
+                              ),
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "d-flex justify-content-around align-items-center",
+                              },
+                              [
+                                _c(
+                                  "svg",
+                                  {
+                                    staticClass:
+                                      "\n                        ccl-0f24ac4b87ce1f67\n                        ccl-ed34b65f78f16205\n                        ccl-c738ab1fde928049\n                      ",
+                                    attrs: {
+                                      "xmlns:xlink":
+                                        "http://www.w3.org/1999/xlink",
+                                      xmlns: "http://www.w3.org/2000/svg",
+                                      height: "24",
+                                      width: "24",
+                                      viewBox: "0 0 24 24",
+                                      role: "button",
+                                      focusable: "false",
+                                    },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.removeFromCart(product.id)
+                                      },
+                                    },
+                                  },
+                                  [
+                                    _c("path", {
+                                      attrs: {
+                                        d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z",
+                                        fill: "#00CCBC",
+                                      },
+                                    }),
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("div", [
+                                  _c("p", { staticClass: "m-0" }, [
+                                    _vm._v(
+                                      _vm._s(_vm.getIncrement(product.id))
+                                    ),
+                                  ]),
+                                ]),
+                                _vm._v(" "),
+                                _vm.currentRestaurant !== _vm.restaurant.id &&
+                                _vm.currentRestaurant !== 0
+                                  ? _c(
+                                      "svg",
+                                      {
+                                        staticClass:
+                                          "\n                        ccl-0f24ac4b87ce1f67\n                        ccl-ed34b65f78f16205\n                        ccl-c738ab1fde928049\n                      ",
+                                        attrs: {
+                                          "data-bs-toggle": "modal",
+                                          "data-bs-target": "#modale",
+                                          "xmlns:xlink":
+                                            "http://www.w3.org/1999/xlink",
+                                          xmlns: "http://www.w3.org/2000/svg",
+                                          height: "24",
+                                          width: "24",
+                                          viewBox: "0 0 24 24",
+                                          role: "button",
+                                          focusable: "false",
+                                        },
+                                        on: {
+                                          click: function ($event) {
+                                            return _vm.getCurrentProduct(
+                                              product
+                                            )
+                                          },
+                                        },
+                                      },
+                                      [
+                                        _c("path", {
+                                          attrs: {
+                                            d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z",
+                                            fill: "#00CCBC",
+                                          },
+                                        }),
+                                      ]
+                                    )
+                                  : _c(
+                                      "svg",
+                                      {
+                                        staticClass:
+                                          "\n                        ccl-0f24ac4b87ce1f67\n                        ccl-ed34b65f78f16205\n                        ccl-c738ab1fde928049\n                      ",
+                                        attrs: {
+                                          "xmlns:xlink":
+                                            "http://www.w3.org/1999/xlink",
+                                          xmlns: "http://www.w3.org/2000/svg",
+                                          height: "24",
+                                          width: "24",
+                                          viewBox: "0 0 24 24",
+                                          role: "button",
+                                          focusable: "false",
+                                        },
+                                        on: {
+                                          click: function ($event) {
+                                            return _vm.addCart(
+                                              product.id,
+                                              product.name,
+                                              product.price,
+                                              _vm.restaurant.id
+                                            )
+                                          },
+                                        },
+                                      },
+                                      [
+                                        _c("path", {
+                                          attrs: {
+                                            d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z",
+                                            fill: "#00CCBC",
+                                          },
+                                        }),
+                                      ]
+                                    ),
+                              ]
+                            ),
+                          ]
+                        ),
+                      ]),
                     ]
-                  ),
-            ],
-            1
-          ),
+                  )
+                }),
+                0
+              ),
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-12 col-lg-4" },
+              [
+                _vm.cart.length && _vm.currentRestaurant === _vm.restaurant.id
+                  ? _c("RestaurantCart", {
+                      attrs: {
+                        addCart: _vm.addCart,
+                        removeFromCart: _vm.removeFromCart,
+                        restaurant: _vm.restaurant,
+                        cart: _vm.cart,
+                      },
+                      on: { "empty-cart": _vm.emptyCart },
+                    })
+                  : _c(
+                      "div",
+                      {
+                        staticClass:
+                          "\n              empty-cart\n              d-flex\n              justify-content-center\n              flex-column\n              align-items-center\n            ",
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-basket my-3",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "32px",
+                              height: "32px",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16",
+                            },
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d: "M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z",
+                              },
+                            }),
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("h3", [_vm._v("Il carrello è vuoto")]),
+                      ]
+                    ),
+              ],
+              1
+            ),
+          ]),
         ]),
-      ]),
-    ],
-    1
-  )
+      ],
+      1
+    ),
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mb-0 d-block d-sm-none" }, [
+      _c("img", {
+        staticStyle: { "max-width": "100%" },
+        attrs: {
+          src: "https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg",
+          alt: "",
+        },
+      }),
+    ])
+  },
+]
 render._withStripped = true
 
 
