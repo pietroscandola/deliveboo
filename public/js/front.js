@@ -2140,7 +2140,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -63286,73 +63285,79 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", { staticClass: "container", attrs: { id: "cart" } }, [
-    _c(
-      "div",
-      { staticClass: "row d-flex justify-content-between align-items-center" },
-      [
-        _vm._m(0),
+  return _c(
+    "section",
+    { staticClass: "container py-4", attrs: { id: "cart" } },
+    [
+      _c(
+        "div",
+        {
+          staticClass: "row d-flex justify-content-between align-items-center",
+        },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "\n        col-12 col-md-5\n        d-flex\n        justify-content-start justify-content-md-end\n        mt-md-0 mt-1\n      ",
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "go-back-link",
+                  attrs: { role: "button" },
+                  on: {
+                    click: function ($event) {
+                      return _vm.$router.go(-1)
+                    },
+                  },
+                },
+                [
+                  _vm._v("Modifica il tuo Ordine "),
+                  _c("i", { staticClass: "fa-solid fa-arrow-rotate-left" }),
+                ]
+              ),
+            ]
+          ),
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "row d-flex flex-lg-row flex-column-reverse" }, [
+        _c(
+          "div",
+          { staticClass: "col-12 col-lg-8" },
+          [
+            _c("Payment", {
+              staticClass: "mt-3",
+              attrs: { tot: _vm.getTotal().toFixed(2) },
+            }),
+          ],
+          1
+        ),
         _vm._v(" "),
         _c(
           "div",
-          {
-            staticClass:
-              "\n            col-12 col-md-5\n            d-flex\n            justify-content-start justify-content-md-end\n            mt-md-0 mt-1\n         ",
-          },
+          { staticClass: "col-12 col-lg-4" },
           [
-            _c(
-              "a",
-              {
-                staticClass: "go-back-link",
-                attrs: { role: "button" },
-                on: {
-                  click: function ($event) {
-                    return _vm.$router.go(-1)
-                  },
-                },
+            _c("RestaurantCart", {
+              staticClass: "mb-3",
+              attrs: {
+                addCart: _vm.addCart,
+                removeFromCart: _vm.removeFromCart,
+                restaurant: _vm.restaurant,
+                cart: _vm.cart,
               },
-              [
-                _vm._v("Modifica il tuo Ordine\n            "),
-                _c("i", { staticClass: "fa-solid fa-arrow-rotate-left" }),
-              ]
-            ),
-          ]
+              on: { "empty-cart": _vm.emptyCart },
+            }),
+          ],
+          1
         ),
-      ]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "row d-flex flex-lg-row flex-column-reverse" }, [
-      _c(
-        "div",
-        { staticClass: "col-12 col-lg-8" },
-        [
-          _c("Payment", {
-            staticClass: "mt-3",
-            attrs: { tot: _vm.getTotal().toFixed(2) },
-          }),
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-12 col-lg-4" },
-        [
-          _c("RestaurantCart", {
-            staticClass: "mb-3",
-            attrs: {
-              addCart: _vm.addCart,
-              removeFromCart: _vm.removeFromCart,
-              restaurant: _vm.restaurant,
-              cart: _vm.cart,
-            },
-            on: { "empty-cart": _vm.emptyCart },
-          }),
-        ],
-        1
-      ),
-    ]),
-  ])
+      ]),
+    ]
+  )
 }
 var staticRenderFns = [
   function () {
