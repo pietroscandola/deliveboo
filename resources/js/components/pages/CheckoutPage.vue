@@ -2,14 +2,21 @@
   <section id="cart" class="container py-4">
     <!-- Titolo e back -->
     <div class="row d-flex justify-content-between align-items-center">
-      <div class="col-12 col-md-7">
+      <div
+        class="
+          col-12 col-md-7
+          d-flex
+          justify-content-center justify-content-md-start
+          text-center text-md-start
+        "
+      >
         <h1>Controllo il tuo Ordine</h1>
       </div>
       <div
         class="
           col-12 col-md-5
           d-flex
-          justify-content-start justify-content-md-end
+          justify-content-center justify-content-md-end
           mt-md-0 mt-1
         "
       >

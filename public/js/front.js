@@ -2140,6 +2140,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -63377,7 +63384,7 @@ var render = function () {
             "div",
             {
               staticClass:
-                "\n        col-12 col-md-5\n        d-flex\n        justify-content-start justify-content-md-end\n        mt-md-0 mt-1\n      ",
+                "\n        col-12 col-md-5\n        d-flex\n        justify-content-center justify-content-md-end\n        mt-md-0 mt-1\n      ",
             },
             [
               _c(
@@ -63440,9 +63447,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 col-md-7" }, [
-      _c("h1", [_vm._v("Controllo il tuo Ordine")]),
-    ])
+    return _c(
+      "div",
+      {
+        staticClass:
+          "\n        col-12 col-md-7\n        d-flex\n        justify-content-center justify-content-md-start\n        text-center text-md-start\n      ",
+      },
+      [_c("h1", [_vm._v("Controllo il tuo Ordine")])]
+    )
   },
 ]
 render._withStripped = true
