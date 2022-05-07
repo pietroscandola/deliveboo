@@ -1,5 +1,5 @@
 <template>
-  <section id="home">
+  <section id="home" class="py-3">
     <Loader v-if="isLoading" />
     <!-- CARD -->
     <div
