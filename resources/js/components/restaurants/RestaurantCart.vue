@@ -10,30 +10,32 @@
         ><i class="fa-solid fa-trash-can fa-lg"></i
       ></span>
     </div>
-    <!-- Svuotare il Carrello? -->
-    <div
-      v-if="!isCheckOutPage && isTrashCartDialogShowed"
-      class="div d-flex justify-content-between align-items-center mb-1"
-    >
-      <h3 class="mb-3">Svuotare il carrello?</h3>
-      <div class="d-flex align-items-center">
-        <span
-          class="mb-3 mr-3 rounded text-success"
-          role="button"
-          @click="
-            hideTrashCartDialog();
-            deleteCart();
-          "
-          ><i class="fa-solid fa-circle-check fa-lg"></i
-        ></span>
-        <span
-          class="mb-3 rounded text-danger"
-          role="button"
-          @click="hideTrashCartDialog()"
-          ><i class="fa-solid fa-circle-xmark fa-lg"></i
-        ></span>
+    <!-- Dialogo Carrello -->
+    <Transition name="slide-fade">
+      <div
+        v-if="!isCheckOutPage && isTrashCartDialogShowed"
+        class="div d-flex justify-content-between align-items-center mb-1"
+      >
+        <h3 class="mb-3">Svuotare il carrello?</h3>
+        <div class="d-flex align-items-center">
+          <span
+            class="mb-3 mr-3 rounded text-success"
+            role="button"
+            @click="
+              hideTrashCartDialog();
+              deleteCart();
+            "
+            ><i class="fa-solid fa-circle-check fa-lg"></i
+          ></span>
+          <span
+            class="mb-3 rounded text-danger"
+            role="button"
+            @click="hideTrashCartDialog()"
+            ><i class="fa-solid fa-circle-xmark fa-lg"></i
+          ></span>
+        </div>
       </div>
-    </div>
+    </Transition>
 
     <div v-if="isCheckOutPage">
       <h3 class="cart-h3">Carrello</h3>
@@ -216,12 +218,6 @@ export default {
   },
   props: ["cart", "restaurant", "addCart", "removeFromCart"],
   methods: {
-    showTrashCartDialog() {
-      this.isTrashCartDialogShowed = true;
-    },
-    hideTrashCartDialog() {
-      this.isTrashCartDialogShowed = false;
-    },
     getProductTotalPrice(product) {
       return product.quantity * product.price;
     },
@@ -239,6 +235,14 @@ export default {
       sessionStorage.removeItem("cart");
       // Update Cart
       this.$emit("empty-cart");
+    },
+
+    // TrashCartDialog Methods
+    showTrashCartDialog() {
+      this.isTrashCartDialogShowed = true;
+    },
+    hideTrashCartDialog() {
+      this.isTrashCartDialogShowed = false;
     },
   },
   computed: {
@@ -284,5 +288,15 @@ export default {
       text-decoration: none;
     }
   }
+}
+
+// Animazione Dialogo Carrello
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-enter {
+  transform: translateX(20px);
+  opacity: 0;
 }
 </style>

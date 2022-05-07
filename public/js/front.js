@@ -3272,6 +3272,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
 // import Payment from "../payment/Payment.vue";
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantCart",
@@ -3284,12 +3286,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   },
   props: ["cart", "restaurant", "addCart", "removeFromCart"],
   methods: {
-    showTrashCartDialog: function showTrashCartDialog() {
-      this.isTrashCartDialogShowed = true;
-    },
-    hideTrashCartDialog: function hideTrashCartDialog() {
-      this.isTrashCartDialogShowed = false;
-    },
     getProductTotalPrice: function getProductTotalPrice(product) {
       return product.quantity * product.price;
     },
@@ -3317,6 +3313,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       sessionStorage.removeItem("cart"); // Update Cart
 
       this.$emit("empty-cart");
+    },
+    // TrashCartDialog Methods
+    showTrashCartDialog: function showTrashCartDialog() {
+      this.isTrashCartDialogShowed = true;
+    },
+    hideTrashCartDialog: function hideTrashCartDialog() {
+      this.isTrashCartDialogShowed = false;
     }
   },
   computed: {
@@ -31152,7 +31155,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".cart-card[data-v-5cfa23fe] {\n  margin-top: 16px;\n}\n.cart-card .fa-trash-can[data-v-5cfa23fe],\n.cart-card .fa-circle-xmark[data-v-5cfa23fe] {\n  color: rgb(255, 49, 49);\n}\n.cart-card .cart-h3[data-v-5cfa23fe] {\n  font-size: 1.5em;\n  margin-bottom: 7px;\n}\n.cart-card h3[data-v-5cfa23fe] {\n  font-weight: 900;\n}\n.cart-card span[data-v-5cfa23fe] {\n  font-size: 16px;\n}\n.cart-card .checkout-button[data-v-5cfa23fe] {\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border-radius: 5px;\n  font-weight: 900;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.cart-card .checkout-button[data-v-5cfa23fe]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.cart-card .checkout-button[data-v-5cfa23fe]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}", ""]);
+exports.push([module.i, ".cart-card[data-v-5cfa23fe] {\n  margin-top: 16px;\n}\n.cart-card .fa-trash-can[data-v-5cfa23fe],\n.cart-card .fa-circle-xmark[data-v-5cfa23fe] {\n  color: rgb(255, 49, 49);\n}\n.cart-card .cart-h3[data-v-5cfa23fe] {\n  font-size: 1.5em;\n  margin-bottom: 7px;\n}\n.cart-card h3[data-v-5cfa23fe] {\n  font-weight: 900;\n}\n.cart-card span[data-v-5cfa23fe] {\n  font-size: 16px;\n}\n.cart-card .checkout-button[data-v-5cfa23fe] {\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border-radius: 5px;\n  font-weight: 900;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.cart-card .checkout-button[data-v-5cfa23fe]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.cart-card .checkout-button[data-v-5cfa23fe]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}\n.slide-fade-enter-active[data-v-5cfa23fe] {\n  transition: all 0.3s ease-out;\n}\n.slide-fade-enter[data-v-5cfa23fe] {\n  transform: translateX(20px);\n  opacity: 0;\n}", ""]);
 
 // exports
 
@@ -64443,359 +64446,372 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "cart-card card p-3" }, [
-    !_vm.isCheckOutPage && !_vm.isTrashCartDialogShowed
-      ? _c(
-          "div",
-          {
-            staticClass:
-              "div d-flex justify-content-between align-items-center mb-1",
-          },
-          [
-            _c("h3", { staticClass: "mb-3" }, [_vm._v("Il tuo ordine")]),
-            _vm._v(" "),
-            _c(
-              "span",
-              {
-                staticClass: "mb-3",
-                attrs: { role: "button" },
-                on: {
-                  click: function ($event) {
-                    return _vm.showTrashCartDialog()
-                  },
-                },
-              },
-              [_c("i", { staticClass: "fa-solid fa-trash-can fa-lg" })]
-            ),
-          ]
-        )
-      : _vm._e(),
-    _vm._v(" "),
-    !_vm.isCheckOutPage && _vm.isTrashCartDialogShowed
-      ? _c(
-          "div",
-          {
-            staticClass:
-              "div d-flex justify-content-between align-items-center mb-1",
-          },
-          [
-            _c("h3", { staticClass: "mb-3" }, [
-              _vm._v("Svuotare il carrello?"),
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "d-flex align-items-center" }, [
-              _c(
-                "span",
-                {
-                  staticClass: "mb-3 mr-3 rounded text-success",
-                  attrs: { role: "button" },
-                  on: {
-                    click: function ($event) {
-                      _vm.hideTrashCartDialog()
-                      _vm.deleteCart()
-                    },
-                  },
-                },
-                [_c("i", { staticClass: "fa-solid fa-circle-check fa-lg" })]
-              ),
+  return _c(
+    "div",
+    { staticClass: "cart-card card p-3" },
+    [
+      !_vm.isCheckOutPage && !_vm.isTrashCartDialogShowed
+        ? _c(
+            "div",
+            {
+              staticClass:
+                "div d-flex justify-content-between align-items-center mb-1",
+            },
+            [
+              _c("h3", { staticClass: "mb-3" }, [_vm._v("Il tuo ordine")]),
               _vm._v(" "),
               _c(
                 "span",
                 {
-                  staticClass: "mb-3 rounded text-danger",
+                  staticClass: "mb-3",
                   attrs: { role: "button" },
                   on: {
                     click: function ($event) {
-                      return _vm.hideTrashCartDialog()
+                      return _vm.showTrashCartDialog()
                     },
                   },
                 },
-                [_c("i", { staticClass: "fa-solid fa-circle-xmark fa-lg" })]
+                [_c("i", { staticClass: "fa-solid fa-trash-can fa-lg" })]
               ),
-            ]),
-          ]
-        )
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.isCheckOutPage
-      ? _c("div", [_c("h3", { staticClass: "cart-h3" }, [_vm._v("Carrello")])])
-      : _vm._e(),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "mb-3" },
-      _vm._l(_vm.cart, function (product) {
-        return _c("div", { key: product.id }, [
-          _c(
-            "div",
-            { staticClass: "product d-flex justify-content-between row mb-1" },
-            [
-              _vm.isCheckOutPage
-                ? _c("div", { staticClass: "col-8 d-flex" }, [
-                    _vm.isCheckOutPage
-                      ? _c(
-                          "span",
-                          {
-                            staticClass: "text-muted",
-                            staticStyle: { "margin-right": "8px" },
-                          },
-                          [
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _c("Transition", { attrs: { name: "slide-fade" } }, [
+        !_vm.isCheckOutPage && _vm.isTrashCartDialogShowed
+          ? _c(
+              "div",
+              {
+                staticClass:
+                  "div d-flex justify-content-between align-items-center mb-1",
+              },
+              [
+                _c("h3", { staticClass: "mb-3" }, [
+                  _vm._v("Svuotare il carrello?"),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "d-flex align-items-center" }, [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "mb-3 mr-3 rounded text-success",
+                      attrs: { role: "button" },
+                      on: {
+                        click: function ($event) {
+                          _vm.hideTrashCartDialog()
+                          _vm.deleteCart()
+                        },
+                      },
+                    },
+                    [_c("i", { staticClass: "fa-solid fa-circle-check fa-lg" })]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass: "mb-3 rounded text-danger",
+                      attrs: { role: "button" },
+                      on: {
+                        click: function ($event) {
+                          return _vm.hideTrashCartDialog()
+                        },
+                      },
+                    },
+                    [_c("i", { staticClass: "fa-solid fa-circle-xmark fa-lg" })]
+                  ),
+                ]),
+              ]
+            )
+          : _vm._e(),
+      ]),
+      _vm._v(" "),
+      _vm.isCheckOutPage
+        ? _c("div", [
+            _c("h3", { staticClass: "cart-h3" }, [_vm._v("Carrello")]),
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "mb-3" },
+        _vm._l(_vm.cart, function (product) {
+          return _c("div", { key: product.id }, [
+            _c(
+              "div",
+              {
+                staticClass: "product d-flex justify-content-between row mb-1",
+              },
+              [
+                _vm.isCheckOutPage
+                  ? _c("div", { staticClass: "col-8 d-flex" }, [
+                      _vm.isCheckOutPage
+                        ? _c(
+                            "span",
+                            {
+                              staticClass: "text-muted",
+                              staticStyle: { "margin-right": "8px" },
+                            },
+                            [
+                              _vm._v(
+                                "\n            " +
+                                  _vm._s(product.quantity) +
+                                  "x\n          "
+                              ),
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "mb-1" }, [
+                        _vm._v(_vm._s(product.name)),
+                      ]),
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.isCheckOutPage
+                  ? _c(
+                      "div",
+                      { staticClass: "col-4 d-flex justify-content-between" },
+                      [
+                        !_vm.isCheckOutPage
+                          ? _c(
+                              "div",
+                              { staticClass: "button-container d-flex" },
+                              [
+                                _c(
+                                  "svg",
+                                  {
+                                    staticClass:
+                                      "\n                ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049\n                mr-1\n              ",
+                                    attrs: {
+                                      "xmlns:xlink":
+                                        "http://www.w3.org/1999/xlink",
+                                      xmlns: "http://www.w3.org/2000/svg",
+                                      height: "24",
+                                      width: "24",
+                                      viewBox: "0 0 24 24",
+                                      role: "button",
+                                      focusable: "false",
+                                    },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.removeFromCart(
+                                          product.product_id
+                                        )
+                                      },
+                                    },
+                                  },
+                                  [
+                                    _c("path", {
+                                      attrs: {
+                                        d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z",
+                                        fill: "#00CCBC",
+                                      },
+                                    }),
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "mr-1" }, [
+                                  _vm._v(" " + _vm._s(product.quantity) + " "),
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "svg",
+                                  {
+                                    staticClass:
+                                      "\n                ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049\n              ",
+                                    attrs: {
+                                      "xmlns:xlink":
+                                        "http://www.w3.org/1999/xlink",
+                                      xmlns: "http://www.w3.org/2000/svg",
+                                      height: "24",
+                                      width: "24",
+                                      viewBox: "0 0 24 24",
+                                      role: "button",
+                                      focusable: "false",
+                                    },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.addCart(
+                                          product.product_id,
+                                          product.name,
+                                          product.price,
+                                          _vm.restaurant.id
+                                        )
+                                      },
+                                    },
+                                  },
+                                  [
+                                    _c("path", {
+                                      attrs: {
+                                        d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z",
+                                        fill: "#00CCBC",
+                                      },
+                                    }),
+                                  ]
+                                ),
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("div"),
+                        _vm._v(" "),
+                        _c("span", [
+                          _vm._v(
+                            _vm._s(
+                              _vm.getProductTotalPrice(product).toFixed(2)
+                            ) + " €"
+                          ),
+                        ]),
+                      ]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                !_vm.isCheckOutPage
+                  ? _c("div", { staticClass: "col-6 d-flex" }, [
+                      _vm.isCheckOutPage
+                        ? _c("span", { staticClass: "mr-1" }, [
                             _vm._v(
                               "\n            " +
                                 _vm._s(product.quantity) +
                                 "x\n          "
                             ),
-                          ]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "mb-1" }, [
-                      _vm._v(_vm._s(product.name)),
-                    ]),
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.isCheckOutPage
-                ? _c(
-                    "div",
-                    { staticClass: "col-4 d-flex justify-content-between" },
-                    [
-                      !_vm.isCheckOutPage
-                        ? _c(
-                            "div",
-                            { staticClass: "button-container d-flex" },
-                            [
-                              _c(
-                                "svg",
-                                {
-                                  staticClass:
-                                    "\n                ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049\n                mr-1\n              ",
-                                  attrs: {
-                                    "xmlns:xlink":
-                                      "http://www.w3.org/1999/xlink",
-                                    xmlns: "http://www.w3.org/2000/svg",
-                                    height: "24",
-                                    width: "24",
-                                    viewBox: "0 0 24 24",
-                                    role: "button",
-                                    focusable: "false",
-                                  },
-                                  on: {
-                                    click: function ($event) {
-                                      return _vm.removeFromCart(
-                                        product.product_id
-                                      )
-                                    },
-                                  },
-                                },
-                                [
-                                  _c("path", {
-                                    attrs: {
-                                      d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z",
-                                      fill: "#00CCBC",
-                                    },
-                                  }),
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("span", { staticClass: "mr-1" }, [
-                                _vm._v(" " + _vm._s(product.quantity) + " "),
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "svg",
-                                {
-                                  staticClass:
-                                    "\n                ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049\n              ",
-                                  attrs: {
-                                    "xmlns:xlink":
-                                      "http://www.w3.org/1999/xlink",
-                                    xmlns: "http://www.w3.org/2000/svg",
-                                    height: "24",
-                                    width: "24",
-                                    viewBox: "0 0 24 24",
-                                    role: "button",
-                                    focusable: "false",
-                                  },
-                                  on: {
-                                    click: function ($event) {
-                                      return _vm.addCart(
-                                        product.product_id,
-                                        product.name,
-                                        product.price,
-                                        _vm.restaurant.id
-                                      )
-                                    },
-                                  },
-                                },
-                                [
-                                  _c("path", {
-                                    attrs: {
-                                      d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z",
-                                      fill: "#00CCBC",
-                                    },
-                                  }),
-                                ]
-                              ),
-                            ]
-                          )
+                          ])
                         : _vm._e(),
                       _vm._v(" "),
-                      _c("div"),
-                      _vm._v(" "),
-                      _c("span", [
-                        _vm._v(
-                          _vm._s(_vm.getProductTotalPrice(product).toFixed(2)) +
-                            " €"
-                        ),
+                      _c("span", { staticClass: "mb-1" }, [
+                        _vm._v(_vm._s(product.name)),
                       ]),
-                    ]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              !_vm.isCheckOutPage
-                ? _c("div", { staticClass: "col-6 d-flex" }, [
-                    _vm.isCheckOutPage
-                      ? _c("span", { staticClass: "mr-1" }, [
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                !_vm.isCheckOutPage
+                  ? _c(
+                      "div",
+                      { staticClass: "col-6 d-flex justify-content-between" },
+                      [
+                        !_vm.isCheckOutPage
+                          ? _c(
+                              "div",
+                              { staticClass: "button-container d-flex" },
+                              [
+                                _c(
+                                  "svg",
+                                  {
+                                    staticClass:
+                                      "\n                ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049\n                mr-1\n              ",
+                                    attrs: {
+                                      "xmlns:xlink":
+                                        "http://www.w3.org/1999/xlink",
+                                      xmlns: "http://www.w3.org/2000/svg",
+                                      height: "24",
+                                      width: "24",
+                                      viewBox: "0 0 24 24",
+                                      role: "button",
+                                      focusable: "false",
+                                    },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.removeFromCart(
+                                          product.product_id
+                                        )
+                                      },
+                                    },
+                                  },
+                                  [
+                                    _c("path", {
+                                      attrs: {
+                                        d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z",
+                                        fill: "#00CCBC",
+                                      },
+                                    }),
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "mr-1" }, [
+                                  _vm._v(" " + _vm._s(product.quantity) + " "),
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "svg",
+                                  {
+                                    staticClass:
+                                      "\n                ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049\n              ",
+                                    attrs: {
+                                      "xmlns:xlink":
+                                        "http://www.w3.org/1999/xlink",
+                                      xmlns: "http://www.w3.org/2000/svg",
+                                      height: "24",
+                                      width: "24",
+                                      viewBox: "0 0 24 24",
+                                      role: "button",
+                                      focusable: "false",
+                                    },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.addCart(
+                                          product.product_id,
+                                          product.name,
+                                          product.price,
+                                          _vm.restaurant.id
+                                        )
+                                      },
+                                    },
+                                  },
+                                  [
+                                    _c("path", {
+                                      attrs: {
+                                        d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z",
+                                        fill: "#00CCBC",
+                                      },
+                                    }),
+                                  ]
+                                ),
+                              ]
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("div"),
+                        _vm._v(" "),
+                        _c("span", [
                           _vm._v(
-                            "\n            " +
-                              _vm._s(product.quantity) +
-                              "x\n          "
+                            _vm._s(
+                              _vm.getProductTotalPrice(product).toFixed(2)
+                            ) + " €"
                           ),
-                        ])
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "mb-1" }, [
-                      _vm._v(_vm._s(product.name)),
-                    ]),
-                  ])
-                : _vm._e(),
-              _vm._v(" "),
-              !_vm.isCheckOutPage
-                ? _c(
-                    "div",
-                    { staticClass: "col-6 d-flex justify-content-between" },
-                    [
-                      !_vm.isCheckOutPage
-                        ? _c(
-                            "div",
-                            { staticClass: "button-container d-flex" },
-                            [
-                              _c(
-                                "svg",
-                                {
-                                  staticClass:
-                                    "\n                ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049\n                mr-1\n              ",
-                                  attrs: {
-                                    "xmlns:xlink":
-                                      "http://www.w3.org/1999/xlink",
-                                    xmlns: "http://www.w3.org/2000/svg",
-                                    height: "24",
-                                    width: "24",
-                                    viewBox: "0 0 24 24",
-                                    role: "button",
-                                    focusable: "false",
-                                  },
-                                  on: {
-                                    click: function ($event) {
-                                      return _vm.removeFromCart(
-                                        product.product_id
-                                      )
-                                    },
-                                  },
-                                },
-                                [
-                                  _c("path", {
-                                    attrs: {
-                                      d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z",
-                                      fill: "#00CCBC",
-                                    },
-                                  }),
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("span", { staticClass: "mr-1" }, [
-                                _vm._v(" " + _vm._s(product.quantity) + " "),
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "svg",
-                                {
-                                  staticClass:
-                                    "\n                ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049\n              ",
-                                  attrs: {
-                                    "xmlns:xlink":
-                                      "http://www.w3.org/1999/xlink",
-                                    xmlns: "http://www.w3.org/2000/svg",
-                                    height: "24",
-                                    width: "24",
-                                    viewBox: "0 0 24 24",
-                                    role: "button",
-                                    focusable: "false",
-                                  },
-                                  on: {
-                                    click: function ($event) {
-                                      return _vm.addCart(
-                                        product.product_id,
-                                        product.name,
-                                        product.price,
-                                        _vm.restaurant.id
-                                      )
-                                    },
-                                  },
-                                },
-                                [
-                                  _c("path", {
-                                    attrs: {
-                                      d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z",
-                                      fill: "#00CCBC",
-                                    },
-                                  }),
-                                ]
-                              ),
-                            ]
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c("div"),
-                      _vm._v(" "),
-                      _c("span", [
-                        _vm._v(
-                          _vm._s(_vm.getProductTotalPrice(product).toFixed(2)) +
-                            " €"
-                        ),
-                      ]),
-                    ]
-                  )
-                : _vm._e(),
-            ]
-          ),
-        ])
-      }),
-      0
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "d-flex justify-content-between" }, [
-      _vm._m(0),
+                        ]),
+                      ]
+                    )
+                  : _vm._e(),
+              ]
+            ),
+          ])
+        }),
+        0
+      ),
       _vm._v(" "),
-      _c("span", [
-        _c("strong", [_vm._v(_vm._s(_vm.getTotal().toFixed(2)) + " €")]),
+      _c("div", { staticClass: "d-flex justify-content-between" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("span", [
+          _c("strong", [_vm._v(_vm._s(_vm.getTotal().toFixed(2)) + " €")]),
+        ]),
       ]),
-    ]),
-    _vm._v(" "),
-    !_vm.isCheckOutPage
-      ? _c("div", { staticClass: "mt-3" }, [
-          _c(
-            "a",
-            {
-              staticClass: "checkout-button",
-              attrs: { href: "http://127.0.0.1:8000/checkout" },
-            },
-            [_vm._v("\n      Vai al pagamento\n    ")]
-          ),
-        ])
-      : _vm._e(),
-  ])
+      _vm._v(" "),
+      !_vm.isCheckOutPage
+        ? _c("div", { staticClass: "mt-3" }, [
+            _c(
+              "a",
+              {
+                staticClass: "checkout-button",
+                attrs: { href: "http://127.0.0.1:8000/checkout" },
+              },
+              [_vm._v("\n      Vai al pagamento\n    ")]
+            ),
+          ])
+        : _vm._e(),
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function () {
