@@ -4,7 +4,7 @@
     <Loader v-if="isLoading" />
     <div v-else class="row">
       <!-- RISTORANTE -->
-      <div class="col-12">
+      <div class="col-12 mb-3">
         <div class="row">
           <!-- Img -->
           <div id="restaurant-image" class="col-4">
@@ -75,7 +75,9 @@
       </div>
       <!-- PRODOTTI TITOLO -->
       <div class="col-12 mt-3 d-flex justify-content-between">
-        <h3>Prodotti</h3>
+        <h3>
+          <strong>Menù</strong>
+        </h3>
       </div>
 
       <!-- Modal -->
@@ -148,7 +150,7 @@
       </div>
     </div>
     <!-- PRODOTTI E CARRELLO -->
-    <div class="row d-flex flex-lg-row flex-column-reverse">
+    <div class="row d-flex flex-lg-row flex-column">
       <!-- LISTA PRODOTTI -->
       <div class="col-12 col-lg-8">
         <!-- Cards -->

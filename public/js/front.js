@@ -2650,6 +2650,8 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -63459,7 +63461,7 @@ var render = function () {
       _vm.isLoading
         ? _c("Loader")
         : _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "col-12 mb-3" }, [
               _c("div", { staticClass: "row" }, [
                 _c(
                   "div",
@@ -63579,7 +63581,7 @@ var render = function () {
             _c(
               "div",
               { staticClass: "col-12 mt-3 d-flex justify-content-between" },
-              [_c("h3", [_vm._v("Prodotti")])]
+              [_c("h3", [_c("strong", [_vm._v("Menù")])])]
             ),
             _vm._v(" "),
             _c(
@@ -63694,7 +63696,7 @@ var render = function () {
             ),
           ]),
       _vm._v(" "),
-      _c("div", { staticClass: "row d-flex flex-lg-row flex-column-reverse" }, [
+      _c("div", { staticClass: "row d-flex flex-lg-row flex-column" }, [
         _c("div", { staticClass: "col-12 col-lg-8" }, [
           _c(
             "div",
