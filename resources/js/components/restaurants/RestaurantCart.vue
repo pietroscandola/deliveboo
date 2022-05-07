@@ -167,7 +167,7 @@
       >
     </div>
     <div v-if="!isCheckOutPage" class="mt-3">
-      <a class="checkout-button" href="http://127.0.0.1:8000/cart">
+      <a class="checkout-button" href="http://127.0.0.1:8000/checkout">
         Vai al pagamento
       </a>
     </div>
@@ -206,7 +206,7 @@ export default {
   },
   computed: {
     isCheckOutPage() {
-      return this.$route.name === "cart";
+      return this.$route.name === "checkout";
     },
   },
 };
