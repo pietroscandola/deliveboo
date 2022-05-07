@@ -5,39 +5,53 @@
     <div v-else class="row">
       <!-- RISTORANTE -->
       <div class="col-12">
-        <div class="card">
-          <!-- Header con nome e categorie -->
-          <div class="card-header d-flex justify-content-between">
-            <h5 class="m-0">
-              <strong>{{ restaurant.name }}</strong>
-            </h5>
-            <div v-if="restaurant.categories" class="categories-box">
+        <div class="row">
+          <!-- Img -->
+          <div class="col-4">
+            <img
+              class="img-fluid restaurant-img"
+              src="https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg"
+              alt=""
+            />
+          </div>
+          <div class="col-8">
+            <!-- Name -->
+            <div
+              id="restaurant-name"
+              class="d-flex justify-content-between align-items-center"
+            >
+              <h1>{{ restaurant.name }}</h1>
+              <div class="back-button-wrapper">
+                <router-link :to="{ name: 'home' }">
+                  <i class="fa-solid fa-chevron-left fa-lg mr-1"></i
+                  ><span style="line-height: 24px">Indietro</span>
+                </router-link>
+              </div>
+            </div>
+            <!-- Categories -->
+            <div class="categories-container mb-3">
               <span
+                class="mr-1 badge badge-danger"
                 v-for="category in restaurant.categories"
                 :key="category.id"
-                class="badge badge-primary mx-1"
               >
                 {{ category.name }}
               </span>
             </div>
-          </div>
-          <!-- Immagine e descrizione ristorante -->
-          <div class="card-body row">
-            <div class="col-sm-12 col-md-4">
-              <img
-                class="img-fluid"
-                src="https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg"
-                alt="R"
-              />
-            </div>
-            <div class="col-sm-12 col-md-8">
-              <h5 class="card-title">{{ restaurant.address }}</h5>
-              <p class="card-text">
-                {{ restaurant.description }}
-              </p>
-              <button class="btn btn-primary" @click="$router.back()">
-                Indietro
-              </button>
+            <div class="d-flex justify-content-between flex-column">
+              <!-- Description -->
+              <p class="text-muted">{{ restaurant.description }}</p>
+              <!-- Contacts -->
+              <div class="contacts-wrapper">
+                <span class="mr-3"
+                  ><i class="fa-solid fa-location-dot fa-lg"></i
+                  >{{ restaurant.address }}</span
+                >
+                <span
+                  ><i class="fa-solid fa-phone fa-lg"></i
+                  >{{ restaurant.phone }}</span
+                >
+              </div>
             </div>
           </div>
         </div>
@@ -45,21 +59,80 @@
       <!-- PRODOTTI -->
       <div class="col-12 mt-3 d-flex justify-content-between">
         <h2 class="d-inline">Prodotti</h2>
-        <!-- <div class="position-relative">
-          <a href="http://127.0.0.1:8000/cart">
-            <i class="fa-solid fa-cart-shopping fa-2x"></i>
-            <span
-              v-if="cart.length"
-              class="badge badge-danger position-absolute"
-              style="top: -3px; right: -4px"
-            >
-              {{ getTotalQuantity }}
-            </span>
-          </a>
-        </div> -->
       </div>
-      <div class="row"></div>
-      <div class="col-8">
+
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="modale"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                Vuoi creare un nuovo carrello?
+              </h5>
+
+              <svg
+                data-bs-dismiss="modal"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                width="24"
+                viewBox="0 0 24 24"
+                role="button"
+                focusable="false"
+                class="
+                  close-button
+                  ccl-0f24ac4b87ce1f67 ccl-abe5c41af1b9498e ccl-c738ab1fde928049
+                "
+              >
+                <path
+                  d="M12.0001 10.2322L5.88398 4.11612L4.11621 5.88389L10.2323 12L4.11621 18.1161L5.88398 19.8839L12.0001 13.7678L18.1162 19.8839L19.884 18.1161L13.7679 12L19.884 5.88389L18.1162 4.11612L12.0001 10.2322Z"
+                  fill="#00CCBC"
+                ></path>
+              </svg>
+            </div>
+            <div class="modal-body">
+              <h6>
+                Nel carrello sono presenti prodotti di un altro ristorante, sei
+                sicuro di volerli eliminare e creare un nuovo carrello?
+              </h6>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="cancel-button"
+                data-bs-dismiss="modal"
+              >
+                Annulla
+              </button>
+              <button
+                type="button"
+                class="confirm-button"
+                data-bs-dismiss="modal"
+                @click="
+                  getEmptyCart(
+                    currentProduct.id,
+                    currentProduct.name,
+                    currentProduct.price,
+                    restaurant.id
+                  )
+                "
+              >
+                Nuovo Carrello
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row d-flex flex-lg-row flex-column-reverse">
+      <!-- PRODOTTI -->
+      <div class="col-12 col-lg-8">
         <!-- Cards -->
         <div class="row">
           <div
@@ -174,7 +247,8 @@
           </div>
         </div>
       </div>
-      <div class="col-4">
+      <!-- CARRELLO -->
+      <div class="col-12 col-lg-4">
         <RestaurantCart
           v-if="cart.length && currentRestaurant === restaurant.id"
           :addCart="addCart"
@@ -207,74 +281,6 @@
             />
           </svg>
           <h3>Il carrello è vuoto</h3>
-        </div>
-      </div>
-      <!-- Modal -->
-      <div
-        class="modal fade"
-        id="modale"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">
-                Vuoi creare un nuovo carrello?
-              </h5>
-
-              <svg
-                data-bs-dismiss="modal"
-                xmlns:xlink="http://www.w3.org/1999/xlink"
-                xmlns="http://www.w3.org/2000/svg"
-                height="24"
-                width="24"
-                viewBox="0 0 24 24"
-                role="button"
-                focusable="false"
-                class="
-                  close-button
-                  ccl-0f24ac4b87ce1f67 ccl-abe5c41af1b9498e ccl-c738ab1fde928049
-                "
-              >
-                <path
-                  d="M12.0001 10.2322L5.88398 4.11612L4.11621 5.88389L10.2323 12L4.11621 18.1161L5.88398 19.8839L12.0001 13.7678L18.1162 19.8839L19.884 18.1161L13.7679 12L19.884 5.88389L18.1162 4.11612L12.0001 10.2322Z"
-                  fill="#00CCBC"
-                ></path>
-              </svg>
-            </div>
-            <div class="modal-body">
-              <h6>
-                Nel carrello sono presenti prodotti di un altro ristorante, sei
-                sicuro di volerli eliminare e creare un nuovo carrello?
-              </h6>
-            </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="cancel-button"
-                data-bs-dismiss="modal"
-              >
-                Annulla
-              </button>
-              <button
-                type="button"
-                class="confirm-button"
-                data-bs-dismiss="modal"
-                @click="
-                  getEmptyCart(
-                    currentProduct.id,
-                    currentProduct.name,
-                    currentProduct.price,
-                    restaurant.id
-                  )
-                "
-              >
-                Nuovo Carrello
-              </button>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -453,6 +459,35 @@ export default {
 </script>
 
 <style scoped lang="scss">
+#restaurant-name {
+  .back-button-wrapper {
+    a {
+      &:hover {
+        text-decoration: none;
+      }
+      span {
+        line-height: 24px;
+      }
+    }
+  }
+}
+.contacts-wrapper {
+  i {
+    color: #00ccbc;
+    margin-right: 10px;
+  }
+}
+.restaurant-img {
+  border-radius: 15px;
+}
+h1 {
+  font-weight: 900;
+  margin-bottom: 0px;
+}
+.categories-container {
+  margin-bottom: 15px;
+}
+
 .product-card {
   min-height: 95%;
   position: relative;
