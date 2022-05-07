@@ -16,14 +16,18 @@
     <div class="mb-3">
       <div v-for="product in cart" :key="product.id">
         <div class="product d-flex justify-content-between row mb-1">
-          <div class="col-6">
+          <div class="col-8 d-flex">
             <!-- Product Name -->
-            <span v-if="isCheckOutPage" class="mr-1">
+            <span
+              v-if="isCheckOutPage"
+              style="margin-right: 8px"
+              class="text-muted"
+            >
               {{ product.quantity }}x
             </span>
             <span class="mb-1">{{ product.name }}</span>
           </div>
-          <div class="col-6 d-flex justify-content-between">
+          <div class="col-4 d-flex justify-content-between">
             <!-- Buttons -->
             <div v-if="!isCheckOutPage" class="button-container d-flex">
               <!-- Minus SVG -->
