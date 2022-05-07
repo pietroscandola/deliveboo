@@ -16,18 +16,90 @@
     <div class="mb-3">
       <div v-for="product in cart" :key="product.id">
         <div class="product d-flex justify-content-between row mb-1">
-          <div class="col-8 d-flex">
+          <!-- CheckOut view -->
+          <div v-if="isCheckOutPage" class="col-8 d-flex">
             <!-- Product Name -->
             <span
               v-if="isCheckOutPage"
-              style="margin-right: 8px"
               class="text-muted"
+              style="margin-right: 8px"
             >
               {{ product.quantity }}x
             </span>
             <span class="mb-1">{{ product.name }}</span>
           </div>
-          <div class="col-4 d-flex justify-content-between">
+          <div
+            v-if="isCheckOutPage"
+            class="col-4 d-flex justify-content-between"
+          >
+            <!-- Buttons -->
+            <div v-if="!isCheckOutPage" class="button-container d-flex">
+              <!-- Minus SVG -->
+              <svg
+                @click="removeFromCart(product.product_id)"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                width="24"
+                viewBox="0 0 24 24"
+                role="button"
+                focusable="false"
+                class="
+                  ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049
+                  mr-1
+                "
+              >
+                <path
+                  d="M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z"
+                  fill="#00CCBC"
+                ></path>
+              </svg>
+              <!-- Product Quantity -->
+              <span class="mr-1"> {{ product.quantity }} </span>
+              <!-- Plus SVG -->
+              <svg
+                @click="
+                  addCart(
+                    product.product_id,
+                    product.name,
+                    product.price,
+                    restaurant.id
+                  )
+                "
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                width="24"
+                viewBox="0 0 24 24"
+                role="button"
+                focusable="false"
+                class="
+                  ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049
+                "
+              >
+                <path
+                  d="M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z"
+                  fill="#00CCBC"
+                ></path>
+              </svg>
+            </div>
+            <!-- place holder for Cart Page -->
+            <div></div>
+            <!-- Price -->
+            <span>{{ getProductTotalPrice(product).toFixed(2) }} €</span>
+          </div>
+          <!-- RestaurantShow view -->
+          <div v-if="!isCheckOutPage" class="col-6 d-flex">
+            <!-- Product Name -->
+            <span v-if="isCheckOutPage" class="mr-1">
+              {{ product.quantity }}x
+            </span>
+            <span class="mb-1">{{ product.name }}</span>
+          </div>
+          <div
+            v-if="!isCheckOutPage"
+            class="col-6 d-flex justify-content-between"
+          >
             <!-- Buttons -->
             <div v-if="!isCheckOutPage" class="button-container d-flex">
               <!-- Minus SVG -->

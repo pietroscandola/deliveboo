@@ -3133,6 +3133,78 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 // import Payment from "../payment/Payment.vue";
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantCart",
@@ -64264,116 +64336,244 @@ var render = function () {
             "div",
             { staticClass: "product d-flex justify-content-between row mb-1" },
             [
-              _c("div", { staticClass: "col-8 d-flex" }, [
-                _vm.isCheckOutPage
-                  ? _c(
-                      "span",
-                      {
-                        staticClass: "text-muted",
-                        staticStyle: { "margin-right": "8px" },
-                      },
-                      [
-                        _vm._v(
-                          "\n            " +
-                            _vm._s(product.quantity) +
-                            "x\n          "
-                        ),
-                      ]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("span", { staticClass: "mb-1" }, [
-                  _vm._v(_vm._s(product.name)),
-                ]),
-              ]),
+              _vm.isCheckOutPage
+                ? _c("div", { staticClass: "col-8 d-flex" }, [
+                    _vm.isCheckOutPage
+                      ? _c(
+                          "span",
+                          {
+                            staticClass: "text-muted",
+                            staticStyle: { "margin-right": "8px" },
+                          },
+                          [
+                            _vm._v(
+                              "\n            " +
+                                _vm._s(product.quantity) +
+                                "x\n          "
+                            ),
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "mb-1" }, [
+                      _vm._v(_vm._s(product.name)),
+                    ]),
+                  ])
+                : _vm._e(),
               _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-4 d-flex justify-content-between" },
-                [
-                  !_vm.isCheckOutPage
-                    ? _c("div", { staticClass: "button-container d-flex" }, [
-                        _c(
-                          "svg",
-                          {
-                            staticClass:
-                              "\n                ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049\n                mr-1\n              ",
-                            attrs: {
-                              "xmlns:xlink": "http://www.w3.org/1999/xlink",
-                              xmlns: "http://www.w3.org/2000/svg",
-                              height: "24",
-                              width: "24",
-                              viewBox: "0 0 24 24",
-                              role: "button",
-                              focusable: "false",
-                            },
-                            on: {
-                              click: function ($event) {
-                                return _vm.removeFromCart(product.product_id)
-                              },
-                            },
-                          },
-                          [
-                            _c("path", {
-                              attrs: {
-                                d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z",
-                                fill: "#00CCBC",
-                              },
-                            }),
-                          ]
+              _vm.isCheckOutPage
+                ? _c(
+                    "div",
+                    { staticClass: "col-4 d-flex justify-content-between" },
+                    [
+                      !_vm.isCheckOutPage
+                        ? _c(
+                            "div",
+                            { staticClass: "button-container d-flex" },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass:
+                                    "\n                ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049\n                mr-1\n              ",
+                                  attrs: {
+                                    "xmlns:xlink":
+                                      "http://www.w3.org/1999/xlink",
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    height: "24",
+                                    width: "24",
+                                    viewBox: "0 0 24 24",
+                                    role: "button",
+                                    focusable: "false",
+                                  },
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.removeFromCart(
+                                        product.product_id
+                                      )
+                                    },
+                                  },
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z",
+                                      fill: "#00CCBC",
+                                    },
+                                  }),
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "mr-1" }, [
+                                _vm._v(" " + _vm._s(product.quantity) + " "),
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "svg",
+                                {
+                                  staticClass:
+                                    "\n                ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049\n              ",
+                                  attrs: {
+                                    "xmlns:xlink":
+                                      "http://www.w3.org/1999/xlink",
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    height: "24",
+                                    width: "24",
+                                    viewBox: "0 0 24 24",
+                                    role: "button",
+                                    focusable: "false",
+                                  },
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.addCart(
+                                        product.product_id,
+                                        product.name,
+                                        product.price,
+                                        _vm.restaurant.id
+                                      )
+                                    },
+                                  },
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z",
+                                      fill: "#00CCBC",
+                                    },
+                                  }),
+                                ]
+                              ),
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c("div"),
+                      _vm._v(" "),
+                      _c("span", [
+                        _vm._v(
+                          _vm._s(_vm.getProductTotalPrice(product).toFixed(2)) +
+                            " €"
                         ),
-                        _vm._v(" "),
-                        _c("span", { staticClass: "mr-1" }, [
-                          _vm._v(" " + _vm._s(product.quantity) + " "),
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "svg",
-                          {
-                            staticClass:
-                              "\n                ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049\n              ",
-                            attrs: {
-                              "xmlns:xlink": "http://www.w3.org/1999/xlink",
-                              xmlns: "http://www.w3.org/2000/svg",
-                              height: "24",
-                              width: "24",
-                              viewBox: "0 0 24 24",
-                              role: "button",
-                              focusable: "false",
-                            },
-                            on: {
-                              click: function ($event) {
-                                return _vm.addCart(
-                                  product.product_id,
-                                  product.name,
-                                  product.price,
-                                  _vm.restaurant.id
-                                )
-                              },
-                            },
-                          },
-                          [
-                            _c("path", {
-                              attrs: {
-                                d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z",
-                                fill: "#00CCBC",
-                              },
-                            }),
-                          ]
+                      ]),
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              !_vm.isCheckOutPage
+                ? _c("div", { staticClass: "col-6 d-flex" }, [
+                    _vm.isCheckOutPage
+                      ? _c("span", { staticClass: "mr-1" }, [
+                          _vm._v(
+                            "\n            " +
+                              _vm._s(product.quantity) +
+                              "x\n          "
+                          ),
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "mb-1" }, [
+                      _vm._v(_vm._s(product.name)),
+                    ]),
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              !_vm.isCheckOutPage
+                ? _c(
+                    "div",
+                    { staticClass: "col-6 d-flex justify-content-between" },
+                    [
+                      !_vm.isCheckOutPage
+                        ? _c(
+                            "div",
+                            { staticClass: "button-container d-flex" },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass:
+                                    "\n                ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049\n                mr-1\n              ",
+                                  attrs: {
+                                    "xmlns:xlink":
+                                      "http://www.w3.org/1999/xlink",
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    height: "24",
+                                    width: "24",
+                                    viewBox: "0 0 24 24",
+                                    role: "button",
+                                    focusable: "false",
+                                  },
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.removeFromCart(
+                                        product.product_id
+                                      )
+                                    },
+                                  },
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z",
+                                      fill: "#00CCBC",
+                                    },
+                                  }),
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "mr-1" }, [
+                                _vm._v(" " + _vm._s(product.quantity) + " "),
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "svg",
+                                {
+                                  staticClass:
+                                    "\n                ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049\n              ",
+                                  attrs: {
+                                    "xmlns:xlink":
+                                      "http://www.w3.org/1999/xlink",
+                                    xmlns: "http://www.w3.org/2000/svg",
+                                    height: "24",
+                                    width: "24",
+                                    viewBox: "0 0 24 24",
+                                    role: "button",
+                                    focusable: "false",
+                                  },
+                                  on: {
+                                    click: function ($event) {
+                                      return _vm.addCart(
+                                        product.product_id,
+                                        product.name,
+                                        product.price,
+                                        _vm.restaurant.id
+                                      )
+                                    },
+                                  },
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z",
+                                      fill: "#00CCBC",
+                                    },
+                                  }),
+                                ]
+                              ),
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c("div"),
+                      _vm._v(" "),
+                      _c("span", [
+                        _vm._v(
+                          _vm._s(_vm.getProductTotalPrice(product).toFixed(2)) +
+                            " €"
                         ),
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("div"),
-                  _vm._v(" "),
-                  _c("span", [
-                    _vm._v(
-                      _vm._s(_vm.getProductTotalPrice(product).toFixed(2)) +
-                        " €"
-                    ),
-                  ]),
-                ]
-              ),
+                      ]),
+                    ]
+                  )
+                : _vm._e(),
             ]
           ),
         ])
