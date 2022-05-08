@@ -190,9 +190,11 @@
                 <div class="card product-card my-3">
                   <img
                     height="150"
-                    v-if="product.image"
-                    class="card-img-top"
-                    :src="'/storage/' + product.image"
+                    :src="
+                      product.image
+                        ? '/storage/' + product.image
+                        : 'https://consumer-component-library.roocdn.com/25.30.2/static/images/placeholder.svg'
+                    "
                     alt="Card image cap"
                   />
                   <div
@@ -553,6 +555,9 @@ export default {
 .product-card {
   min-height: 95%;
   position: relative;
+  img {
+    object-fit: cover;
+  }
   .price-badge {
     position: absolute;
     box-shadow: 0 0 6px rgba(107, 107, 107, 1);
