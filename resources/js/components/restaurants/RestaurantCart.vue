@@ -13,6 +13,7 @@
     <!-- Dialogo Carrello -->
     <Transition name="slide-fade">
       <div
+        id="cart-dialog"
         v-if="!isCheckOutPage && isTrashCartDialogShowed"
         class="div d-flex justify-content-between align-items-center mb-1"
       >
@@ -22,7 +23,7 @@
             class="mb-3 mr-3 rounded text-success"
             role="button"
             @click="
-              hideTrashCartDialog();
+              hideTrashCartDialogWithoutGlitch();
               deleteCart();
             "
             ><i class="fa-solid fa-circle-check fa-lg"></i
@@ -244,6 +245,13 @@ export default {
     hideTrashCartDialog() {
       this.isTrashCartDialogShowed = false;
     },
+    hideTrashCartDialogWithoutGlitch() {
+      if (this.isCheckOutPage) {
+        setTimeout(() => {
+          this.isTrashCartDialogShowed = false;
+        }, 300);
+      }
+    },
   },
   computed: {
     isCheckOutPage() {
@@ -289,10 +297,14 @@ export default {
     }
   }
 }
-
+// Dialogo Carrello
 // Animazione Dialogo Carrello
 .slide-fade-enter-active {
   transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  // transition: all 0.1s ease-out;
 }
 
 .slide-fade-enter {

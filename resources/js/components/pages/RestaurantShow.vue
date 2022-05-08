@@ -1,5 +1,8 @@
 <template>
   <div>
+    <a href="#cart" class="d-lg-none d-inline">
+      <CartMobileButton :totalQuantity="getTotalQuantity" />
+    </a>
     <!-- Img Smartphone-->
     <div class="mb-0 d-block d-sm-none">
       <img
@@ -8,6 +11,7 @@
         alt=""
       />
     </div>
+    <!-- Contenuto Pagina -->
     <div id="restaurant-show" class="container-fluid pb-5">
       <!-- Loader visibile fin che la chiamata axios non finisce -->
       <Loader v-if="isLoading" />
@@ -301,7 +305,7 @@
             </div>
           </div>
           <!-- CARRELLO -->
-          <div class="col-12 col-lg-4">
+          <div id="cart" class="col-12 col-lg-4">
             <RestaurantCart
               v-if="cart.length && currentRestaurant === restaurant.id"
               :addCart="addCart"
@@ -343,6 +347,7 @@
 </template>
 
 <script>
+import CartMobileButton from "../restaurants/CartMobileButton.vue";
 import Loader from "../Loader.vue";
 import RestaurantCart from "../restaurants/RestaurantCart.vue";
 export default {
@@ -350,6 +355,7 @@ export default {
   components: {
     Loader,
     RestaurantCart,
+    CartMobileButton,
   },
   data() {
     return {
@@ -555,8 +561,10 @@ export default {
 .product-card {
   min-height: 95%;
   position: relative;
+  border-radius: 15px;
   img {
     object-fit: cover;
+    border-radius: 14px 14px 0 0;
   }
   .price-badge {
     position: absolute;

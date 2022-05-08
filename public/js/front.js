@@ -2343,8 +2343,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Loader_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Loader.vue */ "./resources/js/components/Loader.vue");
-/* harmony import */ var _restaurants_RestaurantCart_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../restaurants/RestaurantCart.vue */ "./resources/js/components/restaurants/RestaurantCart.vue");
+/* harmony import */ var _restaurants_CartMobileButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../restaurants/CartMobileButton.vue */ "./resources/js/components/restaurants/CartMobileButton.vue");
+/* harmony import */ var _Loader_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Loader.vue */ "./resources/js/components/Loader.vue");
+/* harmony import */ var _restaurants_RestaurantCart_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../restaurants/RestaurantCart.vue */ "./resources/js/components/restaurants/RestaurantCart.vue");
 var _excluded = ["products"];
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
@@ -2693,13 +2694,21 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantShow",
   components: {
-    Loader: _Loader_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    RestaurantCart: _restaurants_RestaurantCart_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    Loader: _Loader_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    RestaurantCart: _restaurants_RestaurantCart_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    CartMobileButton: _restaurants_CartMobileButton_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
@@ -3016,6 +3025,76 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "CartMobileButton",
+  props: ["totalQuantity"]
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurants/RestaurantCard.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurants/RestaurantCard.vue?vue&type=script&lang=js& ***!
@@ -3274,6 +3353,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
 // import Payment from "../payment/Payment.vue";
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantCart",
@@ -3320,6 +3400,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     },
     hideTrashCartDialog: function hideTrashCartDialog() {
       this.isTrashCartDialogShowed = false;
+    },
+    hideTrashCartDialogWithoutGlitch: function hideTrashCartDialogWithoutGlitch() {
+      var _this = this;
+
+      if (this.isCheckOutPage) {
+        setTimeout(function () {
+          _this.isTrashCartDialogShowed = false;
+        }, 300);
+      }
     }
   },
   computed: {
@@ -31060,7 +31149,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap);", ""]);
 
 // module
-exports.push([module.i, "body {\n  font-family: \"IBM Plex Sans\", sans-serif;\n}", ""]);
+exports.push([module.i, "body {\n  font-family: \"IBM Plex Sans\", sans-serif;\n}\nhtml {\n  scroll-behavior: smooth;\n}", ""]);
 
 // exports
 
@@ -31098,7 +31187,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#restaurant-info[data-v-cddbf820] {\n  padding-top: 30px;\n}\n#restaurant-info #restaurant-image img[data-v-cddbf820] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 15px;\n}\n#restaurant-info #restaurant-name h1[data-v-cddbf820] {\n  font-weight: 900;\n  margin-bottom: 0px;\n}\n#restaurant-info #restaurant-name .back-button-wrapper a[data-v-cddbf820]:hover {\n  text-decoration: none;\n}\n#restaurant-info #restaurant-name .back-button-wrapper a span[data-v-cddbf820] {\n  line-height: 24px;\n}\n#restaurant-info .categories-container[data-v-cddbf820] {\n  margin-bottom: 15px;\n}\n#restaurant-info .contacts-wrapper i[data-v-cddbf820] {\n  color: #00ccbc;\n  margin-right: 10px;\n}\n.product-card[data-v-cddbf820] {\n  min-height: 95%;\n  position: relative;\n}\n.product-card .price-badge[data-v-cddbf820] {\n  position: absolute;\n  box-shadow: 0 0 6px rgb(107, 107, 107);\n  top: 10px;\n  right: 10px;\n}\n.empty-cart[data-v-cddbf820] {\n  height: 150px;\n  margin-top: 15px;\n  color: rgb(138, 138, 138);\n  background-color: #fff;\n  border: 1px solid #e2e5e5;\n  border-radius: 5px;\n}\n.modal .modal-content[data-v-cddbf820] {\n  padding-left: 5px;\n  padding-right: 5px;\n}\n.modal .modal-content .modal-header[data-v-cddbf820] {\n  border-bottom: none;\n}\n.modal .modal-content .modal-header .modal-title[data-v-cddbf820] {\n  font-weight: 900;\n  font-size: 19px;\n}\n.modal .modal-content .modal-body h6[data-v-cddbf820] {\n  font-size: 16px;\n}\n.modal .modal-content .modal-footer[data-v-cddbf820] {\n  border-top: none;\n}\n.modal .modal-content .close-button[data-v-cddbf820] {\n  border-radius: 3px;\n}\n.modal .modal-content .close-button[data-v-cddbf820]:active {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.modal .modal-content .cancel-button[data-v-cddbf820] {\n  display: block;\n  text-align: center;\n  background-color: #fff;\n  color: #00ccbc;\n  border: 1px solid #e8ebeb;\n  border-radius: 5px;\n  padding: 10px;\n}\n.modal .modal-content .cancel-button[data-v-cddbf820]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.modal .modal-content .cancel-button[data-v-cddbf820]:hover {\n  border: 1px solid #d1d4d4;\n  text-decoration: none;\n}\n.modal .modal-content .confirm-button[data-v-cddbf820] {\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border: none;\n  border-radius: 5px;\n  font-weight: 900;\n  padding: 10px;\n}\n.modal .modal-content .confirm-button[data-v-cddbf820]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.modal .modal-content .confirm-button[data-v-cddbf820]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}", ""]);
+exports.push([module.i, "#restaurant-info[data-v-cddbf820] {\n  padding-top: 30px;\n}\n#restaurant-info #restaurant-image img[data-v-cddbf820] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 15px;\n}\n#restaurant-info #restaurant-name h1[data-v-cddbf820] {\n  font-weight: 900;\n  margin-bottom: 0px;\n}\n#restaurant-info #restaurant-name .back-button-wrapper a[data-v-cddbf820]:hover {\n  text-decoration: none;\n}\n#restaurant-info #restaurant-name .back-button-wrapper a span[data-v-cddbf820] {\n  line-height: 24px;\n}\n#restaurant-info .categories-container[data-v-cddbf820] {\n  margin-bottom: 15px;\n}\n#restaurant-info .contacts-wrapper i[data-v-cddbf820] {\n  color: #00ccbc;\n  margin-right: 10px;\n}\n.product-card[data-v-cddbf820] {\n  min-height: 95%;\n  position: relative;\n  border-radius: 15px;\n}\n.product-card img[data-v-cddbf820] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 14px 14px 0 0;\n}\n.product-card .price-badge[data-v-cddbf820] {\n  position: absolute;\n  box-shadow: 0 0 6px rgb(107, 107, 107);\n  top: 10px;\n  right: 10px;\n}\n.empty-cart[data-v-cddbf820] {\n  height: 150px;\n  margin-top: 15px;\n  color: rgb(138, 138, 138);\n  background-color: #fff;\n  border: 1px solid #e2e5e5;\n  border-radius: 5px;\n}\n.modal .modal-content[data-v-cddbf820] {\n  padding-left: 5px;\n  padding-right: 5px;\n}\n.modal .modal-content .modal-header[data-v-cddbf820] {\n  border-bottom: none;\n}\n.modal .modal-content .modal-header .modal-title[data-v-cddbf820] {\n  font-weight: 900;\n  font-size: 19px;\n}\n.modal .modal-content .modal-body h6[data-v-cddbf820] {\n  font-size: 16px;\n}\n.modal .modal-content .modal-footer[data-v-cddbf820] {\n  border-top: none;\n}\n.modal .modal-content .close-button[data-v-cddbf820] {\n  border-radius: 3px;\n}\n.modal .modal-content .close-button[data-v-cddbf820]:active {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.modal .modal-content .cancel-button[data-v-cddbf820] {\n  display: block;\n  text-align: center;\n  background-color: #fff;\n  color: #00ccbc;\n  border: 1px solid #e8ebeb;\n  border-radius: 5px;\n  padding: 10px;\n}\n.modal .modal-content .cancel-button[data-v-cddbf820]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.modal .modal-content .cancel-button[data-v-cddbf820]:hover {\n  border: 1px solid #d1d4d4;\n  text-decoration: none;\n}\n.modal .modal-content .confirm-button[data-v-cddbf820] {\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border: none;\n  border-radius: 5px;\n  font-weight: 900;\n  padding: 10px;\n}\n.modal .modal-content .confirm-button[data-v-cddbf820]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.modal .modal-content .confirm-button[data-v-cddbf820]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}", ""]);
 
 // exports
 
@@ -31118,6 +31207,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, ".payment-button[data-v-0b6a60e2] {\n  width: 100%;\n  border: none;\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border-radius: 5px;\n  font-weight: 900;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.payment-button[data-v-0b6a60e2]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.payment-button[data-v-0b6a60e2]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "#cart-mobile-button[data-v-be474590] {\n  background-color: #00ccbc;\n  width: 50px;\n  height: 50px;\n  border-radius: 15px;\n  color: white;\n  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.5);\n  position: fixed;\n  bottom: 15px;\n  right: 15px;\n  z-index: 1;\n}\n#cart-mobile-button svg[data-v-be474590] {\n  height: 30px;\n  filter: drop-shadow(0 0 0.9rem black);\n}\n#cart-mobile-button .total-quantity-badge[data-v-be474590] {\n  position: absolute;\n  font-size: 13px;\n  top: 0px;\n  right: 0px;\n  z-index: 3;\n}", ""]);
 
 // exports
 
@@ -62654,6 +62762,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurants/RestaurantCard.vue?vue&type=style&index=0&id=5ebd141e&scoped=true&lang=scss&":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurants/RestaurantCard.vue?vue&type=style&index=0&id=5ebd141e&scoped=true&lang=scss& ***!
@@ -63675,6 +63813,17 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c(
+      "a",
+      { staticClass: "d-lg-none d-inline", attrs: { href: "#cart" } },
+      [
+        _c("CartMobileButton", {
+          attrs: { totalQuantity: _vm.getTotalQuantity },
+        }),
+      ],
+      1
+    ),
+    _vm._v(" "),
     _vm._m(0),
     _vm._v(" "),
     _c(
@@ -63978,16 +64127,15 @@ var render = function () {
                     { key: product.id, staticClass: "col-sm-6 col-lg-4" },
                     [
                       _c("div", { staticClass: "card product-card my-3" }, [
-                        product.image
-                          ? _c("img", {
-                              staticClass: "card-img-top",
-                              attrs: {
-                                height: "150",
-                                src: "/storage/" + product.image,
-                                alt: "Card image cap",
-                              },
-                            })
-                          : _vm._e(),
+                        _c("img", {
+                          attrs: {
+                            height: "150",
+                            src: product.image
+                              ? "/storage/" + product.image
+                              : "https://consumer-component-library.roocdn.com/25.30.2/static/images/placeholder.svg",
+                            alt: "Card image cap",
+                          },
+                        }),
                         _vm._v(" "),
                         _c(
                           "div",
@@ -64152,7 +64300,7 @@ var render = function () {
             _vm._v(" "),
             _c(
               "div",
-              { staticClass: "col-12 col-lg-4" },
+              { staticClass: "col-12 col-lg-4", attrs: { id: "cart" } },
               [
                 _vm.cart.length && _vm.currentRestaurant === _vm.restaurant.id
                   ? _c("RestaurantCart", {
@@ -64372,6 +64520,114 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=template&id=be474590&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=template&id=be474590&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "d-flex justify-content-center align-items-center",
+      attrs: { id: "cart-mobile-button" },
+    },
+    [
+      _vm.totalQuantity
+        ? _c(
+            "div",
+            {
+              staticClass:
+                "\n      total-quantity-badge\n      d-flex\n      align-items-center\n      justify-content-center\n    ",
+            },
+            [
+              _c("span", { staticClass: "badge badge-danger" }, [
+                _vm._v(_vm._s(_vm.totalQuantity)),
+              ]),
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "svg",
+        {
+          attrs: {
+            width: "61",
+            height: "61",
+            viewBox: "0 0 61 61",
+            fill: "none",
+            xmlns: "http://www.w3.org/2000/svg",
+          },
+        },
+        [
+          _c(
+            "mask",
+            {
+              attrs: {
+                id: "path-1-outside-1_1_2",
+                maskUnits: "userSpaceOnUse",
+                x: "7.41379",
+                y: "8.46552",
+                width: "47",
+                height: "44",
+                fill: "black",
+              },
+            },
+            [
+              _c("rect", {
+                attrs: {
+                  fill: "white",
+                  x: "7.41379",
+                  y: "8.46552",
+                  width: "47",
+                  height: "44",
+                },
+              }),
+              _vm._v(" "),
+              _c("path", {
+                attrs: {
+                  d: "M24.686 9.66499C24.8453 9.75962 24.9842 9.88445 25.0948 10.0324C25.2054 10.1803 25.2856 10.3484 25.3308 10.527C25.3759 10.7057 25.3851 10.8914 25.3579 11.0736C25.3307 11.2558 25.2676 11.4309 25.1722 11.5889L17.9759 23.4887H44.0759L36.8767 11.5889C36.6841 11.2698 36.6271 10.8879 36.7182 10.527C36.8094 10.1662 37.0413 9.85615 37.3629 9.66499C37.6845 9.47382 38.0694 9.41725 38.4331 9.50772C38.7967 9.59818 39.1092 9.82827 39.3019 10.1474L47.3716 23.4887H50.8114C51.5611 23.4887 52.28 23.7842 52.8101 24.3102C53.3401 24.8361 53.6379 25.5495 53.6379 26.2933V29.0979C53.6379 29.8417 53.3401 30.5551 52.8101 31.081C52.28 31.607 51.5611 31.9025 50.8114 31.9025V44.523C50.8114 46.3826 50.0669 48.166 48.7418 49.4809C47.4166 50.7958 45.6192 51.5345 43.7452 51.5345H18.3066C16.4325 51.5345 14.6351 50.7958 13.31 49.4809C11.9848 48.166 11.2403 46.3826 11.2403 44.523V31.9025C10.4907 31.9025 9.77173 31.607 9.24166 31.081C8.71158 30.5551 8.41379 29.8417 8.41379 29.0979V26.2933C8.41379 25.5495 8.71158 24.8361 9.24166 24.3102C9.77173 23.7842 10.4907 23.4887 11.2403 23.4887H14.6802L22.7442 10.1474C22.8396 9.98935 22.9654 9.85151 23.1144 9.74174C23.2635 9.63197 23.4329 9.55241 23.613 9.50762C23.793 9.46282 23.9802 9.45366 24.1639 9.48066C24.3475 9.50767 24.5239 9.5703 24.6832 9.66499H24.686ZM14.0668 31.9025V44.523C14.0668 45.6388 14.5135 46.7088 15.3086 47.4977C16.1037 48.2867 17.1821 48.7299 18.3066 48.7299H43.7452C44.8696 48.7299 45.948 48.2867 46.7431 47.4977C47.5382 46.7088 47.9849 45.6388 47.9849 44.523V31.9025H14.0668ZM11.2403 26.2933V29.0979H50.8114V26.2933H11.2403ZM19.7198 34.707C20.0946 34.707 20.4541 34.8548 20.7191 35.1178C20.9842 35.3807 21.1331 35.7374 21.1331 36.1093V44.523C21.1331 44.895 20.9842 45.2516 20.7191 45.5146C20.4541 45.7776 20.0946 45.9253 19.7198 45.9253C19.345 45.9253 18.9855 45.7776 18.7205 45.5146C18.4555 45.2516 18.3066 44.895 18.3066 44.523V36.1093C18.3066 35.7374 18.4555 35.3807 18.7205 35.1178C18.9855 34.8548 19.345 34.707 19.7198 34.707ZM25.3728 34.707C25.7477 34.707 26.1071 34.8548 26.3722 35.1178C26.6372 35.3807 26.7861 35.7374 26.7861 36.1093V44.523C26.7861 44.895 26.6372 45.2516 26.3722 45.5146C26.1071 45.7776 25.7477 45.9253 25.3728 45.9253C24.998 45.9253 24.6386 45.7776 24.3735 45.5146C24.1085 45.2516 23.9596 44.895 23.9596 44.523V36.1093C23.9596 35.7374 24.1085 35.3807 24.3735 35.1178C24.6386 34.8548 24.998 34.707 25.3728 34.707V34.707ZM31.0259 34.707C31.4007 34.707 31.7601 34.8548 32.0252 35.1178C32.2902 35.3807 32.4391 35.7374 32.4391 36.1093V44.523C32.4391 44.895 32.2902 45.2516 32.0252 45.5146C31.7601 45.7776 31.4007 45.9253 31.0259 45.9253C30.651 45.9253 30.2916 45.7776 30.0265 45.5146C29.7615 45.2516 29.6126 44.895 29.6126 44.523V36.1093C29.6126 35.7374 29.7615 35.3807 30.0265 35.1178C30.2916 34.8548 30.651 34.707 31.0259 34.707V34.707ZM36.6789 34.707C37.0537 34.707 37.4132 34.8548 37.6782 35.1178C37.9432 35.3807 38.0921 35.7374 38.0921 36.1093V44.523C38.0921 44.895 37.9432 45.2516 37.6782 45.5146C37.4132 45.7776 37.0537 45.9253 36.6789 45.9253C36.3041 45.9253 35.9446 45.7776 35.6796 45.5146C35.4145 45.2516 35.2656 44.895 35.2656 44.523V36.1093C35.2656 35.7374 35.4145 35.3807 35.6796 35.1178C35.9446 34.8548 36.3041 34.707 36.6789 34.707ZM42.3319 34.707C42.7067 34.707 43.0662 34.8548 43.3312 35.1178C43.5963 35.3807 43.7452 35.7374 43.7452 36.1093V44.523C43.7452 44.895 43.5963 45.2516 43.3312 45.5146C43.0662 45.7776 42.7067 45.9253 42.3319 45.9253C41.9571 45.9253 41.5976 45.7776 41.3326 45.5146C41.0675 45.2516 40.9186 44.895 40.9186 44.523V36.1093C40.9186 35.7374 41.0675 35.3807 41.3326 35.1178C41.5976 34.8548 41.9571 34.707 42.3319 34.707Z",
+                },
+              }),
+            ]
+          ),
+          _vm._v(" "),
+          _c("path", {
+            attrs: {
+              d: "M24.686 9.66499C24.8453 9.75962 24.9842 9.88445 25.0948 10.0324C25.2054 10.1803 25.2856 10.3484 25.3308 10.527C25.3759 10.7057 25.3851 10.8914 25.3579 11.0736C25.3307 11.2558 25.2676 11.4309 25.1722 11.5889L17.9759 23.4887H44.0759L36.8767 11.5889C36.6841 11.2698 36.6271 10.8879 36.7182 10.527C36.8094 10.1662 37.0413 9.85615 37.3629 9.66499C37.6845 9.47382 38.0694 9.41725 38.4331 9.50772C38.7967 9.59818 39.1092 9.82827 39.3019 10.1474L47.3716 23.4887H50.8114C51.5611 23.4887 52.28 23.7842 52.8101 24.3102C53.3401 24.8361 53.6379 25.5495 53.6379 26.2933V29.0979C53.6379 29.8417 53.3401 30.5551 52.8101 31.081C52.28 31.607 51.5611 31.9025 50.8114 31.9025V44.523C50.8114 46.3826 50.0669 48.166 48.7418 49.4809C47.4166 50.7958 45.6192 51.5345 43.7452 51.5345H18.3066C16.4325 51.5345 14.6351 50.7958 13.31 49.4809C11.9848 48.166 11.2403 46.3826 11.2403 44.523V31.9025C10.4907 31.9025 9.77173 31.607 9.24166 31.081C8.71158 30.5551 8.41379 29.8417 8.41379 29.0979V26.2933C8.41379 25.5495 8.71158 24.8361 9.24166 24.3102C9.77173 23.7842 10.4907 23.4887 11.2403 23.4887H14.6802L22.7442 10.1474C22.8396 9.98935 22.9654 9.85151 23.1144 9.74174C23.2635 9.63197 23.4329 9.55241 23.613 9.50762C23.793 9.46282 23.9802 9.45366 24.1639 9.48066C24.3475 9.50767 24.5239 9.5703 24.6832 9.66499H24.686ZM14.0668 31.9025V44.523C14.0668 45.6388 14.5135 46.7088 15.3086 47.4977C16.1037 48.2867 17.1821 48.7299 18.3066 48.7299H43.7452C44.8696 48.7299 45.948 48.2867 46.7431 47.4977C47.5382 46.7088 47.9849 45.6388 47.9849 44.523V31.9025H14.0668ZM11.2403 26.2933V29.0979H50.8114V26.2933H11.2403ZM19.7198 34.707C20.0946 34.707 20.4541 34.8548 20.7191 35.1178C20.9842 35.3807 21.1331 35.7374 21.1331 36.1093V44.523C21.1331 44.895 20.9842 45.2516 20.7191 45.5146C20.4541 45.7776 20.0946 45.9253 19.7198 45.9253C19.345 45.9253 18.9855 45.7776 18.7205 45.5146C18.4555 45.2516 18.3066 44.895 18.3066 44.523V36.1093C18.3066 35.7374 18.4555 35.3807 18.7205 35.1178C18.9855 34.8548 19.345 34.707 19.7198 34.707ZM25.3728 34.707C25.7477 34.707 26.1071 34.8548 26.3722 35.1178C26.6372 35.3807 26.7861 35.7374 26.7861 36.1093V44.523C26.7861 44.895 26.6372 45.2516 26.3722 45.5146C26.1071 45.7776 25.7477 45.9253 25.3728 45.9253C24.998 45.9253 24.6386 45.7776 24.3735 45.5146C24.1085 45.2516 23.9596 44.895 23.9596 44.523V36.1093C23.9596 35.7374 24.1085 35.3807 24.3735 35.1178C24.6386 34.8548 24.998 34.707 25.3728 34.707V34.707ZM31.0259 34.707C31.4007 34.707 31.7601 34.8548 32.0252 35.1178C32.2902 35.3807 32.4391 35.7374 32.4391 36.1093V44.523C32.4391 44.895 32.2902 45.2516 32.0252 45.5146C31.7601 45.7776 31.4007 45.9253 31.0259 45.9253C30.651 45.9253 30.2916 45.7776 30.0265 45.5146C29.7615 45.2516 29.6126 44.895 29.6126 44.523V36.1093C29.6126 35.7374 29.7615 35.3807 30.0265 35.1178C30.2916 34.8548 30.651 34.707 31.0259 34.707V34.707ZM36.6789 34.707C37.0537 34.707 37.4132 34.8548 37.6782 35.1178C37.9432 35.3807 38.0921 35.7374 38.0921 36.1093V44.523C38.0921 44.895 37.9432 45.2516 37.6782 45.5146C37.4132 45.7776 37.0537 45.9253 36.6789 45.9253C36.3041 45.9253 35.9446 45.7776 35.6796 45.5146C35.4145 45.2516 35.2656 44.895 35.2656 44.523V36.1093C35.2656 35.7374 35.4145 35.3807 35.6796 35.1178C35.9446 34.8548 36.3041 34.707 36.6789 34.707ZM42.3319 34.707C42.7067 34.707 43.0662 34.8548 43.3312 35.1178C43.5963 35.3807 43.7452 35.7374 43.7452 36.1093V44.523C43.7452 44.895 43.5963 45.2516 43.3312 45.5146C43.0662 45.7776 42.7067 45.9253 42.3319 45.9253C41.9571 45.9253 41.5976 45.7776 41.3326 45.5146C41.0675 45.2516 40.9186 44.895 40.9186 44.523V36.1093C40.9186 35.7374 41.0675 35.3807 41.3326 35.1178C41.5976 34.8548 41.9571 34.707 42.3319 34.707Z",
+              fill: "white",
+            },
+          }),
+          _vm._v(" "),
+          _c("path", {
+            attrs: {
+              d: "M24.686 9.66499C24.8453 9.75962 24.9842 9.88445 25.0948 10.0324C25.2054 10.1803 25.2856 10.3484 25.3308 10.527C25.3759 10.7057 25.3851 10.8914 25.3579 11.0736C25.3307 11.2558 25.2676 11.4309 25.1722 11.5889L17.9759 23.4887H44.0759L36.8767 11.5889C36.6841 11.2698 36.6271 10.8879 36.7182 10.527C36.8094 10.1662 37.0413 9.85615 37.3629 9.66499C37.6845 9.47382 38.0694 9.41725 38.4331 9.50772C38.7967 9.59818 39.1092 9.82827 39.3019 10.1474L47.3716 23.4887H50.8114C51.5611 23.4887 52.28 23.7842 52.8101 24.3102C53.3401 24.8361 53.6379 25.5495 53.6379 26.2933V29.0979C53.6379 29.8417 53.3401 30.5551 52.8101 31.081C52.28 31.607 51.5611 31.9025 50.8114 31.9025V44.523C50.8114 46.3826 50.0669 48.166 48.7418 49.4809C47.4166 50.7958 45.6192 51.5345 43.7452 51.5345H18.3066C16.4325 51.5345 14.6351 50.7958 13.31 49.4809C11.9848 48.166 11.2403 46.3826 11.2403 44.523V31.9025C10.4907 31.9025 9.77173 31.607 9.24166 31.081C8.71158 30.5551 8.41379 29.8417 8.41379 29.0979V26.2933C8.41379 25.5495 8.71158 24.8361 9.24166 24.3102C9.77173 23.7842 10.4907 23.4887 11.2403 23.4887H14.6802L22.7442 10.1474C22.8396 9.98935 22.9654 9.85151 23.1144 9.74174C23.2635 9.63197 23.4329 9.55241 23.613 9.50762C23.793 9.46282 23.9802 9.45366 24.1639 9.48066C24.3475 9.50767 24.5239 9.5703 24.6832 9.66499H24.686ZM14.0668 31.9025V44.523C14.0668 45.6388 14.5135 46.7088 15.3086 47.4977C16.1037 48.2867 17.1821 48.7299 18.3066 48.7299H43.7452C44.8696 48.7299 45.948 48.2867 46.7431 47.4977C47.5382 46.7088 47.9849 45.6388 47.9849 44.523V31.9025H14.0668ZM11.2403 26.2933V29.0979H50.8114V26.2933H11.2403ZM19.7198 34.707C20.0946 34.707 20.4541 34.8548 20.7191 35.1178C20.9842 35.3807 21.1331 35.7374 21.1331 36.1093V44.523C21.1331 44.895 20.9842 45.2516 20.7191 45.5146C20.4541 45.7776 20.0946 45.9253 19.7198 45.9253C19.345 45.9253 18.9855 45.7776 18.7205 45.5146C18.4555 45.2516 18.3066 44.895 18.3066 44.523V36.1093C18.3066 35.7374 18.4555 35.3807 18.7205 35.1178C18.9855 34.8548 19.345 34.707 19.7198 34.707ZM25.3728 34.707C25.7477 34.707 26.1071 34.8548 26.3722 35.1178C26.6372 35.3807 26.7861 35.7374 26.7861 36.1093V44.523C26.7861 44.895 26.6372 45.2516 26.3722 45.5146C26.1071 45.7776 25.7477 45.9253 25.3728 45.9253C24.998 45.9253 24.6386 45.7776 24.3735 45.5146C24.1085 45.2516 23.9596 44.895 23.9596 44.523V36.1093C23.9596 35.7374 24.1085 35.3807 24.3735 35.1178C24.6386 34.8548 24.998 34.707 25.3728 34.707V34.707ZM31.0259 34.707C31.4007 34.707 31.7601 34.8548 32.0252 35.1178C32.2902 35.3807 32.4391 35.7374 32.4391 36.1093V44.523C32.4391 44.895 32.2902 45.2516 32.0252 45.5146C31.7601 45.7776 31.4007 45.9253 31.0259 45.9253C30.651 45.9253 30.2916 45.7776 30.0265 45.5146C29.7615 45.2516 29.6126 44.895 29.6126 44.523V36.1093C29.6126 35.7374 29.7615 35.3807 30.0265 35.1178C30.2916 34.8548 30.651 34.707 31.0259 34.707V34.707ZM36.6789 34.707C37.0537 34.707 37.4132 34.8548 37.6782 35.1178C37.9432 35.3807 38.0921 35.7374 38.0921 36.1093V44.523C38.0921 44.895 37.9432 45.2516 37.6782 45.5146C37.4132 45.7776 37.0537 45.9253 36.6789 45.9253C36.3041 45.9253 35.9446 45.7776 35.6796 45.5146C35.4145 45.2516 35.2656 44.895 35.2656 44.523V36.1093C35.2656 35.7374 35.4145 35.3807 35.6796 35.1178C35.9446 34.8548 36.3041 34.707 36.6789 34.707ZM42.3319 34.707C42.7067 34.707 43.0662 34.8548 43.3312 35.1178C43.5963 35.3807 43.7452 35.7374 43.7452 36.1093V44.523C43.7452 44.895 43.5963 45.2516 43.3312 45.5146C43.0662 45.7776 42.7067 45.9253 42.3319 45.9253C41.9571 45.9253 41.5976 45.7776 41.3326 45.5146C41.0675 45.2516 40.9186 44.895 40.9186 44.523V36.1093C40.9186 35.7374 41.0675 35.3807 41.3326 35.1178C41.5976 34.8548 41.9571 34.707 42.3319 34.707Z",
+              stroke: "white",
+              "stroke-width": "1.4",
+              mask: "url(#path-1-outside-1_1_2)",
+            },
+          }),
+        ]
+      ),
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurants/RestaurantCard.vue?vue&type=template&id=5ebd141e&scoped=true&":
 /*!*****************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurants/RestaurantCard.vue?vue&type=template&id=5ebd141e&scoped=true& ***!
@@ -64484,6 +64740,7 @@ var render = function () {
               {
                 staticClass:
                   "div d-flex justify-content-between align-items-center mb-1",
+                attrs: { id: "cart-dialog" },
               },
               [
                 _c("h3", { staticClass: "mb-3" }, [
@@ -64498,7 +64755,7 @@ var render = function () {
                       attrs: { role: "button" },
                       on: {
                         click: function ($event) {
-                          _vm.hideTrashCartDialog()
+                          _vm.hideTrashCartDialogWithoutGlitch()
                           _vm.deleteCart()
                         },
                       },
@@ -80974,6 +81231,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Payment_vue_vue_type_template_id_0b6a60e2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Payment_vue_vue_type_template_id_0b6a60e2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurants/CartMobileButton.vue":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/restaurants/CartMobileButton.vue ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CartMobileButton_vue_vue_type_template_id_be474590_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CartMobileButton.vue?vue&type=template&id=be474590&scoped=true& */ "./resources/js/components/restaurants/CartMobileButton.vue?vue&type=template&id=be474590&scoped=true&");
+/* harmony import */ var _CartMobileButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CartMobileButton.vue?vue&type=script&lang=js& */ "./resources/js/components/restaurants/CartMobileButton.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _CartMobileButton_vue_vue_type_style_index_0_id_be474590_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss& */ "./resources/js/components/restaurants/CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _CartMobileButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CartMobileButton_vue_vue_type_template_id_be474590_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CartMobileButton_vue_vue_type_template_id_be474590_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "be474590",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/restaurants/CartMobileButton.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurants/CartMobileButton.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/restaurants/CartMobileButton.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CartMobileButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./CartMobileButton.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CartMobileButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurants/CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss&":
+/*!****************************************************************************************************************************!*\
+  !*** ./resources/js/components/restaurants/CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss& ***!
+  \****************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CartMobileButton_vue_vue_type_style_index_0_id_be474590_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CartMobileButton_vue_vue_type_style_index_0_id_be474590_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CartMobileButton_vue_vue_type_style_index_0_id_be474590_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CartMobileButton_vue_vue_type_style_index_0_id_be474590_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CartMobileButton_vue_vue_type_style_index_0_id_be474590_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurants/CartMobileButton.vue?vue&type=template&id=be474590&scoped=true&":
+/*!*************************************************************************************************************!*\
+  !*** ./resources/js/components/restaurants/CartMobileButton.vue?vue&type=template&id=be474590&scoped=true& ***!
+  \*************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CartMobileButton_vue_vue_type_template_id_be474590_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./CartMobileButton.vue?vue&type=template&id=be474590&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=template&id=be474590&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CartMobileButton_vue_vue_type_template_id_be474590_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CartMobileButton_vue_vue_type_template_id_be474590_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

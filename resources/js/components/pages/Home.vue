@@ -66,4 +66,7 @@ export default {
 body {
   font-family: "IBM Plex Sans", sans-serif;
 }
+html {
+  scroll-behavior: smooth;
+}
 </style>
