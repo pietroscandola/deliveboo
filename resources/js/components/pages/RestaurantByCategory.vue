@@ -1,5 +1,6 @@
 <template>
   <section id="restaurants-by-category" class="row">
+    <button @click="getCategory()">CHIAMATA API</button>
     <Loader v-if="isLoading" />
     <!-- Titolo -->
     <div class="col-12 d-flex justify-content-between align-items-center"></div>
@@ -29,7 +30,7 @@ export default {
   props: ["checked_categories"],
   data() {
     return {
-      categories: [],
+      selected_categories: [],
       arrayOriginale: [],
       arraySenzaDuplicati: [],
       isLoading: false,
@@ -39,7 +40,7 @@ export default {
   methods: {
     getRestaurantsFilteredByCategories() {
       this.arrayOriginale = [];
-      this.categories.forEach((category) => {
+      this.selected_categories.forEach((category) => {
         console.log(category);
         category["restaurants"].forEach((restaurant) => {
           this.arrayOriginale.push(restaurant);
@@ -58,20 +59,6 @@ export default {
       }, []);
 
       this.arraySenzaDuplicati = result;
-
-      // this.arrayOriginale.forEach((restaurant) => {
-      //   if (!this.arraySenzaDuplicati.includes(restaurant)) {
-      //     this.arraySenzaDuplicati.push(restaurant);
-      //   }
-      // });
-
-      // this.arrayOriginale.forEach((filteredRestaurant) => {
-      //   const result = this.arrayOriginale.filter(
-      //     (restaurant) => restaurant["id"] != filteredRestaurant["id"]
-      //   );
-
-      //   this.arraySenzaDuplicati = result;
-      // });
     },
     getCategory() {
       let qs = require("qs");
@@ -83,8 +70,6 @@ export default {
 
         return container;
       });
-      /* console.log("NO JSON", this.test);
-         console.log("JSON", JSON.stringify(this.test)); */
 
       this.isLoading = true;
       axios
@@ -98,7 +83,7 @@ export default {
         .then((res) => {
           const category = res.data;
           console.log("res.data", res.data);
-          this.categories = category;
+          this.selected_categories = category;
         })
         .catch((err) => {
           console.error(err);

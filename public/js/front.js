@@ -2313,6 +2313,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2324,7 +2325,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ["checked_categories"],
   data: function data() {
     return {
-      categories: [],
+      selected_categories: [],
       arrayOriginale: [],
       arraySenzaDuplicati: [],
       isLoading: false // test: [4, 5],
@@ -2336,7 +2337,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.arrayOriginale = [];
-      this.categories.forEach(function (category) {
+      this.selected_categories.forEach(function (category) {
         console.log(category);
         category["restaurants"].forEach(function (restaurant) {
           _this.arrayOriginale.push(restaurant);
@@ -2354,17 +2355,7 @@ __webpack_require__.r(__webpack_exports__);
 
         return unique;
       }, []);
-      this.arraySenzaDuplicati = result; // this.arrayOriginale.forEach((restaurant) => {
-      //   if (!this.arraySenzaDuplicati.includes(restaurant)) {
-      //     this.arraySenzaDuplicati.push(restaurant);
-      //   }
-      // });
-      // this.arrayOriginale.forEach((filteredRestaurant) => {
-      //   const result = this.arrayOriginale.filter(
-      //     (restaurant) => restaurant["id"] != filteredRestaurant["id"]
-      //   );
-      //   this.arraySenzaDuplicati = result;
-      // });
+      this.arraySenzaDuplicati = result;
     },
     getCategory: function getCategory() {
       var _this2 = this;
@@ -2377,9 +2368,6 @@ __webpack_require__.r(__webpack_exports__);
         container[key] = cat;
         return container;
       });
-      /* console.log("NO JSON", this.test);
-         console.log("JSON", JSON.stringify(this.test)); */
-
       this.isLoading = true;
       axios.get("http://localhost:8000/api/categories/filter", {
         params: newtest,
@@ -2390,7 +2378,7 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         var category = res.data;
         console.log("res.data", res.data);
-        _this2.categories = category;
+        _this2.selected_categories = category;
       })["catch"](function (err) {
         console.error(err);
       }).then(function () {
@@ -65674,6 +65662,18 @@ var render = function () {
     "section",
     { staticClass: "row", attrs: { id: "restaurants-by-category" } },
     [
+      _c(
+        "button",
+        {
+          on: {
+            click: function ($event) {
+              return _vm.getCategory()
+            },
+          },
+        },
+        [_vm._v("CHIAMATA API")]
+      ),
+      _vm._v(" "),
       _vm.isLoading ? _c("Loader") : _vm._e(),
       _vm._v(" "),
       _c("div", {
