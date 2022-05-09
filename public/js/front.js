@@ -2141,6 +2141,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2247,16 +2253,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2305,6 +2301,31 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.getCategories();
+  },
+  computed: {
+    filteredCategory: function filteredCategory() {
+      var _this2 = this;
+
+      console.log(this.checked_categories);
+      var filteredRestaurants = this.checked_categories.map(function (category) {
+        var _this2$categories$cat;
+
+        return ((_this2$categories$cat = _this2.categories[category]) === null || _this2$categories$cat === void 0 ? void 0 : _this2$categories$cat.restaurants) || [];
+      }).flat();
+
+      if (!filteredRestaurants.length) {
+        return [];
+      }
+
+      var ids = filteredRestaurants.map(function (restaurant) {
+        return restaurant.id;
+      });
+      console.log(ids);
+      return filteredRestaurants.filter(function (_ref, index) {
+        var id = _ref.id;
+        return !ids.includes(id, index + 1);
+      });
+    }
   }
 });
 
@@ -2435,8 +2456,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Loader_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Loader.vue */ "./resources/js/components/Loader.vue");
-/* harmony import */ var _restaurants_RestaurantCart_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../restaurants/RestaurantCart.vue */ "./resources/js/components/restaurants/RestaurantCart.vue");
+/* harmony import */ var _restaurants_CartMobileButton_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../restaurants/CartMobileButton.vue */ "./resources/js/components/restaurants/CartMobileButton.vue");
+/* harmony import */ var _Loader_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Loader.vue */ "./resources/js/components/Loader.vue");
+/* harmony import */ var _restaurants_RestaurantCart_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../restaurants/RestaurantCart.vue */ "./resources/js/components/restaurants/RestaurantCart.vue");
 var _excluded = ["products"];
 
 function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
@@ -2715,25 +2737,117 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantShow",
   components: {
-    Loader: _Loader_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    RestaurantCart: _restaurants_RestaurantCart_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    Loader: _Loader_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    RestaurantCart: _restaurants_RestaurantCart_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    CartMobileButton: _restaurants_CartMobileButton_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   data: function data() {
     return {
       isLoading: false,
+      showCartMobileButton: true,
       restaurant: [],
       products: [],
       cart: [],
       currentRestaurant: 0,
-      currentProducts: []
+      currentProduct: []
     };
   },
   methods: {
+    handleScroll: function handleScroll(event) {
+      console.log(window.scrollY);
+    },
     getRestaurant: function getRestaurant() {
       var _this = this;
 
@@ -2851,7 +2965,16 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
         quantity: 1
       };
       this.cart.push(can);
+    },
+    getCurrentProduct: function getCurrentProduct(product) {
+      this.currentProduct = product;
     }
+  },
+  created: function created() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  destroyed: function destroyed() {
+    window.removeEventListener("scroll", this.handleScroll);
   },
   mounted: function mounted() {
     this.getRestaurant(); // SessionStorageCart - Restaurant (NUOVO)
@@ -2960,16 +3083,107 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PaymentTwo",
-  props: ["tot"],
+  props: ["tot", "cart"],
   data: function data() {
     return {
       hostedFieldInstance: false,
       nonce: "",
       error: "",
-      amount: this.tot
+      amount: this.tot,
+      order: {
+        restaurant_id: this.$route.params.id,
+        customer_name: "Logi",
+        customer_surname: "Tech",
+        customer_email: "email@email.com",
+        customer_address: "via mare inquinato 5",
+        customer_phone: "1591591591",
+        amount: this.tot,
+        is_delivered: 0,
+        is_paid: 1,
+        products_ids: {}
+      }
     };
   },
   methods: {
@@ -2982,16 +3196,39 @@ __webpack_require__.r(__webpack_exports__);
         this.hostedFieldInstance.tokenize().then(function (payload) {
           console.log(payload);
           _this.nonce = payload.nonce;
+          var params = _this.order;
+          axios.post("http://localhost:8000/api/order", params).then(function (res) {
+            console.log(params);
+            console.log("Axios ok");
+          })["catch"](function (err) {
+            console.error(err);
+          }).then(function () {
+            console.log("OK API");
+          });
         })["catch"](function (err) {
           console.error(err);
           _this.error = err.message;
         });
       }
+    },
+    getProdIds: function getProdIds() {
+      var prod = this.cart.map(function (p) {
+        var container = {};
+        container["product_id"] = p.product_id;
+        container["quantity"] = p.quantity;
+        return container;
+      });
+      this.order.products_ids = prod;
+    },
+    getRestaurantIds: function getRestaurantIds() {
+      this.order.restaurant_id = this.$route.params.id;
     }
   },
   mounted: function mounted() {
     var _this2 = this;
 
+    this.getProdIds();
+    this.getRestaurantIds();
     braintree_web__WEBPACK_IMPORTED_MODULE_0___default.a.client.create({
       // Bisogna inserire la key di braintree
       // Aggiungere MIX_VUE_APP_BT_SDK con la propria key
@@ -3031,6 +3268,76 @@ __webpack_require__.r(__webpack_exports__);
       this.amount = parseFloat(v.toFixed(2));
     }
   }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "CartMobileButton",
+  props: ["totalQuantity"]
 });
 
 /***/ }),
@@ -3189,10 +3496,116 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-// import Payment from "../payment/Payment.vue";
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantCart",
-  components: {// Payment,
+  components: {},
+  data: function data() {
+    return {
+      isTrashCartDialogShowed: false
+    };
   },
   props: ["cart", "restaurant", "addCart", "removeFromCart"],
   methods: {
@@ -3223,6 +3636,22 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       sessionStorage.removeItem("cart"); // Update Cart
 
       this.$emit("empty-cart");
+    },
+    // TrashCartDialog Methods
+    showTrashCartDialog: function showTrashCartDialog() {
+      this.isTrashCartDialogShowed = true;
+    },
+    hideTrashCartDialog: function hideTrashCartDialog() {
+      this.isTrashCartDialogShowed = false;
+    },
+    hideTrashCartDialogWithoutGlitch: function hideTrashCartDialogWithoutGlitch() {
+      var _this = this;
+
+      if (this.isCheckOutPage) {
+        setTimeout(function () {
+          _this.isTrashCartDialogShowed = false;
+        }, 300);
+      }
     }
   },
   computed: {
@@ -31049,7 +31478,26 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap);", ""]);
 
 // module
-exports.push([module.i, "body {\n  font-family: \"IBM Plex Sans\", sans-serif;\n}\n.custom-checkbox {\n  height: 50px;\n  color: white;\n  font-weight: bolder;\n  text-decoration: none;\n  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);\n}\n.card-checkbox-body {\n  background-image: url(\"https://consumer-component-library.roocdn.com/25.30.2/static/images/placeholder.svg\");\n  background-position: center;\n  block-size: cover;\n}\n.active-checkbox {\n  box-shadow: 0 0 0 1px red;\n}", ""]);
+exports.push([module.i, "body {\n  font-family: \"IBM Plex Sans\", sans-serif;\n}\n.custom-checkbox {\n  height: 50px;\n  color: white;\n  font-weight: bolder;\n  text-decoration: none;\n  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);\n}\n.card-checkbox-body {\n  background-image: url(\"https://consumer-component-library.roocdn.com/25.30.2/static/images/placeholder.svg\");\n  background-position: center;\n  block-size: cover;\n}\n.active-checkbox {\n  box-shadow: 0 0 0 1px red;\n}\nhtml {\n  scroll-behavior: smooth;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/RestaurantByCategory.vue?vue&type=style&index=0&id=26644328&scoped=true&lang=scss&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/RestaurantByCategory.vue?vue&type=style&index=0&id=26644328&scoped=true&lang=scss& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "h1[data-v-26644328] {\n  font-weight: 900;\n}", ""]);
 
 // exports
 
@@ -31068,7 +31516,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".product-card[data-v-cddbf820] {\n  min-height: 95%;\n  position: relative;\n}\n.product-card .price-badge[data-v-cddbf820] {\n  position: absolute;\n  box-shadow: 0 0 6px rgb(107, 107, 107);\n  top: 10px;\n  right: 10px;\n}\n.empty-cart[data-v-cddbf820] {\n  height: 150px;\n  margin-top: 15px;\n  color: rgb(138, 138, 138);\n  background-color: #fff;\n  border: 1px solid #e2e5e5;\n  border-radius: 5px;\n}", ""]);
+exports.push([module.i, "#restaurant-info[data-v-cddbf820] {\n  padding-top: 30px;\n}\n#restaurant-info #restaurant-image img[data-v-cddbf820] {\n  width: 100%;\n  height: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 15px;\n}\n#restaurant-info #restaurant-name h1[data-v-cddbf820] {\n  font-weight: 900;\n  margin-bottom: 0px;\n}\n#restaurant-info #restaurant-name .back-button-wrapper a[data-v-cddbf820]:hover {\n  text-decoration: none;\n}\n#restaurant-info #restaurant-name .back-button-wrapper a span[data-v-cddbf820] {\n  line-height: 24px;\n}\n#restaurant-info .categories-container[data-v-cddbf820] {\n  margin-bottom: 15px;\n}\n#restaurant-info .contacts-wrapper i[data-v-cddbf820] {\n  color: #00ccbc;\n  margin-right: 10px;\n}\n.product-card[data-v-cddbf820] {\n  min-height: 95%;\n  position: relative;\n  border-radius: 15px;\n}\n.product-card img[data-v-cddbf820] {\n  -o-object-fit: cover;\n     object-fit: cover;\n  border-radius: 14px 14px 0 0;\n}\n.product-card .price-badge[data-v-cddbf820] {\n  position: absolute;\n  box-shadow: 0 0 6px rgb(107, 107, 107);\n  top: 10px;\n  right: 10px;\n}\n.empty-cart[data-v-cddbf820] {\n  height: 150px;\n  margin-top: 15px;\n  color: rgb(138, 138, 138);\n  background-color: #fff;\n  border: 1px solid #e2e5e5;\n  border-radius: 5px;\n}\n.modal .modal-content[data-v-cddbf820] {\n  padding-left: 5px;\n  padding-right: 5px;\n}\n.modal .modal-content .modal-header[data-v-cddbf820] {\n  border-bottom: none;\n}\n.modal .modal-content .modal-header .modal-title[data-v-cddbf820] {\n  font-weight: 900;\n  font-size: 19px;\n}\n.modal .modal-content .modal-body h6[data-v-cddbf820] {\n  font-size: 16px;\n}\n.modal .modal-content .modal-footer[data-v-cddbf820] {\n  border-top: none;\n}\n.modal .modal-content .close-button[data-v-cddbf820] {\n  border-radius: 3px;\n}\n.modal .modal-content .close-button[data-v-cddbf820]:active {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.modal .modal-content .cancel-button[data-v-cddbf820] {\n  display: block;\n  text-align: center;\n  background-color: #fff;\n  color: #00ccbc;\n  border: 1px solid #e8ebeb;\n  border-radius: 5px;\n  padding: 10px;\n}\n.modal .modal-content .cancel-button[data-v-cddbf820]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.modal .modal-content .cancel-button[data-v-cddbf820]:hover {\n  border: 1px solid #d1d4d4;\n  text-decoration: none;\n}\n.modal .modal-content .confirm-button[data-v-cddbf820] {\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border: none;\n  border-radius: 5px;\n  font-weight: 900;\n  padding: 10px;\n}\n.modal .modal-content .confirm-button[data-v-cddbf820]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.modal .modal-content .confirm-button[data-v-cddbf820]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}", ""]);
 
 // exports
 
@@ -31088,6 +31536,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, ".payment-button[data-v-0b6a60e2] {\n  width: 100%;\n  border: none;\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border-radius: 5px;\n  font-weight: 900;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.payment-button[data-v-0b6a60e2]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.payment-button[data-v-0b6a60e2]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "#cart-mobile-button[data-v-be474590] {\n  background-color: #00ccbc;\n  width: 50px;\n  height: 50px;\n  border-radius: 15px;\n  color: white;\n  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.5);\n  position: fixed;\n  bottom: 15px;\n  right: 15px;\n  z-index: 1;\n}\n#cart-mobile-button svg[data-v-be474590] {\n  height: 30px;\n  filter: drop-shadow(0 0 0.9rem black);\n}\n#cart-mobile-button .total-quantity-badge[data-v-be474590] {\n  position: absolute;\n  font-size: 13px;\n  top: 0px;\n  right: 0px;\n  z-index: 3;\n}", ""]);
 
 // exports
 
@@ -31125,7 +31592,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".cart-card[data-v-5cfa23fe] {\n  margin-top: 16px;\n}\n.cart-card .fa-trash-can[data-v-5cfa23fe] {\n  color: rgb(255, 49, 49);\n}\n.cart-card .cart-h3[data-v-5cfa23fe] {\n  font-size: 1.5em;\n  margin-bottom: 7px;\n}\n.cart-card h3[data-v-5cfa23fe] {\n  font-weight: 900;\n}\n.cart-card span[data-v-5cfa23fe] {\n  font-size: 16px;\n}\n.cart-card .checkout-button[data-v-5cfa23fe] {\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border-radius: 5px;\n  font-weight: 900;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.cart-card .checkout-button[data-v-5cfa23fe]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.cart-card .checkout-button[data-v-5cfa23fe]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}", ""]);
+exports.push([module.i, ".cart-card[data-v-5cfa23fe] {\n  margin-top: 16px;\n}\n.cart-card .fa-trash-can[data-v-5cfa23fe],\n.cart-card .fa-circle-xmark[data-v-5cfa23fe] {\n  color: rgb(255, 49, 49);\n}\n.cart-card .cart-h3[data-v-5cfa23fe] {\n  font-size: 1.5em;\n  margin-bottom: 7px;\n}\n.cart-card h3[data-v-5cfa23fe] {\n  font-weight: 900;\n}\n.cart-card span[data-v-5cfa23fe] {\n  font-size: 16px;\n}\n.cart-card .checkout-button[data-v-5cfa23fe] {\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border-radius: 5px;\n  font-weight: 900;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.cart-card .checkout-button[data-v-5cfa23fe]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.cart-card .checkout-button[data-v-5cfa23fe]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}\n.slide-fade-enter-active[data-v-5cfa23fe] {\n  transition: all 0.3s ease-out;\n}\n.slide-fade-enter[data-v-5cfa23fe] {\n  transform: translateX(20px);\n  opacity: 0;\n}", ""]);
 
 // exports
 
@@ -64637,6 +65104,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/RestaurantByCategory.vue?vue&type=style&index=0&id=26644328&scoped=true&lang=scss&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/RestaurantByCategory.vue?vue&type=style&index=0&id=26644328&scoped=true&lang=scss& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./RestaurantByCategory.vue?vue&type=style&index=0&id=26644328&scoped=true&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/RestaurantByCategory.vue?vue&type=style&index=0&id=26644328&scoped=true&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/RestaurantShow.vue?vue&type=style&index=0&id=cddbf820&scoped=true&lang=scss&":
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/RestaurantShow.vue?vue&type=style&index=0&id=cddbf820&scoped=true&lang=scss& ***!
@@ -64676,6 +65173,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./Payment.vue?vue&type=style&index=0&id=0b6a60e2&scoped=true&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/payment/Payment.vue?vue&type=style&index=0&id=0b6a60e2&scoped=true&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -65485,82 +66012,93 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", { staticClass: "container", attrs: { id: "cart" } }, [
-    _c(
-      "div",
-      { staticClass: "row d-flex justify-content-between align-items-center" },
-      [
-        _vm._m(0),
+  return _c(
+    "section",
+    { staticClass: "container py-4", attrs: { id: "cart" } },
+    [
+      _c(
+        "div",
+        {
+          staticClass: "row d-flex justify-content-between align-items-center",
+        },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "\n        col-12 col-md-5\n        d-flex\n        justify-content-center justify-content-md-end\n        mt-md-0 mt-1\n      ",
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "go-back-link",
+                  attrs: { role: "button" },
+                  on: {
+                    click: function ($event) {
+                      return _vm.$router.go(-1)
+                    },
+                  },
+                },
+                [
+                  _vm._v("Modifica il tuo Ordine "),
+                  _c("i", { staticClass: "fa-solid fa-arrow-rotate-left" }),
+                ]
+              ),
+            ]
+          ),
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "row d-flex flex-lg-row flex-column-reverse" }, [
+        _c(
+          "div",
+          { staticClass: "col-12 col-lg-8" },
+          [
+            _c("Payment", {
+              staticClass: "mt-3",
+              attrs: { tot: _vm.getTotal().toFixed(2), cart: _vm.cart },
+            }),
+          ],
+          1
+        ),
         _vm._v(" "),
         _c(
           "div",
-          {
-            staticClass:
-              "\n            col-12 col-md-5\n            d-flex\n            justify-content-start justify-content-md-end\n            mt-md-0 mt-1\n         ",
-          },
+          { staticClass: "col-12 col-lg-4" },
           [
-            _c(
-              "a",
-              {
-                staticClass: "go-back-link",
-                attrs: { role: "button" },
-                on: {
-                  click: function ($event) {
-                    return _vm.$router.go(-1)
-                  },
-                },
+            _c("RestaurantCart", {
+              staticClass: "mb-3",
+              attrs: {
+                addCart: _vm.addCart,
+                removeFromCart: _vm.removeFromCart,
+                restaurant: _vm.restaurant,
+                cart: _vm.cart,
               },
-              [
-                _vm._v("Modifica il tuo Ordine\n            "),
-                _c("i", { staticClass: "fa-solid fa-arrow-rotate-left" }),
-              ]
-            ),
-          ]
+              on: { "empty-cart": _vm.emptyCart },
+            }),
+          ],
+          1
         ),
-      ]
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "row d-flex flex-lg-row flex-column-reverse" }, [
-      _c(
-        "div",
-        { staticClass: "col-12 col-lg-8" },
-        [
-          _c("Payment", {
-            staticClass: "mt-3",
-            attrs: { tot: _vm.getTotal().toFixed(2) },
-          }),
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-12 col-lg-4" },
-        [
-          _c("RestaurantCart", {
-            staticClass: "mb-3",
-            attrs: {
-              addCart: _vm.addCart,
-              removeFromCart: _vm.removeFromCart,
-              restaurant: _vm.restaurant,
-              cart: _vm.cart,
-            },
-            on: { "empty-cart": _vm.emptyCart },
-          }),
-        ],
-        1
-      ),
-    ]),
-  ])
+      ]),
+    ]
+  )
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12 col-md-7" }, [
-      _c("h1", [_vm._v("Controllo il tuo Ordine")]),
-    ])
+    return _c(
+      "div",
+      {
+        staticClass:
+          "\n        col-12 col-md-7\n        d-flex\n        justify-content-center justify-content-md-start\n        text-center text-md-start\n      ",
+      },
+      [_c("h1", [_vm._v("Controllo il tuo Ordine")])]
+    )
   },
 ]
 render._withStripped = true
@@ -65586,7 +66124,7 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "section",
-    { attrs: { id: "home" } },
+    { staticClass: "py-3", attrs: { id: "home" } },
     [
       _vm.isLoading ? _c("Loader") : _vm._e(),
       _vm._v(" "),
@@ -65710,10 +66248,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/RestaurantByCategory.vue?vue&type=template&id=26644328&":
-/*!*****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/RestaurantByCategory.vue?vue&type=template&id=26644328& ***!
-  \*****************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/RestaurantByCategory.vue?vue&type=template&id=26644328&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/RestaurantByCategory.vue?vue&type=template&id=26644328&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -65770,338 +66308,207 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "container-fluid container-md",
-      attrs: { id: "restaurant-show" },
-    },
-    [
-      _vm.isLoading
-        ? _c("Loader")
-        : _c(
-            "div",
-            { staticClass: "row" },
-            [
-              _c("div", { staticClass: "col-12" }, [
-                _c("div", { staticClass: "card" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "card-header d-flex justify-content-between",
-                    },
-                    [
-                      _c("h5", { staticClass: "m-0" }, [
-                        _c("strong", [_vm._v(_vm._s(_vm.restaurant.name))]),
-                      ]),
+  return _c("div", [
+    _vm.getTotalQuantity &&
+    _vm.showCartMobileButton &&
+    _vm.currentRestaurant === _vm.restaurant.id
+      ? _c(
+          "a",
+          {
+            staticClass: "d-lg-none d-inline",
+            attrs: { href: "#cart" },
+            on: {
+              click: function ($event) {
+                _vm.showCartMobileButton = !_vm.showCartMobileButton
+              },
+            },
+          },
+          [
+            _c("CartMobileButton", {
+              attrs: { totalQuantity: _vm.getTotalQuantity },
+            }),
+          ],
+          1
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "container-fluid pb-5", attrs: { id: "restaurant-show" } },
+      [
+        _vm.isLoading
+          ? _c("Loader")
+          : _c(
+              "div",
+              {
+                staticClass: "row bg-white pb-3 shadow-sm mb-3",
+                attrs: { id: "restaurant-info" },
+              },
+              [
+                _c("div", { staticClass: "col-12 mb-3" }, [
+                  _c("div", { staticClass: "container-fluid container-md" }, [
+                    _c("div", { staticClass: "row" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            "col-12 col-sm-4 mb-3 mb-sm-0 d-none d-sm-block",
+                          attrs: { id: "restaurant-image" },
+                        },
+                        [
+                          _c("img", {
+                            attrs: {
+                              src: "https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg",
+                              alt: "",
+                            },
+                          }),
+                        ]
+                      ),
                       _vm._v(" "),
-                      _vm.restaurant.categories
-                        ? _c(
-                            "div",
-                            { staticClass: "categories-box" },
-                            _vm._l(
-                              _vm.restaurant.categories,
-                              function (category) {
-                                return _c(
-                                  "span",
+                      _c("div", { staticClass: "col-12 col-sm-8" }, [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "d-flex justify-content-between align-items-center row",
+                            attrs: { id: "restaurant-name" },
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "\n                    col-12 col-lg-9 col-md-11 col-sm-12\n                    text-center text-sm-left\n                  ",
+                              },
+                              [_c("h1", [_vm._v(_vm._s(_vm.restaurant.name))])]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "\n                    col-3 col-lg-3 col-md-1 col-sm-0\n                    d-flex\n                    justify-content-start justify-content-md-end\n                    back-button-wrapper\n                  ",
+                              },
+                              [
+                                _c(
+                                  "router-link",
                                   {
-                                    key: category.id,
-                                    staticClass: "badge badge-primary mx-1",
+                                    staticClass: "d-flex align-items-center",
+                                    attrs: { to: { name: "home" } },
                                   },
                                   [
-                                    _vm._v(
-                                      "\n              " +
-                                        _vm._s(category.name) +
-                                        "\n            "
+                                    _c("i", {
+                                      staticClass:
+                                        "\n                        fa-solid fa-chevron-left fa-lg\n                        mr-1\n                        d-none d-md-inline\n                      ",
+                                    }),
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass: "d-lg-inline d-none",
+                                        staticStyle: { "line-height": "24px" },
+                                      },
+                                      [_vm._v("Indietro")]
                                     ),
                                   ]
-                                )
-                              }
+                                ),
+                              ],
+                              1
                             ),
-                            0
-                          )
-                        : _vm._e(),
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "card-body row" }, [
-                    _c("div", { staticClass: "col-sm-12 col-md-4" }, [
-                      _c("img", {
-                        staticClass: "img-fluid",
-                        attrs: {
-                          src: "https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg",
-                          alt: "R",
-                        },
-                      }),
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "col-sm-12 col-md-8" }, [
-                      _c("h5", { staticClass: "card-title" }, [
-                        _vm._v(_vm._s(_vm.restaurant.address)),
-                      ]),
-                      _vm._v(" "),
-                      _c("p", { staticClass: "card-text" }, [
-                        _vm._v(
-                          "\n              " +
-                            _vm._s(_vm.restaurant.description) +
-                            "\n            "
+                          ]
                         ),
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-primary",
-                          on: {
-                            click: function ($event) {
-                              return _vm.$router.back()
-                            },
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "\n                  categories-container\n                  mb-4 mb-sm-3\n                  text-center text-sm-left\n                ",
                           },
-                        },
-                        [_vm._v("\n              Indietro\n            ")]
-                      ),
-                    ]),
-                  ]),
-                ]),
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-12 mt-3 d-flex justify-content-between" },
-                [_c("h2", { staticClass: "d-inline" }, [_vm._v("Prodotti")])]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-8" }, [
-                _c(
-                  "div",
-                  { staticClass: "row" },
-                  _vm._l(_vm.products, function (product) {
-                    return _c(
-                      "div",
-                      { key: product.id, staticClass: "col-sm-6 col-lg-4" },
-                      [
-                        _c("div", { staticClass: "card product-card my-3" }, [
-                          product.image
-                            ? _c("img", {
-                                staticClass: "card-img-top",
-                                attrs: {
-                                  height: "150",
-                                  src: "/storage/" + product.image,
-                                  alt: "Card image cap",
+                          _vm._l(
+                            _vm.restaurant.categories,
+                            function (category) {
+                              return _c(
+                                "span",
+                                {
+                                  key: category.id,
+                                  staticClass: "mr-1 badge badge-danger",
                                 },
-                              })
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "card-body justify-content-between d-flex flex-column",
-                            },
-                            [
-                              _c("div", [
-                                _c("h5", [
-                                  _c("strong", [_vm._v(_vm._s(product.name))]),
-                                ]),
-                                _vm._v(" "),
-                                _c("p", { staticClass: "card-text" }, [
-                                  _vm._v(_vm._s(product.ingredients)),
-                                ]),
-                                _vm._v(" "),
+                                [
+                                  _vm._v(
+                                    "\n                  " +
+                                      _vm._s(category.name) +
+                                      "\n                "
+                                  ),
+                                ]
+                              )
+                            }
+                          ),
+                          0
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "d-flex justify-content-between flex-column",
+                          },
+                          [
+                            _c(
+                              "p",
+                              {
+                                staticClass:
+                                  "text-muted text-justify text-sm-left",
+                              },
+                              [
+                                _vm._v(
+                                  "\n                  " +
+                                    _vm._s(_vm.restaurant.description) +
+                                    "\n                "
+                                ),
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "contacts-wrapper mt-3 text-center text-sm-left",
+                              },
+                              [
                                 _c(
                                   "span",
                                   {
                                     staticClass:
-                                      "badge badge-warning price-badge",
+                                      "mr-3 mb-3 d-lg-inline d-block",
                                   },
                                   [
-                                    _c("strong", [
-                                      _vm._v(
-                                        _vm._s(product.price.toFixed(2)) + " €"
-                                      ),
-                                    ]),
+                                    _c("i", {
+                                      staticClass:
+                                        "fa-solid fa-location-dot fa-lg",
+                                    }),
+                                    _vm._v(_vm._s(_vm.restaurant.address)),
                                   ]
                                 ),
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "d-flex justify-content-around align-items-center",
-                                },
-                                [
-                                  _c(
-                                    "svg",
-                                    {
-                                      staticClass:
-                                        "\n                    ccl-0f24ac4b87ce1f67\n                    ccl-ed34b65f78f16205\n                    ccl-c738ab1fde928049\n                  ",
-                                      attrs: {
-                                        "xmlns:xlink":
-                                          "http://www.w3.org/1999/xlink",
-                                        xmlns: "http://www.w3.org/2000/svg",
-                                        height: "24",
-                                        width: "24",
-                                        viewBox: "0 0 24 24",
-                                        role: "button",
-                                        focusable: "false",
-                                      },
-                                      on: {
-                                        click: function ($event) {
-                                          return _vm.removeFromCart(product.id)
-                                        },
-                                      },
-                                    },
-                                    [
-                                      _c("path", {
-                                        attrs: {
-                                          d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z",
-                                          fill: "#00CCBC",
-                                        },
-                                      }),
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c("div", [
-                                    _c("p", { staticClass: "m-0" }, [
-                                      _vm._v(
-                                        _vm._s(_vm.getIncrement(product.id))
-                                      ),
-                                    ]),
-                                  ]),
-                                  _vm._v(" "),
-                                  _vm.currentRestaurant !== _vm.restaurant.id &&
-                                  _vm.currentRestaurant !== 0
-                                    ? _c(
-                                        "svg",
-                                        {
-                                          staticClass:
-                                            "\n                    ccl-0f24ac4b87ce1f67\n                    ccl-ed34b65f78f16205\n                    ccl-c738ab1fde928049\n                  ",
-                                          attrs: {
-                                            "data-bs-toggle": "modal",
-                                            "data-bs-target": "#modale",
-                                            "xmlns:xlink":
-                                              "http://www.w3.org/1999/xlink",
-                                            xmlns: "http://www.w3.org/2000/svg",
-                                            height: "24",
-                                            width: "24",
-                                            viewBox: "0 0 24 24",
-                                            role: "button",
-                                            focusable: "false",
-                                          },
-                                        },
-                                        [
-                                          _c("path", {
-                                            attrs: {
-                                              d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z",
-                                              fill: "#00CCBC",
-                                            },
-                                          }),
-                                        ]
-                                      )
-                                    : _c(
-                                        "svg",
-                                        {
-                                          staticClass:
-                                            "\n                    ccl-0f24ac4b87ce1f67\n                    ccl-ed34b65f78f16205\n                    ccl-c738ab1fde928049\n                  ",
-                                          attrs: {
-                                            "xmlns:xlink":
-                                              "http://www.w3.org/1999/xlink",
-                                            xmlns: "http://www.w3.org/2000/svg",
-                                            height: "24",
-                                            width: "24",
-                                            viewBox: "0 0 24 24",
-                                            role: "button",
-                                            focusable: "false",
-                                          },
-                                          on: {
-                                            click: function ($event) {
-                                              return _vm.addCart(
-                                                product.id,
-                                                product.name,
-                                                product.price,
-                                                _vm.restaurant.id
-                                              )
-                                            },
-                                          },
-                                        },
-                                        [
-                                          _c("path", {
-                                            attrs: {
-                                              d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z",
-                                              fill: "#00CCBC",
-                                            },
-                                          }),
-                                        ]
-                                      ),
-                                ]
-                              ),
-                            ]
-                          ),
-                        ]),
-                      ]
-                    )
-                  }),
-                  0
-                ),
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "col-4" },
-                [
-                  _vm.cart.length && _vm.currentRestaurant === _vm.restaurant.id
-                    ? _c("RestaurantCart", {
-                        attrs: {
-                          addCart: _vm.addCart,
-                          removeFromCart: _vm.removeFromCart,
-                          restaurant: _vm.restaurant,
-                          cart: _vm.cart,
-                        },
-                        on: { "empty-cart": _vm.emptyCart },
-                      })
-                    : _c(
-                        "div",
-                        {
-                          staticClass:
-                            "\n          empty-cart\n          d-flex\n          justify-content-center\n          flex-column\n          align-items-center\n        ",
-                        },
-                        [
-                          _c(
-                            "svg",
-                            {
-                              staticClass: "bi bi-basket my-3",
-                              attrs: {
-                                xmlns: "http://www.w3.org/2000/svg",
-                                width: "32px",
-                                height: "32px",
-                                fill: "currentColor",
-                                viewBox: "0 0 16 16",
-                              },
-                            },
-                            [
-                              _c("path", {
-                                attrs: {
-                                  d: "M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z",
-                                },
-                              }),
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("h3", [_vm._v("Il carrello è vuoto")]),
-                        ]
-                      ),
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _vm._l(_vm.products, function (product) {
-                return _c(
+                                _vm._v(" "),
+                                _c("span", [
+                                  _c("i", {
+                                    staticClass: "fa-solid fa-phone fa-lg",
+                                  }),
+                                  _vm._v(_vm._s(_vm.restaurant.phone)),
+                                ]),
+                              ]
+                            ),
+                          ]
+                        ),
+                      ]),
+                    ]),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c(
                   "div",
                   {
-                    key: product.id,
                     staticClass: "modal fade",
                     attrs: {
                       id: "modale",
@@ -66111,96 +66518,365 @@ var render = function () {
                     },
                   },
                   [
-                    _c("div", { staticClass: "modal-dialog" }, [
-                      _c("div", { staticClass: "modal-content" }, [
-                        _c("div", { staticClass: "modal-header" }, [
-                          _c(
-                            "h5",
-                            {
-                              staticClass: "modal-title",
-                              attrs: { id: "exampleModalLabel" },
-                            },
-                            [
-                              _vm._v(
-                                "\n              Vuoi creare un nuovo carrello?\n            "
-                              ),
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn-close",
-                              attrs: {
-                                type: "button",
-                                "data-bs-dismiss": "modal",
-                                "aria-label": "Close",
+                    _c(
+                      "div",
+                      { staticClass: "modal-dialog modal-dialog-centered" },
+                      [
+                        _c("div", { staticClass: "modal-content" }, [
+                          _c("div", { staticClass: "modal-header" }, [
+                            _c(
+                              "h5",
+                              {
+                                staticClass: "modal-title",
+                                attrs: { id: "exampleModalLabel" },
                               },
-                            },
-                            [_vm._v("\n              X\n            ")]
-                          ),
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "modal-body" }, [
-                          _c("h6", [
-                            _vm._v(
-                              "\n              Nel carrello sono presenti prodotti di un altro ristorante, sei\n              sicuro di volerli eliminare e creare un nuovo carrello?\n            "
+                              [
+                                _vm._v(
+                                  "\n                Vuoi creare un nuovo carrello?\n              "
+                                ),
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "svg",
+                              {
+                                staticClass:
+                                  "\n                  close-button\n                  ccl-0f24ac4b87ce1f67\n                  ccl-abe5c41af1b9498e\n                  ccl-c738ab1fde928049\n                ",
+                                attrs: {
+                                  "data-bs-dismiss": "modal",
+                                  "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                                  xmlns: "http://www.w3.org/2000/svg",
+                                  height: "24",
+                                  width: "24",
+                                  viewBox: "0 0 24 24",
+                                  role: "button",
+                                  focusable: "false",
+                                },
+                              },
+                              [
+                                _c("path", {
+                                  attrs: {
+                                    d: "M12.0001 10.2322L5.88398 4.11612L4.11621 5.88389L10.2323 12L4.11621 18.1161L5.88398 19.8839L12.0001 13.7678L18.1162 19.8839L19.884 18.1161L13.7679 12L19.884 5.88389L18.1162 4.11612L12.0001 10.2322Z",
+                                    fill: "#00CCBC",
+                                  },
+                                }),
+                              ]
+                            ),
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "modal-body" }, [
+                            _c("h6", [
+                              _vm._v(
+                                "\n                Nel carrello sono presenti prodotti di un altro ristorante,\n                sei sicuro di volerli eliminare e creare un nuovo carrello?\n              "
+                              ),
+                            ]),
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "modal-footer" }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "cancel-button",
+                                attrs: {
+                                  type: "button",
+                                  "data-bs-dismiss": "modal",
+                                },
+                              },
+                              [
+                                _vm._v(
+                                  "\n                Annulla\n              "
+                                ),
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "button",
+                              {
+                                staticClass: "confirm-button",
+                                attrs: {
+                                  type: "button",
+                                  "data-bs-dismiss": "modal",
+                                },
+                                on: {
+                                  click: function ($event) {
+                                    return _vm.getEmptyCart(
+                                      _vm.currentProduct.id,
+                                      _vm.currentProduct.name,
+                                      _vm.currentProduct.price,
+                                      _vm.restaurant.id
+                                    )
+                                  },
+                                },
+                              },
+                              [
+                                _vm._v(
+                                  "\n                Nuovo Carrello\n              "
+                                ),
+                              ]
                             ),
                           ]),
                         ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "modal-footer" }, [
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-secondary",
-                              attrs: {
-                                type: "button",
-                                "data-bs-dismiss": "modal",
-                              },
-                            },
-                            [_vm._v("\n              Annulla\n            ")]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-primary",
-                              attrs: {
-                                type: "button",
-                                "data-bs-dismiss": "modal",
-                              },
-                              on: {
-                                click: function ($event) {
-                                  return _vm.getEmptyCart(
-                                    product.id,
-                                    product.name,
-                                    product.price,
-                                    _vm.restaurant.id
-                                  )
-                                },
-                              },
-                            },
-                            [
-                              _vm._v(
-                                "\n              Nuovo Carrello\n            "
-                              ),
-                            ]
-                          ),
-                        ]),
-                      ]),
-                    ]),
+                      ]
+                    ),
                   ]
-                )
-              }),
-            ],
-            2
-          ),
-    ],
-    1
-  )
+                ),
+              ]
+            ),
+        _vm._v(" "),
+        _c("div", { staticClass: "container" }, [
+          _c("div", { staticClass: "row d-flex flex-lg-row flex-column" }, [
+            _c("div", { staticClass: "col-12 col-lg-8" }, [
+              _c(
+                "div",
+                { staticClass: "row" },
+                _vm._l(_vm.products, function (product) {
+                  return _c(
+                    "div",
+                    { key: product.id, staticClass: "col-sm-6 col-lg-4" },
+                    [
+                      _c("div", { staticClass: "card product-card my-3" }, [
+                        _c("img", {
+                          attrs: {
+                            height: "150",
+                            src: product.image
+                              ? "/storage/" + product.image
+                              : "https://consumer-component-library.roocdn.com/25.30.2/static/images/placeholder.svg",
+                            alt: "Card image cap",
+                          },
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "card-body justify-content-between d-flex flex-column",
+                          },
+                          [
+                            _c("div", [
+                              _c("h5", [
+                                _c("strong", [_vm._v(_vm._s(product.name))]),
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "card-text" }, [
+                                _vm._v(_vm._s(product.ingredients)),
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "badge badge-warning price-badge",
+                                },
+                                [
+                                  _c("strong", [
+                                    _vm._v(
+                                      _vm._s(product.price.toFixed(2)) + " €"
+                                    ),
+                                  ]),
+                                ]
+                              ),
+                            ]),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "d-flex justify-content-around align-items-center",
+                              },
+                              [
+                                _c(
+                                  "svg",
+                                  {
+                                    staticClass:
+                                      "\n                        ccl-0f24ac4b87ce1f67\n                        ccl-ed34b65f78f16205\n                        ccl-c738ab1fde928049\n                      ",
+                                    attrs: {
+                                      "xmlns:xlink":
+                                        "http://www.w3.org/1999/xlink",
+                                      xmlns: "http://www.w3.org/2000/svg",
+                                      height: "24",
+                                      width: "24",
+                                      viewBox: "0 0 24 24",
+                                      role: "button",
+                                      focusable: "false",
+                                    },
+                                    on: {
+                                      click: function ($event) {
+                                        return _vm.removeFromCart(product.id)
+                                      },
+                                    },
+                                  },
+                                  [
+                                    _c("path", {
+                                      attrs: {
+                                        d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z",
+                                        fill: "#00CCBC",
+                                      },
+                                    }),
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("div", [
+                                  _c("p", { staticClass: "m-0" }, [
+                                    _vm._v(
+                                      _vm._s(_vm.getIncrement(product.id))
+                                    ),
+                                  ]),
+                                ]),
+                                _vm._v(" "),
+                                _vm.currentRestaurant !== _vm.restaurant.id &&
+                                _vm.currentRestaurant !== 0
+                                  ? _c(
+                                      "svg",
+                                      {
+                                        staticClass:
+                                          "\n                        ccl-0f24ac4b87ce1f67\n                        ccl-ed34b65f78f16205\n                        ccl-c738ab1fde928049\n                      ",
+                                        attrs: {
+                                          "data-bs-toggle": "modal",
+                                          "data-bs-target": "#modale",
+                                          "xmlns:xlink":
+                                            "http://www.w3.org/1999/xlink",
+                                          xmlns: "http://www.w3.org/2000/svg",
+                                          height: "24",
+                                          width: "24",
+                                          viewBox: "0 0 24 24",
+                                          role: "button",
+                                          focusable: "false",
+                                        },
+                                        on: {
+                                          click: function ($event) {
+                                            return _vm.getCurrentProduct(
+                                              product
+                                            )
+                                          },
+                                        },
+                                      },
+                                      [
+                                        _c("path", {
+                                          attrs: {
+                                            d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z",
+                                            fill: "#00CCBC",
+                                          },
+                                        }),
+                                      ]
+                                    )
+                                  : _c(
+                                      "svg",
+                                      {
+                                        staticClass:
+                                          "\n                        ccl-0f24ac4b87ce1f67\n                        ccl-ed34b65f78f16205\n                        ccl-c738ab1fde928049\n                      ",
+                                        attrs: {
+                                          "xmlns:xlink":
+                                            "http://www.w3.org/1999/xlink",
+                                          xmlns: "http://www.w3.org/2000/svg",
+                                          height: "24",
+                                          width: "24",
+                                          viewBox: "0 0 24 24",
+                                          role: "button",
+                                          focusable: "false",
+                                        },
+                                        on: {
+                                          click: function ($event) {
+                                            return _vm.addCart(
+                                              product.id,
+                                              product.name,
+                                              product.price,
+                                              _vm.restaurant.id
+                                            )
+                                          },
+                                        },
+                                      },
+                                      [
+                                        _c("path", {
+                                          attrs: {
+                                            d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z",
+                                            fill: "#00CCBC",
+                                          },
+                                        }),
+                                      ]
+                                    ),
+                              ]
+                            ),
+                          ]
+                        ),
+                      ]),
+                    ]
+                  )
+                }),
+                0
+              ),
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "col-12 col-lg-4", attrs: { id: "cart" } },
+              [
+                _vm.cart.length && _vm.currentRestaurant === _vm.restaurant.id
+                  ? _c("RestaurantCart", {
+                      attrs: {
+                        addCart: _vm.addCart,
+                        removeFromCart: _vm.removeFromCart,
+                        restaurant: _vm.restaurant,
+                        cart: _vm.cart,
+                      },
+                      on: { "empty-cart": _vm.emptyCart },
+                    })
+                  : _c(
+                      "div",
+                      {
+                        staticClass:
+                          "\n              empty-cart\n              d-flex\n              justify-content-center\n              flex-column\n              align-items-center\n            ",
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "bi bi-basket my-3",
+                            attrs: {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "32px",
+                              height: "32px",
+                              fill: "currentColor",
+                              viewBox: "0 0 16 16",
+                            },
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                d: "M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z",
+                              },
+                            }),
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("h3", [_vm._v("Il carrello è vuoto")]),
+                      ]
+                    ),
+              ],
+              1
+            ),
+          ]),
+        ]),
+      ],
+      1
+    ),
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "mb-0 d-block d-sm-none" }, [
+      _c("img", {
+        staticStyle: { "max-width": "100%" },
+        attrs: {
+          src: "https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg",
+          alt: "",
+        },
+      }),
+    ])
+  },
+]
 render._withStripped = true
 
 
@@ -66232,54 +66908,238 @@ var render = function () {
         _c("div", { staticClass: "card-body" }, [
           _vm.nonce
             ? _c("div", { staticClass: "alert alert-success" }, [
-                _vm._v("\n          Pagamento andato a buon fine\n        "),
+                _vm._v(
+                  "\n               Pagamento andato a buon fine\n            "
+                ),
               ])
             : _vm._e(),
           _vm._v(" "),
           _vm.error
             ? _c("div", { staticClass: "alert alert-danger" }, [
-                _vm._v("\n          " + _vm._s(_vm.error) + "\n        "),
+                _vm._v(
+                  "\n               " + _vm._s(_vm.error) + "\n            "
+                ),
               ])
             : _vm._e(),
           _vm._v(" "),
           _c("form", [
             _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "amount" } }, [
-                _vm._v("Importo Totale"),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "input-group" }, [
-                _vm._m(0),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-6" }, [
+                  _c("label", { attrs: { for: "customer_name" } }, [
+                    _vm._v("Nome"),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.order.customer_name,
+                          expression: "order.customer_name",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "customer_name" },
+                      domProps: { value: _vm.order.customer_name },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.order,
+                            "customer_name",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                ]),
                 _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.amount,
-                      expression: "amount",
-                    },
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text", id: "amount", disabled: "" },
-                  domProps: { value: _vm.amount },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.amount = $event.target.value
-                    },
-                  },
-                }),
+                _c("div", { staticClass: "col-6" }, [
+                  _c("label", { attrs: { for: "customer_surname" } }, [
+                    _vm._v("Cognome"),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.order.customer_surname,
+                          expression: "order.customer_surname",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "customer_surname" },
+                      domProps: { value: _vm.order.customer_surname },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.order,
+                            "customer_surname",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-6" }, [
+                  _c("label", { attrs: { for: "customer_email" } }, [
+                    _vm._v("Email"),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.order.customer_email,
+                          expression: "order.customer_email",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "customer_email" },
+                      domProps: { value: _vm.order.customer_email },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.order,
+                            "customer_email",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-6" }, [
+                  _c("label", { attrs: { for: "customer_phone" } }, [
+                    _vm._v("Numero di telefono"),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.order.customer_phone,
+                          expression: "order.customer_phone",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "tel", id: "customer_phone" },
+                      domProps: { value: _vm.order.customer_phone },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.order,
+                            "customer_phone",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-12" }, [
+                  _c("label", { attrs: { for: "customer_address" } }, [
+                    _vm._v("Indirizzo"),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.order.customer_address,
+                          expression: "order.customer_address",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "customer_address" },
+                      domProps: { value: _vm.order.customer_address },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.order,
+                            "customer_address",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                ]),
               ]),
             ]),
             _vm._v(" "),
             _c("hr"),
             _vm._v(" "),
-            _vm._m(1),
-            _vm._v(" "),
-            _vm._m(2),
+            _c("div", { staticClass: "form-group" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-3" }, [
+                  _c("label", { attrs: { for: "amount" } }, [
+                    _vm._v("Importo Totale"),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.amount,
+                          expression: "amount",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "amount", disabled: "" },
+                      domProps: { value: _vm.amount },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.amount = $event.target.value
+                        },
+                      },
+                    }),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _vm._m(3),
+              ]),
+            ]),
             _vm._v(" "),
             _c(
               "button",
@@ -66292,7 +67152,7 @@ var render = function () {
                   },
                 },
               },
-              [_vm._v("\n            Paga\n          ")]
+              [_vm._v("\n                  Paga\n               ")]
             ),
           ]),
         ]),
@@ -66313,7 +67173,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
+    return _c("div", { staticClass: "col-9" }, [
       _c("label", [_vm._v("Numero Carta di Credito")]),
       _vm._v(" "),
       _c("div", {
@@ -66326,26 +67186,131 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-6" }, [
-          _c("label", [_vm._v("Data di Scadenza")]),
-          _vm._v(" "),
-          _c("div", {
-            staticClass: "form-control",
-            attrs: { id: "expireDate" },
-          }),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-6" }, [
-          _c("label", [_vm._v("CVV")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-control", attrs: { id: "cvv" } }),
-        ]),
-      ]),
+    return _c("div", { staticClass: "col-6" }, [
+      _c("label", [_vm._v("Data di Scadenza")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-control", attrs: { id: "expireDate" } }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-6" }, [
+      _c("label", [_vm._v("CVV")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-control", attrs: { id: "cvv" } }),
     ])
   },
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=template&id=be474590&scoped=true&":
+/*!*******************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=template&id=be474590&scoped=true& ***!
+  \*******************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function () {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "d-flex justify-content-center align-items-center",
+      attrs: { id: "cart-mobile-button" },
+    },
+    [
+      _vm.totalQuantity
+        ? _c(
+            "div",
+            {
+              staticClass:
+                "\n      total-quantity-badge\n      d-flex\n      align-items-center\n      justify-content-center\n    ",
+            },
+            [
+              _c("span", { staticClass: "badge badge-danger" }, [
+                _vm._v(_vm._s(_vm.totalQuantity)),
+              ]),
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "svg",
+        {
+          attrs: {
+            width: "61",
+            height: "61",
+            viewBox: "0 0 61 61",
+            fill: "none",
+            xmlns: "http://www.w3.org/2000/svg",
+          },
+        },
+        [
+          _c(
+            "mask",
+            {
+              attrs: {
+                id: "path-1-outside-1_1_2",
+                maskUnits: "userSpaceOnUse",
+                x: "7.41379",
+                y: "8.46552",
+                width: "47",
+                height: "44",
+                fill: "black",
+              },
+            },
+            [
+              _c("rect", {
+                attrs: {
+                  fill: "white",
+                  x: "7.41379",
+                  y: "8.46552",
+                  width: "47",
+                  height: "44",
+                },
+              }),
+              _vm._v(" "),
+              _c("path", {
+                attrs: {
+                  d: "M24.686 9.66499C24.8453 9.75962 24.9842 9.88445 25.0948 10.0324C25.2054 10.1803 25.2856 10.3484 25.3308 10.527C25.3759 10.7057 25.3851 10.8914 25.3579 11.0736C25.3307 11.2558 25.2676 11.4309 25.1722 11.5889L17.9759 23.4887H44.0759L36.8767 11.5889C36.6841 11.2698 36.6271 10.8879 36.7182 10.527C36.8094 10.1662 37.0413 9.85615 37.3629 9.66499C37.6845 9.47382 38.0694 9.41725 38.4331 9.50772C38.7967 9.59818 39.1092 9.82827 39.3019 10.1474L47.3716 23.4887H50.8114C51.5611 23.4887 52.28 23.7842 52.8101 24.3102C53.3401 24.8361 53.6379 25.5495 53.6379 26.2933V29.0979C53.6379 29.8417 53.3401 30.5551 52.8101 31.081C52.28 31.607 51.5611 31.9025 50.8114 31.9025V44.523C50.8114 46.3826 50.0669 48.166 48.7418 49.4809C47.4166 50.7958 45.6192 51.5345 43.7452 51.5345H18.3066C16.4325 51.5345 14.6351 50.7958 13.31 49.4809C11.9848 48.166 11.2403 46.3826 11.2403 44.523V31.9025C10.4907 31.9025 9.77173 31.607 9.24166 31.081C8.71158 30.5551 8.41379 29.8417 8.41379 29.0979V26.2933C8.41379 25.5495 8.71158 24.8361 9.24166 24.3102C9.77173 23.7842 10.4907 23.4887 11.2403 23.4887H14.6802L22.7442 10.1474C22.8396 9.98935 22.9654 9.85151 23.1144 9.74174C23.2635 9.63197 23.4329 9.55241 23.613 9.50762C23.793 9.46282 23.9802 9.45366 24.1639 9.48066C24.3475 9.50767 24.5239 9.5703 24.6832 9.66499H24.686ZM14.0668 31.9025V44.523C14.0668 45.6388 14.5135 46.7088 15.3086 47.4977C16.1037 48.2867 17.1821 48.7299 18.3066 48.7299H43.7452C44.8696 48.7299 45.948 48.2867 46.7431 47.4977C47.5382 46.7088 47.9849 45.6388 47.9849 44.523V31.9025H14.0668ZM11.2403 26.2933V29.0979H50.8114V26.2933H11.2403ZM19.7198 34.707C20.0946 34.707 20.4541 34.8548 20.7191 35.1178C20.9842 35.3807 21.1331 35.7374 21.1331 36.1093V44.523C21.1331 44.895 20.9842 45.2516 20.7191 45.5146C20.4541 45.7776 20.0946 45.9253 19.7198 45.9253C19.345 45.9253 18.9855 45.7776 18.7205 45.5146C18.4555 45.2516 18.3066 44.895 18.3066 44.523V36.1093C18.3066 35.7374 18.4555 35.3807 18.7205 35.1178C18.9855 34.8548 19.345 34.707 19.7198 34.707ZM25.3728 34.707C25.7477 34.707 26.1071 34.8548 26.3722 35.1178C26.6372 35.3807 26.7861 35.7374 26.7861 36.1093V44.523C26.7861 44.895 26.6372 45.2516 26.3722 45.5146C26.1071 45.7776 25.7477 45.9253 25.3728 45.9253C24.998 45.9253 24.6386 45.7776 24.3735 45.5146C24.1085 45.2516 23.9596 44.895 23.9596 44.523V36.1093C23.9596 35.7374 24.1085 35.3807 24.3735 35.1178C24.6386 34.8548 24.998 34.707 25.3728 34.707V34.707ZM31.0259 34.707C31.4007 34.707 31.7601 34.8548 32.0252 35.1178C32.2902 35.3807 32.4391 35.7374 32.4391 36.1093V44.523C32.4391 44.895 32.2902 45.2516 32.0252 45.5146C31.7601 45.7776 31.4007 45.9253 31.0259 45.9253C30.651 45.9253 30.2916 45.7776 30.0265 45.5146C29.7615 45.2516 29.6126 44.895 29.6126 44.523V36.1093C29.6126 35.7374 29.7615 35.3807 30.0265 35.1178C30.2916 34.8548 30.651 34.707 31.0259 34.707V34.707ZM36.6789 34.707C37.0537 34.707 37.4132 34.8548 37.6782 35.1178C37.9432 35.3807 38.0921 35.7374 38.0921 36.1093V44.523C38.0921 44.895 37.9432 45.2516 37.6782 45.5146C37.4132 45.7776 37.0537 45.9253 36.6789 45.9253C36.3041 45.9253 35.9446 45.7776 35.6796 45.5146C35.4145 45.2516 35.2656 44.895 35.2656 44.523V36.1093C35.2656 35.7374 35.4145 35.3807 35.6796 35.1178C35.9446 34.8548 36.3041 34.707 36.6789 34.707ZM42.3319 34.707C42.7067 34.707 43.0662 34.8548 43.3312 35.1178C43.5963 35.3807 43.7452 35.7374 43.7452 36.1093V44.523C43.7452 44.895 43.5963 45.2516 43.3312 45.5146C43.0662 45.7776 42.7067 45.9253 42.3319 45.9253C41.9571 45.9253 41.5976 45.7776 41.3326 45.5146C41.0675 45.2516 40.9186 44.895 40.9186 44.523V36.1093C40.9186 35.7374 41.0675 35.3807 41.3326 35.1178C41.5976 34.8548 41.9571 34.707 42.3319 34.707Z",
+                },
+              }),
+            ]
+          ),
+          _vm._v(" "),
+          _c("path", {
+            attrs: {
+              d: "M24.686 9.66499C24.8453 9.75962 24.9842 9.88445 25.0948 10.0324C25.2054 10.1803 25.2856 10.3484 25.3308 10.527C25.3759 10.7057 25.3851 10.8914 25.3579 11.0736C25.3307 11.2558 25.2676 11.4309 25.1722 11.5889L17.9759 23.4887H44.0759L36.8767 11.5889C36.6841 11.2698 36.6271 10.8879 36.7182 10.527C36.8094 10.1662 37.0413 9.85615 37.3629 9.66499C37.6845 9.47382 38.0694 9.41725 38.4331 9.50772C38.7967 9.59818 39.1092 9.82827 39.3019 10.1474L47.3716 23.4887H50.8114C51.5611 23.4887 52.28 23.7842 52.8101 24.3102C53.3401 24.8361 53.6379 25.5495 53.6379 26.2933V29.0979C53.6379 29.8417 53.3401 30.5551 52.8101 31.081C52.28 31.607 51.5611 31.9025 50.8114 31.9025V44.523C50.8114 46.3826 50.0669 48.166 48.7418 49.4809C47.4166 50.7958 45.6192 51.5345 43.7452 51.5345H18.3066C16.4325 51.5345 14.6351 50.7958 13.31 49.4809C11.9848 48.166 11.2403 46.3826 11.2403 44.523V31.9025C10.4907 31.9025 9.77173 31.607 9.24166 31.081C8.71158 30.5551 8.41379 29.8417 8.41379 29.0979V26.2933C8.41379 25.5495 8.71158 24.8361 9.24166 24.3102C9.77173 23.7842 10.4907 23.4887 11.2403 23.4887H14.6802L22.7442 10.1474C22.8396 9.98935 22.9654 9.85151 23.1144 9.74174C23.2635 9.63197 23.4329 9.55241 23.613 9.50762C23.793 9.46282 23.9802 9.45366 24.1639 9.48066C24.3475 9.50767 24.5239 9.5703 24.6832 9.66499H24.686ZM14.0668 31.9025V44.523C14.0668 45.6388 14.5135 46.7088 15.3086 47.4977C16.1037 48.2867 17.1821 48.7299 18.3066 48.7299H43.7452C44.8696 48.7299 45.948 48.2867 46.7431 47.4977C47.5382 46.7088 47.9849 45.6388 47.9849 44.523V31.9025H14.0668ZM11.2403 26.2933V29.0979H50.8114V26.2933H11.2403ZM19.7198 34.707C20.0946 34.707 20.4541 34.8548 20.7191 35.1178C20.9842 35.3807 21.1331 35.7374 21.1331 36.1093V44.523C21.1331 44.895 20.9842 45.2516 20.7191 45.5146C20.4541 45.7776 20.0946 45.9253 19.7198 45.9253C19.345 45.9253 18.9855 45.7776 18.7205 45.5146C18.4555 45.2516 18.3066 44.895 18.3066 44.523V36.1093C18.3066 35.7374 18.4555 35.3807 18.7205 35.1178C18.9855 34.8548 19.345 34.707 19.7198 34.707ZM25.3728 34.707C25.7477 34.707 26.1071 34.8548 26.3722 35.1178C26.6372 35.3807 26.7861 35.7374 26.7861 36.1093V44.523C26.7861 44.895 26.6372 45.2516 26.3722 45.5146C26.1071 45.7776 25.7477 45.9253 25.3728 45.9253C24.998 45.9253 24.6386 45.7776 24.3735 45.5146C24.1085 45.2516 23.9596 44.895 23.9596 44.523V36.1093C23.9596 35.7374 24.1085 35.3807 24.3735 35.1178C24.6386 34.8548 24.998 34.707 25.3728 34.707V34.707ZM31.0259 34.707C31.4007 34.707 31.7601 34.8548 32.0252 35.1178C32.2902 35.3807 32.4391 35.7374 32.4391 36.1093V44.523C32.4391 44.895 32.2902 45.2516 32.0252 45.5146C31.7601 45.7776 31.4007 45.9253 31.0259 45.9253C30.651 45.9253 30.2916 45.7776 30.0265 45.5146C29.7615 45.2516 29.6126 44.895 29.6126 44.523V36.1093C29.6126 35.7374 29.7615 35.3807 30.0265 35.1178C30.2916 34.8548 30.651 34.707 31.0259 34.707V34.707ZM36.6789 34.707C37.0537 34.707 37.4132 34.8548 37.6782 35.1178C37.9432 35.3807 38.0921 35.7374 38.0921 36.1093V44.523C38.0921 44.895 37.9432 45.2516 37.6782 45.5146C37.4132 45.7776 37.0537 45.9253 36.6789 45.9253C36.3041 45.9253 35.9446 45.7776 35.6796 45.5146C35.4145 45.2516 35.2656 44.895 35.2656 44.523V36.1093C35.2656 35.7374 35.4145 35.3807 35.6796 35.1178C35.9446 34.8548 36.3041 34.707 36.6789 34.707ZM42.3319 34.707C42.7067 34.707 43.0662 34.8548 43.3312 35.1178C43.5963 35.3807 43.7452 35.7374 43.7452 36.1093V44.523C43.7452 44.895 43.5963 45.2516 43.3312 45.5146C43.0662 45.7776 42.7067 45.9253 42.3319 45.9253C41.9571 45.9253 41.5976 45.7776 41.3326 45.5146C41.0675 45.2516 40.9186 44.895 40.9186 44.523V36.1093C40.9186 35.7374 41.0675 35.3807 41.3326 35.1178C41.5976 34.8548 41.9571 34.707 42.3319 34.707Z",
+              fill: "white",
+            },
+          }),
+          _vm._v(" "),
+          _c("path", {
+            attrs: {
+              d: "M24.686 9.66499C24.8453 9.75962 24.9842 9.88445 25.0948 10.0324C25.2054 10.1803 25.2856 10.3484 25.3308 10.527C25.3759 10.7057 25.3851 10.8914 25.3579 11.0736C25.3307 11.2558 25.2676 11.4309 25.1722 11.5889L17.9759 23.4887H44.0759L36.8767 11.5889C36.6841 11.2698 36.6271 10.8879 36.7182 10.527C36.8094 10.1662 37.0413 9.85615 37.3629 9.66499C37.6845 9.47382 38.0694 9.41725 38.4331 9.50772C38.7967 9.59818 39.1092 9.82827 39.3019 10.1474L47.3716 23.4887H50.8114C51.5611 23.4887 52.28 23.7842 52.8101 24.3102C53.3401 24.8361 53.6379 25.5495 53.6379 26.2933V29.0979C53.6379 29.8417 53.3401 30.5551 52.8101 31.081C52.28 31.607 51.5611 31.9025 50.8114 31.9025V44.523C50.8114 46.3826 50.0669 48.166 48.7418 49.4809C47.4166 50.7958 45.6192 51.5345 43.7452 51.5345H18.3066C16.4325 51.5345 14.6351 50.7958 13.31 49.4809C11.9848 48.166 11.2403 46.3826 11.2403 44.523V31.9025C10.4907 31.9025 9.77173 31.607 9.24166 31.081C8.71158 30.5551 8.41379 29.8417 8.41379 29.0979V26.2933C8.41379 25.5495 8.71158 24.8361 9.24166 24.3102C9.77173 23.7842 10.4907 23.4887 11.2403 23.4887H14.6802L22.7442 10.1474C22.8396 9.98935 22.9654 9.85151 23.1144 9.74174C23.2635 9.63197 23.4329 9.55241 23.613 9.50762C23.793 9.46282 23.9802 9.45366 24.1639 9.48066C24.3475 9.50767 24.5239 9.5703 24.6832 9.66499H24.686ZM14.0668 31.9025V44.523C14.0668 45.6388 14.5135 46.7088 15.3086 47.4977C16.1037 48.2867 17.1821 48.7299 18.3066 48.7299H43.7452C44.8696 48.7299 45.948 48.2867 46.7431 47.4977C47.5382 46.7088 47.9849 45.6388 47.9849 44.523V31.9025H14.0668ZM11.2403 26.2933V29.0979H50.8114V26.2933H11.2403ZM19.7198 34.707C20.0946 34.707 20.4541 34.8548 20.7191 35.1178C20.9842 35.3807 21.1331 35.7374 21.1331 36.1093V44.523C21.1331 44.895 20.9842 45.2516 20.7191 45.5146C20.4541 45.7776 20.0946 45.9253 19.7198 45.9253C19.345 45.9253 18.9855 45.7776 18.7205 45.5146C18.4555 45.2516 18.3066 44.895 18.3066 44.523V36.1093C18.3066 35.7374 18.4555 35.3807 18.7205 35.1178C18.9855 34.8548 19.345 34.707 19.7198 34.707ZM25.3728 34.707C25.7477 34.707 26.1071 34.8548 26.3722 35.1178C26.6372 35.3807 26.7861 35.7374 26.7861 36.1093V44.523C26.7861 44.895 26.6372 45.2516 26.3722 45.5146C26.1071 45.7776 25.7477 45.9253 25.3728 45.9253C24.998 45.9253 24.6386 45.7776 24.3735 45.5146C24.1085 45.2516 23.9596 44.895 23.9596 44.523V36.1093C23.9596 35.7374 24.1085 35.3807 24.3735 35.1178C24.6386 34.8548 24.998 34.707 25.3728 34.707V34.707ZM31.0259 34.707C31.4007 34.707 31.7601 34.8548 32.0252 35.1178C32.2902 35.3807 32.4391 35.7374 32.4391 36.1093V44.523C32.4391 44.895 32.2902 45.2516 32.0252 45.5146C31.7601 45.7776 31.4007 45.9253 31.0259 45.9253C30.651 45.9253 30.2916 45.7776 30.0265 45.5146C29.7615 45.2516 29.6126 44.895 29.6126 44.523V36.1093C29.6126 35.7374 29.7615 35.3807 30.0265 35.1178C30.2916 34.8548 30.651 34.707 31.0259 34.707V34.707ZM36.6789 34.707C37.0537 34.707 37.4132 34.8548 37.6782 35.1178C37.9432 35.3807 38.0921 35.7374 38.0921 36.1093V44.523C38.0921 44.895 37.9432 45.2516 37.6782 45.5146C37.4132 45.7776 37.0537 45.9253 36.6789 45.9253C36.3041 45.9253 35.9446 45.7776 35.6796 45.5146C35.4145 45.2516 35.2656 44.895 35.2656 44.523V36.1093C35.2656 35.7374 35.4145 35.3807 35.6796 35.1178C35.9446 34.8548 36.3041 34.707 36.6789 34.707ZM42.3319 34.707C42.7067 34.707 43.0662 34.8548 43.3312 35.1178C43.5963 35.3807 43.7452 35.7374 43.7452 36.1093V44.523C43.7452 44.895 43.5963 45.2516 43.3312 45.5146C43.0662 45.7776 42.7067 45.9253 42.3319 45.9253C41.9571 45.9253 41.5976 45.7776 41.3326 45.5146C41.0675 45.2516 40.9186 44.895 40.9186 44.523V36.1093C40.9186 35.7374 41.0675 35.3807 41.3326 35.1178C41.5976 34.8548 41.9571 34.707 42.3319 34.707Z",
+              stroke: "white",
+              "stroke-width": "1.4",
+              mask: "url(#path-1-outside-1_1_2)",
+            },
+          }),
+        ]
+      ),
+    ]
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -66426,174 +67391,377 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "cart-card card p-3" }, [
-    !_vm.isCheckOutPage
-      ? _c(
-          "div",
-          {
-            staticClass:
-              "div d-flex justify-content-between align-items-center mb-1",
-          },
-          [
-            _c("h3", { staticClass: "mb-3" }, [_vm._v("Il tuo ordine")]),
-            _vm._v(" "),
-            _c(
-              "span",
-              {
-                staticClass: "mb-3",
-                attrs: { role: "button" },
-                on: {
-                  click: function ($event) {
-                    return _vm.deleteCart()
-                  },
-                },
-              },
-              [_c("i", { staticClass: "fa-solid fa-trash-can fa-lg" })]
-            ),
-          ]
-        )
-      : _c("div", [_c("h3", { staticClass: "cart-h3" }, [_vm._v("Carrello")])]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "mb-3" },
-      _vm._l(_vm.cart, function (product) {
-        return _c("div", { key: product.id }, [
-          _c(
+  return _c(
+    "div",
+    { staticClass: "cart-card card p-3" },
+    [
+      !_vm.isCheckOutPage && !_vm.isTrashCartDialogShowed
+        ? _c(
             "div",
-            { staticClass: "product d-flex justify-content-between row mb-1" },
+            {
+              staticClass:
+                "div d-flex justify-content-between align-items-center mb-1",
+            },
             [
-              _c("div", { staticClass: "col-6" }, [
-                _vm.isCheckOutPage
-                  ? _c("span", { staticClass: "mr-1" }, [
-                      _vm._v(
-                        "\n            " +
-                          _vm._s(product.quantity) +
-                          "x\n          "
-                      ),
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("span", { staticClass: "mb-1" }, [
-                  _vm._v(_vm._s(product.name)),
-                ]),
-              ]),
+              _c("h3", { staticClass: "mb-3" }, [_vm._v("Il tuo ordine")]),
               _vm._v(" "),
               _c(
+                "span",
+                {
+                  staticClass: "mb-3",
+                  attrs: { role: "button" },
+                  on: {
+                    click: function ($event) {
+                      return _vm.showTrashCartDialog()
+                    },
+                  },
+                },
+                [_c("i", { staticClass: "fa-solid fa-trash-can fa-lg" })]
+              ),
+            ]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _c("Transition", { attrs: { name: "slide-fade" } }, [
+        !_vm.isCheckOutPage && _vm.isTrashCartDialogShowed
+          ? _c(
+              "div",
+              {
+                staticClass:
+                  "div d-flex justify-content-between align-items-center mb-1",
+                attrs: { id: "cart-dialog" },
+              },
+              [
+                _c("h3", { staticClass: "mb-3" }, [
+                  _vm._v("Svuotare il carrello?"),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "d-flex align-items-center" }, [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "mb-3 mr-3 rounded text-success",
+                      attrs: { role: "button" },
+                      on: {
+                        click: function ($event) {
+                          _vm.hideTrashCartDialogWithoutGlitch()
+                          _vm.deleteCart()
+                        },
+                      },
+                    },
+                    [_c("i", { staticClass: "fa-solid fa-circle-check fa-lg" })]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "span",
+                    {
+                      staticClass: "mb-3 rounded text-danger",
+                      attrs: { role: "button" },
+                      on: {
+                        click: function ($event) {
+                          return _vm.hideTrashCartDialog()
+                        },
+                      },
+                    },
+                    [_c("i", { staticClass: "fa-solid fa-circle-xmark fa-lg" })]
+                  ),
+                ]),
+              ]
+            )
+          : _vm._e(),
+      ]),
+      _vm._v(" "),
+      _vm.isCheckOutPage
+        ? _c("div", [
+            _c("h3", { staticClass: "cart-h3" }, [_vm._v("Carrello")]),
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "mb-3" },
+        [
+          _vm._l(_vm.cart, function (product) {
+            return _c("div", { key: product.id }, [
+              _c(
                 "div",
-                { staticClass: "col-6 d-flex justify-content-between" },
+                {
+                  staticClass:
+                    "product d-flex justify-content-between row mb-1",
+                },
                 [
-                  !_vm.isCheckOutPage
-                    ? _c("div", { staticClass: "button-container d-flex" }, [
-                        _c(
-                          "svg",
-                          {
-                            staticClass:
-                              "\n                ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049\n                mr-1\n              ",
-                            attrs: {
-                              "xmlns:xlink": "http://www.w3.org/1999/xlink",
-                              xmlns: "http://www.w3.org/2000/svg",
-                              height: "24",
-                              width: "24",
-                              viewBox: "0 0 24 24",
-                              role: "button",
-                              focusable: "false",
-                            },
-                            on: {
-                              click: function ($event) {
-                                return _vm.removeFromCart(product.product_id)
+                  _vm.isCheckOutPage
+                    ? _c("div", { staticClass: "col-8 d-flex" }, [
+                        _vm.isCheckOutPage
+                          ? _c(
+                              "span",
+                              {
+                                staticClass: "text-muted",
+                                staticStyle: { "margin-right": "8px" },
                               },
-                            },
-                          },
-                          [
-                            _c("path", {
-                              attrs: {
-                                d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z",
-                                fill: "#00CCBC",
-                              },
-                            }),
-                          ]
-                        ),
+                              [
+                                _vm._v(
+                                  "\n            " +
+                                    _vm._s(product.quantity) +
+                                    "x\n          "
+                                ),
+                              ]
+                            )
+                          : _vm._e(),
                         _vm._v(" "),
-                        _c("span", { staticClass: "mr-1" }, [
-                          _vm._v(" " + _vm._s(product.quantity) + " "),
+                        _c("span", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(product.name)),
                         ]),
-                        _vm._v(" "),
-                        _c(
-                          "svg",
-                          {
-                            staticClass:
-                              "\n                ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049\n              ",
-                            attrs: {
-                              "xmlns:xlink": "http://www.w3.org/1999/xlink",
-                              xmlns: "http://www.w3.org/2000/svg",
-                              height: "24",
-                              width: "24",
-                              viewBox: "0 0 24 24",
-                              role: "button",
-                              focusable: "false",
-                            },
-                            on: {
-                              click: function ($event) {
-                                return _vm.addCart(
-                                  product.product_id,
-                                  product.name,
-                                  product.price,
-                                  _vm.restaurant.id
-                                )
-                              },
-                            },
-                          },
-                          [
-                            _c("path", {
-                              attrs: {
-                                d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z",
-                                fill: "#00CCBC",
-                              },
-                            }),
-                          ]
-                        ),
                       ])
                     : _vm._e(),
                   _vm._v(" "),
-                  _c("div"),
+                  _vm.isCheckOutPage
+                    ? _c(
+                        "div",
+                        { staticClass: "col-4 d-flex justify-content-between" },
+                        [
+                          !_vm.isCheckOutPage
+                            ? _c(
+                                "div",
+                                { staticClass: "button-container d-flex" },
+                                [
+                                  _c(
+                                    "svg",
+                                    {
+                                      staticClass:
+                                        "\n                ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049\n                mr-1\n              ",
+                                      attrs: {
+                                        "xmlns:xlink":
+                                          "http://www.w3.org/1999/xlink",
+                                        xmlns: "http://www.w3.org/2000/svg",
+                                        height: "24",
+                                        width: "24",
+                                        viewBox: "0 0 24 24",
+                                        role: "button",
+                                        focusable: "false",
+                                      },
+                                      on: {
+                                        click: function ($event) {
+                                          return _vm.removeFromCart(
+                                            product.product_id
+                                          )
+                                        },
+                                      },
+                                    },
+                                    [
+                                      _c("path", {
+                                        attrs: {
+                                          d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z",
+                                          fill: "#00CCBC",
+                                        },
+                                      }),
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "mr-1" }, [
+                                    _vm._v(
+                                      " " + _vm._s(product.quantity) + " "
+                                    ),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "svg",
+                                    {
+                                      staticClass:
+                                        "\n                ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049\n              ",
+                                      attrs: {
+                                        "xmlns:xlink":
+                                          "http://www.w3.org/1999/xlink",
+                                        xmlns: "http://www.w3.org/2000/svg",
+                                        height: "24",
+                                        width: "24",
+                                        viewBox: "0 0 24 24",
+                                        role: "button",
+                                        focusable: "false",
+                                      },
+                                      on: {
+                                        click: function ($event) {
+                                          return _vm.addCart(
+                                            product.product_id,
+                                            product.name,
+                                            product.price,
+                                            _vm.restaurant.id
+                                          )
+                                        },
+                                      },
+                                    },
+                                    [
+                                      _c("path", {
+                                        attrs: {
+                                          d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z",
+                                          fill: "#00CCBC",
+                                        },
+                                      }),
+                                    ]
+                                  ),
+                                ]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c("div"),
+                          _vm._v(" "),
+                          _c("span", [
+                            _vm._v(
+                              _vm._s(
+                                _vm.getProductTotalPrice(product).toFixed(2)
+                              ) + " €"
+                            ),
+                          ]),
+                        ]
+                      )
+                    : _vm._e(),
                   _vm._v(" "),
-                  _c("span", [
-                    _vm._v(
-                      _vm._s(_vm.getProductTotalPrice(product).toFixed(2)) +
-                        " €"
-                    ),
-                  ]),
+                  !_vm.isCheckOutPage
+                    ? _c("div", { staticClass: "col-6 d-flex" }, [
+                        _vm.isCheckOutPage
+                          ? _c("span", { staticClass: "mr-1" }, [
+                              _vm._v(
+                                "\n            " +
+                                  _vm._s(product.quantity) +
+                                  "x\n          "
+                              ),
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "mb-1" }, [
+                          _vm._v(_vm._s(product.name)),
+                        ]),
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  !_vm.isCheckOutPage
+                    ? _c(
+                        "div",
+                        { staticClass: "col-6 d-flex justify-content-between" },
+                        [
+                          !_vm.isCheckOutPage
+                            ? _c(
+                                "div",
+                                { staticClass: "button-container d-flex" },
+                                [
+                                  _c(
+                                    "svg",
+                                    {
+                                      staticClass:
+                                        "\n                ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049\n                mr-1\n              ",
+                                      attrs: {
+                                        "xmlns:xlink":
+                                          "http://www.w3.org/1999/xlink",
+                                        xmlns: "http://www.w3.org/2000/svg",
+                                        height: "24",
+                                        width: "24",
+                                        viewBox: "0 0 24 24",
+                                        role: "button",
+                                        focusable: "false",
+                                      },
+                                      on: {
+                                        click: function ($event) {
+                                          return _vm.removeFromCart(
+                                            product.product_id
+                                          )
+                                        },
+                                      },
+                                    },
+                                    [
+                                      _c("path", {
+                                        attrs: {
+                                          d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM7 13.5V10.5H17V13.5H7Z",
+                                          fill: "#00CCBC",
+                                        },
+                                      }),
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c("span", { staticClass: "mr-1" }, [
+                                    _vm._v(
+                                      " " + _vm._s(product.quantity) + " "
+                                    ),
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "svg",
+                                    {
+                                      staticClass:
+                                        "\n                ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049\n              ",
+                                      attrs: {
+                                        "xmlns:xlink":
+                                          "http://www.w3.org/1999/xlink",
+                                        xmlns: "http://www.w3.org/2000/svg",
+                                        height: "24",
+                                        width: "24",
+                                        viewBox: "0 0 24 24",
+                                        role: "button",
+                                        focusable: "false",
+                                      },
+                                      on: {
+                                        click: function ($event) {
+                                          return _vm.addCart(
+                                            product.product_id,
+                                            product.name,
+                                            product.price,
+                                            _vm.restaurant.id
+                                          )
+                                        },
+                                      },
+                                    },
+                                    [
+                                      _c("path", {
+                                        attrs: {
+                                          d: "M12 2C17.5228 2 22 6.47725 22 12C22 17.5228 17.5228 22 12 22C6.47717 22 2 17.5228 2 12C2 6.47725 6.47717 2 12 2ZM12 20C16.4113 20 20 16.4113 20 12C20 7.58875 16.4113 4 12 4C7.58875 4 4 7.58875 4 12C4 16.4113 7.58875 20 12 20ZM13.5 7V10.4999H17V13.5H13.5V17H10.5V13.5H7V10.4999H10.5V7H13.5Z",
+                                          fill: "#00CCBC",
+                                        },
+                                      }),
+                                    ]
+                                  ),
+                                ]
+                              )
+                            : _vm._e(),
+                        ]
+                      )
+                    : _vm._e(),
                 ]
               ),
-            ]
-          ),
-        ])
-      }),
-      0
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "d-flex justify-content-between" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("span", [
-        _c("strong", [_vm._v(_vm._s(_vm.getTotal().toFixed(2)) + " €")]),
-      ]),
-    ]),
-    _vm._v(" "),
-    !_vm.isCheckOutPage
-      ? _c("div", { staticClass: "mt-3" }, [
-          _c(
-            "a",
-            {
-              staticClass: "checkout-button",
-              attrs: { href: "http://127.0.0.1:8000/cart" },
-            },
-            [_vm._v("\n      Vai al pagamento\n    ")]
-          ),
-        ])
-      : _vm._e(),
-  ])
+            ])
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "d-flex justify-content-between" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("span", [
+              _c("strong", [_vm._v(_vm._s(_vm.getTotal().toFixed(2)) + " €")]),
+            ]),
+          ]),
+          _vm._v(" "),
+          !_vm.isCheckOutPage
+            ? _c(
+                "div",
+                { staticClass: "mt-3" },
+                [
+                  _c(
+                    "router-link",
+                    {
+                      staticClass: "checkout-button",
+                      attrs: {
+                        to: { name: "cart", params: { id: _vm.restaurant.id } },
+                      },
+                    },
+                    [_vm._v("Vai al pagamento\n      ")]
+                  ),
+                ],
+                1
+              )
+            : _vm._e(),
+        ],
+        2
+      ),
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function () {
@@ -82509,9 +83677,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _RestaurantByCategory_vue_vue_type_template_id_26644328___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RestaurantByCategory.vue?vue&type=template&id=26644328& */ "./resources/js/components/pages/RestaurantByCategory.vue?vue&type=template&id=26644328&");
+/* harmony import */ var _RestaurantByCategory_vue_vue_type_template_id_26644328_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RestaurantByCategory.vue?vue&type=template&id=26644328&scoped=true& */ "./resources/js/components/pages/RestaurantByCategory.vue?vue&type=template&id=26644328&scoped=true&");
 /* harmony import */ var _RestaurantByCategory_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RestaurantByCategory.vue?vue&type=script&lang=js& */ "./resources/js/components/pages/RestaurantByCategory.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _RestaurantByCategory_vue_vue_type_style_index_0_id_26644328_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RestaurantByCategory.vue?vue&type=style&index=0&id=26644328&scoped=true&lang=scss& */ "./resources/js/components/pages/RestaurantByCategory.vue?vue&type=style&index=0&id=26644328&scoped=true&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -82519,13 +83689,13 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _RestaurantByCategory_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _RestaurantByCategory_vue_vue_type_template_id_26644328___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _RestaurantByCategory_vue_vue_type_template_id_26644328___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _RestaurantByCategory_vue_vue_type_template_id_26644328_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _RestaurantByCategory_vue_vue_type_template_id_26644328_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  null,
+  "26644328",
   null
   
 )
@@ -82551,19 +83721,35 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/pages/RestaurantByCategory.vue?vue&type=template&id=26644328&":
-/*!***********************************************************************************************!*\
-  !*** ./resources/js/components/pages/RestaurantByCategory.vue?vue&type=template&id=26644328& ***!
-  \***********************************************************************************************/
+/***/ "./resources/js/components/pages/RestaurantByCategory.vue?vue&type=style&index=0&id=26644328&scoped=true&lang=scss&":
+/*!**************************************************************************************************************************!*\
+  !*** ./resources/js/components/pages/RestaurantByCategory.vue?vue&type=style&index=0&id=26644328&scoped=true&lang=scss& ***!
+  \**************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_RestaurantByCategory_vue_vue_type_style_index_0_id_26644328_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./RestaurantByCategory.vue?vue&type=style&index=0&id=26644328&scoped=true&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/RestaurantByCategory.vue?vue&type=style&index=0&id=26644328&scoped=true&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_RestaurantByCategory_vue_vue_type_style_index_0_id_26644328_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_RestaurantByCategory_vue_vue_type_style_index_0_id_26644328_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_RestaurantByCategory_vue_vue_type_style_index_0_id_26644328_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_RestaurantByCategory_vue_vue_type_style_index_0_id_26644328_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/pages/RestaurantByCategory.vue?vue&type=template&id=26644328&scoped=true&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/components/pages/RestaurantByCategory.vue?vue&type=template&id=26644328&scoped=true& ***!
+  \***********************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RestaurantByCategory_vue_vue_type_template_id_26644328___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./RestaurantByCategory.vue?vue&type=template&id=26644328& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/RestaurantByCategory.vue?vue&type=template&id=26644328&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RestaurantByCategory_vue_vue_type_template_id_26644328___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RestaurantByCategory_vue_vue_type_template_id_26644328_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./RestaurantByCategory.vue?vue&type=template&id=26644328&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/RestaurantByCategory.vue?vue&type=template&id=26644328&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RestaurantByCategory_vue_vue_type_template_id_26644328_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RestaurantByCategory_vue_vue_type_template_id_26644328___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RestaurantByCategory_vue_vue_type_template_id_26644328_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -82738,6 +83924,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Payment_vue_vue_type_template_id_0b6a60e2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Payment_vue_vue_type_template_id_0b6a60e2_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurants/CartMobileButton.vue":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/restaurants/CartMobileButton.vue ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CartMobileButton_vue_vue_type_template_id_be474590_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CartMobileButton.vue?vue&type=template&id=be474590&scoped=true& */ "./resources/js/components/restaurants/CartMobileButton.vue?vue&type=template&id=be474590&scoped=true&");
+/* harmony import */ var _CartMobileButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CartMobileButton.vue?vue&type=script&lang=js& */ "./resources/js/components/restaurants/CartMobileButton.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _CartMobileButton_vue_vue_type_style_index_0_id_be474590_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss& */ "./resources/js/components/restaurants/CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _CartMobileButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CartMobileButton_vue_vue_type_template_id_be474590_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CartMobileButton_vue_vue_type_template_id_be474590_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "be474590",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/restaurants/CartMobileButton.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurants/CartMobileButton.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/restaurants/CartMobileButton.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CartMobileButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./CartMobileButton.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CartMobileButton_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurants/CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss&":
+/*!****************************************************************************************************************************!*\
+  !*** ./resources/js/components/restaurants/CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss& ***!
+  \****************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CartMobileButton_vue_vue_type_style_index_0_id_be474590_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=style&index=0&id=be474590&scoped=true&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CartMobileButton_vue_vue_type_style_index_0_id_be474590_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CartMobileButton_vue_vue_type_style_index_0_id_be474590_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CartMobileButton_vue_vue_type_style_index_0_id_be474590_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_CartMobileButton_vue_vue_type_style_index_0_id_be474590_scoped_true_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+
+
+/***/ }),
+
+/***/ "./resources/js/components/restaurants/CartMobileButton.vue?vue&type=template&id=be474590&scoped=true&":
+/*!*************************************************************************************************************!*\
+  !*** ./resources/js/components/restaurants/CartMobileButton.vue?vue&type=template&id=be474590&scoped=true& ***!
+  \*************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CartMobileButton_vue_vue_type_template_id_be474590_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./CartMobileButton.vue?vue&type=template&id=be474590&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/restaurants/CartMobileButton.vue?vue&type=template&id=be474590&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CartMobileButton_vue_vue_type_template_id_be474590_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CartMobileButton_vue_vue_type_template_id_be474590_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -83070,7 +84343,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     component: _components_pages_RestaurantByCategory_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
     name: 'restaurant-categories'
   }, {
-    path: '/cart',
+    path: '/cart/:id',
     component: _components_pages_Cart_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
     name: 'cart'
   }]

@@ -10,15 +10,15 @@ import Cart from './components/pages/Cart.vue';
 
 const router = new VueRouter({
 
-    mode: 'history',
-    linkExactActiveClass: 'active',
+        mode: 'history',
+        linkExactActiveClass: 'active',
 
-    routes: [
-        { path: '/', component: Home, name: 'home' },
-        { path: '/restaurants/:id', component: RestaurantShow, name: 'restaurant-details' },
-        { path: '/categories/:id', component: RestaurantByCategory, name: 'restaurant-categories' },
-        { path: '/cart', component: Cart, name: 'cart' }
-    ]
+        routes: [
+                { path: '/', component: Home, name: 'home' },
+                { path: '/restaurants/:id', component: RestaurantShow, name: 'restaurant-details' },
+                { path: '/categories/:id', component: RestaurantByCategory, name: 'restaurant-categories' },
+                { path: '/cart/:id', component: Cart, name: 'cart' }
+        ]
 });
 
 export default router;

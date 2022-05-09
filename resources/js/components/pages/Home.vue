@@ -1,5 +1,5 @@
 <template>
-  <section id="home">
+  <section id="home" class="py-3">
     <Loader v-if="isLoading" />
     <!-- CHECKBOXES -->
     <ul
@@ -37,16 +37,6 @@
         </label>
       </li>
     </ul>
-    <!-- CARD -->
-    <!-- <div
-      v-if="!isLoading"
-      id="categories-container"
-      class="d-flex justify-content-center mb-4"
-    >
-      <div v-for="category in categories" :key="category.id">
-        <CategoryCard :category="category" />
-      </div>
-    </div> -->
 
     <RestaurantList v-if="!checked_categories.length" />
     <RestaurantByCategory
@@ -111,6 +101,25 @@ export default {
   mounted() {
     this.getCategories();
   },
+  computed: {
+    filteredCategory() {
+      console.log(this.checked_categories);
+      const filteredRestaurants = this.checked_categories
+        .map((category) => this.categories[category]?.restaurants || [])
+        .flat();
+
+      if (!filteredRestaurants.length) {
+        return [];
+      }
+
+      const ids = filteredRestaurants.map((restaurant) => restaurant.id);
+      console.log(ids);
+
+      return filteredRestaurants.filter(
+        ({ id }, index) => !ids.includes(id, index + 1)
+      );
+    },
+  },
 };
 </script>
 
@@ -135,5 +144,8 @@ body {
 }
 .active-checkbox {
   box-shadow: 0 0 0 1px red;
+}
+html {
+  scroll-behavior: smooth;
 }
 </style>

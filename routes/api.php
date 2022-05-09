@@ -21,9 +21,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::namespace('Api')->group(function () {
     Route::get('/restaurants', 'RestaurantController@index');
     Route::get('/restaurants/{id}', 'RestaurantController@show');
-});
 
-Route::namespace('Api')->group(function () {
     Route::get('/categories', 'CategoryController@index');
     Route::get('/categories/filter', 'CategoryController@show');
+    // Route::get('/categories/{id}', 'CategoryController@show');
+
+    Route::post('/order', 'OrderController@sendOrder');
 });

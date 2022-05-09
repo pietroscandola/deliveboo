@@ -102,5 +102,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
+h1 {
+  font-weight: 900;
+}
 </style>
