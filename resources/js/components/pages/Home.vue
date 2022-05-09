@@ -4,6 +4,7 @@
     <!-- CHECKBOXES -->
     <ul class="object administrator-checkbox-list">
       <li
+        class="d-inline mr-3"
         v-for="category in categories"
         :key="category.id"
         @click="$refs.RestaurantByCategory.getCategory()"

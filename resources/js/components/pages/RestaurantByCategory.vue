@@ -4,7 +4,7 @@
     <!-- Titolo -->
     <div class="col-12 d-flex justify-content-between align-items-center"></div>
     <!-- Lista dei Ristoranti -->
-    <div class="col-12">
+    <div class="row">
       <div
         v-for="restaurant in arraySenzaDuplicati"
         :key="restaurant.id"

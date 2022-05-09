@@ -2239,6 +2239,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -65580,6 +65581,7 @@ var render = function () {
             "li",
             {
               key: category.id,
+              staticClass: "d-inline mr-3",
               on: {
                 click: function ($event) {
                   return _vm.$refs.RestaurantByCategory.getCategory()
@@ -65680,7 +65682,7 @@ var render = function () {
       _vm._v(" "),
       _c(
         "div",
-        { staticClass: "col-12" },
+        { staticClass: "row" },
         _vm._l(_vm.arraySenzaDuplicati, function (restaurant) {
           return _c(
             "div",
