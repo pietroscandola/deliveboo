@@ -1,8 +1,22 @@
 <template>
   <section id="home">
     <Loader v-if="isLoading" />
+    <!-- CHECKBOXES -->
+    <ul class="object administrator-checkbox-list">
+      <li v-for="category in categories" :key="category.id">
+        <label v-bind:for="category.id">
+          <input
+            type="checkbox"
+            v-model="checked_categories"
+            :value="category.id"
+            :id="category.id"
+          />
+          <span>{{ category.name }}</span>
+        </label>
+      </li>
+    </ul>
     <!-- CARD -->
-    <div
+    <!-- <div
       v-if="!isLoading"
       id="categories-container"
       class="d-flex justify-content-center mb-4"
@@ -10,7 +24,7 @@
       <div v-for="category in categories" :key="category.id">
         <CategoryCard :category="category" />
       </div>
-    </div>
+    </div> -->
 
     <RestaurantList />
   </section>

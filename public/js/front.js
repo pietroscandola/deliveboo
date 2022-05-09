@@ -2215,6 +2215,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -65554,24 +65568,57 @@ var render = function () {
     [
       _vm.isLoading ? _c("Loader") : _vm._e(),
       _vm._v(" "),
-      !_vm.isLoading
-        ? _c(
-            "div",
-            {
-              staticClass: "d-flex justify-content-center mb-4",
-              attrs: { id: "categories-container" },
-            },
-            _vm._l(_vm.categories, function (category) {
-              return _c(
-                "div",
-                { key: category.id },
-                [_c("CategoryCard", { attrs: { category: category } })],
-                1
-              )
-            }),
-            0
-          )
-        : _vm._e(),
+      _c(
+        "ul",
+        { staticClass: "object administrator-checkbox-list" },
+        _vm._l(_vm.categories, function (category) {
+          return _c("li", { key: category.id }, [
+            _c("label", { attrs: { for: category.id } }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.checked_categories,
+                    expression: "checked_categories",
+                  },
+                ],
+                attrs: { type: "checkbox", id: category.id },
+                domProps: {
+                  value: category.id,
+                  checked: Array.isArray(_vm.checked_categories)
+                    ? _vm._i(_vm.checked_categories, category.id) > -1
+                    : _vm.checked_categories,
+                },
+                on: {
+                  change: function ($event) {
+                    var $$a = _vm.checked_categories,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = category.id,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 && (_vm.checked_categories = $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          (_vm.checked_categories = $$a
+                            .slice(0, $$i)
+                            .concat($$a.slice($$i + 1)))
+                      }
+                    } else {
+                      _vm.checked_categories = $$c
+                    }
+                  },
+                },
+              }),
+              _vm._v(" "),
+              _c("span", [_vm._v(_vm._s(category.name))]),
+            ]),
+          ])
+        }),
+        0
+      ),
       _vm._v(" "),
       _c("RestaurantList"),
     ],
