@@ -2907,6 +2907,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PaymentTwo",
@@ -2916,7 +2920,18 @@ __webpack_require__.r(__webpack_exports__);
       hostedFieldInstance: false,
       nonce: "",
       error: "",
-      amount: this.tot
+      amount: this.tot,
+      order: {
+        restaurant_id: 2,
+        customer_name: "Logi",
+        customer_surname: "Tech",
+        customer_email: "email@email.com",
+        customer_address: "via mare inquinato 5",
+        customer_phone: "1591591591",
+        amount: this.amount,
+        is_delivered: false,
+        is_paid: true
+      }
     };
   },
   methods: {
@@ -2929,6 +2944,25 @@ __webpack_require__.r(__webpack_exports__);
         this.hostedFieldInstance.tokenize().then(function (payload) {
           console.log(payload);
           _this.nonce = payload.nonce;
+          var params = {
+            restaurant_id: 2,
+            customer_name: "Logi",
+            customer_surname: "Tech",
+            customer_email: "email@email.com",
+            customer_address: "via mare inquinato 5",
+            customer_phone: "1591591591",
+            amount: _this.amount,
+            is_delivered: 0,
+            is_paid: 1
+          };
+          axios.post("http://localhost:8000/api/order", params).then(function (res) {
+            console.log(params);
+            console.log("Axios ok");
+          })["catch"](function (err) {
+            console.error(err);
+          }).then(function () {
+            console.log("OK API");
+          });
         })["catch"](function (err) {
           console.error(err);
           _this.error = err.message;
@@ -2942,7 +2976,7 @@ __webpack_require__.r(__webpack_exports__);
     braintree_web__WEBPACK_IMPORTED_MODULE_0___default.a.client.create({
       // Bisogna inserire la key di braintree
       // Aggiungere MIX_VUE_APP_BT_SDK con la propria key
-      authorization: "sandbox_5rmbzfb5_d2m5rwjgpchndk39"
+      authorization: "sandbox_ktyfs7dd_h64c3rb9ttj7fvq9"
     }).then(function (clientInstance) {
       var options = {
         client: clientInstance,
@@ -63962,13 +63996,17 @@ var render = function () {
         _c("div", { staticClass: "card-body" }, [
           _vm.nonce
             ? _c("div", { staticClass: "alert alert-success" }, [
-                _vm._v("\n          Pagamento andato a buon fine\n        "),
+                _vm._v(
+                  "\n               Pagamento andato a buon fine\n            "
+                ),
               ])
             : _vm._e(),
           _vm._v(" "),
           _vm.error
             ? _c("div", { staticClass: "alert alert-danger" }, [
-                _vm._v("\n          " + _vm._s(_vm.error) + "\n        "),
+                _vm._v(
+                  "\n               " + _vm._s(_vm.error) + "\n            "
+                ),
               ])
             : _vm._e(),
           _vm._v(" "),
@@ -64022,7 +64060,7 @@ var render = function () {
                   },
                 },
               },
-              [_vm._v("\n            Paga\n          ")]
+              [_vm._v("\n                  Paga\n               ")]
             ),
           ]),
         ]),
@@ -80816,7 +80854,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\pietr\Desktop\deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Users\Vasco Rossi\Documents\Boolean\Progetto\deliveboo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ })
