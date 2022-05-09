@@ -191,9 +191,11 @@
         >
       </div>
       <div v-if="!isCheckOutPage" class="mt-3">
-        <a class="checkout-button" href="http://127.0.0.1:8000/checkout">
-          Vai al pagamento
-        </a>
+        <router-link
+          class="checkout-button"
+          :to="{ name: 'cart', params: { id: restaurant.id } }"
+          >Vai al pagamento
+        </router-link>
       </div>
       <!-- <Payment :getTotal="getTotal()" /> -->
     </div>
@@ -247,7 +249,7 @@ export default {
   },
   computed: {
     isCheckOutPage() {
-      return this.$route.name === "checkout";
+      return this.$route.name === "cart";
     },
   },
 };
