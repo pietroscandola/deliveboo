@@ -23,7 +23,8 @@ Route::namespace('Api')->group(function () {
     Route::get('/restaurants/{id}', 'RestaurantController@show');
 
     Route::get('/categories', 'CategoryController@index');
-    Route::get('/categories/{id}', 'CategoryController@show');
+    Route::get('/categories/filter', 'CategoryController@show');
+    // Route::get('/categories/{id}', 'CategoryController@show');
 
     Route::post('/order', 'OrderController@sendOrder');
 });

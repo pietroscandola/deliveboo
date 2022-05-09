@@ -37,10 +37,10 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        $category = Category::where('id', $id)->with(['restaurants'])->first();
-        if (!$category) return response('Category Not Found', 404);
+        $category = Category::whereIn('id', $request)->with(['restaurants'])->get();
+        // if (!$category) return response('Category Not Found', 404);
         return response()->json($category);
     }
 
