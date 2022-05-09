@@ -11,29 +11,15 @@
         :key="category.id"
         @click="$refs.RestaurantByCategory.getCategoryInHome()"
       >
-        <label
-          @click="setActiveClass()"
-          v-bind:for="category.id"
-          role="button"
-          class="custom-checkbox"
-        >
+        <label v-bind:for="category.id" role="button">
           <input
-            class="d-none"
             type="checkbox"
             v-model="checked_categories"
             :value="category.id"
             :id="category.id"
           />
-          <!-- STYLE -->
-          <div
-            class="card"
-            @click="setActiveClass()"
-            :class="{ 'active-checkbox': isActive }"
-          >
-            <div class="card-body card-checkbox-body">
-              <p class="card-text">{{ category.name }}</p>
-            </div>
-          </div>
+
+          <span class="card-text">{{ category.name }}</span>
         </label>
       </li>
     </ul>

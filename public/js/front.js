@@ -2239,20 +2239,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2342,6 +2328,8 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _restaurants_RestaurantCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../restaurants/RestaurantCard.vue */ "./resources/js/components/restaurants/RestaurantCard.vue");
 /* harmony import */ var _Loader_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Loader.vue */ "./resources/js/components/Loader.vue");
+//
+//
 //
 //
 //
@@ -66147,84 +66135,51 @@ var render = function () {
               },
             },
             [
-              _c(
-                "label",
-                {
-                  staticClass: "custom-checkbox",
-                  attrs: { for: category.id, role: "button" },
+              _c("label", { attrs: { for: category.id, role: "button" } }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.checked_categories,
+                      expression: "checked_categories",
+                    },
+                  ],
+                  attrs: { type: "checkbox", id: category.id },
+                  domProps: {
+                    value: category.id,
+                    checked: Array.isArray(_vm.checked_categories)
+                      ? _vm._i(_vm.checked_categories, category.id) > -1
+                      : _vm.checked_categories,
+                  },
                   on: {
-                    click: function ($event) {
-                      return _vm.setActiveClass()
+                    change: function ($event) {
+                      var $$a = _vm.checked_categories,
+                        $$el = $event.target,
+                        $$c = $$el.checked ? true : false
+                      if (Array.isArray($$a)) {
+                        var $$v = category.id,
+                          $$i = _vm._i($$a, $$v)
+                        if ($$el.checked) {
+                          $$i < 0 &&
+                            (_vm.checked_categories = $$a.concat([$$v]))
+                        } else {
+                          $$i > -1 &&
+                            (_vm.checked_categories = $$a
+                              .slice(0, $$i)
+                              .concat($$a.slice($$i + 1)))
+                        }
+                      } else {
+                        _vm.checked_categories = $$c
+                      }
                     },
                   },
-                },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.checked_categories,
-                        expression: "checked_categories",
-                      },
-                    ],
-                    staticClass: "d-none",
-                    attrs: { type: "checkbox", id: category.id },
-                    domProps: {
-                      value: category.id,
-                      checked: Array.isArray(_vm.checked_categories)
-                        ? _vm._i(_vm.checked_categories, category.id) > -1
-                        : _vm.checked_categories,
-                    },
-                    on: {
-                      change: function ($event) {
-                        var $$a = _vm.checked_categories,
-                          $$el = $event.target,
-                          $$c = $$el.checked ? true : false
-                        if (Array.isArray($$a)) {
-                          var $$v = category.id,
-                            $$i = _vm._i($$a, $$v)
-                          if ($$el.checked) {
-                            $$i < 0 &&
-                              (_vm.checked_categories = $$a.concat([$$v]))
-                          } else {
-                            $$i > -1 &&
-                              (_vm.checked_categories = $$a
-                                .slice(0, $$i)
-                                .concat($$a.slice($$i + 1)))
-                          }
-                        } else {
-                          _vm.checked_categories = $$c
-                        }
-                      },
-                    },
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    {
-                      staticClass: "card",
-                      class: { "active-checkbox": _vm.isActive },
-                      on: {
-                        click: function ($event) {
-                          return _vm.setActiveClass()
-                        },
-                      },
-                    },
-                    [
-                      _c(
-                        "div",
-                        { staticClass: "card-body card-checkbox-body" },
-                        [
-                          _c("p", { staticClass: "card-text" }, [
-                            _vm._v(_vm._s(category.name)),
-                          ]),
-                        ]
-                      ),
-                    ]
-                  ),
-                ]
-              ),
+                }),
+                _vm._v(" "),
+                _c("span", { staticClass: "card-text" }, [
+                  _vm._v(_vm._s(category.name)),
+                ]),
+              ]),
             ]
           )
         }),
@@ -66265,25 +66220,34 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "section",
-    { staticClass: "row", attrs: { id: "restaurants-by-category" } },
+    { staticClass: "container py-4", attrs: { id: "restaurants-by-category" } },
     [
-      _vm.isLoading ? _c("Loader") : _vm._e(),
-      _vm._v(" "),
       _c(
         "div",
-        { staticClass: "col-12 d-flex align-items-center" },
-        _vm._l(_vm.arraySenzaDuplicati, function (restaurant) {
-          return _c(
+        { staticClass: "row" },
+        [
+          _vm.isLoading ? _c("Loader") : _vm._e(),
+          _vm._v(" "),
+          _c(
             "div",
-            { key: restaurant.id, staticClass: "col-sm-6 col-md-4 col-xl-3" },
-            [_c("RestaurantCard", { attrs: { restaurant: restaurant } })],
-            1
-          )
-        }),
-        0
+            { staticClass: "col-12 d-flex align-items-center" },
+            _vm._l(_vm.arraySenzaDuplicati, function (restaurant) {
+              return _c(
+                "div",
+                {
+                  key: restaurant.id,
+                  staticClass: "col-sm-6 col-md-4 col-xl-3",
+                },
+                [_c("RestaurantCard", { attrs: { restaurant: restaurant } })],
+                1
+              )
+            }),
+            0
+          ),
+        ],
+        1
       ),
-    ],
-    1
+    ]
   )
 }
 var staticRenderFns = []

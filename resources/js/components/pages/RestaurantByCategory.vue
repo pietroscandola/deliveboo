@@ -1,15 +1,17 @@
 <template>
-  <section id="restaurants-by-category" class="row">
-    <Loader v-if="isLoading" />
-    <!-- Titolo -->
-    <div class="col-12 d-flex align-items-center">
-      <!-- Lista dei Ristoranti -->
-      <div
-        v-for="restaurant in arraySenzaDuplicati"
-        :key="restaurant.id"
-        class="col-sm-6 col-md-4 col-xl-3"
-      >
-        <RestaurantCard :restaurant="restaurant" />
+  <section id="restaurants-by-category" class="container py-4">
+    <div class="row">
+      <Loader v-if="isLoading" />
+      <!-- Titolo -->
+      <div class="col-12 d-flex align-items-center">
+        <!-- Lista dei Ristoranti -->
+        <div
+          v-for="restaurant in arraySenzaDuplicati"
+          :key="restaurant.id"
+          class="col-sm-6 col-md-4 col-xl-3"
+        >
+          <RestaurantCard :restaurant="restaurant" />
+        </div>
       </div>
     </div>
   </section>
