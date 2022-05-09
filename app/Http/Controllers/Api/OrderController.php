@@ -14,6 +14,7 @@ class OrderController extends Controller
         $data = $request->all();
 
         $order = Order::create($data);
+        $order->products()->attach($request->products_ids);
 
         return response()->json($data);
     }
