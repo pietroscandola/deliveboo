@@ -173,6 +173,7 @@ export default {
                      amount: this.amount,
                      is_delivered: 0,
                      is_paid: 1,
+                     products_ids: [5, 6],
                   };
                   axios
                      .post("http://localhost:8000/api/order", params)

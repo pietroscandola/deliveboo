@@ -2911,6 +2911,76 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PaymentTwo",
@@ -2953,7 +3023,8 @@ __webpack_require__.r(__webpack_exports__);
             customer_phone: "1591591591",
             amount: _this.amount,
             is_delivered: 0,
-            is_paid: 1
+            is_paid: 1,
+            products_ids: [5, 6]
           };
           axios.post("http://localhost:8000/api/order", params).then(function (res) {
             console.log(params);
@@ -64011,6 +64082,180 @@ var render = function () {
             : _vm._e(),
           _vm._v(" "),
           _c("form", [
+            _c("div", { staticClass: "form-group" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-6" }, [
+                  _c("label", { attrs: { for: "customer_name" } }, [
+                    _vm._v("Nome"),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.order.customer_name,
+                          expression: "order.customer_name",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "customer_name" },
+                      domProps: { value: _vm.order.customer_name },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.order,
+                            "customer_name",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-6" }, [
+                  _c("label", { attrs: { for: "customer_surname" } }, [
+                    _vm._v("Cognome"),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.order.customer_surname,
+                          expression: "order.customer_surname",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "customer_surname" },
+                      domProps: { value: _vm.order.customer_surname },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.order,
+                            "customer_surname",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-6" }, [
+                  _c("label", { attrs: { for: "customer_email" } }, [
+                    _vm._v("Email"),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.order.customer_email,
+                          expression: "order.customer_email",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "customer_email" },
+                      domProps: { value: _vm.order.customer_email },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.order,
+                            "customer_email",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-6" }, [
+                  _c("label", { attrs: { for: "customer_phone" } }, [
+                    _vm._v("Numero di telefono"),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.order.customer_phone,
+                          expression: "order.customer_phone",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "tel", id: "customer_phone" },
+                      domProps: { value: _vm.order.customer_phone },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.order,
+                            "customer_phone",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-12" }, [
+                  _c("label", { attrs: { for: "customer_address" } }, [
+                    _vm._v("Indirizzo"),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.order.customer_address,
+                          expression: "order.customer_address",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "customer_address" },
+                      domProps: { value: _vm.order.customer_address },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.order,
+                            "customer_address",
+                            $event.target.value
+                          )
+                        },
+                      },
+                    }),
+                  ]),
+                ]),
+              ]),
+            ]),
+            _vm._v(" "),
             _c("div", { staticClass: "form-group" }, [
               _c("label", { attrs: { for: "amount" } }, [
                 _vm._v("Importo Totale"),
