@@ -2,17 +2,16 @@
   <section id="restaurants-by-category" class="row">
     <Loader v-if="isLoading" />
     <!-- Titolo -->
-    <div class="col-12 d-flex justify-content-between align-items-center">
-      <h1 class="mb-3">nome categoria</h1>
-      <router-link :to="{ name: 'home' }">Torna ai ristoranti</router-link>
-    </div>
+    <div class="col-12 d-flex justify-content-between align-items-center"></div>
     <!-- Lista dei Ristoranti -->
     <div class="col-12">
-      <ul>
-        <li v-for="restaurant in arraySenzaDuplicati" :key="restaurant.id">
-          {{ restaurant.name }}
-        </li>
-      </ul>
+      <div
+        v-for="restaurant in arraySenzaDuplicati"
+        :key="restaurant.id"
+        class="col-sm-6 col-md-4 col-xl-3"
+      >
+        <RestaurantCard :restaurant="restaurant" />
+      </div>
     </div>
   </section>
 </template>

@@ -2312,7 +2312,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -65675,33 +65674,23 @@ var render = function () {
     [
       _vm.isLoading ? _c("Loader") : _vm._e(),
       _vm._v(" "),
+      _c("div", {
+        staticClass: "col-12 d-flex justify-content-between align-items-center",
+      }),
+      _vm._v(" "),
       _c(
         "div",
-        {
-          staticClass:
-            "col-12 d-flex justify-content-between align-items-center",
-        },
-        [
-          _c("h1", { staticClass: "mb-3" }, [_vm._v("nome categoria")]),
-          _vm._v(" "),
-          _c("router-link", { attrs: { to: { name: "home" } } }, [
-            _vm._v("Torna ai ristoranti"),
-          ]),
-        ],
-        1
+        { staticClass: "col-12" },
+        _vm._l(_vm.arraySenzaDuplicati, function (restaurant) {
+          return _c(
+            "div",
+            { key: restaurant.id, staticClass: "col-sm-6 col-md-4 col-xl-3" },
+            [_c("RestaurantCard", { attrs: { restaurant: restaurant } })],
+            1
+          )
+        }),
+        0
       ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-12" }, [
-        _c(
-          "ul",
-          _vm._l(_vm.arraySenzaDuplicati, function (restaurant) {
-            return _c("li", { key: restaurant.id }, [
-              _vm._v("\n        " + _vm._s(restaurant.name) + "\n      "),
-            ])
-          }),
-          0
-        ),
-      ]),
     ],
     1
   )
