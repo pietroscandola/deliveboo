@@ -27,7 +27,6 @@
          <div class="col-12 col-lg-4">
             <RestaurantCart
                class="mb-3"
-               :removeFromCart="removeFromCart"
                :restaurant="restaurant"
                :cart="cart"
                @empty-cart="emptyCart"
