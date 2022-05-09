@@ -180,22 +180,23 @@
                 ></path>
               </svg>
             </div>
-         </div>
+          </div>
+        </div>
       </div>
+      <!-- Totale -->
+      <div class="d-flex justify-content-between">
+        <span><strong>Totale</strong></span>
+        <span
+          ><strong>{{ getTotal().toFixed(2) }} €</strong></span
+        >
+      </div>
+      <div v-if="!isCheckOutPage" class="mt-3">
+        <a class="checkout-button" href="http://127.0.0.1:8000/checkout">
+          Vai al pagamento
+        </a>
+      </div>
+      <!-- <Payment :getTotal="getTotal()" /> -->
     </div>
-    <!-- Totale -->
-    <div class="d-flex justify-content-between">
-      <span><strong>Totale</strong></span>
-      <span
-        ><strong>{{ getTotal().toFixed(2) }} €</strong></span
-      >
-    </div>
-    <div v-if="!isCheckOutPage" class="mt-3">
-      <a class="checkout-button" href="http://127.0.0.1:8000/checkout">
-        Vai al pagamento
-      </a>
-    </div>
-    <!-- <Payment :getTotal="getTotal()" /> -->
   </div>
 </template>
 
