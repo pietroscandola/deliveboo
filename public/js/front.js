@@ -2140,7 +2140,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -63406,7 +63405,6 @@ var render = function () {
           _c("RestaurantCart", {
             staticClass: "mb-3",
             attrs: {
-              addCart: _vm.addCart,
               removeFromCart: _vm.removeFromCart,
               restaurant: _vm.restaurant,
               cart: _vm.cart,
