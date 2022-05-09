@@ -1,20 +1,22 @@
 <template>
-  <section id="restaurants-by-category" class="row">
-    <Loader v-if="isLoading" />
-    <!-- Titolo -->
-    <div class="col-12 d-flex justify-content-between align-items-center">
-      <h1 class="mb-3">{{ category.name }}</h1>
-      <router-link :to="{ name: 'home' }">Torna ai ristoranti</router-link>
-    </div>
-    <!-- Lista dei Ristoranti -->
-    <div class="col-12">
-      <div class="row">
-        <RestaurantCard
-          class="col-4"
-          v-for="restaurant in category.restaurants"
-          :key="restaurant"
-          :restaurant="restaurant"
-        />
+  <section id="restaurants-by-category" class="py-3 container">
+    <div class="row">
+      <Loader v-if="isLoading" />
+      <!-- Titolo -->
+      <div class="col-12 d-flex justify-content-between align-items-center">
+        <h1 class="mb-3">{{ category.name }}</h1>
+        <router-link :to="{ name: 'home' }">Torna ai ristoranti</router-link>
+      </div>
+      <!-- Lista dei Ristoranti -->
+      <div class="col-12">
+        <div class="row">
+          <RestaurantCard
+            class="col-4"
+            v-for="restaurant in category.restaurants"
+            :key="restaurant"
+            :restaurant="restaurant"
+          />
+        </div>
       </div>
     </div>
   </section>
@@ -60,5 +62,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
+h1 {
+  font-weight: 900;
+}
 </style>

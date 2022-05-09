@@ -1,5 +1,5 @@
 <template>
-  <section id="home">
+  <section id="home" class="py-3">
     <Loader v-if="isLoading" />
     <!-- CARD -->
     <div
@@ -104,5 +104,8 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap");
 body {
   font-family: "IBM Plex Sans", sans-serif;
+}
+html {
+  scroll-behavior: smooth;
 }
 </style>

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-   @include('admin.products.includes.form')
+   <div class="container py-4">@include('admin.products.includes.form')</div>
    {{-- <form action="{{ route('admin.products.store') }}" method="post" enctype="multipart/form-data">
       @csrf
       <div class="mb-3">

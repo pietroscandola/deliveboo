@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-   @include('admin.restaurant.includes.form')
+   <div class="container py-5">@include('admin.restaurant.includes.form')</div>
 @endsection
