@@ -2989,7 +2989,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PaymentTwo",
-  props: ["tot"],
+  props: ["tot", "cart"],
   data: function data() {
     return {
       hostedFieldInstance: false,
@@ -3006,7 +3006,7 @@ __webpack_require__.r(__webpack_exports__);
         amount: this.tot,
         is_delivered: 0,
         is_paid: 1,
-        products_ids: [5, 6]
+        products_ids: []
       }
     };
   },
@@ -3034,11 +3034,19 @@ __webpack_require__.r(__webpack_exports__);
           _this.error = err.message;
         });
       }
+    },
+    getProdIds: function getProdIds() {
+      var _this2 = this;
+
+      this.cart.forEach(function (p) {
+        _this2.order.products_ids.push(p.product_id);
+      });
     }
   },
   mounted: function mounted() {
-    var _this2 = this;
+    var _this3 = this;
 
+    this.getProdIds();
     braintree_web__WEBPACK_IMPORTED_MODULE_0___default.a.client.create({
       // Bisogna inserire la key di braintree
       // Aggiungere MIX_VUE_APP_BT_SDK con la propria key
@@ -3070,7 +3078,7 @@ __webpack_require__.r(__webpack_exports__);
       return braintree_web__WEBPACK_IMPORTED_MODULE_0___default.a.hostedFields.create(options);
     }).then(function (hostedFieldInstance) {
       // Use hostedFieldInstance to send data to Braintree
-      _this2.hostedFieldInstance = hostedFieldInstance;
+      _this3.hostedFieldInstance = hostedFieldInstance;
     })["catch"](function (err) {});
   },
   watch: {
@@ -63385,7 +63393,7 @@ var render = function () {
         [
           _c("Payment", {
             staticClass: "mt-3",
-            attrs: { tot: _vm.getTotal().toFixed(2) },
+            attrs: { tot: _vm.getTotal().toFixed(2), cart: _vm.cart },
           }),
         ],
         1

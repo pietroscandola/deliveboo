@@ -138,7 +138,7 @@
 import braintree from "braintree-web";
 export default {
    name: "PaymentTwo",
-   props: ["tot"],
+   props: ["tot", "cart"],
    data() {
       return {
          hostedFieldInstance: false,
@@ -155,7 +155,7 @@ export default {
             amount: this.tot,
             is_delivered: 0,
             is_paid: 1,
-            products_ids: [5, 6],
+            products_ids: [],
          },
       };
    },
@@ -189,8 +189,16 @@ export default {
                });
          }
       },
+
+      getProdIds() {
+         this.cart.forEach((p) => {
+            this.order.products_ids.push(p.product_id);
+         });
+      },
    },
    mounted() {
+      this.getProdIds();
+
       braintree.client
          .create({
             // Bisogna inserire la key di braintree
