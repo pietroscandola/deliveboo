@@ -7,7 +7,7 @@
         class="d-inline mr-3"
         v-for="category in categories"
         :key="category.id"
-        @click="$refs.RestaurantByCategory.getCategory()"
+        @click="$refs.RestaurantByCategory.getCategoryInHome()"
       >
         <label v-bind:for="category.id">
           <input

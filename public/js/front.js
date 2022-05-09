@@ -2313,7 +2313,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2357,8 +2356,16 @@ __webpack_require__.r(__webpack_exports__);
       }, []);
       this.arraySenzaDuplicati = result;
     },
-    getCategory: function getCategory() {
+    getCategoryInHome: function getCategoryInHome() {
       var _this2 = this;
+
+      this.isLoading = true;
+      setTimeout(function () {
+        _this2.getCategory();
+      }, 300);
+    },
+    getCategory: function getCategory() {
+      var _this3 = this;
 
       var qs = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
 
@@ -2378,14 +2385,14 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         var category = res.data;
         console.log("res.data", res.data);
-        _this2.selected_categories = category;
+        _this3.selected_categories = category;
       })["catch"](function (err) {
         console.error(err);
       }).then(function () {
-        _this2.isLoading = false;
+        _this3.isLoading = false;
         console.log("OK API");
 
-        _this2.getRestaurantsFilteredByCategories();
+        _this3.getRestaurantsFilteredByCategories();
       });
     }
   },
@@ -65572,7 +65579,7 @@ var render = function () {
               staticClass: "d-inline mr-3",
               on: {
                 click: function ($event) {
-                  return _vm.$refs.RestaurantByCategory.getCategory()
+                  return _vm.$refs.RestaurantByCategory.getCategoryInHome()
                 },
               },
             },
@@ -65662,18 +65669,6 @@ var render = function () {
     "section",
     { staticClass: "row", attrs: { id: "restaurants-by-category" } },
     [
-      _c(
-        "button",
-        {
-          on: {
-            click: function ($event) {
-              return _vm.getCategory()
-            },
-          },
-        },
-        [_vm._v("CHIAMATA API")]
-      ),
-      _vm._v(" "),
       _vm.isLoading ? _c("Loader") : _vm._e(),
       _vm._v(" "),
       _c("div", {
