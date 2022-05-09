@@ -46,10 +46,6 @@ export default {
         });
       });
 
-      this.arrayOriginale.forEach((restaurant) => {
-        Vue.delete(restaurant, "pivot");
-      });
-
       var result = this.arrayOriginale.reduce((unique, o) => {
         if (!unique.some((obj) => obj.id === o.id)) {
           unique.push(o);
