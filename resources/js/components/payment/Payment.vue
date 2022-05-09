@@ -12,8 +12,76 @@
                <div class="alert alert-danger" v-if="error">
                   {{ error }}
                </div>
-               <!-- PAGAMENTO -->
+               <!-- Payment and customer info -->
                <form>
+                  <!-- Customer info -->
+                  <div class="form-group">
+                     <div class="row">
+                        <!-- Name -->
+                        <div class="col-6">
+                           <label for="customer_name">Nome</label>
+                           <div class="input-group">
+                              <input
+                                 type="text"
+                                 id="customer_name"
+                                 class="form-control"
+                                 v-model="order.customer_name"
+                              />
+                           </div>
+                        </div>
+                        <!-- Surname -->
+                        <div class="col-6">
+                           <label for="customer_surname">Cognome</label>
+                           <div class="input-group">
+                              <input
+                                 type="text"
+                                 id="customer_surname"
+                                 class="form-control"
+                                 v-model="order.customer_surname"
+                              />
+                           </div>
+                        </div>
+                        <!-- Email -->
+                        <div class="col-6">
+                           <label for="customer_email">Email</label>
+                           <div class="input-group">
+                              <input
+                                 type="text"
+                                 id="customer_email"
+                                 class="form-control"
+                                 v-model="order.customer_email"
+                              />
+                           </div>
+                        </div>
+                        <!-- Phone -->
+                        <div class="col-6">
+                           <label for="customer_phone"
+                              >Numero di telefono</label
+                           >
+                           <div class="input-group">
+                              <input
+                                 type="tel"
+                                 id="customer_phone"
+                                 class="form-control"
+                                 v-model="order.customer_phone"
+                              />
+                           </div>
+                        </div>
+                        <!-- Address -->
+                        <div class="col-12">
+                           <label for="customer_address">Indirizzo</label>
+                           <div class="input-group">
+                              <input
+                                 type="text"
+                                 id="customer_address"
+                                 class="form-control"
+                                 v-model="order.customer_address"
+                              />
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- Total to pay -->
                   <div class="form-group">
                      <label for="amount">Importo Totale</label>
                      <div class="input-group">
@@ -30,10 +98,12 @@
                      </div>
                   </div>
                   <hr />
+                  <!-- Credit card number -->
                   <div class="form-group">
                      <label>Numero Carta di Credito</label>
                      <div id="creditCardNumber" class="form-control"></div>
                   </div>
+                  <!-- Expiration date -->
                   <div class="form-group">
                      <div class="row">
                         <div class="col-6">
