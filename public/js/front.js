@@ -2298,8 +2298,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2310,14 +2308,33 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      categories: {},
+      categories: [],
+      arrayOriginale: [],
+      arraySenzaDuplicati: [],
       isLoading: false,
       test: [4, 5]
     };
   },
   methods: {
-    getCategory: function getCategory() {
+    getRestaurantsFilteredByCategories: function getRestaurantsFilteredByCategories() {
       var _this = this;
+
+      this.categories.forEach(function (category) {
+        console.log(category);
+        category["restaurants"].forEach(function (restaurant) {
+          _this.arrayOriginale.push(restaurant);
+        });
+      });
+      this.arrayOriginale.forEach(function (filteredRestaurant) {
+        var result = _this.arrayOriginale.filter(function (restaurant) {
+          return restaurant["id"] != filteredRestaurant["id"];
+        });
+
+        _this.arraySenzaDuplicati = result;
+      });
+    },
+    getCategory: function getCategory() {
+      var _this2 = this;
 
       var qs = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
 
@@ -2328,7 +2345,7 @@ __webpack_require__.r(__webpack_exports__);
         return container;
       });
       /* console.log("NO JSON", this.test);
-      console.log("JSON", JSON.stringify(this.test)); */
+         console.log("JSON", JSON.stringify(this.test)); */
 
       this.isLoading = true;
       axios.get("http://localhost:8000/api/categories/filter", {
@@ -2340,15 +2357,16 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         var category = res.data;
         console.log("res.data", res.data);
-        _this.categories = category;
+        _this2.categories = category;
       })["catch"](function (err) {
         console.error(err);
       }).then(function () {
-        _this.isLoading = false;
+        _this2.isLoading = false;
         console.log("OK API");
       });
     }
   },
+  computed: {},
   mounted: function mounted() {
     this.getCategory();
   }
@@ -2925,7 +2943,7 @@ __webpack_require__.r(__webpack_exports__);
     braintree_web__WEBPACK_IMPORTED_MODULE_0___default.a.client.create({
       // Bisogna inserire la key di braintree
       // Aggiungere MIX_VUE_APP_BT_SDK con la propria key
-      authorization: "sandbox_ktyfs7dd_h64c3rb9ttj7fvq9"
+      authorization: "sandbox_hccvgrtg_8skhy3btn37pxc6y"
     }).then(function (clientInstance) {
       var options = {
         client: clientInstance,
@@ -65613,6 +65631,18 @@ var render = function () {
           0
         ),
       ]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          on: {
+            click: function ($event) {
+              return _vm.getRestaurantsFilteredByCategories()
+            },
+          },
+        },
+        [_vm._v("mario")]
+      ),
     ],
     1
   )
@@ -82955,7 +82985,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Vasco Rossi\Documents\Boolean\Progetto\deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Lavavel\deliveboo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ }),
