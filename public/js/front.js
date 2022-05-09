@@ -2999,7 +2999,7 @@ __webpack_require__.r(__webpack_exports__);
         amount: this.tot,
         is_delivered: 0,
         is_paid: 1,
-        products_ids: []
+        products_ids: {}
       }
     };
   },
@@ -3029,15 +3029,17 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     getProdIds: function getProdIds() {
-      var _this2 = this;
-
-      this.cart.forEach(function (p) {
-        _this2.order.products_ids.push(p.product_id);
+      var prod = this.cart.map(function (p) {
+        var container = {};
+        container["product_id"] = p.product_id;
+        container["quantity"] = p.quantity;
+        return container;
       });
+      this.order.products_ids = prod;
     }
   },
   mounted: function mounted() {
-    var _this3 = this;
+    var _this2 = this;
 
     this.getProdIds();
     braintree_web__WEBPACK_IMPORTED_MODULE_0___default.a.client.create({
@@ -3071,7 +3073,7 @@ __webpack_require__.r(__webpack_exports__);
       return braintree_web__WEBPACK_IMPORTED_MODULE_0___default.a.hostedFields.create(options);
     }).then(function (hostedFieldInstance) {
       // Use hostedFieldInstance to send data to Braintree
-      _this3.hostedFieldInstance = hostedFieldInstance;
+      _this2.hostedFieldInstance = hostedFieldInstance;
     })["catch"](function (err) {});
   },
   watch: {

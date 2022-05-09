@@ -155,7 +155,7 @@ export default {
             amount: this.tot,
             is_delivered: 0,
             is_paid: 1,
-            products_ids: [],
+            products_ids: {},
          },
       };
    },
@@ -191,9 +191,14 @@ export default {
       },
 
       getProdIds() {
-         this.cart.forEach((p) => {
-            this.order.products_ids.push(p.product_id);
+         const prod = this.cart.map((p) => {
+            const container = {};
+            container["product_id"] = p.product_id;
+            container["quantity"] = p.quantity;
+            return container;
          });
+
+         this.order.products_ids = prod;
       },
    },
    mounted() {
