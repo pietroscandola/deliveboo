@@ -2247,6 +2247,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2264,7 +2274,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       categories: [],
       checked_categories: [],
-      isLoading: false
+      isLoading: false,
+      isActive: false
     };
   },
   methods: {
@@ -2282,6 +2293,14 @@ __webpack_require__.r(__webpack_exports__);
         _this.isLoading = false;
         console.log("OK CATEGORIES API");
       });
+    },
+    // CHECKBOX DYNAMIC ACTIVE
+    setActiveClass: function setActiveClass() {
+      if (this.isActive) {
+        this.isActive = false;
+      } else {
+        this.isActive = true;
+      }
     }
   },
   mounted: function mounted() {
@@ -65595,6 +65614,11 @@ var render = function () {
                 {
                   staticClass: "custom-checkbox",
                   attrs: { for: category.id, role: "button" },
+                  on: {
+                    click: function ($event) {
+                      return _vm.setActiveClass()
+                    },
+                  },
                 },
                 [
                   _c("input", {
@@ -65638,13 +65662,29 @@ var render = function () {
                     },
                   }),
                   _vm._v(" "),
-                  _c("div", { staticClass: "card" }, [
-                    _c("div", { staticClass: "card-body card-checkbox-body" }, [
-                      _c("p", { staticClass: "card-text" }, [
-                        _vm._v(_vm._s(category.name)),
-                      ]),
-                    ]),
-                  ]),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "card",
+                      class: { "active-checkbox": _vm.isActive },
+                      on: {
+                        click: function ($event) {
+                          return _vm.setActiveClass()
+                        },
+                      },
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "card-body card-checkbox-body" },
+                        [
+                          _c("p", { staticClass: "card-text" }, [
+                            _vm._v(_vm._s(category.name)),
+                          ]),
+                        ]
+                      ),
+                    ]
+                  ),
                 ]
               ),
             ]

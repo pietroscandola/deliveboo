@@ -11,7 +11,12 @@
         :key="category.id"
         @click="$refs.RestaurantByCategory.getCategoryInHome()"
       >
-        <label v-bind:for="category.id" role="button" class="custom-checkbox">
+        <label
+          @click="setActiveClass()"
+          v-bind:for="category.id"
+          role="button"
+          class="custom-checkbox"
+        >
           <input
             class="d-none"
             type="checkbox"
@@ -19,7 +24,12 @@
             :value="category.id"
             :id="category.id"
           />
-          <div class="card">
+          <!-- STYLE -->
+          <div
+            class="card"
+            @click="setActiveClass()"
+            :class="{ 'active-checkbox': isActive }"
+          >
             <div class="card-body card-checkbox-body">
               <p class="card-text">{{ category.name }}</p>
             </div>
@@ -68,6 +78,7 @@ export default {
       categories: [],
       checked_categories: [],
       isLoading: false,
+      isActive: false,
     };
   },
   methods: {
@@ -87,6 +98,14 @@ export default {
           this.isLoading = false;
           console.log("OK CATEGORIES API");
         });
+    },
+    // CHECKBOX DYNAMIC ACTIVE
+    setActiveClass() {
+      if (this.isActive) {
+        this.isActive = false;
+      } else {
+        this.isActive = true;
+      }
     },
   },
   mounted() {
