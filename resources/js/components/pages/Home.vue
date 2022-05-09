@@ -47,6 +47,7 @@ export default {
   data() {
     return {
       categories: [],
+      checked_categories: [],
       isLoading: false,
     };
   },
