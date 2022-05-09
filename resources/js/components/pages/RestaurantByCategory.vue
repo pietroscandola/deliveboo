@@ -15,9 +15,6 @@
         </li>
       </ul>
     </div>
-    <button @click="getRestaurantsFilteredByCategories()">
-      getRestaurantsFilteredByCategories
-    </button>
   </section>
 </template>
 
@@ -38,7 +35,7 @@ export default {
       arrayOriginale: [],
       arraySenzaDuplicati: [],
       isLoading: false,
-      test: [4, 5],
+      // test: [4, 5],
     };
   },
   methods: {
@@ -111,6 +108,7 @@ export default {
         .then(() => {
           this.isLoading = false;
           console.log("OK API");
+          this.getRestaurantsFilteredByCategories();
         });
     },
   },

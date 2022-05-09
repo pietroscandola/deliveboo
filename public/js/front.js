@@ -2306,9 +2306,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2323,8 +2320,8 @@ __webpack_require__.r(__webpack_exports__);
       categories: [],
       arrayOriginale: [],
       arraySenzaDuplicati: [],
-      isLoading: false,
-      test: [4, 5]
+      isLoading: false // test: [4, 5],
+
     };
   },
   methods: {
@@ -2392,6 +2389,8 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function () {
         _this2.isLoading = false;
         console.log("OK API");
+
+        _this2.getRestaurantsFilteredByCategories();
       });
     }
   },
@@ -65619,11 +65618,11 @@ var render = function () {
         0
       ),
       _vm._v(" "),
-      _c("RestaurantList"),
-      _vm._v(" "),
-      _c("RestaurantByCategory", {
-        attrs: { checked_categories: _vm.checked_categories },
-      }),
+      !_vm.checked_categories.length
+        ? _c("RestaurantList")
+        : _c("RestaurantByCategory", {
+            attrs: { checked_categories: _vm.checked_categories },
+          }),
     ],
     1
   )
@@ -65695,18 +65694,6 @@ var render = function () {
           0
         ),
       ]),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          on: {
-            click: function ($event) {
-              return _vm.getRestaurantsFilteredByCategories()
-            },
-          },
-        },
-        [_vm._v("\n    getRestaurantsFilteredByCategories\n  ")]
-      ),
     ],
     1
   )

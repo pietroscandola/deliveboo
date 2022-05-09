@@ -26,8 +26,8 @@
       </div>
     </div> -->
 
-    <RestaurantList />
-    <RestaurantByCategory :checked_categories="checked_categories" />
+    <RestaurantList v-if="!checked_categories.length" />
+    <RestaurantByCategory v-else :checked_categories="checked_categories" />
   </section>
 </template>
 
