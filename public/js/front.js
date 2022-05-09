@@ -2700,6 +2700,15 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2713,6 +2722,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
   data: function data() {
     return {
       isLoading: false,
+      showCartMobileButton: true,
       restaurant: [],
       products: [],
       cart: [],
@@ -2721,6 +2731,9 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
     };
   },
   methods: {
+    handleScroll: function handleScroll(event) {
+      console.log(window.scrollY);
+    },
     getRestaurant: function getRestaurant() {
       var _this = this;
 
@@ -2842,6 +2855,12 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
     getCurrentProduct: function getCurrentProduct(product) {
       this.currentProduct = product;
     }
+  },
+  created: function created() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  destroyed: function destroyed() {
+    window.removeEventListener("scroll", this.handleScroll);
   },
   mounted: function mounted() {
     this.getRestaurant(); // SessionStorageCart - Restaurant (NUOVO)
@@ -63813,16 +63832,28 @@ var render = function () {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "a",
-      { staticClass: "d-lg-none d-inline", attrs: { href: "#cart" } },
-      [
-        _c("CartMobileButton", {
-          attrs: { totalQuantity: _vm.getTotalQuantity },
-        }),
-      ],
-      1
-    ),
+    _vm.getTotalQuantity &&
+    _vm.showCartMobileButton &&
+    _vm.currentRestaurant === _vm.restaurant.id
+      ? _c(
+          "a",
+          {
+            staticClass: "d-lg-none d-inline",
+            attrs: { href: "#cart" },
+            on: {
+              click: function ($event) {
+                _vm.showCartMobileButton = !_vm.showCartMobileButton
+              },
+            },
+          },
+          [
+            _c("CartMobileButton", {
+              attrs: { totalQuantity: _vm.getTotalQuantity },
+            }),
+          ],
+          1
+        )
+      : _vm._e(),
     _vm._v(" "),
     _vm._m(0),
     _vm._v(" "),

@@ -1,6 +1,15 @@
 <template>
   <div>
-    <a href="#cart" class="d-lg-none d-inline">
+    <a
+      v-if="
+        getTotalQuantity &&
+        showCartMobileButton &&
+        currentRestaurant === restaurant.id
+      "
+      @click="showCartMobileButton = !showCartMobileButton"
+      href="#cart"
+      class="d-lg-none d-inline"
+    >
       <CartMobileButton :totalQuantity="getTotalQuantity" />
     </a>
     <!-- Img Smartphone-->
@@ -360,6 +369,7 @@ export default {
   data() {
     return {
       isLoading: false,
+      showCartMobileButton: true,
       restaurant: [],
       products: [],
       cart: [],
@@ -368,6 +378,9 @@ export default {
     };
   },
   methods: {
+    handleScroll(event) {
+      console.log(window.scrollY);
+    },
     getRestaurant() {
       this.isLoading = true;
       axios
@@ -480,6 +493,12 @@ export default {
     getCurrentProduct(product) {
       this.currentProduct = product;
     },
+  },
+  created() {
+    window.addEventListener("scroll", this.handleScroll);
+  },
+  destroyed() {
+    window.removeEventListener("scroll", this.handleScroll);
   },
 
   mounted() {
