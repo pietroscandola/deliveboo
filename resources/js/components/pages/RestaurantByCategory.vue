@@ -16,7 +16,7 @@
                :restaurant="restaurant"
             /> -->
         <!-- BY CATEGORIES -->
-        <div v-for="category in categories" :key="category.id">
+        <div v-for="category in categories" :key="category.id" class="mr-3">
           <p>{{ category.name }}</p>
           <p>{{ category.id }}</p>
           <div v-for="restaurant in category.restaurants" :key="restaurant.id">

@@ -3209,6 +3209,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3220,21 +3221,35 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       isLoading: false,
-      restaurants: []
+      restaurants: [],
+      filteredRestaurants: []
     };
   },
   methods: {
-    getRestaurants: function getRestaurants() {
+    getFilteredRestaurants: function getFilteredRestaurants() {
       var _this = this;
+
+      this.restaurants.forEach(function (restaurant) {
+        restaurant["categories"].forEach(function (category) {
+          if (category["id"] == 4) {
+            _this.filteredRestaurants.push(restaurant);
+          }
+        });
+      }); // const result = this.restaurants.filter(
+      //   (restaurant) => restaurant["category"] != filteredRestaurant["id"]
+      // );
+    },
+    getRestaurants: function getRestaurants() {
+      var _this2 = this;
 
       this.isLoading = true;
       axios.get("http://localhost:8000/api/restaurants").then(function (res) {
         var restaurants = res.data;
-        _this.restaurants = restaurants;
+        _this2.restaurants = restaurants;
       })["catch"](function (err) {
         console.error(err);
       }).then(function () {
-        _this.isLoading = false;
+        _this2.isLoading = false;
         console.log("OK API");
       });
     }
@@ -65613,7 +65628,7 @@ var render = function () {
           _vm._l(_vm.categories, function (category) {
             return _c(
               "div",
-              { key: category.id },
+              { key: category.id, staticClass: "mr-3" },
               [
                 _c("p", [_vm._v(_vm._s(category.name))]),
                 _vm._v(" "),
@@ -66531,6 +66546,18 @@ var render = function () {
     },
     [
       _c("h1", [_vm._v("Ristoranti che consegnano a Piazza Venezia")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          on: {
+            click: function ($event) {
+              return _vm.getFilteredRestaurants()
+            },
+          },
+        },
+        [_vm._v("vincenzo")]
+      ),
       _vm._v(" "),
       _vm.isLoading
         ? _c("Loader")

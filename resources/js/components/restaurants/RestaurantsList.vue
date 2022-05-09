@@ -1,6 +1,7 @@
 <template>
   <div id="restaurant-list" class="container-fluid container-md">
     <h1>Ristoranti che consegnano a Piazza Venezia</h1>
+    <button @click="getFilteredRestaurants()">vincenzo</button>
     <Loader v-if="isLoading" />
     <div v-else class="row">
       <div
@@ -28,9 +29,22 @@ export default {
     return {
       isLoading: false,
       restaurants: [],
+      filteredRestaurants: [],
     };
   },
   methods: {
+    getFilteredRestaurants() {
+      this.restaurants.forEach((restaurant) => {
+        restaurant["categories"].forEach((category) => {
+          if (category["id"] == 4) {
+            this.filteredRestaurants.push(restaurant);
+          }
+        });
+      });
+      // const result = this.restaurants.filter(
+      //   (restaurant) => restaurant["category"] != filteredRestaurant["id"]
+      // );
+    },
     getRestaurants() {
       this.isLoading = true;
       axios
