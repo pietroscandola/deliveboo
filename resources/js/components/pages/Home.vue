@@ -27,11 +27,13 @@
     </div> -->
 
     <RestaurantList />
+    <RestaurantByCategory :checked_categories="checked_categories" />
   </section>
 </template>
 
 <script>
 import RestaurantList from "../restaurants/RestaurantsList.vue";
+import RestaurantByCategory from "./RestaurantByCategory.vue";
 import CategoryCard from "../categories/CategoryCard.vue";
 import Loader from "../Loader.vue";
 
@@ -43,6 +45,7 @@ export default {
     RestaurantList,
     CategoryCard,
     Loader,
+    RestaurantByCategory,
   },
   data() {
     return {

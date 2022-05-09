@@ -2193,10 +2193,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _restaurants_RestaurantsList_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../restaurants/RestaurantsList.vue */ "./resources/js/components/restaurants/RestaurantsList.vue");
-/* harmony import */ var _categories_CategoryCard_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../categories/CategoryCard.vue */ "./resources/js/components/categories/CategoryCard.vue");
-/* harmony import */ var _Loader_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Loader.vue */ "./resources/js/components/Loader.vue");
-/* harmony import */ var _fontsource_ibm_plex_sans__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fontsource/ibm-plex-sans */ "./node_modules/@fontsource/ibm-plex-sans/index.css");
-/* harmony import */ var _fontsource_ibm_plex_sans__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_fontsource_ibm_plex_sans__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _RestaurantByCategory_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RestaurantByCategory.vue */ "./resources/js/components/pages/RestaurantByCategory.vue");
+/* harmony import */ var _categories_CategoryCard_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../categories/CategoryCard.vue */ "./resources/js/components/categories/CategoryCard.vue");
+/* harmony import */ var _Loader_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Loader.vue */ "./resources/js/components/Loader.vue");
+/* harmony import */ var _fontsource_ibm_plex_sans__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @fontsource/ibm-plex-sans */ "./node_modules/@fontsource/ibm-plex-sans/index.css");
+/* harmony import */ var _fontsource_ibm_plex_sans__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_fontsource_ibm_plex_sans__WEBPACK_IMPORTED_MODULE_4__);
 //
 //
 //
@@ -2229,6 +2230,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 
 
 
@@ -2237,8 +2240,9 @@ __webpack_require__.r(__webpack_exports__);
   name: "Home",
   components: {
     RestaurantList: _restaurants_RestaurantsList_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    CategoryCard: _categories_CategoryCard_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    Loader: _Loader_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+    CategoryCard: _categories_CategoryCard_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Loader: _Loader_vue__WEBPACK_IMPORTED_MODULE_3__["default"],
+    RestaurantByCategory: _RestaurantByCategory_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
@@ -2305,14 +2309,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2321,6 +2317,7 @@ __webpack_require__.r(__webpack_exports__);
     RestaurantCard: _restaurants_RestaurantCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     Loader: _Loader_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
+  props: ["checked_categories"],
   data: function data() {
     return {
       categories: [],
@@ -2334,6 +2331,7 @@ __webpack_require__.r(__webpack_exports__);
     getRestaurantsFilteredByCategories: function getRestaurantsFilteredByCategories() {
       var _this = this;
 
+      this.arrayOriginale = [];
       this.categories.forEach(function (category) {
         console.log(category);
         category["restaurants"].forEach(function (restaurant) {
@@ -2369,7 +2367,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var qs = __webpack_require__(/*! qs */ "./node_modules/qs/lib/index.js");
 
-      var newtest = this.test.map(function (cat, i) {
+      var newtest = this.checked_categories.map(function (cat, i) {
         var container = {};
         var key = "cid" + i;
         container[key] = cat;
@@ -65622,6 +65620,10 @@ var render = function () {
       ),
       _vm._v(" "),
       _c("RestaurantList"),
+      _vm._v(" "),
+      _c("RestaurantByCategory", {
+        attrs: { checked_categories: _vm.checked_categories },
+      }),
     ],
     1
   )
@@ -65652,6 +65654,18 @@ var render = function () {
     "section",
     { staticClass: "row", attrs: { id: "restaurants-by-category" } },
     [
+      _c(
+        "button",
+        {
+          on: {
+            click: function ($event) {
+              return _vm.getCategory()
+            },
+          },
+        },
+        [_vm._v("CHIAMATA API")]
+      ),
+      _vm._v(" "),
       _vm.isLoading ? _c("Loader") : _vm._e(),
       _vm._v(" "),
       _c(
@@ -65672,25 +65686,11 @@ var render = function () {
       _vm._v(" "),
       _c("div", { staticClass: "col-12" }, [
         _c(
-          "div",
-          { staticClass: "row" },
-          _vm._l(_vm.categories, function (category) {
-            return _c(
-              "div",
-              { key: category.id },
-              [
-                _c("p", [_vm._v(_vm._s(category.name))]),
-                _vm._v(" "),
-                _c("p", [_vm._v(_vm._s(category.id))]),
-                _vm._v(" "),
-                _vm._l(category.restaurants, function (restaurant) {
-                  return _c("div", { key: restaurant.id }, [
-                    _c("p", [_vm._v("nome: " + _vm._s(restaurant.name))]),
-                  ])
-                }),
-              ],
-              2
-            )
+          "ul",
+          _vm._l(_vm.arraySenzaDuplicati, function (restaurant) {
+            return _c("li", { key: restaurant.id }, [
+              _vm._v("\n        " + _vm._s(restaurant.name) + "\n      "),
+            ])
           }),
           0
         ),
@@ -65705,7 +65705,7 @@ var render = function () {
             },
           },
         },
-        [_vm._v("mario")]
+        [_vm._v("\n    getRestaurantsFilteredByCategories\n  ")]
       ),
     ],
     1

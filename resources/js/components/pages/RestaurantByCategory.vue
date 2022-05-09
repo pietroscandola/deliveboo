@@ -1,5 +1,6 @@
 <template>
   <section id="restaurants-by-category" class="row">
+    <button @click="getCategory()">CHIAMATA API</button>
     <Loader v-if="isLoading" />
     <!-- Titolo -->
     <div class="col-12 d-flex justify-content-between align-items-center">
@@ -8,24 +9,15 @@
     </div>
     <!-- Lista dei Ristoranti -->
     <div class="col-12">
-      <div class="row">
-        <!-- <RestaurantCard
-               class="col-4"
-               v-for="restaurant in category.restaurants"
-               :key="restaurant.id"
-               :restaurant="restaurant"
-            /> -->
-        <!-- BY CATEGORIES -->
-        <div v-for="category in categories" :key="category.id">
-          <p>{{ category.name }}</p>
-          <p>{{ category.id }}</p>
-          <div v-for="restaurant in category.restaurants" :key="restaurant.id">
-            <p>nome: {{ restaurant.name }}</p>
-          </div>
-        </div>
-      </div>
+      <ul>
+        <li v-for="restaurant in arraySenzaDuplicati" :key="restaurant.id">
+          {{ restaurant.name }}
+        </li>
+      </ul>
     </div>
-    <button @click="getRestaurantsFilteredByCategories()">mario</button>
+    <button @click="getRestaurantsFilteredByCategories()">
+      getRestaurantsFilteredByCategories
+    </button>
   </section>
 </template>
 
@@ -39,6 +31,7 @@ export default {
     RestaurantCard,
     Loader,
   },
+  props: ["checked_categories"],
   data() {
     return {
       categories: [],
@@ -50,6 +43,7 @@ export default {
   },
   methods: {
     getRestaurantsFilteredByCategories() {
+      this.arrayOriginale = [];
       this.categories.forEach((category) => {
         console.log(category);
         category["restaurants"].forEach((restaurant) => {
@@ -86,7 +80,7 @@ export default {
     },
     getCategory() {
       let qs = require("qs");
-      const newtest = this.test.map((cat, i) => {
+      const newtest = this.checked_categories.map((cat, i) => {
         const container = {};
         const key = "cid" + i;
 
