@@ -3,7 +3,7 @@
       <!-- Titolo e back -->
       <div class="row d-flex justify-content-between align-items-center">
          <div class="col-12 col-md-7">
-            <h1>Controllo il tuo Ordine</h1>
+            <h1>Controlla il tuo Ordine</h1>
          </div>
          <div
             class="

@@ -63422,7 +63422,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-12 col-md-7" }, [
-      _c("h1", [_vm._v("Controllo il tuo Ordine")]),
+      _c("h1", [_vm._v("Controlla il tuo Ordine")]),
     ])
   },
 ]
