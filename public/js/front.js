@@ -2240,6 +2240,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2295,7 +2302,6 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _restaurants_RestaurantCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../restaurants/RestaurantCard.vue */ "./resources/js/components/restaurants/RestaurantCard.vue");
 /* harmony import */ var _Loader_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Loader.vue */ "./resources/js/components/Loader.vue");
-//
 //
 //
 //
@@ -31024,7 +31030,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap);", ""]);
 
 // module
-exports.push([module.i, "body {\n  font-family: \"IBM Plex Sans\", sans-serif;\n}", ""]);
+exports.push([module.i, "body {\n  font-family: \"IBM Plex Sans\", sans-serif;\n}\n.custom-checkbox {\n  height: 50px;\n  color: white;\n  font-weight: bolder;\n  text-decoration: none;\n  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);\n}\n.card-checkbox-body {\n  background-image: url(\"https://consumer-component-library.roocdn.com/25.30.2/static/images/placeholder.svg\");\n  background-position: center;\n  block-size: cover;\n}\n.active-checkbox {\n  box-shadow: 0 0 0 1px red;\n}", ""]);
 
 // exports
 
@@ -65567,7 +65573,10 @@ var render = function () {
       _vm._v(" "),
       _c(
         "ul",
-        { staticClass: "object administrator-checkbox-list" },
+        {
+          staticClass:
+            "object administrator-checkbox-list d-flex justify-content-center",
+        },
         _vm._l(_vm.categories, function (category) {
           return _c(
             "li",
@@ -65581,49 +65590,63 @@ var render = function () {
               },
             },
             [
-              _c("label", { attrs: { for: category.id } }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.checked_categories,
-                      expression: "checked_categories",
+              _c(
+                "label",
+                {
+                  staticClass: "custom-checkbox",
+                  attrs: { for: category.id, role: "button" },
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.checked_categories,
+                        expression: "checked_categories",
+                      },
+                    ],
+                    staticClass: "d-none",
+                    attrs: { type: "checkbox", id: category.id },
+                    domProps: {
+                      value: category.id,
+                      checked: Array.isArray(_vm.checked_categories)
+                        ? _vm._i(_vm.checked_categories, category.id) > -1
+                        : _vm.checked_categories,
                     },
-                  ],
-                  attrs: { type: "checkbox", id: category.id },
-                  domProps: {
-                    value: category.id,
-                    checked: Array.isArray(_vm.checked_categories)
-                      ? _vm._i(_vm.checked_categories, category.id) > -1
-                      : _vm.checked_categories,
-                  },
-                  on: {
-                    change: function ($event) {
-                      var $$a = _vm.checked_categories,
-                        $$el = $event.target,
-                        $$c = $$el.checked ? true : false
-                      if (Array.isArray($$a)) {
-                        var $$v = category.id,
-                          $$i = _vm._i($$a, $$v)
-                        if ($$el.checked) {
-                          $$i < 0 &&
-                            (_vm.checked_categories = $$a.concat([$$v]))
+                    on: {
+                      change: function ($event) {
+                        var $$a = _vm.checked_categories,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = category.id,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              (_vm.checked_categories = $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              (_vm.checked_categories = $$a
+                                .slice(0, $$i)
+                                .concat($$a.slice($$i + 1)))
+                          }
                         } else {
-                          $$i > -1 &&
-                            (_vm.checked_categories = $$a
-                              .slice(0, $$i)
-                              .concat($$a.slice($$i + 1)))
+                          _vm.checked_categories = $$c
                         }
-                      } else {
-                        _vm.checked_categories = $$c
-                      }
+                      },
                     },
-                  },
-                }),
-                _vm._v(" "),
-                _c("span", [_vm._v(_vm._s(category.name))]),
-              ]),
+                  }),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "card" }, [
+                    _c("div", { staticClass: "card-body card-checkbox-body" }, [
+                      _c("p", { staticClass: "card-text" }, [
+                        _vm._v(_vm._s(category.name)),
+                      ]),
+                    ]),
+                  ]),
+                ]
+              ),
             ]
           )
         }),
@@ -65668,13 +65691,9 @@ var render = function () {
     [
       _vm.isLoading ? _c("Loader") : _vm._e(),
       _vm._v(" "),
-      _c("div", {
-        staticClass: "col-12 d-flex justify-content-between align-items-center",
-      }),
-      _vm._v(" "),
       _c(
         "div",
-        { staticClass: "row" },
+        { staticClass: "col-12 d-flex align-items-center" },
         _vm._l(_vm.arraySenzaDuplicati, function (restaurant) {
           return _c(
             "div",

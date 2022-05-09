@@ -2,9 +2,8 @@
   <section id="restaurants-by-category" class="row">
     <Loader v-if="isLoading" />
     <!-- Titolo -->
-    <div class="col-12 d-flex justify-content-between align-items-center"></div>
-    <!-- Lista dei Ristoranti -->
-    <div class="row">
+    <div class="col-12 d-flex align-items-center">
+      <!-- Lista dei Ristoranti -->
       <div
         v-for="restaurant in arraySenzaDuplicati"
         :key="restaurant.id"

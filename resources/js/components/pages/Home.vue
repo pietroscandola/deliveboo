@@ -2,21 +2,28 @@
   <section id="home">
     <Loader v-if="isLoading" />
     <!-- CHECKBOXES -->
-    <ul class="object administrator-checkbox-list">
+    <ul
+      class="object administrator-checkbox-list d-flex justify-content-center"
+    >
       <li
         class="d-inline mr-3"
         v-for="category in categories"
         :key="category.id"
         @click="$refs.RestaurantByCategory.getCategoryInHome()"
       >
-        <label v-bind:for="category.id">
+        <label v-bind:for="category.id" role="button" class="custom-checkbox">
           <input
+            class="d-none"
             type="checkbox"
             v-model="checked_categories"
             :value="category.id"
             :id="category.id"
           />
-          <span>{{ category.name }}</span>
+          <div class="card">
+            <div class="card-body card-checkbox-body">
+              <p class="card-text">{{ category.name }}</p>
+            </div>
+          </div>
         </label>
       </li>
     </ul>
@@ -92,5 +99,22 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap");
 body {
   font-family: "IBM Plex Sans", sans-serif;
+}
+
+// CUSTOM CATEGORIES CHECKBOXES
+.custom-checkbox {
+  height: 50px;
+  color: white;
+  font-weight: bolder;
+  text-decoration: none;
+  text-shadow: 1px 1px 2px rgba($color: #000000, $alpha: 0.8);
+}
+.card-checkbox-body {
+  background-image: url("https://consumer-component-library.roocdn.com/25.30.2/static/images/placeholder.svg");
+  background-position: center;
+  block-size: cover;
+}
+.active-checkbox {
+  box-shadow: 0 0 0 1px red;
 }
 </style>
