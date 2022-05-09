@@ -146,7 +146,7 @@ export default {
          error: "",
          amount: this.tot,
          order: {
-            restaurant_id: 2,
+            restaurant_id: this.$route.params.id,
             customer_name: "Logi",
             customer_surname: "Tech",
             customer_email: "email@email.com",
@@ -200,9 +200,14 @@ export default {
 
          this.order.products_ids = prod;
       },
+
+      getRestaurantIds() {
+         this.order.restaurant_id = this.$route.params.id;
+      },
    },
    mounted() {
       this.getProdIds();
+      this.getRestaurantIds();
 
       braintree.client
          .create({

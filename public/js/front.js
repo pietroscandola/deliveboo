@@ -2990,7 +2990,7 @@ __webpack_require__.r(__webpack_exports__);
       error: "",
       amount: this.tot,
       order: {
-        restaurant_id: 2,
+        restaurant_id: this.$route.params.id,
         customer_name: "Logi",
         customer_surname: "Tech",
         customer_email: "email@email.com",
@@ -3036,12 +3036,16 @@ __webpack_require__.r(__webpack_exports__);
         return container;
       });
       this.order.products_ids = prod;
+    },
+    getRestaurantIds: function getRestaurantIds() {
+      this.order.restaurant_id = this.$route.params.id;
     }
   },
   mounted: function mounted() {
     var _this2 = this;
 
     this.getProdIds();
+    this.getRestaurantIds();
     braintree_web__WEBPACK_IMPORTED_MODULE_0___default.a.client.create({
       // Bisogna inserire la key di braintree
       // Aggiungere MIX_VUE_APP_BT_SDK con la propria key
@@ -3239,11 +3243,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-// import Payment from "../payment/Payment.vue";
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantCart",
-  components: {// Payment,
-  },
+  components: {},
   props: ["cart", "restaurant", "addCart", "removeFromCart"],
   methods: {
     getProductTotalPrice: function getProductTotalPrice(product) {
@@ -64475,9 +64483,9 @@ var render = function () {
                 _vm.isCheckOutPage
                   ? _c("span", { staticClass: "mr-1" }, [
                       _vm._v(
-                        "\n            " +
+                        "\n                  " +
                           _vm._s(product.quantity) +
-                          "x\n          "
+                          "x\n               "
                       ),
                     ])
                   : _vm._e(),
@@ -64497,7 +64505,7 @@ var render = function () {
                           "svg",
                           {
                             staticClass:
-                              "\n                ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049\n                mr-1\n              ",
+                              "\n                        ccl-0f24ac4b87ce1f67\n                        ccl-ed34b65f78f16205\n                        ccl-c738ab1fde928049\n                        mr-1\n                     ",
                             attrs: {
                               "xmlns:xlink": "http://www.w3.org/1999/xlink",
                               xmlns: "http://www.w3.org/2000/svg",
@@ -64531,7 +64539,7 @@ var render = function () {
                           "svg",
                           {
                             staticClass:
-                              "\n                ccl-0f24ac4b87ce1f67 ccl-ed34b65f78f16205 ccl-c738ab1fde928049\n              ",
+                              "\n                        ccl-0f24ac4b87ce1f67\n                        ccl-ed34b65f78f16205\n                        ccl-c738ab1fde928049\n                     ",
                             attrs: {
                               "xmlns:xlink": "http://www.w3.org/1999/xlink",
                               xmlns: "http://www.w3.org/2000/svg",
@@ -64590,16 +64598,23 @@ var render = function () {
     ]),
     _vm._v(" "),
     !_vm.isCheckOutPage
-      ? _c("div", { staticClass: "mt-3" }, [
-          _c(
-            "a",
-            {
-              staticClass: "checkout-button",
-              attrs: { href: "http://127.0.0.1:8000/cart" },
-            },
-            [_vm._v("\n      Vai al pagamento\n    ")]
-          ),
-        ])
+      ? _c(
+          "div",
+          { staticClass: "mt-3" },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass: "checkout-button",
+                attrs: {
+                  to: { name: "cart", params: { id: _vm.restaurant.id } },
+                },
+              },
+              [_vm._v("Vai al pagamento\n      ")]
+            ),
+          ],
+          1
+        )
       : _vm._e(),
   ])
 }
@@ -81078,7 +81093,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     component: _components_pages_RestaurantByCategory_vue__WEBPACK_IMPORTED_MODULE_4__["default"],
     name: 'restaurant-categories'
   }, {
-    path: '/cart',
+    path: '/cart/:id',
     component: _components_pages_Cart_vue__WEBPACK_IMPORTED_MODULE_5__["default"],
     name: 'cart'
   }]
