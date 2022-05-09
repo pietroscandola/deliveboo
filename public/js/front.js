@@ -63399,7 +63399,6 @@ var render = function () {
           _c("RestaurantCart", {
             staticClass: "mb-3",
             attrs: { cart: _vm.cart },
-            on: { "empty-cart": _vm.emptyCart },
           }),
         ],
         1

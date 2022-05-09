@@ -25,7 +25,7 @@
             <Payment class="mt-3" :tot="getTotal().toFixed(2)" :cart="cart" />
          </div>
          <div class="col-12 col-lg-4">
-            <RestaurantCart class="mb-3" :cart="cart" @empty-cart="emptyCart" />
+            <RestaurantCart class="mb-3" :cart="cart" />
          </div>
       </div>
    </section>
