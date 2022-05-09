@@ -1,6 +1,5 @@
 <template>
   <section id="restaurants-by-category" class="row">
-    <button @click="getCategory()">CHIAMATA API</button>
     <Loader v-if="isLoading" />
     <!-- Titolo -->
     <div class="col-12 d-flex justify-content-between align-items-center">

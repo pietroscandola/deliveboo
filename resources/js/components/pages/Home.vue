@@ -3,7 +3,11 @@
     <Loader v-if="isLoading" />
     <!-- CHECKBOXES -->
     <ul class="object administrator-checkbox-list">
-      <li v-for="category in categories" :key="category.id">
+      <li
+        v-for="category in categories"
+        :key="category.id"
+        @click="$refs.RestaurantByCategory.getCategory()"
+      >
         <label v-bind:for="category.id">
           <input
             type="checkbox"
@@ -27,7 +31,11 @@
     </div> -->
 
     <RestaurantList v-if="!checked_categories.length" />
-    <RestaurantByCategory v-else :checked_categories="checked_categories" />
+    <RestaurantByCategory
+      ref="RestaurantByCategory"
+      v-else
+      :checked_categories="checked_categories"
+    />
   </section>
 </template>
 
