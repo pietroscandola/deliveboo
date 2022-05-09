@@ -7,12 +7,31 @@
       id="categories-container"
       class="d-flex justify-content-center mb-4"
     >
-      <div v-for="category in categories" :key="category.id">
+      <!-- <div v-for="category in categories" :key="category.id">
         <CategoryCard :category="category" />
-      </div>
+      </div> -->
+      <ul class="object administrator-checkbox-list">
+        <li v-for="category in categories" :key="category.id">
+          <label v-bind:for="category.id">
+            <input
+              type="checkbox"
+              v-model="checked_categories"
+              :value="category.id"
+              :id="category.id"
+            />
+            <span>{{ category.name }}</span>
+          </label>
+        </li>
+      </ul>
     </div>
-
-    <RestaurantList />
+    <div v-if="!checked_categories.length">
+      <RestaurantList />
+    </div>
+    <div v-else>
+      <ul v-for="restaurant of filteredCategory" :key="restaurant.id">
+        <li>{{ restaurant.name }}</li>
+      </ul>
+    </div>
   </section>
 </template>
 
@@ -33,6 +52,7 @@ export default {
   data() {
     return {
       categories: [],
+      checked_categories: [],
       isLoading: false,
     };
   },
@@ -57,6 +77,25 @@ export default {
   },
   mounted() {
     this.getCategories();
+  },
+  computed: {
+    filteredCategory() {
+      console.log(this.checked_categories);
+      const filteredRestaurants = this.checked_categories
+        .map((category) => this.categories[category]?.restaurants || [])
+        .flat();
+
+      if (!filteredRestaurants.length) {
+        return [];
+      }
+
+      const ids = filteredRestaurants.map((restaurant) => restaurant.id);
+      console.log(ids);
+
+      return filteredRestaurants.filter(
+        ({ id }, index) => !ids.includes(id, index + 1)
+      );
+    },
   },
 };
 </script>
