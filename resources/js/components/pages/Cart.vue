@@ -3,7 +3,7 @@
       <!-- Titolo e back -->
       <div class="row d-flex justify-content-between align-items-center">
          <div class="col-12 col-md-7">
-            <h1>Controllo il tuo Ordine</h1>
+            <h1>Controlla il tuo Ordine</h1>
          </div>
          <div
             class="
@@ -22,17 +22,10 @@
       <!-- Pagamento e carrello -->
       <div class="row d-flex flex-lg-row flex-column-reverse">
          <div class="col-12 col-lg-8">
-            <Payment class="mt-3" :tot="getTotal().toFixed(2)" />
+            <Payment class="mt-3" :tot="getTotal().toFixed(2)" :cart="cart" />
          </div>
          <div class="col-12 col-lg-4">
-            <RestaurantCart
-               class="mb-3"
-               :addCart="addCart"
-               :removeFromCart="removeFromCart"
-               :restaurant="restaurant"
-               :cart="cart"
-               @empty-cart="emptyCart"
-            />
+            <RestaurantCart class="mb-3" :cart="cart" />
          </div>
       </div>
    </section>
