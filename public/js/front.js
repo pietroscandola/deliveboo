@@ -2981,6 +2981,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "PaymentTwo",
@@ -2998,9 +3003,10 @@ __webpack_require__.r(__webpack_exports__);
         customer_email: "email@email.com",
         customer_address: "via mare inquinato 5",
         customer_phone: "1591591591",
-        amount: this.amount,
-        is_delivered: false,
-        is_paid: true
+        amount: this.tot,
+        is_delivered: 0,
+        is_paid: 1,
+        products_ids: [5, 6]
       }
     };
   },
@@ -3014,18 +3020,7 @@ __webpack_require__.r(__webpack_exports__);
         this.hostedFieldInstance.tokenize().then(function (payload) {
           console.log(payload);
           _this.nonce = payload.nonce;
-          var params = {
-            restaurant_id: 2,
-            customer_name: "Logi",
-            customer_surname: "Tech",
-            customer_email: "email@email.com",
-            customer_address: "via mare inquinato 5",
-            customer_phone: "1591591591",
-            amount: _this.amount,
-            is_delivered: 0,
-            is_paid: 1,
-            products_ids: [5, 6]
-          };
+          var params = _this.order;
           axios.post("http://localhost:8000/api/order", params).then(function (res) {
             console.log(params);
             console.log("Axios ok");
@@ -64256,43 +64251,49 @@ var render = function () {
               ]),
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "form-group" }, [
-              _c("label", { attrs: { for: "amount" } }, [
-                _vm._v("Importo Totale"),
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "input-group" }, [
-                _vm._m(0),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.amount,
-                      expression: "amount",
-                    },
-                  ],
-                  staticClass: "form-control",
-                  attrs: { type: "text", id: "amount", disabled: "" },
-                  domProps: { value: _vm.amount },
-                  on: {
-                    input: function ($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.amount = $event.target.value
-                    },
-                  },
-                }),
-              ]),
-            ]),
-            _vm._v(" "),
             _c("hr"),
             _vm._v(" "),
-            _vm._m(1),
-            _vm._v(" "),
-            _vm._m(2),
+            _c("div", { staticClass: "form-group" }, [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col-3" }, [
+                  _c("label", { attrs: { for: "amount" } }, [
+                    _vm._v("Importo Totale"),
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "input-group" }, [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.amount,
+                          expression: "amount",
+                        },
+                      ],
+                      staticClass: "form-control",
+                      attrs: { type: "text", id: "amount", disabled: "" },
+                      domProps: { value: _vm.amount },
+                      on: {
+                        input: function ($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.amount = $event.target.value
+                        },
+                      },
+                    }),
+                  ]),
+                ]),
+                _vm._v(" "),
+                _vm._m(1),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _vm._m(3),
+              ]),
+            ]),
             _vm._v(" "),
             _c(
               "button",
@@ -64326,7 +64327,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
+    return _c("div", { staticClass: "col-9" }, [
       _c("label", [_vm._v("Numero Carta di Credito")]),
       _vm._v(" "),
       _c("div", {
@@ -64339,23 +64340,20 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-6" }, [
-          _c("label", [_vm._v("Data di Scadenza")]),
-          _vm._v(" "),
-          _c("div", {
-            staticClass: "form-control",
-            attrs: { id: "expireDate" },
-          }),
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-6" }, [
-          _c("label", [_vm._v("CVV")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form-control", attrs: { id: "cvv" } }),
-        ]),
-      ]),
+    return _c("div", { staticClass: "col-6" }, [
+      _c("label", [_vm._v("Data di Scadenza")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-control", attrs: { id: "expireDate" } }),
+    ])
+  },
+  function () {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-6" }, [
+      _c("label", [_vm._v("CVV")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-control", attrs: { id: "cvv" } }),
     ])
   },
 ]

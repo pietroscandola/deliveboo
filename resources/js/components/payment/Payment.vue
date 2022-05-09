@@ -81,35 +81,40 @@
                         </div>
                      </div>
                   </div>
-                  <!-- Total to pay -->
-                  <div class="form-group">
-                     <label for="amount">Importo Totale</label>
-                     <div class="input-group">
-                        <div class="input-group-prepend">
-                           <span class="input-group-text">€</span>
-                        </div>
-                        <input
-                           type="text"
-                           id="amount"
-                           class="form-control"
-                           v-model="amount"
-                           disabled
-                        />
-                     </div>
-                  </div>
                   <hr />
-                  <!-- Credit card number -->
-                  <div class="form-group">
-                     <label>Numero Carta di Credito</label>
-                     <div id="creditCardNumber" class="form-control"></div>
-                  </div>
-                  <!-- Expiration date -->
+                  <!-- Payment -->
                   <div class="form-group">
                      <div class="row">
+                        <!-- Total to pay -->
+                        <div class="col-3">
+                           <label for="amount">Importo Totale</label>
+                           <div class="input-group">
+                              <div class="input-group-prepend">
+                                 <span class="input-group-text">€</span>
+                              </div>
+                              <input
+                                 type="text"
+                                 id="amount"
+                                 class="form-control"
+                                 v-model="amount"
+                                 disabled
+                              />
+                           </div>
+                        </div>
+                        <!-- Credit card number -->
+                        <div class="col-9">
+                           <label>Numero Carta di Credito</label>
+                           <div
+                              id="creditCardNumber"
+                              class="form-control"
+                           ></div>
+                        </div>
+                        <!-- Expiration date -->
                         <div class="col-6">
                            <label>Data di Scadenza</label>
                            <div id="expireDate" class="form-control"></div>
                         </div>
+                        <!-- CVV -->
                         <div class="col-6">
                            <label>CVV</label>
                            <div id="cvv" class="form-control"></div>
@@ -147,9 +152,10 @@ export default {
             customer_email: "email@email.com",
             customer_address: "via mare inquinato 5",
             customer_phone: "1591591591",
-            amount: this.amount,
-            is_delivered: false,
-            is_paid: true,
+            amount: this.tot,
+            is_delivered: 0,
+            is_paid: 1,
+            products_ids: [5, 6],
          },
       };
    },
@@ -163,18 +169,7 @@ export default {
                .then((payload) => {
                   console.log(payload);
                   this.nonce = payload.nonce;
-                  const params = {
-                     restaurant_id: 2,
-                     customer_name: "Logi",
-                     customer_surname: "Tech",
-                     customer_email: "email@email.com",
-                     customer_address: "via mare inquinato 5",
-                     customer_phone: "1591591591",
-                     amount: this.amount,
-                     is_delivered: 0,
-                     is_paid: 1,
-                     products_ids: [5, 6],
-                  };
+                  const params = this.order;
                   axios
                      .post("http://localhost:8000/api/order", params)
                      .then((res) => {
