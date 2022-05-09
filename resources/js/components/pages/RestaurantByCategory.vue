@@ -57,13 +57,32 @@ export default {
         });
       });
 
-      this.arrayOriginale.forEach((filteredRestaurant) => {
-        const result = this.arrayOriginale.filter(
-          (restaurant) => restaurant["id"] != filteredRestaurant["id"]
-        );
-
-        this.arraySenzaDuplicati = result;
+      this.arrayOriginale.forEach((restaurant) => {
+        Vue.delete(restaurant, "pivot");
       });
+
+      var result = this.arrayOriginale.reduce((unique, o) => {
+        if (!unique.some((obj) => obj.id === o.id)) {
+          unique.push(o);
+        }
+        return unique;
+      }, []);
+
+      this.arraySenzaDuplicati = result;
+
+      // this.arrayOriginale.forEach((restaurant) => {
+      //   if (!this.arraySenzaDuplicati.includes(restaurant)) {
+      //     this.arraySenzaDuplicati.push(restaurant);
+      //   }
+      // });
+
+      // this.arrayOriginale.forEach((filteredRestaurant) => {
+      //   const result = this.arrayOriginale.filter(
+      //     (restaurant) => restaurant["id"] != filteredRestaurant["id"]
+      //   );
+
+      //   this.arraySenzaDuplicati = result;
+      // });
     },
     getCategory() {
       let qs = require("qs");

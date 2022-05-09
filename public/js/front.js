@@ -2325,13 +2325,29 @@ __webpack_require__.r(__webpack_exports__);
           _this.arrayOriginale.push(restaurant);
         });
       });
-      this.arrayOriginale.forEach(function (filteredRestaurant) {
-        var result = _this.arrayOriginale.filter(function (restaurant) {
-          return restaurant["id"] != filteredRestaurant["id"];
-        });
-
-        _this.arraySenzaDuplicati = result;
+      this.arrayOriginale.forEach(function (restaurant) {
+        Vue["delete"](restaurant, "pivot");
       });
+      var result = this.arrayOriginale.reduce(function (unique, o) {
+        if (!unique.some(function (obj) {
+          return obj.id === o.id;
+        })) {
+          unique.push(o);
+        }
+
+        return unique;
+      }, []);
+      this.arraySenzaDuplicati = result; // this.arrayOriginale.forEach((restaurant) => {
+      //   if (!this.arraySenzaDuplicati.includes(restaurant)) {
+      //     this.arraySenzaDuplicati.push(restaurant);
+      //   }
+      // });
+      // this.arrayOriginale.forEach((filteredRestaurant) => {
+      //   const result = this.arrayOriginale.filter(
+      //     (restaurant) => restaurant["id"] != filteredRestaurant["id"]
+      //   );
+      //   this.arraySenzaDuplicati = result;
+      // });
     },
     getCategory: function getCategory() {
       var _this2 = this;
