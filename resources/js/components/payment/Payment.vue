@@ -1,6 +1,7 @@
 <template>
    <div>
-      <div>
+      <Loader v-if="isLoading" />
+      <div v-if="!isPaid">
          <div class="card bg-light">
             <div class="card-header">Informazioni di Pagamento</div>
             <div class="card-body">
@@ -124,6 +125,7 @@
                   <button
                      class="payment-button"
                      @click.prevent="payWithCreditCard"
+                     @click="$emit('emptyCart', [])"
                   >
                      Paga
                   </button>
@@ -131,16 +133,27 @@
             </div>
          </div>
       </div>
+      <div v-if="isPaid">
+         <h2>Hai pagato un totale di {{ amount }}€</h2>
+         <h3>Il tuo ordine arriverà a breve</h3>
+      </div>
    </div>
 </template>
 
 <script>
 import braintree from "braintree-web";
+import Loader from "../Loader.vue";
+
 export default {
    name: "PaymentTwo",
+   components: {
+      Loader,
+   },
    props: ["tot", "cart"],
    data() {
       return {
+         isLoading: false,
+         isPaid: false,
          hostedFieldInstance: false,
          nonce: "",
          error: "",
@@ -162,6 +175,7 @@ export default {
    methods: {
       payWithCreditCard() {
          if (this.hostedFieldInstance) {
+            this.isLoading = true;
             this.error = "";
             this.nonce = "";
             this.hostedFieldInstance
@@ -180,7 +194,9 @@ export default {
                         console.error(err);
                      })
                      .then(() => {
-                        console.log("OK API");
+                        console.log("OK APIII");
+                        this.isLoading = false;
+                        this.isPaid = true;
                      });
                })
                .catch((err) => {
