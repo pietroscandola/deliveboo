@@ -22,11 +22,11 @@ class RestaurantSeeder extends Seeder
     {
         $restaurant_names = [
             'Ristorante la Scala', "McDonald's", 'KFC', 'Pizzeria Buona', 'Ristorante da Marco',
-            'Ristorante la Scala', "McDonald's", 'KFC', 'Pizzeria Buona', 'Ristorante da Marco',
-            'Ristorante la Scala', "McDonald's", 'KFC', 'Pizzeria Buona', 'Ristorante da Marco',
-            'Ristorante la Scala', "McDonald's", 'KFC', 'Pizzeria Buona', 'Ristorante da Marco',
-            'Ristorante la Scala', "McDonald's", 'KFC', 'Pizzeria Buona', 'Ristorante da Marco',
-            'Ristorante la Scala', "McDonald's", 'KFC', 'Pizzeria Buona', 'Ristorante da Marco'
+            'Poke House', "Mi Go Fame", 'Grom', "Rom'Antica", 'Pepperone',
+            'RoadHouse', "Old Wild West", 'BurgerRino', 'Tokio Sushi', 'La Piadineria',
+            'Giovanni Rana', "Hosteria il punto rosa", 'Gelateria Pecora Nera', 'SubWay', 'Pasticceria Roma',
+            'Dal Goto wine bar', "Delicious Pasticcerie", 'Wursteria 11', 'Burritoso', 'La casa del Los Burritos',
+            'Five Boyos', "Burger Shot", 'Magna e Bei', 'Pizzeria Napoli', 'Ristorante dai fratelli'
         ];
         $users_id = User::pluck('id')->toArray();
         $categories_id = Category::pluck('id')->toArray();
