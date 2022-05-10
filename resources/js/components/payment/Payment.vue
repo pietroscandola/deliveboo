@@ -125,6 +125,7 @@
                   <button
                      class="payment-button"
                      @click.prevent="payWithCreditCard"
+                     @click="$emit('emptyCart', [])"
                   >
                      Paga
                   </button>
@@ -134,6 +135,11 @@
       </div>
       <div v-if="isPaid">
          <h2>Hai pagato un totale di {{ amount }}€</h2>
+         <ul v-if="cart">
+            <li v-for="prod in cart" :key="prod.id">
+               {{ prod.name }}
+            </li>
+         </ul>
       </div>
    </div>
 </template>

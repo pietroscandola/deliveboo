@@ -2141,6 +2141,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2151,7 +2156,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   },
   data: function data() {
     return {
-      cart: JSON.parse(sessionStorage.cart)
+      cart: JSON.parse(sessionStorage.cart),
+      isPaid: true
     };
   },
   methods: {
@@ -2177,8 +2183,14 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       }
 
       return total;
+    },
+    emptyCart: function emptyCart(newCart) {
+      this.cart = newCart; // sessionStorage.clear(); // Se decommentato, la sessionStorage viene svuotata ma il componente RestaurantCart rimane visibile
+
+      this.isPaid = false;
     }
-  }
+  },
+  computed: {}
 });
 
 /***/ }),
@@ -3009,6 +3021,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var braintree_web__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! braintree-web */ "./node_modules/braintree-web/dist/browser/index.js");
 /* harmony import */ var braintree_web__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(braintree_web__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Loader_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Loader.vue */ "./resources/js/components/Loader.vue");
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -66060,22 +66078,27 @@ var render = function () {
             _c("Payment", {
               staticClass: "mt-3",
               attrs: { tot: _vm.getTotal().toFixed(2), cart: _vm.cart },
+              on: { emptyCart: _vm.emptyCart },
             }),
           ],
           1
         ),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "col-12 col-lg-4" },
-          [
-            _c("RestaurantCart", {
-              staticClass: "mb-3",
-              attrs: { cart: _vm.cart },
-            }),
-          ],
-          1
-        ),
+        _vm.isPaid
+          ? _c(
+              "div",
+              { staticClass: "col-12 col-lg-4" },
+              [
+                _vm.isPaid
+                  ? _c("RestaurantCart", {
+                      staticClass: "mb-3",
+                      attrs: { cart: _vm.cart },
+                    })
+                  : _vm._e(),
+              ],
+              1
+            )
+          : _vm._e(),
       ]),
     ]
   )
@@ -67123,10 +67146,15 @@ var render = function () {
                     {
                       staticClass: "payment-button",
                       on: {
-                        click: function ($event) {
-                          $event.preventDefault()
-                          return _vm.payWithCreditCard.apply(null, arguments)
-                        },
+                        click: [
+                          function ($event) {
+                            $event.preventDefault()
+                            return _vm.payWithCreditCard.apply(null, arguments)
+                          },
+                          function ($event) {
+                            return _vm.$emit("emptyCart", [])
+                          },
+                        ],
                       },
                     },
                     [_vm._v("\n                  Paga\n               ")]
@@ -67142,6 +67170,20 @@ var render = function () {
             _c("h2", [
               _vm._v("Hai pagato un totale di " + _vm._s(_vm.amount) + "€"),
             ]),
+            _vm._v(" "),
+            _vm.cart
+              ? _c(
+                  "ul",
+                  _vm._l(_vm.cart, function (prod) {
+                    return _c("li", { key: prod.id }, [
+                      _vm._v(
+                        "\n            " + _vm._s(prod.name) + "\n         "
+                      ),
+                    ])
+                  }),
+                  0
+                )
+              : _vm._e(),
           ])
         : _vm._e(),
     ],
