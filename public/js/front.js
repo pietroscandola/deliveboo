@@ -2146,6 +2146,17 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2185,9 +2196,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       return total;
     },
     emptyCart: function emptyCart(newCart) {
-      this.cart = newCart; // sessionStorage.clear(); // Se decommentato, la sessionStorage viene svuotata ma il componente RestaurantCart rimane visibile
-
+      this.cart = newCart;
       this.isPaid = false;
+      sessionStorage.clear(); // Se decommentato, la sessionStorage viene svuotata ma il componente RestaurantCart rimane visibile
     }
   },
   computed: {}
@@ -66049,23 +66060,36 @@ var render = function () {
                 "\n            col-12 col-md-5\n            d-flex\n            justify-content-center justify-content-md-end\n            mt-md-0 mt-1\n         ",
             },
             [
-              _c(
-                "a",
-                {
-                  staticClass: "go-back-link",
-                  attrs: { role: "button" },
-                  on: {
-                    click: function ($event) {
-                      return _vm.$router.go(-1)
+              _vm.isPaid
+                ? _c(
+                    "a",
+                    {
+                      staticClass: "go-back-link",
+                      attrs: { role: "button" },
+                      on: {
+                        click: function ($event) {
+                          return _vm.$router.go(-1)
+                        },
+                      },
                     },
-                  },
-                },
-                [
-                  _vm._v("Modifica il tuo Ordine\n            "),
-                  _c("i", { staticClass: "fa-solid fa-arrow-rotate-left" }),
-                ]
-              ),
-            ]
+                    [
+                      _vm._v("Modifica il tuo Ordine\n            "),
+                      _c("i", { staticClass: "fa-solid fa-arrow-rotate-left" }),
+                    ]
+                  )
+                : _c(
+                    "router-link",
+                    {
+                      staticClass: "go-back-link",
+                      attrs: { role: "button", to: { name: "home" } },
+                    },
+                    [
+                      _vm._v("Torna alla home "),
+                      _c("i", { staticClass: "fa-solid fa-arrow-rotate-left" }),
+                    ]
+                  ),
+            ],
+            1
           ),
         ]
       ),

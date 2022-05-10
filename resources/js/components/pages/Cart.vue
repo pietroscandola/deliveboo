@@ -20,10 +20,21 @@
                mt-md-0 mt-1
             "
          >
-            <a class="go-back-link" role="button" @click="$router.go(-1)"
+            <a
+               v-if="isPaid"
+               class="go-back-link"
+               role="button"
+               @click="$router.go(-1)"
                >Modifica il tuo Ordine
                <i class="fa-solid fa-arrow-rotate-left"></i
             ></a>
+            <router-link
+               v-else
+               class="go-back-link"
+               role="button"
+               :to="{ name: 'home' }"
+               >Torna alla home <i class="fa-solid fa-arrow-rotate-left"></i
+            ></router-link>
          </div>
       </div>
       <!-- Pagamento e carrello -->
@@ -74,8 +85,8 @@ export default {
       },
       emptyCart(newCart) {
          this.cart = newCart;
-         // sessionStorage.clear(); // Se decommentato, la sessionStorage viene svuotata ma il componente RestaurantCart rimane visibile
          this.isPaid = false;
+         sessionStorage.clear(); // Se decommentato, la sessionStorage viene svuotata ma il componente RestaurantCart rimane visibile
       },
    },
    computed: {},
