@@ -180,6 +180,10 @@
                 ></path>
               </svg>
             </div>
+            <!-- place holder for Cart Page -->
+            <div></div>
+            <!-- Price -->
+            <span>{{ getProductTotalPrice(product).toFixed(2) }} €</span>
           </div>
         </div>
       </div>

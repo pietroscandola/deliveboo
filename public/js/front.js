@@ -3587,6 +3587,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantCart",
   components: {},
@@ -67685,6 +67689,16 @@ var render = function () {
                                 ]
                               )
                             : _vm._e(),
+                          _vm._v(" "),
+                          _c("div"),
+                          _vm._v(" "),
+                          _c("span", [
+                            _vm._v(
+                              _vm._s(
+                                _vm.getProductTotalPrice(product).toFixed(2)
+                              ) + " €"
+                            ),
+                          ]),
                         ]
                       )
                     : _vm._e(),
