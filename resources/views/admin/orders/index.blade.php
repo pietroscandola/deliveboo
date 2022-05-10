@@ -29,7 +29,7 @@
                         @foreach ($order->products as $product)
                            <li>
                               {{ $product->name }} x{{ $product->pivot->quantity }}
-                              ({{ $product->pivot->quantity * $product->price }}€)
+                              (<strong>{{ $product->pivot->quantity * $product->price }}</strong>€)
                            </li>
                         @endforeach
                      </ul>
