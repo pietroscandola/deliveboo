@@ -20,6 +20,7 @@ class RestaurantSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
+        // !Fare attenzione a come si chiamano i campi della tabella restaurant es. : se vuoi aggiungere l'immagine fai 'image' => 'percorso/immagine'
         $restaurants = [
             [
                 'name' => 'Ristorante la Scala',
@@ -58,6 +59,9 @@ class RestaurantSeeder extends Seeder
                 'description' => 'Qui si mangiano cibi'
             ],
         ];
+
+        // !Nomi ristoranti rimanenti
+        // TODO Rimuovere alla fine
         /* 
         "Mi Go Fame", 'Grom', "Rom'Antica", 'Pepperone',
         'RoadHouse', "Old Wild West", 'BurgerRino', 'Tokio Sushi', 'La Piadineria',
