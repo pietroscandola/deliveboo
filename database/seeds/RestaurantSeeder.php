@@ -20,7 +20,14 @@ class RestaurantSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        $restaurant_names = ['Ristorante di Pietro', 'Ristorante di Vasco', 'Ristorante di Federico', 'Ristorante di Angelo', 'Ristorante di Marco'];
+        $restaurant_names = [
+            'Ristorante la Scala', "McDonald's", 'KFC', 'Pizzeria Buona', 'Ristorante da Marco',
+            'Ristorante la Scala', "McDonald's", 'KFC', 'Pizzeria Buona', 'Ristorante da Marco',
+            'Ristorante la Scala', "McDonald's", 'KFC', 'Pizzeria Buona', 'Ristorante da Marco',
+            'Ristorante la Scala', "McDonald's", 'KFC', 'Pizzeria Buona', 'Ristorante da Marco',
+            'Ristorante la Scala', "McDonald's", 'KFC', 'Pizzeria Buona', 'Ristorante da Marco',
+            'Ristorante la Scala', "McDonald's", 'KFC', 'Pizzeria Buona', 'Ristorante da Marco'
+        ];
         $users_id = User::pluck('id')->toArray();
         $categories_id = Category::pluck('id')->toArray();
 
@@ -35,7 +42,7 @@ class RestaurantSeeder extends Seeder
             $restaurant->save();
 
             // FOR MANY TO MANY
-            $restaurant->categories()->attach(Arr::random($categories_id, $faker->numberBetween(0, 3)));
+            $restaurant->categories()->attach(Arr::random($categories_id, $faker->numberBetween(1, 4)));
         }
     }
 }
