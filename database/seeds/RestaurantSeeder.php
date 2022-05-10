@@ -35,7 +35,7 @@ class RestaurantSeeder extends Seeder
             $restaurant->save();
 
             // FOR MANY TO MANY
-            $restaurant->categories()->attach(Arr::random($categories_id, $faker->numberBetween(0, 3)));
+            $restaurant->categories()->attach(Arr::random($categories_id, $faker->numberBetween(1, 3)));
         }
     }
 }

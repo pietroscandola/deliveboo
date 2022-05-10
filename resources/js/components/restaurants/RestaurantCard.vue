@@ -23,7 +23,7 @@
 <script>
 export default {
   name: "RestaurantCard",
-  props: ["restaurant"],
+  props: ["restaurant", "checked_categories"],
 };
 </script>
 

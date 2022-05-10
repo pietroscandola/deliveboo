@@ -3363,7 +3363,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantCard",
-  props: ["restaurant"]
+  props: ["restaurant", "checked_categories"]
 });
 
 /***/ }),
@@ -3682,6 +3682,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3690,6 +3693,7 @@ __webpack_require__.r(__webpack_exports__);
     RestaurantCard: _RestaurantCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     Loader: _Loader_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
+  props: ["checked_categories"],
   data: function data() {
     return {
       isLoading: false,
@@ -66190,12 +66194,9 @@ var render = function () {
         0
       ),
       _vm._v(" "),
-      !_vm.checked_categories.length
-        ? _c("RestaurantList")
-        : _c("RestaurantByCategory", {
-            ref: "RestaurantByCategory",
-            attrs: { checked_categories: _vm.checked_categories },
-          }),
+      _c("RestaurantList", {
+        attrs: { checked_categories: _vm.checked_categories },
+      }),
     ],
     1
   )
@@ -67791,7 +67792,14 @@ var render = function () {
                   key: restaurant.id,
                   staticClass: "col-sm-6 col-md-4 col-xl-3",
                 },
-                [_c("RestaurantCard", { attrs: { restaurant: restaurant } })],
+                [
+                  _c("RestaurantCard", {
+                    attrs: {
+                      checked_categories: _vm.checked_categories,
+                      restaurant: restaurant,
+                    },
+                  }),
+                ],
                 1
               )
             }),

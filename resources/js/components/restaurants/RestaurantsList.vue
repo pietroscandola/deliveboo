@@ -8,7 +8,10 @@
         :key="restaurant.id"
         class="col-sm-6 col-md-4 col-xl-3"
       >
-        <RestaurantCard :restaurant="restaurant" />
+        <RestaurantCard
+          :checked_categories="checked_categories"
+          :restaurant="restaurant"
+        />
       </div>
     </div>
   </div>
@@ -24,6 +27,7 @@ export default {
     RestaurantCard,
     Loader,
   },
+  props: ["checked_categories"],
   data() {
     return {
       isLoading: false,

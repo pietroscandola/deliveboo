@@ -24,12 +24,12 @@
       </li>
     </ul>
 
-    <RestaurantList v-if="!checked_categories.length" />
-    <RestaurantByCategory
+    <RestaurantList :checked_categories="checked_categories" />
+    <!-- <RestaurantByCategory
       ref="RestaurantByCategory"
       v-else
       :checked_categories="checked_categories"
-    />
+    /> -->
   </section>
 </template>
 
