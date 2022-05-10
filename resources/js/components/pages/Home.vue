@@ -68,7 +68,6 @@ export default {
         .then((res) => {
           const categories = res.data;
           this.categories = categories;
-          console.log(categories);
         })
         .catch((err) => {
           console.error(err);
@@ -92,7 +91,6 @@ export default {
   },
   computed: {
     filteredCategory() {
-      console.log(this.checked_categories);
       const filteredRestaurants = this.checked_categories
         .map((category) => this.categories[category]?.restaurants || [])
         .flat();
@@ -102,7 +100,6 @@ export default {
       }
 
       const ids = filteredRestaurants.map((restaurant) => restaurant.id);
-      console.log(ids);
 
       return filteredRestaurants.filter(
         ({ id }, index) => !ids.includes(id, index + 1)
