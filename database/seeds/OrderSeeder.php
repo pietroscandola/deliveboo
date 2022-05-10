@@ -20,7 +20,7 @@ class OrderSeeder extends Seeder
     {
         $restaurants_ids = Restaurant::pluck('id')->toArray();
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 50; $i++) {
             $restaurant_id = Arr::random($restaurants_ids);
 
             $order = new Order();

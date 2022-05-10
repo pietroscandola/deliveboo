@@ -13,7 +13,7 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        $names = ['Ristorante', 'Paninoteca', 'Pizzeria', 'Fast Food', 'Enoteca', 'Giapponese'];
+        $names = ['Ristorante', 'Paninoteca', 'Pizzeria', 'Fast Food', 'Enoteca', 'Giapponese', 'Gelateria', 'Indiano', 'Italiano', 'Bar', 'Pasticceria', 'Poke', 'Cinese'];
 
 
         foreach ($names as $name) {
