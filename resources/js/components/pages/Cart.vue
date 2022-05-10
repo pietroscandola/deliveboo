@@ -29,10 +29,15 @@
       <!-- Pagamento e carrello -->
       <div class="row d-flex flex-lg-row flex-column-reverse">
          <div class="col-12 col-lg-8">
-            <Payment class="mt-3" :tot="getTotal().toFixed(2)" :cart="cart" />
+            <Payment
+               class="mt-3"
+               :tot="getTotal().toFixed(2)"
+               :cart="cart"
+               @emptyCart="emptyCart"
+            />
          </div>
-         <div class="col-12 col-lg-4">
-            <RestaurantCart class="mb-3" :cart="cart" />
+         <div v-if="isPaid" class="col-12 col-lg-4">
+            <RestaurantCart v-if="isPaid" class="mb-3" :cart="cart" />
          </div>
       </div>
    </section>
@@ -50,6 +55,7 @@ export default {
    data() {
       return {
          cart: JSON.parse(sessionStorage.cart),
+         isPaid: true,
       };
    },
    methods: {
@@ -66,7 +72,13 @@ export default {
 
          return total;
       },
+      emptyCart(newCart) {
+         this.cart = newCart;
+         // sessionStorage.clear(); // Se decommentato, la sessionStorage viene svuotata ma il componente RestaurantCart rimane visibile
+         this.isPaid = false;
+      },
    },
+   computed: {},
 };
 </script>
 
