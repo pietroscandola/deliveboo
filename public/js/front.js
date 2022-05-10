@@ -2360,8 +2360,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -66292,24 +66290,16 @@ var render = function () {
         [
           _vm.isLoading ? _c("Loader") : _vm._e(),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "col-12 d-flex align-items-center" },
-            _vm._l(_vm.arraySenzaDuplicati, function (restaurant) {
-              return _c(
-                "div",
-                {
-                  key: restaurant.id,
-                  staticClass: "col-sm-6 col-md-4 col-xl-3",
-                },
-                [_c("RestaurantCard", { attrs: { restaurant: restaurant } })],
-                1
-              )
-            }),
-            0
-          ),
+          _vm._l(_vm.arraySenzaDuplicati, function (restaurant) {
+            return _c(
+              "div",
+              { key: restaurant.id, staticClass: "col-sm-6 col-md-4 col-xl-3" },
+              [_c("RestaurantCard", { attrs: { restaurant: restaurant } })],
+              1
+            )
+          }),
         ],
-        1
+        2
       ),
     ]
   )
