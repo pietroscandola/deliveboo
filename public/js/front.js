@@ -2239,6 +2239,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -3697,7 +3700,9 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       isLoading: false,
-      restaurants: []
+      filteredRestaurants: [],
+      filteredCategories: [],
+      categoriesIDs: []
     };
   },
   methods: {
@@ -3706,8 +3711,36 @@ __webpack_require__.r(__webpack_exports__);
 
       this.isLoading = true;
       axios.get("http://localhost:8000/api/restaurants").then(function (res) {
-        var restaurants = res.data;
-        _this.restaurants = restaurants;
+        console.log("if");
+        _this.filteredCategories = [];
+
+        if (!_this.checked_categories.length) {
+          var restaurants = res.data;
+          _this.filteredRestaurants = restaurants;
+        } else {
+          console.log("else");
+          _this.filteredRestaurants = [];
+          res.data.forEach(function (restaurant) {
+            restaurant["categories"].forEach(function (category) {
+              _this.categoriesIDs = [];
+
+              _this.categoriesIDs.push(category.id);
+
+              console.log("categories nel foreach", _this.categoriesIDs);
+
+              var restaurantFilterCondition = function restaurantFilterCondition(currentValue) {
+                return _this.categoriesIDs.includes(currentValue);
+              };
+
+              console.log(_this.checked_categories.every(restaurantFilterCondition));
+            }); // console.log("restaurant", restaurant);
+            // const restaurantFilterCondition = (currentValue) =>
+            //   restaurant["categories"].includes(currentValue);
+            // console.log(
+            //   this.checked_categories.every(restaurantFilterCondition)
+            // );
+          });
+        }
       })["catch"](function (err) {
         console.error(err);
       }).then(function () {
@@ -66138,7 +66171,7 @@ var render = function () {
               staticClass: "d-inline mr-3",
               on: {
                 click: function ($event) {
-                  return _vm.$refs.RestaurantByCategory.getCategoryInHome()
+                  return _vm.$refs.RestaurantList.getRestaurants()
                 },
               },
             },
@@ -66195,6 +66228,7 @@ var render = function () {
       ),
       _vm._v(" "),
       _c("RestaurantList", {
+        ref: "RestaurantList",
         attrs: { checked_categories: _vm.checked_categories },
       }),
     ],
@@ -67785,7 +67819,7 @@ var render = function () {
         : _c(
             "div",
             { staticClass: "row" },
-            _vm._l(_vm.restaurants, function (restaurant) {
+            _vm._l(_vm.filteredRestaurants, function (restaurant) {
               return _c(
                 "div",
                 {

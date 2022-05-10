@@ -9,7 +9,7 @@
         class="d-inline mr-3"
         v-for="category in categories"
         :key="category.id"
-        @click="$refs.RestaurantByCategory.getCategoryInHome()"
+        @click="$refs.RestaurantList.getRestaurants()"
       >
         <label v-bind:for="category.id" role="button">
           <input
@@ -24,7 +24,10 @@
       </li>
     </ul>
 
-    <RestaurantList :checked_categories="checked_categories" />
+    <RestaurantList
+      ref="RestaurantList"
+      :checked_categories="checked_categories"
+    />
     <!-- <RestaurantByCategory
       ref="RestaurantByCategory"
       v-else

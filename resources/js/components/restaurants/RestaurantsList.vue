@@ -4,7 +4,7 @@
     <Loader v-if="isLoading" />
     <div v-else class="row">
       <div
-        v-for="restaurant in restaurants"
+        v-for="restaurant in filteredRestaurants"
         :key="restaurant.id"
         class="col-sm-6 col-md-4 col-xl-3"
       >
@@ -31,7 +31,9 @@ export default {
   data() {
     return {
       isLoading: false,
-      restaurants: [],
+      filteredRestaurants: [],
+      filteredCategories: [],
+      categoriesIDs: [],
     };
   },
   methods: {
@@ -40,8 +42,36 @@ export default {
       axios
         .get("http://localhost:8000/api/restaurants")
         .then((res) => {
-          const restaurants = res.data;
-          this.restaurants = restaurants;
+          console.log("if");
+          this.filteredCategories = [];
+
+          if (!this.checked_categories.length) {
+            const restaurants = res.data;
+            this.filteredRestaurants = restaurants;
+          } else {
+            console.log("else");
+            this.filteredRestaurants = [];
+            res.data.forEach((restaurant) => {
+              restaurant["categories"].forEach((category) => {
+                this.categoriesIDs = [];
+                this.categoriesIDs.push(category.id);
+                console.log("categories nel foreach", this.categoriesIDs);
+
+                const restaurantFilterCondition = (currentValue) =>
+                  this.categoriesIDs.includes(currentValue);
+                console.log(
+                  this.checked_categories.every(restaurantFilterCondition)
+                );
+              });
+
+              // console.log("restaurant", restaurant);
+              // const restaurantFilterCondition = (currentValue) =>
+              //   restaurant["categories"].includes(currentValue);
+              // console.log(
+              //   this.checked_categories.every(restaurantFilterCondition)
+              // );
+            });
+          }
         })
         .catch((err) => {
           console.error(err);
