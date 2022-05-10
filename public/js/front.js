@@ -3223,7 +3223,7 @@ __webpack_require__.r(__webpack_exports__);
     braintree_web__WEBPACK_IMPORTED_MODULE_0___default.a.client.create({
       // Bisogna inserire la key di braintree
       // Aggiungere MIX_VUE_APP_BT_SDK con la propria key
-      authorization: "sandbox_hccvgrtg_8skhy3btn37pxc6y"
+      authorization: "sandbox_4xx2ctm8_gmbpfv6ry93hzk98"
     }).then(function (clientInstance) {
       var options = {
         client: clientInstance,
@@ -3713,6 +3713,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("http://localhost:8000/api/restaurants").then(function (res) {
         console.log("if");
         _this.filteredCategories = [];
+        _this.categoriesIDs = [];
 
         if (!_this.checked_categories.length) {
           var restaurants = res.data;
@@ -3722,18 +3723,20 @@ __webpack_require__.r(__webpack_exports__);
           _this.filteredRestaurants = [];
           res.data.forEach(function (restaurant) {
             restaurant["categories"].forEach(function (category) {
-              _this.categoriesIDs = [];
-
               _this.categoriesIDs.push(category.id);
-
-              console.log("categories nel foreach", _this.categoriesIDs);
 
               var restaurantFilterCondition = function restaurantFilterCondition(currentValue) {
                 return _this.categoriesIDs.includes(currentValue);
               };
 
               console.log(_this.checked_categories.every(restaurantFilterCondition));
-            }); // console.log("restaurant", restaurant);
+
+              if (_this.checked_categories.every(restaurantFilterCondition)) {
+                _this.filteredRestaurants.push(restaurant);
+              }
+            });
+            console.log("categories nel foreach", _this.categoriesIDs);
+            _this.categoriesIDs = []; // console.log("restaurant", restaurant);
             // const restaurantFilterCondition = (currentValue) =>
             //   restaurant["categories"].includes(currentValue);
             // console.log(
@@ -84379,7 +84382,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Lavavel\deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ }),

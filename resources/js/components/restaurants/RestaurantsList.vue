@@ -44,6 +44,7 @@ export default {
         .then((res) => {
           console.log("if");
           this.filteredCategories = [];
+          this.categoriesIDs = [];
 
           if (!this.checked_categories.length) {
             const restaurants = res.data;
@@ -53,16 +54,19 @@ export default {
             this.filteredRestaurants = [];
             res.data.forEach((restaurant) => {
               restaurant["categories"].forEach((category) => {
-                this.categoriesIDs = [];
                 this.categoriesIDs.push(category.id);
-                console.log("categories nel foreach", this.categoriesIDs);
 
                 const restaurantFilterCondition = (currentValue) =>
                   this.categoriesIDs.includes(currentValue);
                 console.log(
                   this.checked_categories.every(restaurantFilterCondition)
                 );
+                if(this.checked_categories.every(restaurantFilterCondition)) {
+                  this.filteredRestaurants.push(restaurant);
+                }
               });
+              console.log("categories nel foreach", this.categoriesIDs);
+              this.categoriesIDs = []
 
               // console.log("restaurant", restaurant);
               // const restaurantFilterCondition = (currentValue) =>
