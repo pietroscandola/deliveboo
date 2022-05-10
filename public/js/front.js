@@ -2197,8 +2197,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     },
     emptyCart: function emptyCart(newCart) {
       this.cart = newCart;
-      this.isPaid = false;
-      sessionStorage.clear(); // Se decommentato, la sessionStorage viene svuotata ma il componente RestaurantCart rimane visibile
+      setTimeout(function () {
+        sessionStorage.clear();
+      }, 750);
     }
   },
   computed: {}
@@ -3029,10 +3030,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var braintree_web__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! braintree-web */ "./node_modules/braintree-web/dist/browser/index.js");
 /* harmony import */ var braintree_web__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(braintree_web__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Loader_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../Loader.vue */ "./resources/js/components/Loader.vue");
-//
-//
-//
-//
 //
 //
 //
@@ -66076,7 +66073,7 @@ var render = function () {
                 "\n            col-12 col-md-5\n            d-flex\n            justify-content-center justify-content-md-end\n            mt-md-0 mt-1\n         ",
             },
             [
-              _vm.isPaid
+              _vm.cart.length
                 ? _c(
                     "a",
                     {
@@ -66124,21 +66121,19 @@ var render = function () {
           1
         ),
         _vm._v(" "),
-        _vm.isPaid
-          ? _c(
-              "div",
-              { staticClass: "col-12 col-lg-4" },
-              [
-                _vm.isPaid
-                  ? _c("RestaurantCart", {
-                      staticClass: "mb-3",
-                      attrs: { cart: _vm.cart },
-                    })
-                  : _vm._e(),
-              ],
-              1
-            )
-          : _vm._e(),
+        _c(
+          "div",
+          { staticClass: "col-12 col-lg-4" },
+          [
+            _vm.cart.length
+              ? _c("RestaurantCart", {
+                  staticClass: "mb-3",
+                  attrs: { cart: _vm.cart },
+                })
+              : _vm._e(),
+          ],
+          1
+        ),
       ]),
     ]
   )
@@ -67211,19 +67206,7 @@ var render = function () {
               _vm._v("Hai pagato un totale di " + _vm._s(_vm.amount) + "€"),
             ]),
             _vm._v(" "),
-            _vm.cart
-              ? _c(
-                  "ul",
-                  _vm._l(_vm.cart, function (prod) {
-                    return _c("li", { key: prod.id }, [
-                      _vm._v(
-                        "\n            " + _vm._s(prod.name) + "\n         "
-                      ),
-                    ])
-                  }),
-                  0
-                )
-              : _vm._e(),
+            _c("h3", [_vm._v("Il tuo ordine arriverà a breve")]),
           ])
         : _vm._e(),
     ],

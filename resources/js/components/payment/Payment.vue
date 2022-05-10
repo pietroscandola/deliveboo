@@ -135,11 +135,7 @@
       </div>
       <div v-if="isPaid">
          <h2>Hai pagato un totale di {{ amount }}€</h2>
-         <ul v-if="cart">
-            <li v-for="prod in cart" :key="prod.id">
-               {{ prod.name }}
-            </li>
-         </ul>
+         <h3>Il tuo ordine arriverà a breve</h3>
       </div>
    </div>
 </template>

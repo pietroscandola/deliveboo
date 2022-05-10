@@ -21,7 +21,7 @@
             "
          >
             <a
-               v-if="isPaid"
+               v-if="cart.length"
                class="go-back-link"
                role="button"
                @click="$router.go(-1)"
@@ -47,8 +47,8 @@
                @emptyCart="emptyCart"
             />
          </div>
-         <div v-if="isPaid" class="col-12 col-lg-4">
-            <RestaurantCart v-if="isPaid" class="mb-3" :cart="cart" />
+         <div class="col-12 col-lg-4">
+            <RestaurantCart v-if="cart.length" class="mb-3" :cart="cart" />
          </div>
       </div>
    </section>
@@ -85,8 +85,9 @@ export default {
       },
       emptyCart(newCart) {
          this.cart = newCart;
-         this.isPaid = false;
-         sessionStorage.clear(); // Se decommentato, la sessionStorage viene svuotata ma il componente RestaurantCart rimane visibile
+         setTimeout(() => {
+            sessionStorage.clear();
+         }, 750);
       },
    },
    computed: {},
