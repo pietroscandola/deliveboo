@@ -25,7 +25,7 @@ class ProductSeeder extends Seeder
         $restaurants_ids = Restaurant::pluck('id')->toArray();
         $categories = ['Primi Piatti', 'Secondi Piatti', 'Bevande', 'Pizze', 'Sushi'];
         $ingredients = 'Pomodoro, mozzarella, pomodoro a fette, mozzarella a fette, olio e origano';
-        for ($i = 0; $i < 30; $i++) {
+        for ($i = 0; $i < 120; $i++) {
             $product = new Product();
             $product->restaurant_id = Arr::random($restaurants_ids);
             $product->name = $foodfaker->foodName();
