@@ -37,6 +37,25 @@
             ></router-link>
          </div>
       </div>
+      <div
+         class="
+            col-12 col-md-5
+            d-flex
+            justify-content-center justify-content-md-end
+            mt-md-0 mt-1
+         "
+      >
+         <a
+            v-if="isPaid"
+            class="go-back-link"
+            role="button"
+            @click="$router.go(-1)"
+            >Modifica il tuo Ordine <i class="fa-solid fa-arrow-rotate-left"></i
+         ></a>
+         <a v-else class="go-back-link" role="button" @click="$router.go(-1)"
+            >Torna alla Home <i class="fa-solid fa-arrow-rotate-left"></i
+         ></a>
+      </div>
       <!-- Pagamento e carrello -->
       <div class="row d-flex flex-lg-row flex-column-reverse">
          <div class="col-12 col-lg-8">

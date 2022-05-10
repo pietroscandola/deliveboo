@@ -24,6 +24,7 @@ export default {
     RestaurantCard,
     Loader,
   },
+  props: ["checked_categories"],
   data() {
     return {
       isLoading: false,
@@ -47,9 +48,26 @@ export default {
           console.log("OK API");
         });
     },
+    getFilteredRestaurants() {
+      setTimeout(() => {
+        console.log("restaurants", this.restaurants);
+        console.log("restaurants categories", this.restaurants["categories"]);
+      }, 5000);
+      // const category_checker = this.checked_categories.every(
+      //   (checked_category) => {
+      //     return this.restaurants["categories"].includes(checked_category);
+      //   }
+      // );
+      // if (category_checker) {
+      //   console.log("true");
+      // } else {
+      //   console.log("false");
+      // }
+    },
   },
   mounted() {
     this.getRestaurants();
+    this.getFilteredRestaurants();
   },
 };
 </script>

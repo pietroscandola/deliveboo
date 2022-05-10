@@ -2285,7 +2285,6 @@ __webpack_require__.r(__webpack_exports__);
       axios.get("http://localhost:8000/api/categories").then(function (res) {
         var categories = res.data;
         _this.categories = categories;
-        console.log(categories);
       })["catch"](function (err) {
         console.error(err);
       }).then(function () {
@@ -2309,7 +2308,6 @@ __webpack_require__.r(__webpack_exports__);
     filteredCategory: function filteredCategory() {
       var _this2 = this;
 
-      console.log(this.checked_categories);
       var filteredRestaurants = this.checked_categories.map(function (category) {
         var _this2$categories$cat;
 
@@ -2323,7 +2321,6 @@ __webpack_require__.r(__webpack_exports__);
       var ids = filteredRestaurants.map(function (restaurant) {
         return restaurant.id;
       });
-      console.log(ids);
       return filteredRestaurants.filter(function (_ref, index) {
         var id = _ref.id;
         return !ids.includes(id, index + 1);
@@ -3257,7 +3254,7 @@ __webpack_require__.r(__webpack_exports__);
     braintree_web__WEBPACK_IMPORTED_MODULE_0___default.a.client.create({
       // Bisogna inserire la key di braintree
       // Aggiungere MIX_VUE_APP_BT_SDK con la propria key
-      authorization: "sandbox_ktyfs7dd_h64c3rb9ttj7fvq9"
+      authorization: "sandbox_hccvgrtg_8skhy3btn37pxc6y"
     }).then(function (clientInstance) {
       var options = {
         client: clientInstance,
@@ -3727,6 +3724,7 @@ __webpack_require__.r(__webpack_exports__);
     RestaurantCard: _RestaurantCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
     Loader: _Loader_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
+  props: ["checked_categories"],
   data: function data() {
     return {
       isLoading: false,
@@ -3747,10 +3745,28 @@ __webpack_require__.r(__webpack_exports__);
         _this.isLoading = false;
         console.log("OK API");
       });
+    },
+    getFilteredRestaurants: function getFilteredRestaurants() {
+      var _this2 = this;
+
+      setTimeout(function () {
+        console.log("restaurants", _this2.restaurants);
+        console.log("restaurants categories", _this2.restaurants["categories"]);
+      }, 5000); // const category_checker = this.checked_categories.every(
+      //   (checked_category) => {
+      //     return this.restaurants["categories"].includes(checked_category);
+      //   }
+      // );
+      // if (category_checker) {
+      //   console.log("true");
+      // } else {
+      //   console.log("false");
+      // }
     }
   },
   mounted: function mounted() {
     this.getRestaurants();
+    this.getFilteredRestaurants();
   }
 });
 
@@ -66057,7 +66073,7 @@ var render = function () {
             "div",
             {
               staticClass:
-                "\n            col-12 col-md-5\n            d-flex\n            justify-content-center justify-content-md-end\n            mt-md-0 mt-1\n         ",
+                "\n        col-12 col-md-5\n        d-flex\n        justify-content-center justify-content-md-end\n        mt-md-0 mt-1\n      ",
             },
             [
               _vm.isPaid
@@ -66073,30 +66089,22 @@ var render = function () {
                       },
                     },
                     [
+HEAD
                       _vm._v("Modifica il tuo Ordine\n            "),
-                      _c("i", { staticClass: "fa-solid fa-arrow-rotate-left" }),
-                    ]
-                  )
-                : _c(
-                    "router-link",
-                    {
+
                       staticClass: "go-back-link",
-                      attrs: { role: "button", to: { name: "home" } },
-                    },
-                    [
-                      _vm._v("Torna alla home "),
                       _c("i", { staticClass: "fa-solid fa-arrow-rotate-left" }),
                     ]
                   ),
             ],
             1
-          ),
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "row d-flex flex-lg-row flex-column-reverse" }, [
-        _c(
-          "div",
+
+                    "a",
+                    {
+                      staticClass: "go-back-link",
+                      attrs: { role: "button" },
+                      on: {
+                        click: function ($event) {
           { staticClass: "col-12 col-lg-8" },
           [
             _c("Payment", {
@@ -66136,7 +66144,7 @@ var staticRenderFns = [
       "div",
       {
         staticClass:
-          "\n            col-12 col-md-7\n            d-flex\n            justify-content-center justify-content-md-start\n            text-center text-md-start\n         ",
+          "\n        col-12 col-md-7\n        d-flex\n        justify-content-center justify-content-md-start\n        text-center text-md-start\n      ",
       },
       [_c("h1", [_vm._v("Controllo il tuo Ordine")])]
     )
@@ -84423,7 +84431,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\Vasco Rossi\Documents\Boolean\Progetto\deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Lavavel\deliveboo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ }),
