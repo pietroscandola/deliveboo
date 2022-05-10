@@ -4,11 +4,14 @@
     <Loader v-if="isLoading" />
     <div v-else class="row">
       <div
-        v-for="restaurant in restaurants"
+        v-for="restaurant in filteredRestaurants"
         :key="restaurant.id"
         class="col-sm-6 col-md-4 col-xl-3"
       >
-        <RestaurantCard :restaurant="restaurant" />
+        <RestaurantCard
+          :checked_categories="checked_categories"
+          :restaurant="restaurant"
+        />
       </div>
     </div>
   </div>
@@ -28,7 +31,9 @@ export default {
   data() {
     return {
       isLoading: false,
-      restaurants: [],
+      filteredRestaurants: [],
+      filteredCategories: [],
+      categoriesIDs: [],
     };
   },
   methods: {
@@ -37,8 +42,40 @@ export default {
       axios
         .get("http://localhost:8000/api/restaurants")
         .then((res) => {
-          const restaurants = res.data;
-          this.restaurants = restaurants;
+          console.log("if");
+          this.filteredCategories = [];
+          this.categoriesIDs = [];
+
+          if (!this.checked_categories.length) {
+            const restaurants = res.data;
+            this.filteredRestaurants = restaurants;
+          } else {
+            console.log("else");
+            this.filteredRestaurants = [];
+            res.data.forEach((restaurant) => {
+              restaurant["categories"].forEach((category) => {
+                this.categoriesIDs.push(category.id);
+
+                const restaurantFilterCondition = (currentValue) =>
+                  this.categoriesIDs.includes(currentValue);
+                console.log(
+                  this.checked_categories.every(restaurantFilterCondition)
+                );
+                if(this.checked_categories.every(restaurantFilterCondition) && !this.filteredRestaurants.includes(restaurant)) {
+                  this.filteredRestaurants.push(restaurant);
+                }
+              });
+              console.log("categories nel foreach", this.categoriesIDs);
+              this.categoriesIDs = []
+
+              // console.log("restaurant", restaurant);
+              // const restaurantFilterCondition = (currentValue) =>
+              //   restaurant["categories"].includes(currentValue);
+              // console.log(
+              //   this.checked_categories.every(restaurantFilterCondition)
+              // );
+            });
+          }
         })
         .catch((err) => {
           console.error(err);

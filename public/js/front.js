@@ -2257,6 +2257,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -3249,7 +3252,7 @@ __webpack_require__.r(__webpack_exports__);
     braintree_web__WEBPACK_IMPORTED_MODULE_0___default.a.client.create({
       // Bisogna inserire la key di braintree
       // Aggiungere MIX_VUE_APP_BT_SDK con la propria key
-      authorization: "sandbox_ktyfs7dd_h64c3rb9ttj7fvq9"
+      authorization: "sandbox_4xx2ctm8_gmbpfv6ry93hzk98"
     }).then(function (clientInstance) {
       var options = {
         client: clientInstance,
@@ -3392,7 +3395,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantCard",
-  props: ["restaurant"]
+  props: ["restaurant", "checked_categories"]
 });
 
 /***/ }),
@@ -3711,6 +3714,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3723,7 +3729,9 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       isLoading: false,
-      restaurants: []
+      filteredRestaurants: [],
+      filteredCategories: [],
+      categoriesIDs: []
     };
   },
   methods: {
@@ -3732,8 +3740,39 @@ __webpack_require__.r(__webpack_exports__);
 
       this.isLoading = true;
       axios.get("http://localhost:8000/api/restaurants").then(function (res) {
-        var restaurants = res.data;
-        _this.restaurants = restaurants;
+        console.log("if");
+        _this.filteredCategories = [];
+        _this.categoriesIDs = [];
+
+        if (!_this.checked_categories.length) {
+          var restaurants = res.data;
+          _this.filteredRestaurants = restaurants;
+        } else {
+          console.log("else");
+          _this.filteredRestaurants = [];
+          res.data.forEach(function (restaurant) {
+            restaurant["categories"].forEach(function (category) {
+              _this.categoriesIDs.push(category.id);
+
+              var restaurantFilterCondition = function restaurantFilterCondition(currentValue) {
+                return _this.categoriesIDs.includes(currentValue);
+              };
+
+              console.log(_this.checked_categories.every(restaurantFilterCondition));
+
+              if (_this.checked_categories.every(restaurantFilterCondition) && !_this.filteredRestaurants.includes(restaurant)) {
+                _this.filteredRestaurants.push(restaurant);
+              }
+            });
+            console.log("categories nel foreach", _this.categoriesIDs);
+            _this.categoriesIDs = []; // console.log("restaurant", restaurant);
+            // const restaurantFilterCondition = (currentValue) =>
+            //   restaurant["categories"].includes(currentValue);
+            // console.log(
+            //   this.checked_categories.every(restaurantFilterCondition)
+            // );
+          });
+        }
       })["catch"](function (err) {
         console.error(err);
       }).then(function () {
@@ -66192,7 +66231,7 @@ var render = function () {
               staticClass: "d-inline mr-3",
               on: {
                 click: function ($event) {
-                  return _vm.$refs.RestaurantByCategory.getCategoryInHome()
+                  return _vm.$refs.RestaurantList.getRestaurants()
                 },
               },
             },
@@ -66248,12 +66287,10 @@ var render = function () {
         0
       ),
       _vm._v(" "),
-      !_vm.checked_categories.length
-        ? _c("RestaurantList")
-        : _c("RestaurantByCategory", {
-            ref: "RestaurantByCategory",
-            attrs: { checked_categories: _vm.checked_categories },
-          }),
+      _c("RestaurantList", {
+        ref: "RestaurantList",
+        attrs: { checked_categories: _vm.checked_categories },
+      }),
     ],
     1
   )
@@ -67859,14 +67896,21 @@ var render = function () {
         : _c(
             "div",
             { staticClass: "row" },
-            _vm._l(_vm.restaurants, function (restaurant) {
+            _vm._l(_vm.filteredRestaurants, function (restaurant) {
               return _c(
                 "div",
                 {
                   key: restaurant.id,
                   staticClass: "col-sm-6 col-md-4 col-xl-3",
                 },
-                [_c("RestaurantCard", { attrs: { restaurant: restaurant } })],
+                [
+                  _c("RestaurantCard", {
+                    attrs: {
+                      checked_categories: _vm.checked_categories,
+                      restaurant: restaurant,
+                    },
+                  }),
+                ],
                 1
               )
             }),
@@ -84411,11 +84455,6 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(/*! C:\Users\Vasco Rossi\Documents\Boolean\Progetto\deliveboo\resources\js\front.js */"./resources/js/front.js");
-
-
-/***/ }),
 
 /***/ 2:
 /*!********************************!*\
