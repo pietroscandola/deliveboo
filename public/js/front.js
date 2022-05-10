@@ -3393,6 +3393,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantCard",
   props: ["restaurant", "checked_categories"]
@@ -31652,7 +31659,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "a[data-v-5ebd141e] {\n  color: black;\n}\na[data-v-5ebd141e]:hover {\n  text-decoration: none;\n  color: black;\n}\na .restaurant-card[data-v-5ebd141e] {\n  height: 300px;\n  margin-bottom: 15px;\n  border: 1px solid #ededed;\n  border-radius: 5px;\n}\na .restaurant-card .card-top[data-v-5ebd141e] {\n  height: 55%;\n  background-image: url(\"https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg\");\n  background-position: center;\n  background-size: cover;\n  border-radius: 5px 5px 0 0;\n}\na .restaurant-card .card-bottom[data-v-5ebd141e] {\n  background-color: #fff;\n  height: 45%;\n}\na .restaurant-card .card-bottom h5[data-v-5ebd141e] {\n  font-weight: 700;\n  font-size: 16px;\n}\na .restaurant-card .card-bottom p[data-v-5ebd141e] {\n  font-size: 14px;\n  line-height: 15px;\n  color: #585c5c;\n}\na .restaurant-card .card-bottom .category-badge-container[data-v-5ebd141e] {\n  position: absolute;\n  top: 15px;\n  right: 30px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  align-items: flex-end;\n}\na .restaurant-card .card-bottom .category-badge-container .category-badge[data-v-5ebd141e] {\n  padding: 1px 3px;\n  font-weight: bolder;\n  background-image: linear-gradient(90deg, #d73c31, #a62f26);\n  color: white;\n  margin-bottom: 3px;\n  box-shadow: 0 0 6px rgba(230, 230, 230, 0.5);\n}", ""]);
+exports.push([module.i, "a[data-v-5ebd141e] {\n  color: black;\n}\na[data-v-5ebd141e]:hover {\n  text-decoration: none;\n  color: black;\n}\na .restaurant-card[data-v-5ebd141e] {\n  height: 300px;\n  margin-bottom: 15px;\n  border: 1px solid #ededed;\n  border-radius: 5px;\n}\na .restaurant-card .card-top[data-v-5ebd141e] {\n  height: 55%;\n  /* background-image: url(\"https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg\"); */\n  background-position: center;\n  background-size: cover;\n  border-radius: 5px 5px 0 0;\n}\na .restaurant-card .card-bottom[data-v-5ebd141e] {\n  background-color: #fff;\n  height: 45%;\n}\na .restaurant-card .card-bottom h5[data-v-5ebd141e] {\n  font-weight: 700;\n  font-size: 16px;\n}\na .restaurant-card .card-bottom p[data-v-5ebd141e] {\n  font-size: 14px;\n  line-height: 15px;\n  color: #585c5c;\n}\na .restaurant-card .card-bottom .category-badge-container[data-v-5ebd141e] {\n  position: absolute;\n  top: 15px;\n  right: 30px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  align-items: flex-end;\n}\na .restaurant-card .card-bottom .category-badge-container .category-badge[data-v-5ebd141e] {\n  padding: 1px 3px;\n  font-weight: bolder;\n  background-image: linear-gradient(90deg, #d73c31, #a62f26);\n  color: white;\n  margin-bottom: 3px;\n  box-shadow: 0 0 6px rgba(230, 230, 230, 0.5);\n}", ""]);
 
 // exports
 
@@ -67421,7 +67428,13 @@ var render = function () {
     },
     [
       _c("div", { staticClass: "restaurant-card" }, [
-        _c("div", { staticClass: "card-top" }),
+        _c("div", { staticClass: "card-top" }, [
+          _c("img", {
+            staticClass: "img-fluid",
+            staticStyle: { "object-fit": "cover" },
+            attrs: { src: _vm.restaurant.image, alt: _vm.restaurant.name },
+          }),
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-bottom p-3" }, [
           _c("h5", [_vm._v(_vm._s(_vm.restaurant.name))]),

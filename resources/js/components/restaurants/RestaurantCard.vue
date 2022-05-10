@@ -3,7 +3,14 @@
     :to="{ name: 'restaurant-details', params: { id: restaurant.id } }"
   >
     <div class="restaurant-card">
-      <div class="card-top"></div>
+      <div class="card-top">
+        <img
+          class="img-fluid"
+          style="object-fit: cover"
+          :src="restaurant.image"
+          :alt="restaurant.name"
+        />
+      </div>
       <div class="card-bottom p-3">
         <h5>{{ restaurant.name }}</h5>
         <p>{{ restaurant.description.substring(0, 100) + "..." }}</p>
@@ -41,7 +48,7 @@ a {
     border-radius: 5px;
     .card-top {
       height: 55%;
-      background-image: url("https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg");
+      /* background-image: url("https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg"); */
       background-position: center;
       background-size: cover;
       border-radius: 5px 5px 0 0;
