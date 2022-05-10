@@ -61,7 +61,7 @@ export default {
                 console.log(
                   this.checked_categories.every(restaurantFilterCondition)
                 );
-                if(this.checked_categories.every(restaurantFilterCondition)) {
+                if(this.checked_categories.every(restaurantFilterCondition) && !this.filteredRestaurants.includes(restaurant)) {
                   this.filteredRestaurants.push(restaurant);
                 }
               });

@@ -3731,7 +3731,7 @@ __webpack_require__.r(__webpack_exports__);
 
               console.log(_this.checked_categories.every(restaurantFilterCondition));
 
-              if (_this.checked_categories.every(restaurantFilterCondition)) {
+              if (_this.checked_categories.every(restaurantFilterCondition) && !_this.filteredRestaurants.includes(restaurant)) {
                 _this.filteredRestaurants.push(restaurant);
               }
             });
