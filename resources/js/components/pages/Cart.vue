@@ -3,6 +3,7 @@
     <!-- Titolo e back -->
     <div class="row d-flex justify-content-between align-items-center">
       <div
+        v-if="cart.length"
         class="
           col-12 col-md-7
           d-flex
@@ -27,13 +28,6 @@
           @click="$router.go(-1)"
           >Modifica il tuo Ordine <i class="fa-solid fa-arrow-rotate-left"></i
         ></a>
-        <router-link
-          v-else
-          class="go-back-link mt-3"
-          role="button"
-          :to="{ name: 'home' }"
-          >Torna alla home <i class="fa-solid fa-arrow-rotate-left"></i
-        ></router-link>
       </div>
     </div>
     <!-- Pagamento e carrello -->

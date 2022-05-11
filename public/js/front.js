@@ -2221,12 +2221,6 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -31720,7 +31714,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".go-home-button[data-v-0b6a60e2] {\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border-radius: 5px;\n  font-weight: 900;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.go-home-button[data-v-0b6a60e2]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.go-home-button[data-v-0b6a60e2]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}\n.ringraziamenti-container[data-v-0b6a60e2] {\n  -webkit-backdrop-filter: blur(32px);\n          backdrop-filter: blur(32px);\n  border-radius: 15px;\n  background-color: #fff;\n  padding: 30px 30px;\n  border: 1px solid #ededed;\n  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;\n}\n.ringraziamenti-container h2[data-v-0b6a60e2] {\n  text-align: center;\n  margin-bottom: 30px;\n}\n.ringraziamenti-container h3[data-v-0b6a60e2] {\n  text-align: center;\n  margin-top: 30px;\n}\n.payment[data-v-0b6a60e2] {\n  position: relative;\n}\n.payment .absolute[data-v-0b6a60e2] {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n}\n.payment-button[data-v-0b6a60e2] {\n  width: 100%;\n  border: none;\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border-radius: 5px;\n  font-weight: 900;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.payment-button[data-v-0b6a60e2]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.payment-button[data-v-0b6a60e2]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}", ""]);
+exports.push([module.i, ".go-home-button[data-v-0b6a60e2] {\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border-radius: 5px;\n  font-weight: 900;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.go-home-button[data-v-0b6a60e2]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.go-home-button[data-v-0b6a60e2]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}\n.ringraziamenti-container[data-v-0b6a60e2] {\n  -webkit-backdrop-filter: blur(32px);\n          backdrop-filter: blur(32px);\n  border-radius: 15px;\n  background-color: #fff;\n  padding: 30px 30px;\n  border: 1px solid #ededed;\n  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;\n}\n.ringraziamenti-container h2[data-v-0b6a60e2] {\n  text-align: center;\n  margin-bottom: 30px;\n}\n.ringraziamenti-container h3[data-v-0b6a60e2] {\n  text-align: center;\n}\n.payment[data-v-0b6a60e2] {\n  position: relative;\n}\n.payment .absolute[data-v-0b6a60e2] {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n}\n.payment-button[data-v-0b6a60e2] {\n  width: 100%;\n  border: none;\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border-radius: 5px;\n  font-weight: 900;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.payment-button[data-v-0b6a60e2]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.payment-button[data-v-0b6a60e2]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}", ""]);
 
 // exports
 
@@ -66328,7 +66322,16 @@ var render = function () {
           staticClass: "row d-flex justify-content-between align-items-center",
         },
         [
-          _vm._m(0),
+          _vm.cart.length
+            ? _c(
+                "div",
+                {
+                  staticClass:
+                    "\n        col-12 col-md-7\n        d-flex\n        justify-content-center justify-content-md-start\n        text-center text-md-start\n      ",
+                },
+                [_c("h1", [_vm._v("Controllo il tuo Ordine")])]
+              )
+            : _vm._e(),
           _vm._v(" "),
           _c(
             "div",
@@ -66354,19 +66357,8 @@ var render = function () {
                       _c("i", { staticClass: "fa-solid fa-arrow-rotate-left" }),
                     ]
                   )
-                : _c(
-                    "router-link",
-                    {
-                      staticClass: "go-back-link mt-3",
-                      attrs: { role: "button", to: { name: "home" } },
-                    },
-                    [
-                      _vm._v("Torna alla home "),
-                      _c("i", { staticClass: "fa-solid fa-arrow-rotate-left" }),
-                    ]
-                  ),
-            ],
-            1
+                : _vm._e(),
+            ]
           ),
         ]
       ),
@@ -66415,21 +66407,7 @@ var render = function () {
     ]
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "\n        col-12 col-md-7\n        d-flex\n        justify-content-center justify-content-md-start\n        text-center text-md-start\n      ",
-      },
-      [_c("h1", [_vm._v("Controllo il tuo Ordine")])]
-    )
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -67484,7 +67462,7 @@ var render = function () {
                 _c(
                   "router-link",
                   {
-                    staticClass: "go-home-button d-block",
+                    staticClass: "go-home-button d-block mt-3",
                     attrs: { to: { name: "home" } },
                   },
                   [_vm._v("Torna alla Home\n      ")]

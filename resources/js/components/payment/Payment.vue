@@ -136,7 +136,7 @@
         <Delivering />
       </div>
       <div class="w-100">
-        <router-link class="go-home-button d-block" :to="{ name: 'home' }"
+        <router-link class="go-home-button d-block mt-3" :to="{ name: 'home' }"
           >Torna alla Home
         </router-link>
       </div>
@@ -309,7 +309,6 @@ export default {
   }
   h3 {
     text-align: center;
-    margin-top: 30px;
   }
 }
 .payment {
