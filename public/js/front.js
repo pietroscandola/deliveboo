@@ -2977,6 +2977,52 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3163,6 +3209,9 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
         total += product.quantity;
       });
       return total;
+    },
+    ifLink: function ifLink() {
+      return this.restaurant.image.includes("http");
     }
   }
 });
@@ -3402,11 +3451,7 @@ __webpack_require__.r(__webpack_exports__);
     braintree_web__WEBPACK_IMPORTED_MODULE_0___default.a.client.create({
       // Bisogna inserire la key di braintree
       // Aggiungere MIX_VUE_APP_BT_SDK con la propria key
-<<<<<<< HEAD
-      authorization: "sandbox_hccvgrtg_8skhy3btn37pxc6y"
-=======
       authorization: "sandbox_ktyfs7dd_h64c3rb9ttj7fvq9"
->>>>>>> fix-show-of-images
     }).then(function (clientInstance) {
       var options = {
         client: clientInstance,
@@ -66891,12 +66936,40 @@ var render = function () {
                           attrs: { id: "restaurant-image" },
                         },
                         [
-                          _c("img", {
-                            attrs: {
-                              src: "https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg",
-                              alt: "",
-                            },
-                          }),
+                          _vm.ifLink
+                            ? _c("img", {
+                                staticClass: "img-fluid",
+                                staticStyle: {
+                                  "object-fit": "cover",
+                                  height: "100%",
+                                  width: "100%",
+                                },
+                                attrs: {
+                                  src: _vm.restaurant.image,
+                                  alt: _vm.restaurant.name,
+                                },
+                              })
+                            : !_vm.ifLink
+                            ? _c("img", {
+                                staticClass: "img-fluid",
+                                staticStyle: {
+                                  "object-fit": "cover",
+                                  height: "100%",
+                                  width: "100%",
+                                },
+                                attrs: {
+                                  src: "../storage/" + _vm.restaurant.image,
+                                  alt: _vm.restaurant.name,
+                                },
+                              })
+                            : _vm.restaurant.image
+                            ? _c("img", {
+                                attrs: {
+                                  src: "https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg",
+                                  alt: "Restaurant placeholder",
+                                },
+                              })
+                            : _vm._e(),
                         ]
                       ),
                       _vm._v(" "),
@@ -66905,7 +66978,7 @@ var render = function () {
                           "div",
                           {
                             staticClass:
-                              "d-flex justify-content-between align-items-center row",
+                              "\n                           d-flex\n                           justify-content-between\n                           align-items-center\n                           row\n                        ",
                             attrs: { id: "restaurant-name" },
                           },
                           [
@@ -66913,7 +66986,7 @@ var render = function () {
                               "div",
                               {
                                 staticClass:
-                                  "\n                    col-12 col-lg-9 col-md-11 col-sm-12\n                    text-center text-sm-left\n                  ",
+                                  "\n                              col-12 col-lg-9 col-md-11 col-sm-12\n                              text-center text-sm-left\n                           ",
                               },
                               [_c("h1", [_vm._v(_vm._s(_vm.restaurant.name))])]
                             ),
@@ -66922,7 +66995,7 @@ var render = function () {
                               "div",
                               {
                                 staticClass:
-                                  "\n                    col-3 col-lg-3 col-md-1 col-sm-0\n                    d-flex\n                    justify-content-start justify-content-md-end\n                    back-button-wrapper\n                  ",
+                                  "\n                              col-3 col-lg-3 col-md-1 col-sm-0\n                              d-flex\n                              justify-content-start justify-content-md-end\n                              back-button-wrapper\n                           ",
                               },
                               [
                                 _c(
@@ -66934,7 +67007,7 @@ var render = function () {
                                   [
                                     _c("i", {
                                       staticClass:
-                                        "\n                        fa-solid fa-chevron-left fa-lg\n                        mr-1\n                        d-none d-md-inline\n                      ",
+                                        "\n                                    fa-solid fa-chevron-left fa-lg\n                                    mr-1\n                                    d-none d-md-inline\n                                 ",
                                     }),
                                     _c(
                                       "span",
@@ -66956,7 +67029,7 @@ var render = function () {
                           "div",
                           {
                             staticClass:
-                              "\n                  categories-container\n                  mb-4 mb-sm-3\n                  text-center text-sm-left\n                ",
+                              "\n                           categories-container\n                           mb-4 mb-sm-3\n                           text-center text-sm-left\n                        ",
                           },
                           _vm._l(
                             _vm.restaurant.categories,
@@ -66969,9 +67042,9 @@ var render = function () {
                                 },
                                 [
                                   _vm._v(
-                                    "\n                  " +
+                                    "\n                           " +
                                       _vm._s(category.name) +
-                                      "\n                "
+                                      "\n                        "
                                   ),
                                 ]
                               )
@@ -66995,9 +67068,9 @@ var render = function () {
                               },
                               [
                                 _vm._v(
-                                  "\n                  " +
+                                  "\n                           " +
                                     _vm._s(_vm.restaurant.description) +
-                                    "\n                "
+                                    "\n                        "
                                 ),
                               ]
                             ),
@@ -67006,7 +67079,7 @@ var render = function () {
                               "div",
                               {
                                 staticClass:
-                                  "contacts-wrapper mt-3 text-center text-sm-left",
+                                  "\n                              contacts-wrapper\n                              mt-3\n                              text-center text-sm-left\n                           ",
                               },
                               [
                                 _c(
@@ -67065,7 +67138,7 @@ var render = function () {
                               },
                               [
                                 _vm._v(
-                                  "\n                Vuoi creare un nuovo carrello?\n              "
+                                  "\n                        Vuoi creare un nuovo carrello?\n                     "
                                 ),
                               ]
                             ),
@@ -67074,7 +67147,7 @@ var render = function () {
                               "svg",
                               {
                                 staticClass:
-                                  "\n                  close-button\n                  ccl-0f24ac4b87ce1f67\n                  ccl-abe5c41af1b9498e\n                  ccl-c738ab1fde928049\n                ",
+                                  "\n                           close-button\n                           ccl-0f24ac4b87ce1f67\n                           ccl-abe5c41af1b9498e\n                           ccl-c738ab1fde928049\n                        ",
                                 attrs: {
                                   "data-bs-dismiss": "modal",
                                   "xmlns:xlink": "http://www.w3.org/1999/xlink",
@@ -67100,7 +67173,7 @@ var render = function () {
                           _c("div", { staticClass: "modal-body" }, [
                             _c("h6", [
                               _vm._v(
-                                "\n                Nel carrello sono presenti prodotti di un altro ristorante,\n                sei sicuro di volerli eliminare e creare un nuovo carrello?\n              "
+                                "\n                        Nel carrello sono presenti prodotti di un altro\n                        ristorante, sei sicuro di volerli eliminare e creare\n                        un nuovo carrello?\n                     "
                               ),
                             ]),
                           ]),
@@ -67117,7 +67190,7 @@ var render = function () {
                               },
                               [
                                 _vm._v(
-                                  "\n                Annulla\n              "
+                                  "\n                        Annulla\n                     "
                                 ),
                               ]
                             ),
@@ -67143,7 +67216,7 @@ var render = function () {
                               },
                               [
                                 _vm._v(
-                                  "\n                Nuovo Carrello\n              "
+                                  "\n                        Nuovo Carrello\n                     "
                                 ),
                               ]
                             ),
@@ -67182,7 +67255,7 @@ var render = function () {
                           "div",
                           {
                             staticClass:
-                              "card-body justify-content-between d-flex flex-column",
+                              "\n                              card-body\n                              justify-content-between\n                              d-flex\n                              flex-column\n                           ",
                           },
                           [
                             _c("div", [
@@ -67191,7 +67264,11 @@ var render = function () {
                               ]),
                               _vm._v(" "),
                               _c("p", { staticClass: "card-text" }, [
-                                _vm._v(_vm._s(product.ingredients)),
+                                _vm._v(
+                                  "\n                                 " +
+                                    _vm._s(product.ingredients) +
+                                    "\n                              "
+                                ),
                               ]),
                               _vm._v(" "),
                               _c(
@@ -67214,14 +67291,14 @@ var render = function () {
                               "div",
                               {
                                 staticClass:
-                                  "d-flex justify-content-around align-items-center",
+                                  "\n                                 d-flex\n                                 justify-content-around\n                                 align-items-center\n                              ",
                               },
                               [
                                 _c(
                                   "svg",
                                   {
                                     staticClass:
-                                      "\n                        ccl-0f24ac4b87ce1f67\n                        ccl-ed34b65f78f16205\n                        ccl-c738ab1fde928049\n                      ",
+                                      "\n                                    ccl-0f24ac4b87ce1f67\n                                    ccl-ed34b65f78f16205\n                                    ccl-c738ab1fde928049\n                                 ",
                                     attrs: {
                                       "xmlns:xlink":
                                         "http://www.w3.org/1999/xlink",
@@ -67251,7 +67328,9 @@ var render = function () {
                                 _c("div", [
                                   _c("p", { staticClass: "m-0" }, [
                                     _vm._v(
-                                      _vm._s(_vm.getIncrement(product.id))
+                                      "\n                                    " +
+                                        _vm._s(_vm.getIncrement(product.id)) +
+                                        "\n                                 "
                                     ),
                                   ]),
                                 ]),
@@ -67262,7 +67341,7 @@ var render = function () {
                                       "svg",
                                       {
                                         staticClass:
-                                          "\n                        ccl-0f24ac4b87ce1f67\n                        ccl-ed34b65f78f16205\n                        ccl-c738ab1fde928049\n                      ",
+                                          "\n                                    ccl-0f24ac4b87ce1f67\n                                    ccl-ed34b65f78f16205\n                                    ccl-c738ab1fde928049\n                                 ",
                                         attrs: {
                                           "data-bs-toggle": "modal",
                                           "data-bs-target": "#modale",
@@ -67296,7 +67375,7 @@ var render = function () {
                                       "svg",
                                       {
                                         staticClass:
-                                          "\n                        ccl-0f24ac4b87ce1f67\n                        ccl-ed34b65f78f16205\n                        ccl-c738ab1fde928049\n                      ",
+                                          "\n                                    ccl-0f24ac4b87ce1f67\n                                    ccl-ed34b65f78f16205\n                                    ccl-c738ab1fde928049\n                                 ",
                                         attrs: {
                                           "xmlns:xlink":
                                             "http://www.w3.org/1999/xlink",
@@ -67357,7 +67436,7 @@ var render = function () {
                       "div",
                       {
                         staticClass:
-                          "\n              empty-cart\n              d-flex\n              justify-content-center\n              flex-column\n              align-items-center\n            ",
+                          "\n                     empty-cart\n                     d-flex\n                     justify-content-center\n                     flex-column\n                     align-items-center\n                  ",
                       },
                       [
                         _c(
@@ -85050,11 +85129,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-module.exports = __webpack_require__(/*! C:\Lavavel\deliveboo\resources\js\front.js */"./resources/js/front.js");
-=======
 module.exports = __webpack_require__(/*! C:\Users\Vasco Rossi\Documents\Boolean\Progetto\deliveboo\resources\js\front.js */"./resources/js/front.js");
->>>>>>> fix-show-of-images
 
 
 /***/ }),
