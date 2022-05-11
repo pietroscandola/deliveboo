@@ -1,86 +1,85 @@
 <template>
   <div class="container">
-  <div class="car-wrapper">
-    <div class="car-wrapper_inner">
-
-      <div class="car_outter">  
-        <div class="car">
-          <div class="body">
-            <div></div>
-          </div>
-          <div class="decos">
-            <div class="line-bot"></div>
-            <div class="door">
-              <div class="handle"></div>
-              <div class="bottom"></div>
+    <div class="car-wrapper">
+      <div class="car-wrapper_inner">
+        <div class="car_outter">
+          <div class="car">
+            <div class="body">
+              <div></div>
             </div>
-            <div class="window"></div> 
-            <div class="light"></div>
-            <div class="light-front"></div>
-            <div class="antenna"></div>
-            <div class="ice-cream">
-              <div class="cone"></div>
-            </div>  
-          </div>
-          <div>
-            <div class="wheel"></div>
-            <div class="wheel"></div>
-          </div>    
-          <div class="wind">
-            <div class="p p1"></div>
-            <div class="p p2"></div>
-            <div class="p p3"></div>
-            <div class="p p4"></div>
-            <div class="p p5"></div>
+            <div class="decos">
+              <div class="line-bot"></div>
+              <div class="door">
+                <div class="handle"></div>
+                <div class="bottom"></div>
+              </div>
+              <div class="window"></div>
+              <div class="light"></div>
+              <div class="light-front"></div>
+              <div class="antenna"></div>
+              <div class="ice-cream">
+                <div class="cone"></div>
+              </div>
+            </div>
+            <div>
+              <div class="wheel"></div>
+              <div class="wheel"></div>
+            </div>
+            <div class="wind">
+              <div class="p p1"></div>
+              <div class="p p2"></div>
+              <div class="p p3"></div>
+              <div class="p p4"></div>
+              <div class="p p5"></div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
+    <div class="background-stuff">
+      <div class="bg"></div>
+      <div class="bg bg-2"></div>
+      <div class="bg bg-3"></div>
+      <div class="ground"></div>
+    </div>
   </div>
-
-  <div class="background-stuff">
-    <div class="bg"></div>
-    <div class="bg bg-2"></div>
-    <div class="bg bg-3"></div>
-    <div class="ground"></div>
-  </div>
-
-</div>
-
-
 </template>
 
 <script>
 export default {
- name: "Delivering"
-}
+  name: "Delivering",
+};
 </script>
 
 <style scoped lang="scss">
-
 $basepx: 16px;
 
 @function em($target, $context: $basepx) {
-   @if $target == 0 { @return 0 }
-   @return $target / $context + 0em;
+  @if $target == 0 {
+    @return 0;
+  }
+  @return $target / $context + 0em;
 }
 
 @mixin prefix($name, $value) {
-  @each $vendor in ('-webkit-', '-moz-', '-ms-', '-o-', '') {
+  @each $vendor in ("-webkit-", "-moz-", "-ms-", "-o-", "") {
     #{$vendor}#{$name}: #{$value};
   }
 }
 
-html, body{
+html,
+body {
   padding: 0;
   margin: 0;
   width: 100%;
   height: 100%;
 }
 
-.background-stuff{
+.background-stuff {
   position: absolute;
+  border-radius: 15px;
+  border: 1px solid #ededed;
   top: 0;
   left: 0;
   width: 100%;
@@ -88,7 +87,7 @@ html, body{
   overflow: hidden;
   background: #98c5e8;
   animation: wrapperIn 2s;
-  .bg{
+  .bg {
     position: absolute;
     top: 0%;
     left: -100%;
@@ -98,16 +97,16 @@ html, body{
     @include prefix(animation, bgIn 4s 0s linear infinite);
     @include prefix(transform, skewX(10deg));
     z-index: 1;
-  } 
-  .bg-2{
+  }
+  .bg-2 {
     background: #8faaff;
     @include prefix(animation, bgIn 4s 1s linear infinite);
-  } 
-  .bg-3{
+  }
+  .bg-3 {
     background: #5a73da;
     @include prefix(animation, bgIn 4s 2s linear infinite);
-  }  
-  .ground{
+  }
+  .ground {
     position: absolute;
     bottom: 0;
     margin-bottom: em(-30px, $basepx);
@@ -118,19 +117,19 @@ html, body{
   }
 }
 
-.container{
+.container {
   height: 100%;
   width: 100%;
   display: table;
   overflow: hidden;
-  .car-wrapper{
+  .car-wrapper {
     display: table-cell;
     vertical-align: middle;
     width: 100%;
   }
 }
 
-.car{
+.car {
   width: em(320px, $basepx);
   height: em(200px, $basepx);
   position: relative;
@@ -139,14 +138,14 @@ html, body{
   margin-right: auto;
   z-index: 4;
   @include prefix(animation, carMove 0.3s infinite);
-  .body{
+  .body {
     position: absolute;
     top: 0;
     left: em(14px, $basepx);
     width: em(230px, $basepx);
     height: em(160px, $basepx);
     background: #fff;
-    &:before{
+    &:before {
       content: "";
       position: absolute;
       left: em(-14px, $basepx);
@@ -156,14 +155,14 @@ html, body{
       height: em(12px, $basepx);
       background: #3190dd;
     }
-    div{
+    div {
       position: absolute;
       background: #fff;
       width: em(290px, $basepx);
       height: em(60px, $basepx);
       bottom: em(-10px, $basepx);
       border-radius: 0 0 10px 10px;
-      &:before{
+      &:before {
         content: "";
         background: #fff;
         position: absolute;
@@ -175,7 +174,7 @@ html, body{
         border-radius: 0 14px 0 0;
         @include prefix(transform, rotate(17deg));
       }
-      &:after{
+      &:after {
         content: "";
         background: #fff;
         position: absolute;
@@ -185,11 +184,11 @@ html, body{
         height: em(40px, $basepx);
         z-index: 1;
         border-radius: 10px 0 0 0;
-        @include prefix(transform, rotate(75deg));        
+        @include prefix(transform, rotate(75deg));
       }
     }
-   }
-  .wheel{
+  }
+  .wheel {
     position: absolute;
     width: em(60px, $basepx);
     height: em(60px, $basepx);
@@ -199,7 +198,7 @@ html, body{
     left: em(48px, $basepx);
     z-index: 14;
     @include prefix(animation, carMove 0.3s 0.2s);
-    &:before{
+    &:before {
       content: "";
       position: absolute;
       left: 50%;
@@ -210,11 +209,11 @@ html, body{
       border-radius: 50%;
       @include prefix(transform, translate(-50%, -50%));
     }
-    &:nth-of-type(2){
+    &:nth-of-type(2) {
       left: em(210px, $basepx);
     }
   }
-  .decos{
+  .decos {
     width: em(290px, $basepx);
     height: em(168px, $basepx);
     position: absolute;
@@ -222,14 +221,14 @@ html, body{
     top: 0;
     left: em(14px, $basepx);
   }
-  .line-bot{
+  .line-bot {
     position: absolute;
     bottom: em(9px, $basepx);
     height: 3px;
     width: 100%;
     background: #e1e8ef;
   }
-  .door{
+  .door {
     position: absolute;
     left: em(120px, $basepx);
     bottom: 0;
@@ -239,7 +238,7 @@ html, body{
     border: 3px solid #e1e8ef;
     border-bottom: 0;
     background: #fff;
-    &:after{
+    &:after {
       content: "";
       position: absolute;
       top: em(6px, $basepx);
@@ -249,7 +248,7 @@ html, body{
       border-radius: 4px;
       background: #5bc2ef;
     }
-    .handle{
+    .handle {
       position: absolute;
       right: em(10px, $basepx);
       top: em(70px, $basepx);
@@ -257,7 +256,7 @@ html, body{
       height: em(10px, $basepx);
       background: #e1e8ef;
       border-radius: 50%;
-      &:after{
+      &:after {
         content: "";
         width: em(20px, $basepx);
         height: em(4px, $basepx);
@@ -269,13 +268,14 @@ html, body{
         margin-top: em(-2px, $basepx);
       }
     }
-    .bottom{
+    .bottom {
       position: absolute;
       bottom: em(6px, $basepx);
       left: em(11px, $basepx);
       width: em(38px, $basepx);
       height: em(12px, $basepx);
-      &:before, &:after{
+      &:before,
+      &:after {
         content: "";
         display: block;
         width: 100%;
@@ -287,7 +287,7 @@ html, body{
       }
     }
   }
-  .window{
+  .window {
     position: absolute;
     top: em(18px, $basepx);
     left: em(200px, $basepx);
@@ -295,7 +295,7 @@ html, body{
     background: #5bc2ef;
     height: em(72px, $basepx);
     border-radius: 10px 10px 0 10px;
-    &:before{
+    &:before {
       content: "";
       width: 100%;
       height: em(20px, $basepx);
@@ -306,7 +306,7 @@ html, body{
       width: em(47px, $basepx);
       border-radius: 0 10px 10px 10px;
     }
-    &:after{
+    &:after {
       content: "";
       height: em(20px, $basepx);
       background: #5bc2ef;
@@ -317,9 +317,9 @@ html, body{
       transform-origin: bottom;
       @include prefix(transform, rotate(74deg));
       border-radius: 10px 10px 10px 10px;
-    }    
+    }
   }
-  .light{
+  .light {
     position: absolute;
     width: em(10px, $basepx);
     height: em(10px, $basepx);
@@ -328,7 +328,7 @@ html, body{
     bottom: em(50px, $basepx);
     border-radius: 3px;
   }
-  .light-front{
+  .light-front {
     position: absolute;
     width: em(8px, $basepx);
     height: em(8px, $basepx);
@@ -336,7 +336,7 @@ html, body{
     right: em(-3px, $basepx);
     bottom: em(57px, $basepx);
     border-radius: 3px;
-    &:after{
+    &:after {
       content: "";
       position: absolute;
       top: 0;
@@ -348,8 +348,8 @@ html, body{
       border-radius: 3px;
       margin-top: 2px;
     }
-  }  
-  .antenna{
+  }
+  .antenna {
     position: absolute;
     width: em(26px, $basepx);
     height: em(10px, $basepx);
@@ -357,7 +357,7 @@ html, body{
     bottom: 100%;
     left: em(17px, $basepx);
     border-radius: 4px 4px 0 0;
-    &:before{
+    &:before {
       content: "";
       position: absolute;
       width: em(38px, $basepx);
@@ -370,7 +370,7 @@ html, body{
       border-radius: 4px;
     }
   }
-  .ice-cream{
+  .ice-cream {
     position: absolute;
     left: em(30px, $basepx);
     top: em(30px, $basepx);
@@ -379,7 +379,7 @@ html, body{
     border: 3px solid rgba(246, 200, 102, 0.31);
     border-radius: 50%;
     @include prefix(transform, rotate(-30deg));
-    .cone{
+    .cone {
       position: absolute;
       top: 50%;
       left: 50%;
@@ -387,7 +387,7 @@ html, body{
       border-right: em(18px, $basepx) solid transparent;
       border-left: em(18px, $basepx) solid transparent;
       border-top: em(40px, $basepx) solid #f4b224;
-      &:after{
+      &:after {
         content: "";
         position: absolute;
         width: em(20px, $basepx);
@@ -398,7 +398,7 @@ html, body{
         left: 0px;
         z-index: -1;
       }
-      &:before{
+      &:before {
         content: "";
         position: absolute;
         width: em(20px, $basepx);
@@ -409,120 +409,120 @@ html, body{
         left: em(-20px, $basepx);
         z-index: -1;
         box-shadow: 10px -5px 0px 0px #ff9a9a;
-      }      
+      }
     }
   }
 }
 
-.wind{
+.wind {
   position: absolute;
   z-index: -1;
   right: 100%;
   height: 100%;
   margin-right: em(-20px, $basepx);
-  .p{
+  .p {
     position: absolute;
     background: #fff;
-    border-radius: em(10px, $basepx);    
+    border-radius: em(10px, $basepx);
     height: em(10px, $basepx);
   }
-  .p1{
+  .p1 {
     width: em(70px, $basepx);
     position: absolute;
     right: 0;
     top: em(25px, $basepx);
     animation: wind 1s -1s linear infinite;
   }
-  .p2{
-   width: em(100px, $basepx);
-   right: em(40px, $basepx);
-   top: em(60px, $basepx); 
+  .p2 {
+    width: em(100px, $basepx);
+    right: em(40px, $basepx);
+    top: em(60px, $basepx);
     animation: wind 1s -2s linear infinite;
   }
-  .p3{
-   width: em(50px, $basepx);
-   right: em(00px, $basepx);
-   top: em(105px, $basepx); 
+  .p3 {
+    width: em(50px, $basepx);
+    right: em(00px, $basepx);
+    top: em(105px, $basepx);
     animation: wind 1s -1s linear infinite;
-  } 
-  .p4{
-   width: em(60px, $basepx);
-   right: em(100px, $basepx);
-   top: em(135px, $basepx); 
+  }
+  .p4 {
+    width: em(60px, $basepx);
+    right: em(100px, $basepx);
+    top: em(135px, $basepx);
     animation: wind 1s 1s linear infinite;
-  }   
-  .p5{
-   width: em(70px, $basepx);
-   right: em(30px, $basepx);
-   top: em(145px, $basepx); 
+  }
+  .p5 {
+    width: em(70px, $basepx);
+    right: em(30px, $basepx);
+    top: em(145px, $basepx);
     animation: wind 1s -1.5s linear infinite;
-  }     
+  }
 }
 
-.car-wrapper_inner{
+.car-wrapper_inner {
   position: relative;
   z-index: 4;
 }
 
-@keyframes carMove{
-  0%{
+@keyframes carMove {
+  0% {
     transform: translateY(0px);
   }
-  50%{
-   transform: translateY(-1px); 
+  50% {
+    transform: translateY(-1px);
   }
-  100%{
+  100% {
     transform: translateY(0px);
   }
 }
 
-@keyframes wind{
-  0%{
+@keyframes wind {
+  0% {
     transform: translateX(100%);
     opacity: 1;
   }
-  100%{
+  100% {
     transform: translateX(-400%);
     opacity: 0;
   }
 }
 
-.car_outter{
+.car_outter {
   @include prefix(transform, translateX(-100%));
   position: relative;
   animation: carDrive 5s 1s cubic-bezier(0.88, 0.08, 0.16, 1.1) infinite;
 }
 
-@keyframes carDrive{
-  0%{
+@keyframes carDrive {
+  0% {
     transform: translateX(-100%);
   }
-  25%{
+  25% {
     transform: translateX(0%);
   }
-  70%{
+  70% {
     transform: translateX(0%);
   }
-  100%{
+  100% {
     transform: translateX(100%);
   }
 }
 
-@keyframes bgIn{
-  0%{
+@keyframes bgIn {
+  0% {
     left: 100%;
   }
-  100%{
+  100% {
     left: -100%;
   }
 }
 
-@keyframes wrapperIn{
-  0%{
+@keyframes wrapperIn {
+  0% {
     transform: scale(0);
     opacity: 0;
   }
-  100%{
+  100% {
     transform: scale(1);
     opacity: 1;
   }

@@ -2113,11 +2113,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Delivering"
 });
@@ -2169,14 +2164,6 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3257,6 +3244,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -3312,6 +3300,7 @@ __webpack_require__.r(__webpack_exports__);
             _this.isPaid = true;
           });
         })["catch"](function (err) {
+          _this.isLoading = false;
           console.error(err);
           _this.error = err.message;
         });
@@ -3338,7 +3327,7 @@ __webpack_require__.r(__webpack_exports__);
     braintree_web__WEBPACK_IMPORTED_MODULE_0___default.a.client.create({
       // Bisogna inserire la key di braintree
       // Aggiungere MIX_VUE_APP_BT_SDK con la propria key
-      authorization: "sandbox_4xx2ctm8_gmbpfv6ry93hzk98"
+      authorization: "sandbox_hccvgrtg_8skhy3btn37pxc6y"
     }).then(function (clientInstance) {
       var options = {
         client: clientInstance,
@@ -31612,7 +31601,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "html[data-v-1427b0f3], body[data-v-1427b0f3] {\n  padding: 0;\n  margin: 0;\n  width: 100%;\n  height: 100%;\n}\n.background-stuff[data-v-1427b0f3] {\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  background: #98c5e8;\n  -webkit-animation: wrapperIn-data-v-1427b0f3 2s;\n          animation: wrapperIn-data-v-1427b0f3 2s;\n}\n.background-stuff .bg[data-v-1427b0f3] {\n  position: absolute;\n  top: 0%;\n  left: -100%;\n  width: 50%;\n  height: 100%;\n  background: #636ed1;\n  -webkit-animation: bgIn-data-v-1427b0f3 4s 0s linear infinite;\n  animation: bgIn-data-v-1427b0f3 4s 0s linear infinite;\n  transform: skewX(10deg);\n  z-index: 1;\n}\n.background-stuff .bg-2[data-v-1427b0f3] {\n  background: #8faaff;\n  -webkit-animation: bgIn-data-v-1427b0f3 4s 1s linear infinite;\n  animation: bgIn-data-v-1427b0f3 4s 1s linear infinite;\n}\n.background-stuff .bg-3[data-v-1427b0f3] {\n  background: #5a73da;\n  -webkit-animation: bgIn-data-v-1427b0f3 4s 2s linear infinite;\n  animation: bgIn-data-v-1427b0f3 4s 2s linear infinite;\n}\n.background-stuff .ground[data-v-1427b0f3] {\n  position: absolute;\n  bottom: 0;\n  margin-bottom: -1.875em;\n  height: 50%;\n  width: 100%;\n  background: #ffc253;\n  z-index: 2;\n}\n.container[data-v-1427b0f3] {\n  height: 100%;\n  width: 100%;\n  display: table;\n  overflow: hidden;\n}\n.container .car-wrapper[data-v-1427b0f3] {\n  display: table-cell;\n  vertical-align: middle;\n  width: 100%;\n}\n.car[data-v-1427b0f3] {\n  width: 20em;\n  height: 12.5em;\n  position: relative;\n  opacity: 1;\n  margin-left: auto;\n  margin-right: auto;\n  z-index: 4;\n  -webkit-animation: carMove-data-v-1427b0f3 0.3s infinite;\n  animation: carMove-data-v-1427b0f3 0.3s infinite;\n}\n.car .body[data-v-1427b0f3] {\n  position: absolute;\n  top: 0;\n  left: 0.875em;\n  width: 14.375em;\n  height: 10em;\n  background: #fff;\n}\n.car .body[data-v-1427b0f3]:before {\n  content: \"\";\n  position: absolute;\n  left: -0.875em;\n  border-radius: 10px 10px 0 0;\n  width: 15.875em;\n  z-index: 2;\n  height: 0.75em;\n  background: #3190dd;\n}\n.car .body div[data-v-1427b0f3] {\n  position: absolute;\n  background: #fff;\n  width: 18.125em;\n  height: 3.75em;\n  bottom: -0.625em;\n  border-radius: 0 0 10px 10px;\n}\n.car .body div[data-v-1427b0f3]:before {\n  content: \"\";\n  background: #fff;\n  position: absolute;\n  top: -1.8125em;\n  right: 0px;\n  width: 5em;\n  height: 2.5em;\n  z-index: 1;\n  border-radius: 0 14px 0 0;\n  transform: rotate(17deg);\n}\n.car .body div[data-v-1427b0f3]:after {\n  content: \"\";\n  background: #fff;\n  position: absolute;\n  top: -5.125em;\n  right: 1.0625em;\n  width: 5.625em;\n  height: 2.5em;\n  z-index: 1;\n  border-radius: 10px 0 0 0;\n  transform: rotate(75deg);\n}\n.car .wheel[data-v-1427b0f3] {\n  position: absolute;\n  width: 3.75em;\n  height: 3.75em;\n  background: #3c464c;\n  border-radius: 50%;\n  bottom: 0;\n  left: 3em;\n  z-index: 14;\n  -webkit-animation: carMove-data-v-1427b0f3 0.3s 0.2s;\n  animation: carMove-data-v-1427b0f3 0.3s 0.2s;\n}\n.car .wheel[data-v-1427b0f3]:before {\n  content: \"\";\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  background: #fff;\n  width: 1.5em;\n  height: 1.5em;\n  border-radius: 50%;\n  transform: translate(-50%, -50%);\n}\n.car .wheel[data-v-1427b0f3]:nth-of-type(2) {\n  left: 13.125em;\n}\n.car .decos[data-v-1427b0f3] {\n  width: 18.125em;\n  height: 10.5em;\n  position: absolute;\n  z-index: 12;\n  top: 0;\n  left: 0.875em;\n}\n.car .line-bot[data-v-1427b0f3] {\n  position: absolute;\n  bottom: 0.5625em;\n  height: 3px;\n  width: 100%;\n  background: #e1e8ef;\n}\n.car .door[data-v-1427b0f3] {\n  position: absolute;\n  left: 7.5em;\n  bottom: 0;\n  width: 3.75em;\n  height: 8.8125em;\n  border-radius: 10px 10px 0 0;\n  border: 3px solid #e1e8ef;\n  border-bottom: 0;\n  background: #fff;\n}\n.car .door[data-v-1427b0f3]:after {\n  content: \"\";\n  position: absolute;\n  top: 0.375em;\n  left: 0.4375em;\n  width: 2.875em;\n  height: 2.5em;\n  border-radius: 4px;\n  background: #5bc2ef;\n}\n.car .door .handle[data-v-1427b0f3] {\n  position: absolute;\n  right: 0.625em;\n  top: 4.375em;\n  width: 0.625em;\n  height: 0.625em;\n  background: #e1e8ef;\n  border-radius: 50%;\n}\n.car .door .handle[data-v-1427b0f3]:after {\n  content: \"\";\n  width: 1.25em;\n  height: 0.25em;\n  border-radius: 10px;\n  background: #e1e8ef;\n  position: absolute;\n  top: 50%;\n  left: -0.3125em;\n  margin-top: -0.125em;\n}\n.car .door .bottom[data-v-1427b0f3] {\n  position: absolute;\n  bottom: 0.375em;\n  left: 0.6875em;\n  width: 2.375em;\n  height: 0.75em;\n}\n.car .door .bottom[data-v-1427b0f3]:before, .car .door .bottom[data-v-1427b0f3]:after {\n  content: \"\";\n  display: block;\n  width: 100%;\n  height: 0.1875em;\n  background: #e1e8ef;\n  height: 0.25em;\n  border-radius: 10px;\n  margin-bottom: 0.25em;\n}\n.car .window[data-v-1427b0f3] {\n  position: absolute;\n  top: 1.125em;\n  left: 12.5em;\n  width: 2em;\n  background: #5bc2ef;\n  height: 4.5em;\n  border-radius: 10px 10px 0 10px;\n}\n.car .window[data-v-1427b0f3]:before {\n  content: \"\";\n  width: 100%;\n  height: 1.25em;\n  background: #5bc2ef;\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 2.9375em;\n  border-radius: 0 10px 10px 10px;\n}\n.car .window[data-v-1427b0f3]:after {\n  content: \"\";\n  height: 1.25em;\n  background: #5bc2ef;\n  position: absolute;\n  top: 1.0625em;\n  left: -0.8125em;\n  width: 4.1875em;\n  transform-origin: bottom;\n  transform: rotate(74deg);\n  border-radius: 10px 10px 10px 10px;\n}\n.car .light[data-v-1427b0f3] {\n  position: absolute;\n  width: 0.625em;\n  height: 0.625em;\n  background: #ff8c40;\n  right: 3.75em;\n  bottom: 3.125em;\n  border-radius: 3px;\n}\n.car .light-front[data-v-1427b0f3] {\n  position: absolute;\n  width: 0.5em;\n  height: 0.5em;\n  background: #ff8c40;\n  right: -0.1875em;\n  bottom: 3.5625em;\n  border-radius: 3px;\n}\n.car .light-front[data-v-1427b0f3]:after {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  background: #ff8c40;\n  top: 100%;\n  height: 0.9375em;\n  border-radius: 3px;\n  margin-top: 2px;\n}\n.car .antenna[data-v-1427b0f3] {\n  position: absolute;\n  width: 1.625em;\n  height: 0.625em;\n  background: #fff;\n  bottom: 100%;\n  left: 1.0625em;\n  border-radius: 4px 4px 0 0;\n}\n.car .antenna[data-v-1427b0f3]:before {\n  content: \"\";\n  position: absolute;\n  width: 2.375em;\n  height: 0.25em;\n  background: #fff;\n  bottom: 0;\n  left: -1.375em;\n  transform: rotate(55deg);\n  transform-origin: right;\n  border-radius: 4px;\n}\n.car .ice-cream[data-v-1427b0f3] {\n  position: absolute;\n  left: 1.875em;\n  top: 1.875em;\n  width: 4.375em;\n  height: 4.375em;\n  border: 3px solid rgba(246, 200, 102, 0.31);\n  border-radius: 50%;\n  transform: rotate(-30deg);\n}\n.car .ice-cream .cone[data-v-1427b0f3] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -20%);\n  border-right: 1.125em solid transparent;\n  border-left: 1.125em solid transparent;\n  border-top: 2.5em solid #f4b224;\n}\n.car .ice-cream .cone[data-v-1427b0f3]:after {\n  content: \"\";\n  position: absolute;\n  width: 1.25em;\n  height: 1.25em;\n  background: #00c0a8;\n  border-radius: 50%;\n  top: -3.4375em;\n  left: 0px;\n  z-index: -1;\n}\n.car .ice-cream .cone[data-v-1427b0f3]:before {\n  content: \"\";\n  position: absolute;\n  width: 1.25em;\n  height: 1.25em;\n  background: #ffd132;\n  border-radius: 50%;\n  top: -3.4375em;\n  left: -1.25em;\n  z-index: -1;\n  box-shadow: 10px -5px 0px 0px #ff9a9a;\n}\n.wind[data-v-1427b0f3] {\n  position: absolute;\n  z-index: -1;\n  right: 100%;\n  height: 100%;\n  margin-right: -1.25em;\n}\n.wind .p[data-v-1427b0f3] {\n  position: absolute;\n  background: #fff;\n  border-radius: 0.625em;\n  height: 0.625em;\n}\n.wind .p1[data-v-1427b0f3] {\n  width: 4.375em;\n  position: absolute;\n  right: 0;\n  top: 1.5625em;\n  -webkit-animation: wind-data-v-1427b0f3 1s -1s linear infinite;\n          animation: wind-data-v-1427b0f3 1s -1s linear infinite;\n}\n.wind .p2[data-v-1427b0f3] {\n  width: 6.25em;\n  right: 2.5em;\n  top: 3.75em;\n  -webkit-animation: wind-data-v-1427b0f3 1s -2s linear infinite;\n          animation: wind-data-v-1427b0f3 1s -2s linear infinite;\n}\n.wind .p3[data-v-1427b0f3] {\n  width: 3.125em;\n  right: 0em;\n  top: 6.5625em;\n  -webkit-animation: wind-data-v-1427b0f3 1s -1s linear infinite;\n          animation: wind-data-v-1427b0f3 1s -1s linear infinite;\n}\n.wind .p4[data-v-1427b0f3] {\n  width: 3.75em;\n  right: 6.25em;\n  top: 8.4375em;\n  -webkit-animation: wind-data-v-1427b0f3 1s 1s linear infinite;\n          animation: wind-data-v-1427b0f3 1s 1s linear infinite;\n}\n.wind .p5[data-v-1427b0f3] {\n  width: 4.375em;\n  right: 1.875em;\n  top: 9.0625em;\n  -webkit-animation: wind-data-v-1427b0f3 1s -1.5s linear infinite;\n          animation: wind-data-v-1427b0f3 1s -1.5s linear infinite;\n}\n.car-wrapper_inner[data-v-1427b0f3] {\n  position: relative;\n  z-index: 4;\n}\n@-webkit-keyframes carMove-data-v-1427b0f3 {\n0% {\n    transform: translateY(0px);\n}\n50% {\n    transform: translateY(-1px);\n}\n100% {\n    transform: translateY(0px);\n}\n}\n@keyframes carMove-data-v-1427b0f3 {\n0% {\n    transform: translateY(0px);\n}\n50% {\n    transform: translateY(-1px);\n}\n100% {\n    transform: translateY(0px);\n}\n}\n@-webkit-keyframes wind-data-v-1427b0f3 {\n0% {\n    transform: translateX(100%);\n    opacity: 1;\n}\n100% {\n    transform: translateX(-400%);\n    opacity: 0;\n}\n}\n@keyframes wind-data-v-1427b0f3 {\n0% {\n    transform: translateX(100%);\n    opacity: 1;\n}\n100% {\n    transform: translateX(-400%);\n    opacity: 0;\n}\n}\n.car_outter[data-v-1427b0f3] {\n  transform: translateX(-100%);\n  position: relative;\n  -webkit-animation: carDrive-data-v-1427b0f3 5s 1s cubic-bezier(0.88, 0.08, 0.16, 1.1) infinite;\n          animation: carDrive-data-v-1427b0f3 5s 1s cubic-bezier(0.88, 0.08, 0.16, 1.1) infinite;\n}\n@-webkit-keyframes carDrive-data-v-1427b0f3 {\n0% {\n    transform: translateX(-100%);\n}\n25% {\n    transform: translateX(0%);\n}\n70% {\n    transform: translateX(0%);\n}\n100% {\n    transform: translateX(100%);\n}\n}\n@keyframes carDrive-data-v-1427b0f3 {\n0% {\n    transform: translateX(-100%);\n}\n25% {\n    transform: translateX(0%);\n}\n70% {\n    transform: translateX(0%);\n}\n100% {\n    transform: translateX(100%);\n}\n}\n@-webkit-keyframes bgIn-data-v-1427b0f3 {\n0% {\n    left: 100%;\n}\n100% {\n    left: -100%;\n}\n}\n@keyframes bgIn-data-v-1427b0f3 {\n0% {\n    left: 100%;\n}\n100% {\n    left: -100%;\n}\n}\n@-webkit-keyframes wrapperIn-data-v-1427b0f3 {\n0% {\n    transform: scale(0);\n    opacity: 0;\n}\n100% {\n    transform: scale(1);\n    opacity: 1;\n}\n}\n@keyframes wrapperIn-data-v-1427b0f3 {\n0% {\n    transform: scale(0);\n    opacity: 0;\n}\n100% {\n    transform: scale(1);\n    opacity: 1;\n}\n}", ""]);
+exports.push([module.i, "html[data-v-1427b0f3],\nbody[data-v-1427b0f3] {\n  padding: 0;\n  margin: 0;\n  width: 100%;\n  height: 100%;\n}\n.background-stuff[data-v-1427b0f3] {\n  position: absolute;\n  border-radius: 15px;\n  border: 1px solid #ededed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  overflow: hidden;\n  background: #98c5e8;\n  -webkit-animation: wrapperIn-data-v-1427b0f3 2s;\n          animation: wrapperIn-data-v-1427b0f3 2s;\n}\n.background-stuff .bg[data-v-1427b0f3] {\n  position: absolute;\n  top: 0%;\n  left: -100%;\n  width: 50%;\n  height: 100%;\n  background: #636ed1;\n  -webkit-animation: bgIn-data-v-1427b0f3 4s 0s linear infinite;\n  animation: bgIn-data-v-1427b0f3 4s 0s linear infinite;\n  transform: skewX(10deg);\n  z-index: 1;\n}\n.background-stuff .bg-2[data-v-1427b0f3] {\n  background: #8faaff;\n  -webkit-animation: bgIn-data-v-1427b0f3 4s 1s linear infinite;\n  animation: bgIn-data-v-1427b0f3 4s 1s linear infinite;\n}\n.background-stuff .bg-3[data-v-1427b0f3] {\n  background: #5a73da;\n  -webkit-animation: bgIn-data-v-1427b0f3 4s 2s linear infinite;\n  animation: bgIn-data-v-1427b0f3 4s 2s linear infinite;\n}\n.background-stuff .ground[data-v-1427b0f3] {\n  position: absolute;\n  bottom: 0;\n  margin-bottom: -1.875em;\n  height: 50%;\n  width: 100%;\n  background: #ffc253;\n  z-index: 2;\n}\n.container[data-v-1427b0f3] {\n  height: 100%;\n  width: 100%;\n  display: table;\n  overflow: hidden;\n}\n.container .car-wrapper[data-v-1427b0f3] {\n  display: table-cell;\n  vertical-align: middle;\n  width: 100%;\n}\n.car[data-v-1427b0f3] {\n  width: 20em;\n  height: 12.5em;\n  position: relative;\n  opacity: 1;\n  margin-left: auto;\n  margin-right: auto;\n  z-index: 4;\n  -webkit-animation: carMove-data-v-1427b0f3 0.3s infinite;\n  animation: carMove-data-v-1427b0f3 0.3s infinite;\n}\n.car .body[data-v-1427b0f3] {\n  position: absolute;\n  top: 0;\n  left: 0.875em;\n  width: 14.375em;\n  height: 10em;\n  background: #fff;\n}\n.car .body[data-v-1427b0f3]:before {\n  content: \"\";\n  position: absolute;\n  left: -0.875em;\n  border-radius: 10px 10px 0 0;\n  width: 15.875em;\n  z-index: 2;\n  height: 0.75em;\n  background: #3190dd;\n}\n.car .body div[data-v-1427b0f3] {\n  position: absolute;\n  background: #fff;\n  width: 18.125em;\n  height: 3.75em;\n  bottom: -0.625em;\n  border-radius: 0 0 10px 10px;\n}\n.car .body div[data-v-1427b0f3]:before {\n  content: \"\";\n  background: #fff;\n  position: absolute;\n  top: -1.8125em;\n  right: 0px;\n  width: 5em;\n  height: 2.5em;\n  z-index: 1;\n  border-radius: 0 14px 0 0;\n  transform: rotate(17deg);\n}\n.car .body div[data-v-1427b0f3]:after {\n  content: \"\";\n  background: #fff;\n  position: absolute;\n  top: -5.125em;\n  right: 1.0625em;\n  width: 5.625em;\n  height: 2.5em;\n  z-index: 1;\n  border-radius: 10px 0 0 0;\n  transform: rotate(75deg);\n}\n.car .wheel[data-v-1427b0f3] {\n  position: absolute;\n  width: 3.75em;\n  height: 3.75em;\n  background: #3c464c;\n  border-radius: 50%;\n  bottom: 0;\n  left: 3em;\n  z-index: 14;\n  -webkit-animation: carMove-data-v-1427b0f3 0.3s 0.2s;\n  animation: carMove-data-v-1427b0f3 0.3s 0.2s;\n}\n.car .wheel[data-v-1427b0f3]:before {\n  content: \"\";\n  position: absolute;\n  left: 50%;\n  top: 50%;\n  background: #fff;\n  width: 1.5em;\n  height: 1.5em;\n  border-radius: 50%;\n  transform: translate(-50%, -50%);\n}\n.car .wheel[data-v-1427b0f3]:nth-of-type(2) {\n  left: 13.125em;\n}\n.car .decos[data-v-1427b0f3] {\n  width: 18.125em;\n  height: 10.5em;\n  position: absolute;\n  z-index: 12;\n  top: 0;\n  left: 0.875em;\n}\n.car .line-bot[data-v-1427b0f3] {\n  position: absolute;\n  bottom: 0.5625em;\n  height: 3px;\n  width: 100%;\n  background: #e1e8ef;\n}\n.car .door[data-v-1427b0f3] {\n  position: absolute;\n  left: 7.5em;\n  bottom: 0;\n  width: 3.75em;\n  height: 8.8125em;\n  border-radius: 10px 10px 0 0;\n  border: 3px solid #e1e8ef;\n  border-bottom: 0;\n  background: #fff;\n}\n.car .door[data-v-1427b0f3]:after {\n  content: \"\";\n  position: absolute;\n  top: 0.375em;\n  left: 0.4375em;\n  width: 2.875em;\n  height: 2.5em;\n  border-radius: 4px;\n  background: #5bc2ef;\n}\n.car .door .handle[data-v-1427b0f3] {\n  position: absolute;\n  right: 0.625em;\n  top: 4.375em;\n  width: 0.625em;\n  height: 0.625em;\n  background: #e1e8ef;\n  border-radius: 50%;\n}\n.car .door .handle[data-v-1427b0f3]:after {\n  content: \"\";\n  width: 1.25em;\n  height: 0.25em;\n  border-radius: 10px;\n  background: #e1e8ef;\n  position: absolute;\n  top: 50%;\n  left: -0.3125em;\n  margin-top: -0.125em;\n}\n.car .door .bottom[data-v-1427b0f3] {\n  position: absolute;\n  bottom: 0.375em;\n  left: 0.6875em;\n  width: 2.375em;\n  height: 0.75em;\n}\n.car .door .bottom[data-v-1427b0f3]:before, .car .door .bottom[data-v-1427b0f3]:after {\n  content: \"\";\n  display: block;\n  width: 100%;\n  height: 0.1875em;\n  background: #e1e8ef;\n  height: 0.25em;\n  border-radius: 10px;\n  margin-bottom: 0.25em;\n}\n.car .window[data-v-1427b0f3] {\n  position: absolute;\n  top: 1.125em;\n  left: 12.5em;\n  width: 2em;\n  background: #5bc2ef;\n  height: 4.5em;\n  border-radius: 10px 10px 0 10px;\n}\n.car .window[data-v-1427b0f3]:before {\n  content: \"\";\n  width: 100%;\n  height: 1.25em;\n  background: #5bc2ef;\n  position: absolute;\n  bottom: 0;\n  left: 0;\n  width: 2.9375em;\n  border-radius: 0 10px 10px 10px;\n}\n.car .window[data-v-1427b0f3]:after {\n  content: \"\";\n  height: 1.25em;\n  background: #5bc2ef;\n  position: absolute;\n  top: 1.0625em;\n  left: -0.8125em;\n  width: 4.1875em;\n  transform-origin: bottom;\n  transform: rotate(74deg);\n  border-radius: 10px 10px 10px 10px;\n}\n.car .light[data-v-1427b0f3] {\n  position: absolute;\n  width: 0.625em;\n  height: 0.625em;\n  background: #ff8c40;\n  right: 3.75em;\n  bottom: 3.125em;\n  border-radius: 3px;\n}\n.car .light-front[data-v-1427b0f3] {\n  position: absolute;\n  width: 0.5em;\n  height: 0.5em;\n  background: #ff8c40;\n  right: -0.1875em;\n  bottom: 3.5625em;\n  border-radius: 3px;\n}\n.car .light-front[data-v-1427b0f3]:after {\n  content: \"\";\n  position: absolute;\n  top: 0;\n  left: 0;\n  width: 100%;\n  background: #ff8c40;\n  top: 100%;\n  height: 0.9375em;\n  border-radius: 3px;\n  margin-top: 2px;\n}\n.car .antenna[data-v-1427b0f3] {\n  position: absolute;\n  width: 1.625em;\n  height: 0.625em;\n  background: #fff;\n  bottom: 100%;\n  left: 1.0625em;\n  border-radius: 4px 4px 0 0;\n}\n.car .antenna[data-v-1427b0f3]:before {\n  content: \"\";\n  position: absolute;\n  width: 2.375em;\n  height: 0.25em;\n  background: #fff;\n  bottom: 0;\n  left: -1.375em;\n  transform: rotate(55deg);\n  transform-origin: right;\n  border-radius: 4px;\n}\n.car .ice-cream[data-v-1427b0f3] {\n  position: absolute;\n  left: 1.875em;\n  top: 1.875em;\n  width: 4.375em;\n  height: 4.375em;\n  border: 3px solid rgba(246, 200, 102, 0.31);\n  border-radius: 50%;\n  transform: rotate(-30deg);\n}\n.car .ice-cream .cone[data-v-1427b0f3] {\n  position: absolute;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -20%);\n  border-right: 1.125em solid transparent;\n  border-left: 1.125em solid transparent;\n  border-top: 2.5em solid #f4b224;\n}\n.car .ice-cream .cone[data-v-1427b0f3]:after {\n  content: \"\";\n  position: absolute;\n  width: 1.25em;\n  height: 1.25em;\n  background: #00c0a8;\n  border-radius: 50%;\n  top: -3.4375em;\n  left: 0px;\n  z-index: -1;\n}\n.car .ice-cream .cone[data-v-1427b0f3]:before {\n  content: \"\";\n  position: absolute;\n  width: 1.25em;\n  height: 1.25em;\n  background: #ffd132;\n  border-radius: 50%;\n  top: -3.4375em;\n  left: -1.25em;\n  z-index: -1;\n  box-shadow: 10px -5px 0px 0px #ff9a9a;\n}\n.wind[data-v-1427b0f3] {\n  position: absolute;\n  z-index: -1;\n  right: 100%;\n  height: 100%;\n  margin-right: -1.25em;\n}\n.wind .p[data-v-1427b0f3] {\n  position: absolute;\n  background: #fff;\n  border-radius: 0.625em;\n  height: 0.625em;\n}\n.wind .p1[data-v-1427b0f3] {\n  width: 4.375em;\n  position: absolute;\n  right: 0;\n  top: 1.5625em;\n  -webkit-animation: wind-data-v-1427b0f3 1s -1s linear infinite;\n          animation: wind-data-v-1427b0f3 1s -1s linear infinite;\n}\n.wind .p2[data-v-1427b0f3] {\n  width: 6.25em;\n  right: 2.5em;\n  top: 3.75em;\n  -webkit-animation: wind-data-v-1427b0f3 1s -2s linear infinite;\n          animation: wind-data-v-1427b0f3 1s -2s linear infinite;\n}\n.wind .p3[data-v-1427b0f3] {\n  width: 3.125em;\n  right: 0em;\n  top: 6.5625em;\n  -webkit-animation: wind-data-v-1427b0f3 1s -1s linear infinite;\n          animation: wind-data-v-1427b0f3 1s -1s linear infinite;\n}\n.wind .p4[data-v-1427b0f3] {\n  width: 3.75em;\n  right: 6.25em;\n  top: 8.4375em;\n  -webkit-animation: wind-data-v-1427b0f3 1s 1s linear infinite;\n          animation: wind-data-v-1427b0f3 1s 1s linear infinite;\n}\n.wind .p5[data-v-1427b0f3] {\n  width: 4.375em;\n  right: 1.875em;\n  top: 9.0625em;\n  -webkit-animation: wind-data-v-1427b0f3 1s -1.5s linear infinite;\n          animation: wind-data-v-1427b0f3 1s -1.5s linear infinite;\n}\n.car-wrapper_inner[data-v-1427b0f3] {\n  position: relative;\n  z-index: 4;\n}\n@-webkit-keyframes carMove-data-v-1427b0f3 {\n0% {\n    transform: translateY(0px);\n}\n50% {\n    transform: translateY(-1px);\n}\n100% {\n    transform: translateY(0px);\n}\n}\n@keyframes carMove-data-v-1427b0f3 {\n0% {\n    transform: translateY(0px);\n}\n50% {\n    transform: translateY(-1px);\n}\n100% {\n    transform: translateY(0px);\n}\n}\n@-webkit-keyframes wind-data-v-1427b0f3 {\n0% {\n    transform: translateX(100%);\n    opacity: 1;\n}\n100% {\n    transform: translateX(-400%);\n    opacity: 0;\n}\n}\n@keyframes wind-data-v-1427b0f3 {\n0% {\n    transform: translateX(100%);\n    opacity: 1;\n}\n100% {\n    transform: translateX(-400%);\n    opacity: 0;\n}\n}\n.car_outter[data-v-1427b0f3] {\n  transform: translateX(-100%);\n  position: relative;\n  -webkit-animation: carDrive-data-v-1427b0f3 5s 1s cubic-bezier(0.88, 0.08, 0.16, 1.1) infinite;\n          animation: carDrive-data-v-1427b0f3 5s 1s cubic-bezier(0.88, 0.08, 0.16, 1.1) infinite;\n}\n@-webkit-keyframes carDrive-data-v-1427b0f3 {\n0% {\n    transform: translateX(-100%);\n}\n25% {\n    transform: translateX(0%);\n}\n70% {\n    transform: translateX(0%);\n}\n100% {\n    transform: translateX(100%);\n}\n}\n@keyframes carDrive-data-v-1427b0f3 {\n0% {\n    transform: translateX(-100%);\n}\n25% {\n    transform: translateX(0%);\n}\n70% {\n    transform: translateX(0%);\n}\n100% {\n    transform: translateX(100%);\n}\n}\n@-webkit-keyframes bgIn-data-v-1427b0f3 {\n0% {\n    left: 100%;\n}\n100% {\n    left: -100%;\n}\n}\n@keyframes bgIn-data-v-1427b0f3 {\n0% {\n    left: 100%;\n}\n100% {\n    left: -100%;\n}\n}\n@-webkit-keyframes wrapperIn-data-v-1427b0f3 {\n0% {\n    transform: scale(0);\n    opacity: 0;\n}\n100% {\n    transform: scale(1);\n    opacity: 1;\n}\n}\n@keyframes wrapperIn-data-v-1427b0f3 {\n0% {\n    transform: scale(0);\n    opacity: 0;\n}\n100% {\n    transform: scale(1);\n    opacity: 1;\n}\n}", ""]);
 
 // exports
 
@@ -31726,7 +31715,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, ".payment[data-v-0b6a60e2] {\n  position: relative;\n}\n.payment .absolute[data-v-0b6a60e2] {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n}\n.payment-button[data-v-0b6a60e2] {\n  width: 100%;\n  border: none;\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border-radius: 5px;\n  font-weight: 900;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.payment-button[data-v-0b6a60e2]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.payment-button[data-v-0b6a60e2]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}", ""]);
+exports.push([module.i, ".go-home-button[data-v-0b6a60e2] {\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border-radius: 5px;\n  font-weight: 900;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.go-home-button[data-v-0b6a60e2]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.go-home-button[data-v-0b6a60e2]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}\n.ringraziamenti-container[data-v-0b6a60e2] {\n  -webkit-backdrop-filter: blur(32px);\n          backdrop-filter: blur(32px);\n  border-radius: 15px;\n  background-color: #fff;\n  padding: 30px 30px;\n  border: 1px solid #ededed;\n  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;\n}\n.ringraziamenti-container h2[data-v-0b6a60e2] {\n  text-align: center;\n  margin-bottom: 30px;\n}\n.ringraziamenti-container h3[data-v-0b6a60e2] {\n  text-align: center;\n  margin-top: 30px;\n}\n.payment[data-v-0b6a60e2] {\n  position: relative;\n}\n.payment .absolute[data-v-0b6a60e2] {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n}\n.payment-button[data-v-0b6a60e2] {\n  width: 100%;\n  border: none;\n  display: block;\n  text-align: center;\n  background-color: #00ccbc;\n  color: #fff;\n  border-radius: 5px;\n  font-weight: 900;\n  padding-top: 10px;\n  padding-bottom: 10px;\n}\n.payment-button[data-v-0b6a60e2]:focus {\n  box-shadow: 0 0 0 3px rgba(0, 204, 188, 0.3);\n}\n.payment-button[data-v-0b6a60e2]:hover {\n  background-color: #00c2b3;\n  text-decoration: none;\n}", ""]);
 
 // exports
 
@@ -66340,7 +66329,7 @@ var render = function () {
             "div",
             {
               staticClass:
-                "\n            col-12 col-md-5\n            d-flex\n            justify-content-center justify-content-md-end\n            mt-md-0 mt-1\n         ",
+                "\n        col-12 col-md-5\n        d-flex\n        justify-content-center justify-content-md-end\n        mt-md-0 mt-1\n      ",
             },
             [
               _vm.cart.length
@@ -66356,7 +66345,7 @@ var render = function () {
                       },
                     },
                     [
-                      _vm._v("Modifica il tuo Ordine\n            "),
+                      _vm._v("Modifica il tuo Ordine "),
                       _c("i", { staticClass: "fa-solid fa-arrow-rotate-left" }),
                     ]
                   )
@@ -66378,42 +66367,27 @@ var render = function () {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "row d-flex flex-lg-row flex-column-reverse" }, [
-        _vm.cart.length
-          ? _c(
-              "div",
-              { staticClass: "col-12 col-lg-8" },
-              [
-                _c("Payment", {
-                  staticClass: "mt-3",
-                  attrs: { tot: _vm.getTotal().toFixed(2), cart: _vm.cart },
-                  on: { emptyCart: _vm.emptyCart },
-                }),
-              ],
-              1
-            )
-          : _c(
-              "div",
-              { staticClass: "col-12" },
-              [
-                _c("Payment", {
-                  staticClass: "mt-3",
-                  attrs: { tot: _vm.getTotal().toFixed(2), cart: _vm.cart },
-                  on: { emptyCart: _vm.emptyCart },
-                }),
-              ],
-              1
-            ),
+        _c(
+          "div",
+          { staticClass: "col-12 col-lg-8" },
+          [
+            _c("Payment", {
+              staticClass: "mt-3",
+              attrs: { tot: _vm.getTotal().toFixed(2), cart: _vm.cart },
+              on: { emptyCart: _vm.emptyCart },
+            }),
+          ],
+          1
+        ),
         _vm._v(" "),
         _c(
           "div",
           { staticClass: "col-12 col-lg-4" },
           [
-            _vm.cart.length
-              ? _c("RestaurantCart", {
-                  staticClass: "mb-3",
-                  attrs: { cart: _vm.cart },
-                })
-              : _vm._e(),
+            _c("RestaurantCart", {
+              staticClass: "mb-3",
+              attrs: { cart: _vm.cart },
+            }),
           ],
           1
         ),
@@ -66430,7 +66404,7 @@ var staticRenderFns = [
       "div",
       {
         staticClass:
-          "\n            col-12 col-md-7\n            d-flex\n            justify-content-center justify-content-md-start\n            text-center text-md-start\n         ",
+          "\n        col-12 col-md-7\n        d-flex\n        justify-content-center justify-content-md-start\n        text-center text-md-start\n      ",
       },
       [_c("h1", [_vm._v("Controllo il tuo Ordine")])]
     )
@@ -67216,18 +67190,14 @@ var render = function () {
                 _vm.nonce
                   ? _c("div", { staticClass: "alert alert-success" }, [
                       _vm._v(
-                        "\n               Pagamento andato a buon fine\n            "
+                        "\n          Pagamento andato a buon fine\n        "
                       ),
                     ])
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.error
                   ? _c("div", { staticClass: "alert alert-danger" }, [
-                      _vm._v(
-                        "\n               " +
-                          _vm._s(_vm.error) +
-                          "\n            "
-                      ),
+                      _vm._v("\n          " + _vm._s(_vm.error) + "\n        "),
                     ])
                   : _vm._e(),
                 _vm._v(" "),
@@ -67466,7 +67436,7 @@ var render = function () {
                         ],
                       },
                     },
-                    [_vm._v("\n                  Paga\n               ")]
+                    [_vm._v("\n            Paga\n          ")]
                   ),
                 ]),
               ]),
@@ -67475,10 +67445,13 @@ var render = function () {
         : _vm._e(),
       _vm._v(" "),
       _vm.isPaid
-        ? _c("div", { staticClass: "row absolute" }, [
+        ? _c("div", { staticClass: "row ringraziamenti-container" }, [
             _c("div", { staticClass: "col-12" }, [
+              _c("h3", [_vm._v("Il tuo ordine arriverà a breve")]),
+              _vm._v(" "),
               _c("h2", [
-                _vm._v("Hai pagato un totale di " + _vm._s(_vm.amount) + "€"),
+                _vm._v("\n        Hai pagato un totale di "),
+                _c("strong", [_vm._v(_vm._s(_vm.amount) + "€")]),
               ]),
             ]),
             _vm._v(" "),
@@ -67489,7 +67462,21 @@ var render = function () {
               1
             ),
             _vm._v(" "),
-            _vm._m(4),
+            _c(
+              "div",
+              { staticClass: "w-100" },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "go-home-button d-block",
+                    attrs: { to: { name: "home" } },
+                  },
+                  [_vm._v("Torna alla Home\n      ")]
+                ),
+              ],
+              1
+            ),
           ])
         : _vm._e(),
     ],
@@ -67536,14 +67523,6 @@ var staticRenderFns = [
       _c("label", [_vm._v("CVV")]),
       _vm._v(" "),
       _c("div", { staticClass: "form-control", attrs: { id: "cvv" } }),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-12" }, [
-      _c("h3", [_vm._v("Il tuo ordine arriverà a breve")]),
     ])
   },
 ]
@@ -84817,7 +84796,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Laravel\deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Lavavel\deliveboo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ }),
