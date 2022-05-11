@@ -2324,6 +2324,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -3525,7 +3526,7 @@ __webpack_require__.r(__webpack_exports__);
     braintree_web__WEBPACK_IMPORTED_MODULE_0___default.a.client.create({
       // Bisogna inserire la key di braintree
       // Aggiungere MIX_VUE_APP_BT_SDK con la propria key
-      authorization: "sandbox_5rmbzfb5_d2m5rwjgpchndk39"
+      authorization: "sandbox_hccvgrtg_8skhy3btn37pxc6y"
     }).then(function (clientInstance) {
       var options = {
         client: clientInstance,
@@ -4010,6 +4011,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4078,7 +4085,6 @@ __webpack_require__.r(__webpack_exports__);
 
       setTimeout(function () {
         console.log("restaurants", _this2.restaurants);
-        console.log("restaurants categories", _this2.restaurants["categories"]);
       }, 5000); // const category_checker = this.checked_categories.every(
       //   (checked_category) => {
       //     return this.restaurants["categories"].includes(checked_category);
@@ -31869,7 +31875,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap);", ""]);
 
 // module
-exports.push([module.i, "body {\n  font-family: \"IBM Plex Sans\", sans-serif;\n}\n.custom-checkbox {\n  height: 50px;\n  color: white;\n  font-weight: bolder;\n  text-decoration: none;\n  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);\n}\n.card-checkbox-body {\n  background-image: url(\"https://consumer-component-library.roocdn.com/25.30.2/static/images/placeholder.svg\");\n  background-position: center;\n  block-size: cover;\n}\n.active-checkbox {\n  box-shadow: 0 0 0 1px red;\n}\nhtml {\n  scroll-behavior: smooth;\n}", ""]);
+exports.push([module.i, "body {\n  font-family: \"IBM Plex Sans\", sans-serif;\n}\n.checkbox-container {\n  box-shadow: 0px 0px 12px 12px rgba(208, 208, 208, 0.66), inset 2px 2px 10px 0px rgba(208, 208, 208, 0.4);\n  border-radius: 15px;\n}\nh5 {\n  font-size: 30px;\n  font-weight: 900;\n  text-align: center;\n}\n.custom-checkbox {\n  height: 50px;\n  color: white;\n  font-weight: bolder;\n  text-decoration: none;\n  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);\n}\n.card-checkbox-body {\n  background-image: url(\"https://consumer-component-library.roocdn.com/25.30.2/static/images/placeholder.svg\");\n  background-position: center;\n  block-size: cover;\n}\n.active-checkbox {\n  box-shadow: 0 0 0 1px red;\n}\nhtml {\n  scroll-behavior: smooth;\n}", ""]);
 
 // exports
 
@@ -31964,7 +31970,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "a[data-v-5ebd141e] {\n  color: black;\n}\na[data-v-5ebd141e]:hover {\n  text-decoration: none;\n  color: black;\n}\na .restaurant-card[data-v-5ebd141e] {\n  height: 300px;\n  margin-bottom: 15px;\n  border: 1px solid #ededed;\n  border-radius: 5px;\n}\na .restaurant-card .card-top[data-v-5ebd141e] {\n  height: 55%;\n  /* background-image: url(\"https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg\"); */\n  background-position: center;\n  background-size: cover;\n  border-radius: 5px 5px 0 0;\n}\na .restaurant-card .card-bottom[data-v-5ebd141e] {\n  background-color: #fff;\n  height: 45%;\n}\na .restaurant-card .card-bottom h5[data-v-5ebd141e] {\n  font-weight: 700;\n  font-size: 16px;\n}\na .restaurant-card .card-bottom p[data-v-5ebd141e] {\n  font-size: 14px;\n  line-height: 15px;\n  color: #585c5c;\n}\na .restaurant-card .card-bottom .category-badge-container[data-v-5ebd141e] {\n  position: absolute;\n  top: 15px;\n  right: 30px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  align-items: flex-end;\n}\na .restaurant-card .card-bottom .category-badge-container .category-badge[data-v-5ebd141e] {\n  padding: 1px 3px;\n  font-weight: bolder;\n  background-image: linear-gradient(90deg, #d73c31, #a62f26);\n  color: white;\n  margin-bottom: 3px;\n  box-shadow: 0 0 6px rgba(230, 230, 230, 0.5);\n}", ""]);
+exports.push([module.i, "a[data-v-5ebd141e] {\n  color: black;\n}\na[data-v-5ebd141e]:hover {\n  text-decoration: none;\n  color: black;\n}\na .restaurant-card[data-v-5ebd141e] {\n  height: 300px;\n  margin-bottom: 15px;\n  border: 4px solid #00ccbc;\n  border-radius: 30px;\n}\na .restaurant-card .card-top[data-v-5ebd141e] {\n  height: 55%;\n  /* background-image: url(\"https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg\"); */\n  background-position: center;\n  background-size: cover;\n  border-radius: 5px 5px 0 0;\n}\na .restaurant-card .card-top .img-fluid[data-v-5ebd141e] {\n  border-radius: 25px 25px 0 0;\n}\na .restaurant-card .card-bottom[data-v-5ebd141e] {\n  background-color: #dedede;\n  height: 45%;\n  border-radius: 0 0 25px 25px;\n}\na .restaurant-card .card-bottom h5[data-v-5ebd141e] {\n  font-weight: 700;\n  font-size: 16px;\n}\na .restaurant-card .card-bottom p[data-v-5ebd141e] {\n  font-size: 14px;\n  line-height: 15px;\n  color: #585c5c;\n}\na .restaurant-card .card-bottom .category-badge-container[data-v-5ebd141e] {\n  position: absolute;\n  top: 15px;\n  right: 30px;\n  display: flex;\n  flex-direction: column;\n  justify-content: flex-end;\n  align-items: flex-end;\n}\na .restaurant-card .card-bottom .category-badge-container .category-badge[data-v-5ebd141e] {\n  padding: 1px 3px;\n  font-weight: bolder;\n  background-image: linear-gradient(90deg, #d73c31, #a62f26);\n  color: white;\n  margin-bottom: 3px;\n  border-radius: 8px;\n  box-shadow: 0 0 6px rgba(230, 230, 230, 0.5);\n}", ""]);
 
 // exports
 
@@ -66692,79 +66698,82 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "section",
-    { staticClass: "py-3", attrs: { id: "home" } },
+    { staticClass: "py-3 container", attrs: { id: "home" } },
     [
       _vm.isLoading ? _c("Loader") : _vm._e(),
       _vm._v(" "),
-      _c(
-        "ul",
-        {
-          staticClass:
-            "object administrator-checkbox-list d-flex justify-content-center",
-        },
-        _vm._l(_vm.categories, function (category) {
-          return _c(
-            "li",
-            {
-              key: category.id,
-              staticClass: "d-inline mr-3",
-              on: {
-                click: function ($event) {
-                  return _vm.$refs.RestaurantList.getRestaurants()
+      _c("div", { staticClass: "checkbox-container" }, [
+        _c("h5", { staticClass: "p-2" }, [_vm._v("Filtro Categorie:")]),
+        _vm._v(" "),
+        _c(
+          "ul",
+          {
+            staticClass: "object administrator-checkbox-list d-flex flex-wrap",
+          },
+          _vm._l(_vm.categories, function (category) {
+            return _c(
+              "li",
+              {
+                key: category.id,
+                staticClass: "d-inline mr-3",
+                on: {
+                  click: function ($event) {
+                    return _vm.$refs.RestaurantList.getRestaurants()
+                  },
                 },
               },
-            },
-            [
-              _c("label", { attrs: { for: category.id, role: "button" } }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.checked_categories,
-                      expression: "checked_categories",
+              [
+                _c("label", { attrs: { for: category.id, role: "button" } }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.checked_categories,
+                        expression: "checked_categories",
+                      },
+                    ],
+                    attrs: { type: "checkbox", id: category.id },
+                    domProps: {
+                      value: category.id,
+                      checked: Array.isArray(_vm.checked_categories)
+                        ? _vm._i(_vm.checked_categories, category.id) > -1
+                        : _vm.checked_categories,
                     },
-                  ],
-                  attrs: { type: "checkbox", id: category.id },
-                  domProps: {
-                    value: category.id,
-                    checked: Array.isArray(_vm.checked_categories)
-                      ? _vm._i(_vm.checked_categories, category.id) > -1
-                      : _vm.checked_categories,
-                  },
-                  on: {
-                    change: function ($event) {
-                      var $$a = _vm.checked_categories,
-                        $$el = $event.target,
-                        $$c = $$el.checked ? true : false
-                      if (Array.isArray($$a)) {
-                        var $$v = category.id,
-                          $$i = _vm._i($$a, $$v)
-                        if ($$el.checked) {
-                          $$i < 0 &&
-                            (_vm.checked_categories = $$a.concat([$$v]))
+                    on: {
+                      change: function ($event) {
+                        var $$a = _vm.checked_categories,
+                          $$el = $event.target,
+                          $$c = $$el.checked ? true : false
+                        if (Array.isArray($$a)) {
+                          var $$v = category.id,
+                            $$i = _vm._i($$a, $$v)
+                          if ($$el.checked) {
+                            $$i < 0 &&
+                              (_vm.checked_categories = $$a.concat([$$v]))
+                          } else {
+                            $$i > -1 &&
+                              (_vm.checked_categories = $$a
+                                .slice(0, $$i)
+                                .concat($$a.slice($$i + 1)))
+                          }
                         } else {
-                          $$i > -1 &&
-                            (_vm.checked_categories = $$a
-                              .slice(0, $$i)
-                              .concat($$a.slice($$i + 1)))
+                          _vm.checked_categories = $$c
                         }
-                      } else {
-                        _vm.checked_categories = $$c
-                      }
+                      },
                     },
-                  },
-                }),
-                _vm._v(" "),
-                _c("span", { staticClass: "card-text" }, [
-                  _vm._v(_vm._s(category.name)),
+                  }),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "card-text" }, [
+                    _vm._v(_vm._s(category.name)),
+                  ]),
                 ]),
-              ]),
-            ]
-          )
-        }),
-        0
-      ),
+              ]
+            )
+          }),
+          0
+        ),
+      ]),
       _vm._v(" "),
       _c("RestaurantList", {
         ref: "RestaurantList",
@@ -68698,33 +68707,43 @@ var render = function () {
       attrs: { id: "restaurant-list" },
     },
     [
-      _c("h1", [_vm._v("Ristoranti che consegnano a Piazza Venezia")]),
-      _vm._v(" "),
       _vm.isLoading
         ? _c("Loader")
-        : _c(
-            "div",
-            { staticClass: "row" },
-            _vm._l(_vm.filteredRestaurants, function (restaurant) {
-              return _c(
-                "div",
-                {
-                  key: restaurant.id,
-                  staticClass: "col-sm-6 col-md-4 col-xl-3",
-                },
-                [
-                  _c("RestaurantCard", {
-                    attrs: {
-                      checked_categories: _vm.checked_categories,
-                      restaurant: restaurant,
-                    },
+        : _c("div", [
+            _c("h1", [_vm._v("Ristoranti che consegnano a Piazza Venezia")]),
+            _vm._v(" "),
+            _vm.filteredRestaurants.length == 0
+              ? _c("div", [
+                  _c("h5", [
+                    _vm._v(
+                      "Sembra non esserci nessun ristorante per le categorie che hai selezionato! :("
+                    ),
+                  ]),
+                ])
+              : _c(
+                  "div",
+                  { staticClass: "row" },
+                  _vm._l(_vm.filteredRestaurants, function (restaurant) {
+                    return _c(
+                      "div",
+                      {
+                        key: restaurant.id,
+                        staticClass: "col-sm-6 col-md-4 col-xl-3",
+                      },
+                      [
+                        _c("RestaurantCard", {
+                          attrs: {
+                            checked_categories: _vm.checked_categories,
+                            restaurant: restaurant,
+                          },
+                        }),
+                      ],
+                      1
+                    )
                   }),
-                ],
-                1
-              )
-            }),
-            0
-          ),
+                  0
+                ),
+          ]),
     ],
     1
   )
@@ -85445,7 +85464,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\pietr\Desktop\deliveboo\resources\js\front.js */"./resources/js/front.js");
+module.exports = __webpack_require__(/*! C:\Lavavel\deliveboo\resources\js\front.js */"./resources/js/front.js");
 
 
 /***/ }),

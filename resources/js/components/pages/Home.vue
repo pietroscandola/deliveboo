@@ -4,9 +4,7 @@
     <!-- CHECKBOXES -->
     <div class="checkbox-container">
       <h5 class="p-2">Filtro Categorie:</h5>
-      <ul
-        class="object administrator-checkbox-list d-flex flex-wrap"
-      >
+      <ul class="object administrator-checkbox-list d-flex flex-wrap">
         <li
           class="d-inline mr-3"
           v-for="category in categories"
@@ -119,10 +117,16 @@ body {
 }
 
 // CUSTOM CATEGORIES CHECKBOXES
-.checkbox-container{
-  box-shadow: 0px 0px 12px 12px rgba(208,208,208,0.66), inset 2px 2px 10px 0px rgba(208,208,208,0.4);
+.checkbox-container {
+  box-shadow: 0px 0px 12px 12px rgba(208, 208, 208, 0.66),
+    inset 2px 2px 10px 0px rgba(208, 208, 208, 0.4);
   border-radius: 15px;
-  }
+}
+h5 {
+  font-size: 30px;
+  font-weight: 900;
+  text-align: center;
+}
 .custom-checkbox {
   height: 50px;
   color: white;
