@@ -66736,30 +66736,27 @@ var render = function () {
         ]
       ),
       _vm._v(" "),
-      _vm._m(0),
+      _c("div", { staticClass: "home" }, [
+        _c(
+          "h3",
+          [
+            _c(
+              "router-link",
+              {
+                staticClass:
+                  "d-flex justify-content-center text-decoration-none pt-4",
+                attrs: { to: { name: "home" } },
+              },
+              [_vm._v("Torna nella HomePage\n      ")]
+            ),
+          ],
+          1
+        ),
+      ]),
     ]
   )
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "home" }, [
-      _c("h3", [
-        _c(
-          "a",
-          {
-            staticClass:
-              "d-flex justify-content-center text-decoration-none pt-4",
-            attrs: { href: "#" },
-          },
-          [_vm._v("Torna nella HomePage")]
-        ),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

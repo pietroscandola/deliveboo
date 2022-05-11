@@ -123,11 +123,11 @@
     </svg>
     <div class="home">
       <h3>
-        <a
+        <router-link
           class="d-flex justify-content-center text-decoration-none pt-4"
-          href="#"
-          >Torna nella HomePage</a
-        >
+          :to="{ name: 'home' }"
+          >Torna nella HomePage
+        </router-link>
       </h3>
     </div>
   </div>
