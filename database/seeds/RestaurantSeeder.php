@@ -20,7 +20,6 @@ class RestaurantSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        // !Fare attenzione a come si chiamano i campi della tabella restaurant es. : se vuoi aggiungere l'immagine fai 'image' => 'percorso/immagine'
         $restaurants = [
             [
                 'name' => 'Ristorante la Scala',
@@ -176,12 +175,9 @@ class RestaurantSeeder extends Seeder
         foreach ($restaurants as $index => $restaurant) {
             $restaurant = new Restaurant($restaurant);
             $restaurant->user_id = $users_id[$index];
-            // $restaurant->name = $name;
             $restaurant->email = $faker->email();
             $restaurant->phone = $faker->phoneNumber();
             $restaurant->address = $faker->streetAddress();
-            $restaurant->image = $restaurant['image'];
-            // $restaurant->description = $faker->paragraph();
             $restaurant->save();
 
             // FOR MANY TO MANY
