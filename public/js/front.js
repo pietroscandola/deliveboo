@@ -3252,7 +3252,7 @@ __webpack_require__.r(__webpack_exports__);
     braintree_web__WEBPACK_IMPORTED_MODULE_0___default.a.client.create({
       // Bisogna inserire la key di braintree
       // Aggiungere MIX_VUE_APP_BT_SDK con la propria key
-      authorization: "sandbox_4xx2ctm8_gmbpfv6ry93hzk98"
+      authorization: "sandbox_5rmbzfb5_d2m5rwjgpchndk39"
     }).then(function (clientInstance) {
       var options = {
         client: clientInstance,
@@ -67431,7 +67431,7 @@ var render = function () {
         _c("div", { staticClass: "card-top" }, [
           _c("img", {
             staticClass: "img-fluid",
-            staticStyle: { "object-fit": "cover" },
+            staticStyle: { "object-fit": "cover", height: "100%" },
             attrs: { src: _vm.restaurant.image, alt: _vm.restaurant.name },
           }),
         ]),
@@ -84468,6 +84468,11 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! C:\Users\pietr\Desktop\deliveboo\resources\js\front.js */"./resources/js/front.js");
+
+
+/***/ }),
 
 /***/ 2:
 /*!********************************!*\
