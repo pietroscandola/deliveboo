@@ -7,9 +7,11 @@
             <div class="card">
                <figure class="d-flex justify-content-center">
                   <div class="mr-5 d-flex justify-content-center">
-                     @if ($product->image)
+                     @if (strpos($product->image, 'http') == false)
                         <img src="{{ asset("storage/$product->image") }}" alt="{{ $product->title }}" width="200px"
                            class="img-fluid rounded mt-3">
+                     @elseif (strpos($product->image, 'http') !== false)
+                        <img src="{{ $product->image }}" alt="image-null" width="200px" class="img-fluid">
                      @else
                         <img src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
                            alt="image-null" width="200px" class="img-fluid">
@@ -23,7 +25,8 @@
                   <p class="card-text mb-1"><strong>Ingredienti:</strong> {{ $product->ingredients }}</p>
                   <div class="d-flex justify-content-end">
                      @if (!$product->deleted_at)
-                        <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST" class='delete_form'>
+                        <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST"
+                           class='delete_form'>
                            @csrf
                            @method('DELETE')
                            <input type="submit" class="btn btn-danger" value="Elimina">
