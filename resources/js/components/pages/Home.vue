@@ -121,11 +121,12 @@ body {
   box-shadow: 0px 0px 12px 12px rgba(208, 208, 208, 0.66),
     inset 2px 2px 10px 0px rgba(208, 208, 208, 0.4);
   border-radius: 15px;
-}
-h5 {
-  font-size: 30px;
-  font-weight: 900;
-  text-align: center;
+  h5 {
+    padding-top: 5px;
+    font-size: 30px;
+    font-weight: 900;
+    text-align: center;
+  }
 }
 .custom-checkbox {
   height: 50px;
