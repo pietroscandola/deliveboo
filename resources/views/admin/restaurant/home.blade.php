@@ -11,7 +11,9 @@
 
          <div class="row justify-content-center">
             <div class="col-xs-12 col-lg-6 d-flex justify-content-center">
-               @if ($restaurant->image)
+               @if (strpos($restaurant->image, 'http') !== false)
+                  <img class="img-fluid rounded border" src="{{ $restaurant->image }}" alt="{{ $restaurant->name }}">
+               @elseif (strpos($restaurant->image, 'http') == false)
                   <img class="img-fluid rounded border" src="{{ asset('storage/' . $restaurant->image) }}"
                      alt="{{ $restaurant->name }}">
                @else

@@ -23,8 +23,11 @@
             <div class="col-xs-6 col-lg-4 col-md-6">
                <div class="card mb-3">
                   <div class="mt-3 d-flex justify-content-center">
-                     @if ($product->image)
+                     @if (strpos($product->image, 'http') == false)
                         <img src="{{ asset("storage/$product->image") }}" alt="{{ $product->title }}" width="200px"
+                           class="img-fluid rounded border">
+                     @elseif (strpos($product->image, 'http') !== false)
+                        <img src="{{ $product->image }}" alt="{{ $product->title }}" width="200px"
                            class="img-fluid rounded border">
                      @else
                         <img src="https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image.png?w=640"
