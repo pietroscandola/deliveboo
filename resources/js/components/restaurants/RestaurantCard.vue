@@ -57,18 +57,22 @@ a {
    .restaurant-card {
       height: 300px;
       margin-bottom: 15px;
-      border: 1px solid #ededed;
-      border-radius: 5px;
+      border: 4px solid #00ccbc;
+      border-radius: 30px;
       .card-top {
          height: 55%;
          /* background-image: url("https://www.labracefoodexperience.it/wp-content/uploads/2021/02/Hamburgers-01-La-Barce-Food-Experience.jpg"); */
          background-position: center;
          background-size: cover;
          border-radius: 5px 5px 0 0;
+         .img-fluid {
+            border-radius: 25px 25px 0 0;
+         }
       }
       .card-bottom {
-         background-color: #fff;
+         background-color: #dedede;
          height: 45%;
+         border-radius: 0 0 25px 25px;
          h5 {
             font-weight: 700;
             font-size: 16px;
@@ -92,6 +96,7 @@ a {
                background-image: linear-gradient(90deg, #d73c31, #a62f26);
                color: white;
                margin-bottom: 3px;
+               border-radius: 8px;
                box-shadow: 0 0 6px rgba(230, 230, 230, 0.5);
             }
          }
