@@ -2220,6 +2220,13 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3241,10 +3248,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 
 
 
@@ -3298,6 +3301,8 @@ __webpack_require__.r(__webpack_exports__);
             console.log("OK APIII");
             _this.isLoading = false;
             _this.isPaid = true;
+
+            _this.$emit("emptyCart", []);
           });
         })["catch"](function (err) {
           _this.isLoading = false;
@@ -66352,7 +66357,7 @@ var render = function () {
                 : _c(
                     "router-link",
                     {
-                      staticClass: "go-back-link",
+                      staticClass: "go-back-link mt-3",
                       attrs: { role: "button", to: { name: "home" } },
                     },
                     [
@@ -66367,27 +66372,42 @@ var render = function () {
       ),
       _vm._v(" "),
       _c("div", { staticClass: "row d-flex flex-lg-row flex-column-reverse" }, [
-        _c(
-          "div",
-          { staticClass: "col-12 col-lg-8" },
-          [
-            _c("Payment", {
-              staticClass: "mt-3",
-              attrs: { tot: _vm.getTotal().toFixed(2), cart: _vm.cart },
-              on: { emptyCart: _vm.emptyCart },
-            }),
-          ],
-          1
-        ),
+        _vm.cart.length
+          ? _c(
+              "div",
+              { staticClass: "col-12 col-lg-8" },
+              [
+                _c("Payment", {
+                  staticClass: "mt-3",
+                  attrs: { tot: _vm.getTotal().toFixed(2), cart: _vm.cart },
+                  on: { emptyCart: _vm.emptyCart },
+                }),
+              ],
+              1
+            )
+          : _c(
+              "div",
+              { staticClass: "col-12" },
+              [
+                _c("Payment", {
+                  staticClass: "mt-3",
+                  attrs: { tot: _vm.getTotal().toFixed(2), cart: _vm.cart },
+                  on: { emptyCart: _vm.emptyCart },
+                }),
+              ],
+              1
+            ),
         _vm._v(" "),
         _c(
           "div",
           { staticClass: "col-12 col-lg-4" },
           [
-            _c("RestaurantCart", {
-              staticClass: "mb-3",
-              attrs: { cart: _vm.cart },
-            }),
+            _vm.cart.length
+              ? _c("RestaurantCart", {
+                  staticClass: "mb-3",
+                  attrs: { cart: _vm.cart },
+                })
+              : _vm._e(),
           ],
           1
         ),
@@ -67425,15 +67445,10 @@ var render = function () {
                     {
                       staticClass: "payment-button",
                       on: {
-                        click: [
-                          function ($event) {
-                            $event.preventDefault()
-                            return _vm.payWithCreditCard.apply(null, arguments)
-                          },
-                          function ($event) {
-                            return _vm.$emit("emptyCart", [])
-                          },
-                        ],
+                        click: function ($event) {
+                          $event.preventDefault()
+                          return _vm.payWithCreditCard.apply(null, arguments)
+                        },
                       },
                     },
                     [_vm._v("\n            Paga\n          ")]

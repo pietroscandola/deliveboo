@@ -29,7 +29,7 @@
         ></a>
         <router-link
           v-else
-          class="go-back-link"
+          class="go-back-link mt-3"
           role="button"
           :to="{ name: 'home' }"
           >Torna alla home <i class="fa-solid fa-arrow-rotate-left"></i
@@ -38,7 +38,7 @@
     </div>
     <!-- Pagamento e carrello -->
     <div class="row d-flex flex-lg-row flex-column-reverse">
-      <div class="col-12 col-lg-8">
+      <div v-if="cart.length" class="col-12 col-lg-8">
         <Payment
           class="mt-3"
           :tot="getTotal().toFixed(2)"
@@ -46,9 +46,16 @@
           @emptyCart="emptyCart"
         />
       </div>
-
+      <div v-else class="col-12">
+        <Payment
+          class="mt-3"
+          :tot="getTotal().toFixed(2)"
+          :cart="cart"
+          @emptyCart="emptyCart"
+        />
+      </div>
       <div class="col-12 col-lg-4">
-        <RestaurantCart class="mb-3" :cart="cart" />
+        <RestaurantCart v-if="cart.length" class="mb-3" :cart="cart" />
       </div>
     </div>
   </section>

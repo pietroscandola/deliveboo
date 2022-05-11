@@ -117,11 +117,7 @@
                 </div>
               </div>
             </div>
-            <button
-              class="payment-button"
-              @click.prevent="payWithCreditCard"
-              @click="$emit('emptyCart', [])"
-            >
+            <button class="payment-button" @click.prevent="payWithCreditCard">
               Paga
             </button>
           </form>
@@ -207,6 +203,7 @@ export default {
                 console.log("OK APIII");
                 this.isLoading = false;
                 this.isPaid = true;
+                this.$emit("emptyCart", []);
               });
           })
           .catch((err) => {
