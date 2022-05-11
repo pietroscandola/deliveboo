@@ -1,18 +1,24 @@
 <template>
   <div id="restaurant-list" class="container-fluid container-md">
-    <h1>Ristoranti che consegnano a Piazza Venezia</h1>
     <Loader v-if="isLoading" />
-    <div v-else class="row">
-      <div
-        v-for="restaurant in filteredRestaurants"
-        :key="restaurant.id"
-        class="col-sm-6 col-md-4 col-xl-3"
-      >
-        <RestaurantCard
-          :checked_categories="checked_categories"
-          :restaurant="restaurant"
-        />
+    <div v-else>
+      <h1>Ristoranti che consegnano a Piazza Venezia</h1>
+      <div v-if="filteredRestaurants.length == 0">
+        <h5>Sembra non esserci nessun ristorante per le categorie che hai selezionato! :(</h5>
       </div>
+      <div class="row" v-else>
+        <div
+          v-for="restaurant in filteredRestaurants"
+          :key="restaurant.id"
+          class="col-sm-6 col-md-4 col-xl-3"
+        >
+          <RestaurantCard
+            :checked_categories="checked_categories"
+            :restaurant="restaurant"
+          />
+        </div>
+      </div>
+ 
     </div>
   </div>
 </template>
@@ -88,7 +94,6 @@ export default {
     getFilteredRestaurants() {
       setTimeout(() => {
         console.log("restaurants", this.restaurants);
-        console.log("restaurants categories", this.restaurants["categories"]);
       }, 5000);
       // const category_checker = this.checked_categories.every(
       //   (checked_category) => {

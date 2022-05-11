@@ -1,28 +1,31 @@
 <template>
-  <section id="home" class="py-3">
+  <section id="home" class="py-3 container">
     <Loader v-if="isLoading" />
     <!-- CHECKBOXES -->
-    <ul
-      class="object administrator-checkbox-list d-flex justify-content-center"
-    >
-      <li
-        class="d-inline mr-3"
-        v-for="category in categories"
-        :key="category.id"
-        @click="$refs.RestaurantList.getRestaurants()"
+    <div class="checkbox-container">
+      <h5 class="p-2">Filtro Categorie:</h5>
+      <ul
+        class="object administrator-checkbox-list d-flex flex-wrap"
       >
-        <label v-bind:for="category.id" role="button">
-          <input
-            type="checkbox"
-            v-model="checked_categories"
-            :value="category.id"
-            :id="category.id"
-          />
+        <li
+          class="d-inline mr-3"
+          v-for="category in categories"
+          :key="category.id"
+          @click="$refs.RestaurantList.getRestaurants()"
+        >
+          <label v-bind:for="category.id" role="button">
+            <input
+              type="checkbox"
+              v-model="checked_categories"
+              :value="category.id"
+              :id="category.id"
+            />
 
-          <span class="card-text">{{ category.name }}</span>
-        </label>
-      </li>
-    </ul>
+            <span class="card-text">{{ category.name }}</span>
+          </label>
+        </li>
+      </ul>
+    </div>
 
     <RestaurantList
       ref="RestaurantList"
@@ -116,6 +119,10 @@ body {
 }
 
 // CUSTOM CATEGORIES CHECKBOXES
+.checkbox-container{
+  box-shadow: 0px 0px 12px 12px rgba(208,208,208,0.66), inset 2px 2px 10px 0px rgba(208,208,208,0.4);
+  border-radius: 15px;
+  }
 .custom-checkbox {
   height: 50px;
   color: white;
