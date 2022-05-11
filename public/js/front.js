@@ -67431,7 +67431,11 @@ var render = function () {
         _c("div", { staticClass: "card-top" }, [
           _c("img", {
             staticClass: "img-fluid",
-            staticStyle: { "object-fit": "cover", height: "100%" },
+            staticStyle: {
+              "object-fit": "cover",
+              height: "100%",
+              width: "100%",
+            },
             attrs: { src: _vm.restaurant.image, alt: _vm.restaurant.name },
           }),
         ]),

@@ -6,7 +6,7 @@
       <div class="card-top">
         <img
           class="img-fluid"
-          style="object-fit: cover; height: 100%"
+          style="object-fit: cover; height: 100%; width: 100%"
           :src="restaurant.image"
           :alt="restaurant.name"
         />

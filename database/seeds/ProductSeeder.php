@@ -29,7 +29,7 @@ class ProductSeeder extends Seeder
             $product = new Product();
             $product->restaurant_id = Arr::random($restaurants_ids);
             $product->name = $foodfaker->foodName();
-            $product->price = $faker->randomFloat(2, 1, 30);
+            $product->price = $faker->randomFloat(2, 1, 20);
             $product->category = Arr::random($categories);
             $product->ingredients = $ingredients;
             $product->save();
