@@ -3402,7 +3402,11 @@ __webpack_require__.r(__webpack_exports__);
     braintree_web__WEBPACK_IMPORTED_MODULE_0___default.a.client.create({
       // Bisogna inserire la key di braintree
       // Aggiungere MIX_VUE_APP_BT_SDK con la propria key
+<<<<<<< HEAD
       authorization: "sandbox_hccvgrtg_8skhy3btn37pxc6y"
+=======
+      authorization: "sandbox_ktyfs7dd_h64c3rb9ttj7fvq9"
+>>>>>>> fix-show-of-images
     }).then(function (clientInstance) {
       var options = {
         client: clientInstance,
@@ -3550,9 +3554,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RestaurantCard",
-  props: ["restaurant", "checked_categories"]
+  props: ["restaurant", "checked_categories"],
+  computed: {
+    ifLink: function ifLink() {
+      return this.restaurant.image.includes("http");
+    }
+  }
 });
 
 /***/ }),
@@ -67883,15 +67900,28 @@ var render = function () {
     [
       _c("div", { staticClass: "restaurant-card" }, [
         _c("div", { staticClass: "card-top" }, [
-          _c("img", {
-            staticClass: "img-fluid",
-            staticStyle: {
-              "object-fit": "cover",
-              height: "100%",
-              width: "100%",
-            },
-            attrs: { src: _vm.restaurant.image, alt: _vm.restaurant.name },
-          }),
+          _vm.ifLink
+            ? _c("img", {
+                staticClass: "img-fluid",
+                staticStyle: {
+                  "object-fit": "cover",
+                  height: "100%",
+                  width: "100%",
+                },
+                attrs: { src: _vm.restaurant.image, alt: _vm.restaurant.name },
+              })
+            : _c("img", {
+                staticClass: "img-fluid",
+                staticStyle: {
+                  "object-fit": "cover",
+                  height: "100%",
+                  width: "100%",
+                },
+                attrs: {
+                  src: "../storage/" + _vm.restaurant.image,
+                  alt: _vm.restaurant.name,
+                },
+              }),
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "card-bottom p-3" }, [
@@ -85020,7 +85050,11 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
+<<<<<<< HEAD
 module.exports = __webpack_require__(/*! C:\Lavavel\deliveboo\resources\js\front.js */"./resources/js/front.js");
+=======
+module.exports = __webpack_require__(/*! C:\Users\Vasco Rossi\Documents\Boolean\Progetto\deliveboo\resources\js\front.js */"./resources/js/front.js");
+>>>>>>> fix-show-of-images
 
 
 /***/ }),
