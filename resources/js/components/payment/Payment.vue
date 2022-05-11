@@ -1,5 +1,5 @@
 <template>
-   <div>
+   <div class="payment">
       <Loader v-if="isLoading" />
       <div v-if="!isPaid">
          <div class="card bg-light">
@@ -133,9 +133,16 @@
             </div>
          </div>
       </div>
-      <div v-if="isPaid">
-         <h2>Hai pagato un totale di {{ amount }}€</h2>
-         <h3>Il tuo ordine arriverà a breve</h3>
+      <div v-if="isPaid" class="row absolute">
+         <div class="col-12">
+            <h2>Hai pagato un totale di {{ amount }}€</h2>
+         </div>
+         <div class="col-12" style="height: 300px">
+            <Delivering />
+         </div>
+         <div class="col-12">
+            <h3>Il tuo ordine arriverà a breve</h3>
+         </div>
       </div>
    </div>
 </template>
@@ -143,11 +150,13 @@
 <script>
 import braintree from "braintree-web";
 import Loader from "../Loader.vue";
+import Delivering from "../animation/Delivering.vue";
 
 export default {
    name: "PaymentTwo",
    components: {
       Loader,
+      Delivering
    },
    props: ["tot", "cart"],
    data() {
@@ -271,6 +280,17 @@ export default {
 };
 </script>
 <style scoped lang="scss">
+.payment {
+   position: relative;
+   .absolute {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+   }
+}
+
 .payment-button {
    width: 100%;
    border: none;
